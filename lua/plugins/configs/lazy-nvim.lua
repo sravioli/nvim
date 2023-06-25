@@ -1,4 +1,4 @@
-local prefs = require "prefs"
+local prefs = require "preferences"
 
 return {
   defaults = { lazy = true },
