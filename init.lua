@@ -1,3 +1,3 @@
-require "lazy-nvim"
-
 require "settings"
+
+require "lazy-nvim"
