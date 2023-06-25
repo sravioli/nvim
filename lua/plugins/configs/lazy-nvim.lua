@@ -1,8 +1,11 @@
+local prefs = require "prefs"
+
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "kanagawa" } },
 
   ui = {
+    border = prefs.border,
     icons = {
       ft = "",
       lazy = "󰂠 ",

@@ -1,11 +1,13 @@
+local prefs = require "prefs"
+
 local options = {
   ui = {
     icons = {
       package_pending = " ",
       package_installed = "󰄳 ",
       package_uninstalled = " 󰚌",
-      border = require "assets.border",
     },
+    border = prefs.border,
 
     keymaps = {
       toggle_server_expand = "<CR>",
