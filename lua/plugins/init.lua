@@ -3,7 +3,6 @@ return {
     -- NeoVim dark colorscheme inspired by the colors of the famous painting by
     -- Katsushika Hokusai.
     "rebelot/kanagawa.nvim",
-    name = "kanagawa",
     lazy = false,
     priority = 1000,
     opts = require "plugins.configs.kanagawa",
@@ -39,5 +38,17 @@ return {
     opts = require "plugins.configs.mason-lspconfig",
     dependencies = { "williamboman/mason.nvim" },
   },
-  -- {},
+  {
+    -- The neovim tabline plugin.
+    "romgrk/barbar.nvim",
+    event = "BufAdd",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" }, -- OPTIONAL: for file icons
+      { "lewis6991/gitsigns.nvim" }, -- OPTIONAL: for git status
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = require "plugins.configs.barbar",
+  },
 }
