@@ -19,21 +19,25 @@ return {
     ft = "lua",
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      -- Portable package manager for Neovim that runs everywhere Neovim runs.
-      -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
-      "williamboman/mason.nvim",
-      build = ":MasonUpdate",
-      cmd = {
-        "Mason",
-        "MasonInstall",
-        "MasonUninstall",
-        "MasonUninstallAll",
-        "MasonLog",
-      },
-      opts = require "plugins.configs.mason",
+    -- Portable package manager for Neovim that runs everywhere Neovim runs.
+    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    cmd = {
+      "Mason",
+      "MasonInstall",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog",
     },
+    opts = require "plugins.configs.mason",
   },
-  {},
+  {
+    -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
+    "williamboman/mason-lspconfig.nvim",
+    cmd = { "LspInstall", "LspUninstall" },
+    opts = require "plugins.configs.mason-lspconfig",
+    dependencies = { "williamboman/mason.nvim" },
+  },
+  -- {},
 }
