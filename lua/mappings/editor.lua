@@ -1,4 +1,3 @@
-local merge_tb = vim.tbl_deep_extend
 ---@type function
 local map = vim.keymap.set
 
