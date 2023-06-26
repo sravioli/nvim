@@ -1,4 +1,4 @@
-local kind_icons = {
+local icons = {
   Text = "",
   Method = "󰆧",
   Function = "󰊕",
@@ -26,4 +26,4 @@ local kind_icons = {
   TypeParameter = "󰅲",
 }
 
-return kind_icons
+return icons
