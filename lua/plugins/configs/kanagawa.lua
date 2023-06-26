@@ -2,6 +2,7 @@ local options = {
   compile = true,
   transparent = true, -- do not set background color
   dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+  commentStyle = { italic = false },
   overrides = function(colors)
     local theme = colors.theme
     return {
