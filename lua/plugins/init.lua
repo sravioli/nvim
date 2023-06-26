@@ -113,4 +113,12 @@ return {
     end,
     opts = require "plugins.configs.barbar",
   },
+  {
+    -- A blazing fast and easy to configure neovim statusline plugin written in
+    -- pure lua.
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = require "plugins.configs.lualine",
+  },
 }
