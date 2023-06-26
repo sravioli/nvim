@@ -12,7 +12,7 @@
 local au = vim.api.nvim_create_autocmd
 
 ---@type table User defined augroups
-local aug = require "custom.utils.augroups"
+local aug = require "utils.augroups"
 
 -- Restore the >_ cursor when exiting nvim
 au("VimLeave", {
@@ -67,23 +67,23 @@ au({ "InsertEnter", "WinLeave" }, {
 })
 
 -- (Barbecue) Gain better performance when moving the cursor around
-au({
-  "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-  "BufWinEnter",
-  "CursorHold",
-  "InsertLeave",
-
-  -- include these if you have set `show_modified` to `true`
-  "BufWritePost",
-  "TextChanged",
-  "TextChangedI",
-}, {
-  desc = "Update Barbecue winbar",
-  group = aug.barbecue,
-  callback = function()
-    require("barbecue.ui").update()
-  end,
-})
+-- au({
+--   "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+--   "BufWinEnter",
+--   "CursorHold",
+--   "InsertLeave",
+--
+--   -- include these if you have set `show_modified` to `true`
+--   "BufWritePost",
+--   "TextChanged",
+--   "TextChangedI",
+-- }, {
+--   desc = "Update Barbecue winbar",
+--   group = aug.barbecue,
+--   callback = function()
+--     require("barbecue.ui").update()
+--   end,
+-- })
 
 ---@type table Doxygen highlight groups and what group to link to.
 ---Redefine and improve doxygen highlights groups
@@ -118,12 +118,12 @@ au({ "BufNewFile", "BufRead" }, {
 })
 
 -- Change some highlight groups for markdown
-au("FileType", {
-  desc = "Change highlight groups",
-  pattern = "markdown",
-  command = [[highlight! link @text.emphasis Italic]],
-  group = aug.custom_highlights,
-})
+-- au("FileType", {
+--   desc = "Change highlight groups",
+--   pattern = "markdown",
+--   command = [[highlight! link @text.emphasis Italic]],
+--   group = aug.custom_highlights,
+-- })
 
 -- Enable markdown auto-align table
 au("FileType", {
