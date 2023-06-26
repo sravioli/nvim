@@ -14,39 +14,41 @@ return {
 
   -- PRE-LSPCONFIG ------------------------------------------------------------
   {
-    -- 💻 Neovim setup for init.lua and plugin development with full signature
-    -- help, docs and completion for the nvim lua API.
-    "folke/neodev.nvim",
-    opts = require "plugins.configs.neodev",
-    ft = "lua",
-  },
-  {
-    -- Portable package manager for Neovim that runs everywhere Neovim runs.
-    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-    },
-    opts = require "plugins.configs.mason",
-  },
-  {
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
     opts = require "plugins.configs.mason-lspconfig",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = {
+      {
+        -- Portable package manager for Neovim that runs everywhere Neovim runs.
+        -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        cmd = {
+          "Mason",
+          "MasonInstall",
+          "MasonUninstall",
+          "MasonUninstallAll",
+          "MasonLog",
+        },
+        opts = require "plugins.configs.mason",
+      },
+    },
   },
 
   -- LSPCONFIG ----------------------------------------------------------------
   {
     -- Quickstart configs for Nvim LSP
     "neovim/nvim-lspconfig",
-    dependencies = { "folke/neodev.nvim" },
+    dependencies = {
+      {
+        -- 💻 Neovim setup for init.lua and plugin development with full signature
+        -- help, docs and completion for the nvim lua API.
+        "folke/neodev.nvim",
+        opts = require "plugins.configs.neodev",
+        ft = "lua",
+      },
+    },
     config = function()
       -- require "plugins.configs.lspconfig"
       require "plugins.configs.lsp"
@@ -57,7 +59,25 @@ return {
   {
     -- A completion plugin for neovim coded in Lua.
     "hrsh7th/nvim-cmp",
-    dependencies = {},
+    dependencies = {
+      {
+        -- Snippet Engine for Neovim written in Lua.
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp",
+        config = true,
+      },
+      {
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+      },
+      {
+        "doxnit/cmp-luasnip-choice",
+        config = true,
+      },
+    },
     event = "InsertEnter",
     config = function()
       require "plugins.configs.cmp"
