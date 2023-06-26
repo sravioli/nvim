@@ -3,7 +3,7 @@
 ---@license GPL-3.0
 ---@version 1.0.0
 
-return {
+local fn = {
   ---@type function Align a markdown table using `:Tabularize`
   align_table = function()
     ---@type string Pattern to identify a markdown table
@@ -27,3 +27,5 @@ return {
     end
   end,
 }
+
+return fn
