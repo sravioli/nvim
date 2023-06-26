@@ -4,7 +4,7 @@ if not cmp_present or not ls_present then
   return
 end
 
-local fn = require "plugins.configs.cmp-wip.fn"
+local fn = require "plugins.configs.cmp.fn"
 
 local opts = {
   snippet = { expand = fn.expand },
