@@ -61,6 +61,10 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       {
+        -- vscode-like pictograms for neovim lsp completion items
+        "onsails/lspkind.nvim",
+      },
+      {
         -- Snippet Engine for Neovim written in Lua.
         "L3MON4D3/LuaSnip",
         build = "make install_jsregexp",
@@ -68,14 +72,25 @@ return {
       },
       {
         "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-      },
-      {
-        "doxnit/cmp-luasnip-choice",
-        config = true,
+        "lukas-reineke/cmp-rg",
+        "FelipeLema/cmp-async-path",
+        "chrisgrieser/cmp-nerdfont",
+        {
+          "doxnit/cmp-luasnip-choice",
+          config = true,
+        },
+        -- {
+        --   "paopaol/cmp-doxygen",
+        --   dependencies = {
+        --     "nvim-treesitter/nvim-treesitter",
+        --     "nvim-treesitter/nvim-treesitter-textobjects",
+        --   },
+        -- },
       },
     },
     event = "InsertEnter",
