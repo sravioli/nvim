@@ -1,8 +1,8 @@
---- @param trunc_width number trunctates component when screen width is less then trunc_width
---- @param trunc_len number truncates component to trunc_len number of chars
---- @param hide_width number hides component when window width is smaller then hide_width
---- @param no_ellipsis boolean whether to disable adding '...' at end after truncation
---- return function that can format the component accordingly
+---@param trunc_width number trunctates component when screen width is less then `trunc_width`
+---@param trunc_len number truncates component to trunc_len number of chars
+---@param hide_width number hides component when window width is smaller then `hide_width`
+---@param no_ellipsis boolean whether to disable adding '...' at end after truncation
+---@return function function function that can format the component accordingly
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
@@ -20,15 +20,21 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   end
 end
 
--- local added = (git_status.added and git_status.added ~= 0) and ("  " .. git_status.added) or ""
--- local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
--- local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
--- local branch_name = "  " .. git_status.head
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+  return nil
+end
 
 local opts = {
   options = {
     icons_enabled = true,
-    theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
@@ -50,15 +56,28 @@ local opts = {
     },
     lualine_b = {
       {
-        "buffers",
-        filetype_names = { lazy = "Lazy", mason = "Mason" },
-        fmt = trunc(90, 30, 50, false),
+        "filetype",
+        icon_only = true,
+        separator = "",
+        padding = {
+          left = 1,
+          right = 0,
+        },
       },
+      { "filename" },
     },
     lualine_c = {
-      { "branch", icon = "  " },
-      { "diff" },
-      { "diagnostics" },
+      { "branch", icon = "  ", color = "Comment" },
+      {
+        "diff",
+        symbols = { added = "  ", modified = "  ", removed = "  " },
+        -- source = diff_source,
+      },
+      {
+        "diagnostics",
+        sources = { "nvim_lsp", "nvim_diagnostic" },
+        symbols = { error = "  ", warn = "  ", info = "  ", hint = "  " },
+      },
     },
     lualine_x = {
       { "encoding" },
@@ -71,7 +90,6 @@ local opts = {
           mac = "CR",
         },
       },
-      { "filetype" },
     },
     lualine_y = {
       { "progress" },
@@ -91,7 +109,15 @@ local opts = {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {},
+  extensions = {
+    "lazy",
+    "neo-tree",
+    "trouble",
+    "man",
+    "fzf",
+    "quickfix",
+    "toggleterm",
+  },
 }
 
 return opts
