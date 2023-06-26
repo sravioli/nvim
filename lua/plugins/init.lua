@@ -107,6 +107,7 @@ return {
     dependencies = {
       { "nvim-tree/nvim-web-devicons" }, -- OPTIONAL: for file icons
       { "lewis6991/gitsigns.nvim" }, -- OPTIONAL: for git status
+      { "rebelot/kanagawa.nvim" },
     },
     init = function()
       vim.g.barbar_auto_setup = false
@@ -118,7 +119,7 @@ return {
     -- pure lua.
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },
     opts = require "plugins.configs.lualine",
   },
 }
