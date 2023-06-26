@@ -28,7 +28,7 @@ local options = {
 
       -- More uniform colors for the popup menu.
       Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-      PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+      PmenuSel = { fg = "NONE", bg = theme.ui.bg_m3 },
       PmenuSbar = { bg = theme.ui.bg_m1 },
       PmenuThumb = { bg = theme.ui.bg_p2 },
     }
