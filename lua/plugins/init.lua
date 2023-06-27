@@ -55,6 +55,24 @@ return {
     end,
   },
 
+  -- TREE-SITTER --------------------------------------------------------------
+  {
+    -- Nvim Treesitter configurations and abstraction layer
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufWinEnter",
+    build = function()
+      require("nvim-treesitter.install").update { with_sync = true }
+    end,
+    config = function()
+      require "plugins.configs.tree-sitter"
+    end,
+  },
+  {
+    -- Syntax aware text-objects, select, move, swap, and peek support.
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+
   -- AUTOCOMPLETION -----------------------------------------------------------
   {
     -- A completion plugin for neovim coded in Lua.
@@ -105,8 +123,8 @@ return {
     "romgrk/barbar.nvim",
     event = "BufAdd",
     dependencies = {
-      { "nvim-tree/nvim-web-devicons" }, -- OPTIONAL: for file icons
-      { "lewis6991/gitsigns.nvim" }, -- OPTIONAL: for git status
+      { "nvim-tree/nvim-web-devicons" },
+      { "lewis6991/gitsigns.nvim" },
       { "rebelot/kanagawa.nvim" },
     },
     init = function()
@@ -119,7 +137,15 @@ return {
     -- pure lua.
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      { "rebelot/kanagawa.nvim" },
+    },
     opts = require "plugins.configs.lualine",
+  },
+  {
+    -- lua `fork` of vim-web-devicons for neovim
+    "nvim-tree/nvim-web-devicons",
+    config = true,
   },
 }
