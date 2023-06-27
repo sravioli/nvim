@@ -17,10 +17,27 @@ local options = {
 
       BufferInactive = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1 },
       BufferInactiveSign = { fg = theme.ui.bg, bg = theme.ui.bg_p1 },
+      BufferInactiveADDED = { fg = theme.diff.add, bg = theme.ui.bg_p1 },
+      BufferInactiveCHANGED = { fg = theme.diff.change, bg = theme.ui.bg_p1 },
+      BufferInactiveDELETED = { fg = theme.diff.delete, bg = theme.ui.bg_p1 },
+      BufferInactiveERROR = { fg = theme.diag.error, bg = theme.ui.bg_p1 },
+      BufferInactiveHINT = { fg = theme.diag.hint, bg = theme.ui.bg_p1 },
+      BufferInactiveINFO = { fg = theme.diag.info, bg = theme.ui.bg_p1 },
+      BufferInactiveWARN = { fg = theme.diag.warning, bg = theme.ui.bg_p1 },
+      BufferInactiveMod = { fg = theme.ui.special, bg = theme.ui.bg_p1 },
+      BufferInactiveTarget = { fg = theme.diag.error, bg = theme.ui.bg_p1 },
 
       BufferCurrent = { fg = theme.ui.fg, bg = theme.ui.bg_m2 },
       BufferCurrentSign = { fg = theme.ui.bg, bg = theme.ui.bg_m2 },
-      -- BufferSign = { bg = theme.ui.bg_m3 },
+      BufferCurrentADDED = { fg = theme.diff.add, bg = theme.ui.bg_m2 },
+      BufferCurrentCHANGED = { fg = theme.diff.change, bg = theme.ui.bg_m2 },
+      BufferCurrentDELETED = { fg = theme.diff.delete, bg = theme.ui.bg_m2 },
+      BufferCurrentERROR = { fg = theme.diag.error, bg = theme.ui.bg_m2 },
+      BufferCurrentHINT = { fg = theme.diag.hint, bg = theme.ui.bg_m2 },
+      BufferCurrentINFO = { fg = theme.diag.info, bg = theme.ui.bg_m2 },
+      BufferCurrentWARN = { fg = theme.diag.warning, bg = theme.ui.bg_m2 },
+      BufferCurrentMod = { fg = theme.ui.special, bg = theme.ui.bg_m2 },
+      BufferCurrentTarget = { fg = theme.diag.error, bg = theme.ui.bg_m2 },
 
       -- Popular plugins that open floats will link to NormalFloat by default;
       -- set their background accordingly if you wish to keep them dark and borderless
