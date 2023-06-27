@@ -44,7 +44,7 @@ set.updatetime = 250
 -- when cursor reaches end/beginning of line
 set.whichwrap:append "<>[]hl"
 
-let.mapleader = "<Space>"
+let.mapleader = " "
 
 let.editorconfig = true
 
