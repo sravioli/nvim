@@ -92,7 +92,7 @@ local providers = {
 
 ---@param prov  string|table Current provider
 ---@param paths table        The paths to the provider
--- for prov, paths in pairs(providers) do
---   let["loaded_" .. prov .. "_provider"] = nil
---   let[prov .. "_host_prog"] = paths[fn.get_os()]
--- end
+for prov, paths in pairs(providers) do
+  let["loaded_" .. prov .. "_provider"] = nil
+  let[prov .. "_host_prog"] = paths[fn.get_os()]
+end
