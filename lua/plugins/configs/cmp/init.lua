@@ -10,14 +10,14 @@ local opts = {
   snippet = { expand = fn.expand },
   window = {
     completion = {
-      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:PmenuSel",
+      winhighlight = "Normal:NormalDark,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
       scrollbar = false,
       col_offset = -3,
       side_padding = 0,
     },
     documentation = {
       border = fn.border "FloatBorder",
-      winhighlight = "Normal:CmpDoc",
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },
   },
   formatting = {
