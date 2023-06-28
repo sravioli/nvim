@@ -1,5 +1,3 @@
-local prefs = require "preferences"
-
 local options = {
   ui = {
     icons = {
@@ -7,7 +5,7 @@ local options = {
       package_installed = "󰄳 ",
       package_uninstalled = " 󰚌",
     },
-    border = prefs.border,
+    border = require("preferences").border,
 
     keymaps = {
       toggle_server_expand = "<CR>",
