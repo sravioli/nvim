@@ -35,6 +35,16 @@ return {
       },
     },
   },
+  {
+    -- Use Neovim as a language server to inject LSP diagnostics, code actions,
+    -- and more via Lua.
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require "plugins.configs.null-ls"
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
   -- LSPCONFIG ----------------------------------------------------------------
   {
@@ -142,6 +152,16 @@ return {
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "rebelot/kanagawa.nvim" },
+    },
+  },
+  {
+    -- Neovim plugin to manage the file system and other tree like structures.
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
     },
   },
   {
