@@ -163,6 +163,7 @@ return {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
+    opts = require "plugins.configs.neo-tree",
   },
   {
     -- lua `fork` of vim-web-devicons for neovim
