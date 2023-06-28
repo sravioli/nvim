@@ -13,8 +13,9 @@ local options = {
       -- Save an hlgroup with dark background and dimmed foreground
       -- so that you can use it where your still want darker windows.
       -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-      NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+      NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
 
+      -- Barbar highlight groups
       BufferInactive = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1 },
       BufferInactiveSign = { fg = theme.ui.bg, bg = theme.ui.bg_p1 },
       BufferInactiveADDED = { fg = theme.diff.add, bg = theme.ui.bg_p1 },
@@ -45,10 +46,53 @@ local options = {
       -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
       -- More uniform colors for the popup menu.
-      Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+      Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p2 }, -- add `blend = vim.o.pumblend` to enable transparency
       PmenuSel = { fg = "NONE", bg = theme.ui.bg_m3 },
       PmenuSbar = { bg = theme.ui.bg_m1 },
       PmenuThumb = { bg = theme.ui.bg_p2 },
+
+      -- Cmp
+      CmpItemAbbrDeprecated = {
+        fg = theme.syn.deprecated,
+        bg = "NONE",
+        strikethrough = true,
+      },
+      CmpItemAbbrMatch = { fg = theme.ui.bg_search, bg = "NONE", bold = true },
+      CmpItemAbbrMatchFuzzy = { fg = theme.ui.bg_search, bg = "NONE", bold = true },
+      CmpItemMenu = { fg = theme.ui.special, bg = "NONE", italic = true },
+
+      -- CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
+      -- CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
+      -- CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
+
+      CmpItemKindText = { fg = theme.ui.bg, bg = theme.syn.string },
+      CmpItemKindEnum = { fg = theme.ui.bg, bg = theme.syn.string },
+      CmpItemKindKeyword = { fg = theme.ui.bg, bg = theme.syn.string },
+
+      CmpItemKindConstant = { fg = theme.ui.fg, bg = theme.syn.constant },
+      CmpItemKindConstructor = { fg = theme.ui.fg, bg = theme.syn.constant },
+      CmpItemKindReference = { fg = theme.ui.fg, bg = theme.syn.constant },
+
+      CmpItemKindFunction = { fg = theme.ui.fg, bg = theme.syn.fun },
+      CmpItemKindStruct = { fg = theme.ui.fg, bg = theme.syn.fun },
+      CmpItemKindClass = { fg = theme.ui.fg, bg = theme.syn.fun },
+      CmpItemKindModule = { fg = theme.ui.fg, bg = theme.syn.fun },
+      CmpItemKindOperator = { fg = theme.ui.fg, bg = theme.syn.fun },
+
+      CmpItemKindVariable = { fg = theme.ui.fg, bg = "#7E8294" },
+      CmpItemKindFile = { fg = theme.ui.fg, bg = "#7E8294" },
+
+      CmpItemKindUnit = { fg = theme.ui.fg, bg = theme.syn.type },
+      CmpItemKindSnippet = { fg = theme.ui.fg, bg = theme.syn.type },
+      CmpItemKindFolder = { fg = theme.ui.fg, bg = theme.syn.type },
+
+      CmpItemKindMethod = { fg = theme.ui.fg, bg = theme.syn.identifier },
+      CmpItemKindValue = { fg = theme.ui.fg, bg = theme.syn.identifier },
+      CmpItemKindEnumMember = { fg = theme.ui.fg, bg = theme.syn.identifier },
+
+      CmpItemKindInterface = { fg = theme.ui.fg, bg = theme.syn.parameter },
+      CmpItemKindColor = { fg = theme.ui.fg, bg = theme.syn.parameter },
+      CmpItemKindTypeParameter = { fg = theme.ui.fg, bg = theme.syn.parameter },
     }
   end,
   colors = {
