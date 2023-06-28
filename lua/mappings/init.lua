@@ -1,5 +1,5 @@
 local sections = {
-  editor = require "mappings.editor",
+  nvim = require "mappings.nvim",
   lsp = require "mappings.lsp",
   barbar = require "mappings.barbar",
   treesitter = require "mappings.tree-sitter",
