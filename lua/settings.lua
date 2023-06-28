@@ -1,3 +1,5 @@
+local fn = require "utils.fn"
+
 ---@type table Mimic the vimscript `set <option>=<value>`
 local set = vim.opt
 ---@type table Mimic the vimscript `let <option>=<value>`
@@ -55,3 +57,42 @@ vim.env.PATH = vim.fn.stdpath "data"
   .. "/mason/bin"
   .. (is_windows and ";" or ":")
   .. vim.env.PATH
+
+---Neovim providers
+---@class Providers
+---@field node    table Path to the nodejs provider executable
+---@field ruby    table Path to the ruby provider executable
+---@field perl    table Path to the perl provider executable
+---@field python3 table Path to the python3 provider executable
+local providers = {
+  ---@enum node-paths
+  node = {
+    lnx = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host",
+    win = "C:/Users/fsimo/AppData/Roaming/npm/node_modules/neovim/bin/cli.js",
+  },
+
+  ---@enum ruby-paths
+  ruby = {
+    lnx = "/home/linuxbrew/.linuxbrew/bin/ruby",
+    win = "C:/tools/ruby31/bin/ruby.exe",
+  },
+
+  ---@enum perl-paths,
+  perl = {
+    lnx = "/usr/bin/perl",
+    win = "C:/Strawberry/perl/bin/perl.exe",
+  },
+
+  ---@enum python3-paths,
+  python3 = {
+    lnx = "/home/sravioli/.py-nvim/bin/python3",
+    win = "C:/Users/fsimo/.py-nvim/Scripts/python.exe",
+  },
+}
+
+---@param prov  string|table Current provider
+---@param paths table        The paths to the provider
+-- for prov, paths in pairs(providers) do
+--   let["loaded_" .. prov .. "_provider"] = nil
+--   let[prov .. "_host_prog"] = paths[fn.get_os()]
+-- end
