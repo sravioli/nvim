@@ -128,6 +128,18 @@ local fn = {
       end
     )
   end,
+
+  ---Detects the current OS
+  ---@type function
+  get_os = function()
+    ---@type string The OS separator
+    local separator = package.config:sub(1, 1)
+    if separator == "\\" then
+      return "win"
+    elseif separator == "/" then
+      return "lnx"
+    end
+  end,
 }
 
 return fn
