@@ -31,31 +31,31 @@ local on_attach = function(client, bufnr)
     severity_sort = true,
   }
 
-  ---custom namespace
-  local ns = vim.api.nvim_create_namespace "severe-diagnostics"
-
-  ---reference to the original handler
-  local orig_signs_handler = vim.diagnostic.handlers.signs
-
-  ---Overriden diagnostics signs helper to only show the single most relevant sign
-  ---@see `:h diagnostic-handlers`
-  vim.diagnostic.handlers.signs = {
-    show = function(_, bufnr, _, opts)
-      -- get all diagnostics from the whole buffer rather
-      -- than just the diagnostics passed to the handler
-      local diagnostics = vim.diagnostic.get(bufnr)
-
-      local filtered_diagnostics = fn.filter_diagnostics(diagnostics)
-
-      -- pass the filtered diagnostics (with the
-      -- custom namespace) to the original handler
-      orig_signs_handler.show(ns, bufnr, filtered_diagnostics, opts)
-    end,
-
-    hide = function(_, bufnr)
-      orig_signs_handler.hide(ns, bufnr)
-    end,
-  }
+  --  ---custom namespace
+  --  local ns = vim.api.nvim_create_namespace "severe-diagnostics"
+  --
+  --  ---reference to the original handler
+  --  local orig_signs_handler = vim.diagnostic.handlers.signs
+  --
+  --  ---Overriden diagnostics signs helper to only show the single most relevant sign
+  --  ---@see `:h diagnostic-handlers`
+  --  vim.diagnostic.handlers.signs = {
+  --    show = function(_, bufnr, _, opts)
+  --      -- get all diagnostics from the whole buffer rather
+  --      -- than just the diagnostics passed to the handler
+  --      local diagnostics = vim.diagnostic.get(bufnr)
+  --
+  --      local filtered_diagnostics = fn.filter_diagnostics(diagnostics)
+  --
+  --      -- pass the filtered diagnostics (with the
+  --      -- custom namespace) to the original handler
+  --      orig_signs_handler.show(ns, bufnr, filtered_diagnostics, opts)
+  --    end,
+  --
+  --    hide = function(_, bufnr)
+  --      orig_signs_handler.hide(ns, bufnr)
+  --    end,
+  --  }
 
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
