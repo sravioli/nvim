@@ -40,19 +40,20 @@ return {
   {
     -- Quickstart configs for Nvim LSP
     "neovim/nvim-lspconfig",
+    event = { "BufWinEnter", "BufRead", "BufNewFile" },
+    config = function()
+      require "plugins.configs.lsp"
+    end,
     dependencies = {
       {
         -- 💻 Neovim setup for init.lua and plugin development with full signature
         -- help, docs and completion for the nvim lua API.
         "folke/neodev.nvim",
+        enabled = false,
         opts = require "plugins.configs.neodev",
         ft = "lua",
       },
     },
-    event = { "BufWinEnter", "BufRead", "BufNewFile" },
-    config = function()
-      require "plugins.configs.lsp"
-    end,
   },
 
   -- TREE-SITTER --------------------------------------------------------------
@@ -71,12 +72,17 @@ return {
     -- Syntax aware text-objects, select, move, swap, and peek support.
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "BufWinEnter",
   },
 
   -- AUTOCOMPLETION -----------------------------------------------------------
   {
     -- A completion plugin for neovim coded in Lua.
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    config = function()
+      require "plugins.configs.cmp"
+    end,
     dependencies = {
       -- vscode-like pictograms for neovim lsp completion items
       { "onsails/lspkind.nvim" },
@@ -91,10 +97,7 @@ return {
         "lukas-reineke/cmp-rg",
         "FelipeLema/cmp-async-path",
         "chrisgrieser/cmp-nerdfont",
-        {
-          "doxnit/cmp-luasnip-choice",
-          config = true,
-        },
+        { "doxnit/cmp-luasnip-choice", config = true },
         {
           "paopaol/cmp-doxygen",
           dependencies = {
@@ -104,16 +107,14 @@ return {
         },
       },
     },
-    event = "InsertEnter",
-    config = function()
-      require "plugins.configs.cmp"
-    end,
   },
   {
     -- Snippet Engine for Neovim written in Lua.
     "L3MON4D3/LuaSnip",
     build = "make install_jsregexp",
-    config = true,
+    config = function()
+      require "plugins.configs.lua-snip"
+    end,
     dependencies = { "rafamadriz/friendly-snippets" },
   },
 
@@ -122,26 +123,26 @@ return {
     -- The neovim tabline plugin.
     "romgrk/barbar.nvim",
     event = "BufAdd",
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = require "plugins.configs.barbar",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "lewis6991/gitsigns.nvim" },
       { "rebelot/kanagawa.nvim" },
     },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
-    opts = require "plugins.configs.barbar",
   },
   {
     -- A blazing fast and easy to configure neovim statusline plugin written in
     -- pure lua.
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    opts = require "plugins.configs.lualine",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "rebelot/kanagawa.nvim" },
     },
-    opts = require "plugins.configs.lualine",
   },
   {
     -- lua `fork` of vim-web-devicons for neovim
