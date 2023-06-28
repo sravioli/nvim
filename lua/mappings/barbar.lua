@@ -2,6 +2,7 @@ local opts = { noremap = true, silent = true }
 
 local mappings = {
   plugin = true,
+
   n = {
     ["<S-Tab>"] = { ":BufferPrevious<CR>", "Next buffer", opts = opts },
     ["<Tab>"] = { ":BufferNext<CR>", "Prev buffer", opts = opts },
