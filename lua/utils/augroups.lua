@@ -19,4 +19,5 @@ return {
   custom_highlights = aug("CustomHighlights", {}),
   buf_detect = aug("BufDetect", {}),
   lua_functions = aug("LuaFunctions", {}),
+  null_ls = aug("LspFormatting", {}),
 }
