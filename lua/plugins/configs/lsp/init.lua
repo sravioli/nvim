@@ -16,19 +16,52 @@ local on_attach = function(client, bufnr)
   -- load lsp mappings
   fn.load_mappings("lsp", { buffer = bufnr })
 
-  -- if client.server_capabilities.signatureHelpProvider then
-  --   require("nvchad_ui.signature").setup(client)
+  -- if client.server_capabilities.documentSymbolProvider then
+  --   require("nvim-navic").attach(client, bufnr)
+  --   require("nvim-navbuddy").attach(client, bufnr)
   -- end
-
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-    require("nvim-navbuddy").attach(client, bufnr)
-  end
 
   vim.diagnostic.config {
     virtual_text = false,
+    float = {
+      source = "always", -- Or "if_many"
+    },
+    signs = true,
+    underline = true,
     severity_sort = true,
   }
+
+  ---custom namespace
+  local ns = vim.api.nvim_create_namespace "severe-diagnostics"
+
+  ---reference to the original handler
+  local orig_signs_handler = vim.diagnostic.handlers.signs
+
+  ---Overriden diagnostics signs helper to only show the single most relevant sign
+  ---@see `:h diagnostic-handlers`
+  vim.diagnostic.handlers.signs = {
+    show = function(_, bufnr, _, opts)
+      -- get all diagnostics from the whole buffer rather
+      -- than just the diagnostics passed to the handler
+      local diagnostics = vim.diagnostic.get(bufnr)
+
+      local filtered_diagnostics = fn.filter_diagnostics(diagnostics)
+
+      -- pass the filtered diagnostics (with the
+      -- custom namespace) to the original handler
+      orig_signs_handler.show(ns, bufnr, filtered_diagnostics, opts)
+    end,
+
+    hide = function(_, bufnr)
+      orig_signs_handler.hide(ns, bufnr)
+    end,
+  }
+
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
 
   -- Show diagnostic in a floating window.
   vim.api.nvim_create_autocmd("CursorHold", {
