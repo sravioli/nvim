@@ -1,3 +1,5 @@
+require("utils.fn").load_mappings("barbar", {})
+
 local opts = {
   -- Enable/disable animations
   animation = false,
