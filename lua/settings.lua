@@ -13,6 +13,7 @@ set.ignorecase = true
 set.smartcase = true
 set.mouse = "a"
 set.hlsearch = true
+set.showmode = false
 
 -- Numbers
 set.number = true
