@@ -7,6 +7,7 @@ end
 local fn = require "plugins.configs.cmp.fn"
 
 local opts = {
+  completion = { completeopt = "menu,menuone" },
   snippet = { expand = fn.expand },
   window = {
     completion = {
@@ -32,14 +33,10 @@ local opts = {
 
     ["<Tab>"] = cmp.mapping(fn.mappings["<Tab>"], { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(fn.mappings["<S-Tab>"], { "i", "s" }),
-    ["<CR>"] = cmp.mapping {
-      i = fn.mappings["<CR>"],
-      s = cmp.mapping.confirm { select = true },
-      c = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      },
-    },
+    ["<CR>"] = cmp.mapping(
+      cmp.mapping.confirm { select = true, behavior = cmp.ConfirmBehavior.Insert },
+      { "i", "c" }
+    ),
   },
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
@@ -88,10 +85,3 @@ cmp.setup.cmdline(":", {
     },
   }),
 })
-
---[[ -- Set up lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require("lspconfig")["<YOUR_LSP_SERVER>"].setup {
-  capabilities = capabilities,
-} ]]
