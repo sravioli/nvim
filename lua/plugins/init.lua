@@ -163,7 +163,7 @@ return {
   {
     -- Neovim plugin to manage the file system and other tree like structures.
     "nvim-neo-tree/neo-tree.nvim",
-    cmd = "Neotree",
+    cmd = { "Neotree", "NeoTreeShowToggle" },
     init = function()
       fn.load_mappings("neotree", {})
     end,
