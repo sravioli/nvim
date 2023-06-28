@@ -1,17 +1,21 @@
+local present, lspconfig = pcall(require, "lspconfig")
+if not present then
+  print "could not load lspconfig"
+  return
+end
+
 local __border = require("preferences").border
 local fn = require "utils.fn"
 
 -- custom on_attach() function with extra things
 local on_attach = function(client, bufnr)
+  -- prefer null-ls
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
 
+  -- load lsp mappings
   fn.load_mappings("lsp", { buffer = bufnr })
 
-  -- require "mappings.lsp"
-
-  -- require("core.utils").load_mappings("lspconfig", { buffer = bufnr })
-  --
   -- if client.server_capabilities.signatureHelpProvider then
   --   require("nvchad_ui.signature").setup(client)
   -- end
@@ -43,11 +47,26 @@ local on_attach = function(client, bufnr)
   })
 end
 
----@diagnostic disable-next-line: different-requires
--- local capabilities = require("plugins.configs.lspconfig").capabilities
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
+
+capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
 
 require("lspconfig.ui.windows").default_options = {
   border = __border,
@@ -64,8 +83,6 @@ local handlers = {
     { border = __border }
   ),
 }
----@diagnostic disable-next-line: different-requires
-local lspconfig = require "lspconfig"
 
 local servers = {
   "lua_ls",
