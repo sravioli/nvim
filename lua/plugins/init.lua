@@ -49,8 +49,8 @@ return {
         ft = "lua",
       },
     },
+    event = { "BufWinEnter", "BufRead", "BufNewFile" },
     config = function()
-      -- require "plugins.configs.lspconfig"
       require "plugins.configs.lsp"
     end,
   },
