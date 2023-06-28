@@ -2,6 +2,7 @@ local __border = require("preferences").border
 
 local mappings = {
   plugin = true,
+
   n = {
     ["gD"] = {
       function()
