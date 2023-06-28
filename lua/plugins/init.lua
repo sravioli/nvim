@@ -100,6 +100,7 @@ return {
     end,
     dependencies = {
       -- vscode-like pictograms for neovim lsp completion items
+      { "windwp/nvim-autopairs" },
       { "onsails/lspkind.nvim" },
       { "L3MON4D3/LuaSnip" },
       {
@@ -132,6 +133,12 @@ return {
     end,
     dependencies = { "rafamadriz/friendly-snippets" },
   },
+  {
+    -- autopairs for neovim written in lua
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = require "plugins.configs.autopairs",
+  },
 
   -- UI COMPONENTS ------------------------------------------------------------
   {
@@ -163,7 +170,7 @@ return {
   {
     -- Neovim plugin to manage the file system and other tree like structures.
     "nvim-neo-tree/neo-tree.nvim",
-    cmd = { "Neotree", "NeoTreeShowToggle" },
+    cmd = { "Neotree", "NeoTreeRevealToggle" },
     init = function()
       fn.load_mappings("neotree", {})
     end,

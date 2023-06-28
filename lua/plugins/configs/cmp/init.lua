@@ -1,4 +1,5 @@
 local cmp_present, cmp = pcall(require, "cmp")
+---@diagnostic disable-next-line: unused-local
 local ls_present, ls = pcall(require, "luasnip")
 if not cmp_present or not ls_present then
   return
@@ -85,3 +86,7 @@ cmp.setup.cmdline(":", {
     },
   }),
 })
+
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
