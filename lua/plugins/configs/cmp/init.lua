@@ -50,7 +50,7 @@ local opts = {
     { name = "calc" },
     { name = "async_path" },
     { name = "rg" },
-    -- { name = "doxygen" }
+    { name = "doxygen" },
     { name = "nerdfont" },
   },
 }
