@@ -1,9 +1,14 @@
 local __border = require("preferences").border
+local fn = require "utils.fn"
 
 -- custom on_attach() function with extra things
 local on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
+
+  fn.load_mappings("lsp", { buffer = bufnr })
+
+  -- require "mappings.lsp"
 
   -- require("core.utils").load_mappings("lspconfig", { buffer = bufnr })
   --
@@ -40,9 +45,9 @@ end
 
 ---@diagnostic disable-next-line: different-requires
 -- local capabilities = require("plugins.configs.lspconfig").capabilities
--- capabilities.offsetEncoding = { "utf-16" }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 
 require("lspconfig.ui.windows").default_options = {
   border = __border,
