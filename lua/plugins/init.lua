@@ -1,3 +1,5 @@
+local fn = require "utils.fn"
+
 return {
   -- COLORSCHEME --------------------------------------------------------------
   {
@@ -74,6 +76,9 @@ return {
     build = function()
       require("nvim-treesitter.install").update { with_sync = true }
     end,
+    init = function()
+      fn.load_mappings("treesitter", {})
+    end,
     config = function()
       require "plugins.configs.tree-sitter"
     end,
@@ -135,6 +140,7 @@ return {
     event = "BufAdd",
     init = function()
       vim.g.barbar_auto_setup = false
+      fn.load_mappings("barbar", {})
     end,
     opts = require "plugins.configs.barbar",
     dependencies = {
@@ -158,12 +164,15 @@ return {
     -- Neovim plugin to manage the file system and other tree like structures.
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
+    init = function()
+      fn.load_mappings("neotree", {})
+    end,
+    opts = require "plugins.configs.neo-tree",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
-    opts = require "plugins.configs.neo-tree",
   },
   {
     -- lua `fork` of vim-web-devicons for neovim
