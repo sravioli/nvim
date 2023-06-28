@@ -2,7 +2,7 @@ local mappings = {
   plugin = true,
 
   n = {
-    ["<C-n>"] = { ":NeoTreeShowToggle<CR>", "Open Neotree" },
+    ["<C-n>"] = { ":NeoTreeRevealToggle<CR>", "Open Neotree" },
     ["<leader>gs"] = { ":Neotree git_status<CR>", "Open Neotree git status" },
   },
 }
