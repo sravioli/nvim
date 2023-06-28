@@ -1,77 +1,120 @@
----@type function
-local map = vim.keymap.set
+local mappings = {
+  n = {
+    ["<Esc>"] = { ":nohlsearch<CR>", "Clear search highlights" },
 
-map({ "n", "i" }, "<Esc>", "<Esc>:nohlsearch<CR>", { desc = "Clear highlights" })
+    -- switch between windows
+    ["<C-h>"] = { "<C-w>h", "Window left" },
+    ["<C-l>"] = { "<C-w>l", "Window right" },
+    ["<C-j>"] = { "<C-w>j", "Window down" },
+    ["<C-k>"] = { "<C-w>k", "Window up" },
 
--- General mappings
-map("n", "<C-s>", ":w<CR>", { desc = "Save file" })
-map("n", "<C-z>", ":undo<CR>", { desc = "Undo action" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Move half page up" })
-map("n", "<C-d>", "<C-d>zz", { desc = "Move half page down" })
-map("n", "n", "nzzzv", { desc = "Goto next search match" })
-map("n", "N", "Nzzzv", { desc = "Goto prev search match" })
-map("n", "]]", "]]zz", { desc = "Move to next {" })
-map("n", "[[", "[[zz", { desc = "Move to prev {" })
-map("n", "<M-k>", "ddkP", { desc = "Move line up" })
-map("n", "<M-j>", "ddp", { desc = "Move line down" })
+    -- Copy all
+    ["<C-c>"] = { ":%yank+<CR>", "Copy whole file" },
 
--- window movement
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to down window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to up window" })
+    -- line numbers
+    ["<leader>n"] = { ":set number!<CR>", "Toggle line number" },
+    ["<leader>nr"] = { ":set relativenumber!<CR>", "Toggle relative number" },
 
-map("n", "<C-c>", ":%yank+<CR>", { desc = "Copy whole file" })
+    -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+    -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+    -- empty mode is same as using <cmd> :map
+    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+    ["j"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      opts = { expr = true },
+    },
+    ["k"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      opts = { expr = true },
+    },
+    ["<Up>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      opts = { expr = true },
+    },
+    ["<Down>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      opts = { expr = true },
+    },
 
--- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
--- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
--- empty mode is same as using <cmd> :map
--- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-map(
-  { "n", "x" },
-  "j",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  { desc = "Move down", expr = true }
-)
-map(
-  { "n", "x" },
-  "k",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  { desc = "Move up", expr = true }
-)
-map(
-  { "n", "v" },
-  "<Up>",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  { desc = "Move up", expr = true }
-)
-map(
-  { "n", "v" },
-  "<Down>",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  { desc = "Move down", expr = true }
-)
+    ["<C-s>"] = { ":write<CR>", "Save File" },
+    ["<C-z>"] = { ":undo<CR>", "Undo action" },
 
--- Don't copy the replaced text after pasting in visual mode
--- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-map(
-  "x",
-  "p",
-  'p:let @+=@0<CR>:let @"=@0<CR>',
-  { desc = "Dont copy replaced text", silent = true }
-)
+    -- do thing, then center screen to allow for better readability
+    ["<C-u>"] = { "<C-u>zz" },
+    ["<C-d>"] = { "<C-d>zz" },
+    ["n"] = { "nzzzv" },
+    ["N"] = { "Nzzzv" },
+    ["]]"] = { "]]zz" },
+    ["[["] = { "[[zz" },
 
-map(
-  "t",
-  "<C-x>",
-  vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
-  { desc = "Escape terminal mode" }
-)
+    -- open code actions kinda like VSCode
+    ["<M-.>"] = { ":CodeActionMenu<CR>", "Open code actions" },
 
-map("i", "jk", "<Esc>", { nowait = true, desc = "Exit insert mode" })
-map("i", "<C-s>", "<C-o>:w<CR>", { desc = "Save file" })
-map("i", "<C-z>", "<C-o>:undo<CR>", { desc = "Undo action" })
-map("i", "<M-k>", "<C-o>dd", { desc = "Delete line" })
-map("i", "<C-Del>", "<C-o>dw", { desc = "Delete word backwards" })
-map("i", "<S-Del>", "<C-o><S-d>", { desc = "Delete from cursor to right" })
-map("i", "<M-BS>", "<C-u>", { desc = "Delete from cursor to left" })
+    ["<leader>nf"] = { ":Neogen<CR>", "Generate docstrings with Neogen" },
+    ["<M-j>"] = { "ddp", "move line down" },
+    ["<M-k>"] = { "ddkP", "move line up" },
+  },
+  i = {
+    ["jk"] = { "<Esc>", "Exit insert mode", opts = { nowait = true } },
+
+    -- same normal mappings for insert mode also
+    ["<C-s>"] = { "<C-o>:write<CR>", "Save file" },
+    ["<C-z>"] = { "<C-o>:undo<CR>", "Undo action" },
+
+    -- ["<M-.>"] = { "<C-o>:CodeActionMenu<CR>", "Open code actions" },
+
+    -- delete line directily in insert mode
+    ["<M-k>"] = { "<C-o>dd", "Delete line" },
+
+    -- C-w but backwards
+    ["<C-Del>"] = { "<C-o>dw", "Delete word backwards" },
+    ["<S-Del>"] = { "<C-o><S-d>", "Delete everything from cursor to right" },
+    ["<M-BS>"] = { "<C-u>", "Delete everything from cursor to left" },
+  },
+
+  t = {
+    ["<C-x>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
+      "Escape terminal mode",
+    },
+  },
+
+  v = {
+    ["<Up>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      opts = { expr = true },
+    },
+    ["<Down>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      opts = { expr = true },
+    },
+  },
+
+  x = {
+    ["j"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      opts = { expr = true },
+    },
+    ["k"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      opts = { expr = true },
+    },
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["p"] = {
+      'p:let @+=@0<CR>:let @"=@0<CR>',
+      "Dont copy replaced text",
+      opts = { silent = true },
+    },
+  },
+}
+
+return mappings

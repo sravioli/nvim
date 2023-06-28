@@ -1,5 +1,8 @@
-require "mappings.editor"
+local sections = {
+  editor = require "mappings.editor",
+  lsp = require "mappings.lsp",
+  barbar = require "mappings.barbar",
+  treesitter = require "mappings.tree-sitter",
+}
 
-require "mappings.lsp"
-require "mappings.barbar"
-require "mappings.tree-sitter"
+return sections
