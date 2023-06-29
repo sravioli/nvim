@@ -4,6 +4,7 @@ return {
   "rebelot/kanagawa.nvim",
   lazy = false,
   priority = 1000,
+  build = ":KanagawaCompile",
   opts = {
     compile = true,
     transparent = true, -- do not set background color
@@ -19,7 +20,11 @@ return {
         -- Save an hlgroup with dark background and dimmed foreground
         -- so that you can use it where your still want darker windows.
         -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-        NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+        NormalDark = {
+          fg = theme.ui.fg_dim,
+          bg = theme.ui.bg_m1,
+          blend = vim.o.pumblend,
+        },
 
         -- Barbar highlight groups
         BufferInactive = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1 },
@@ -32,7 +37,11 @@ return {
         BufferInactiveINFO = { fg = theme.diag.info, bg = theme.ui.bg_p1 },
         BufferInactiveWARN = { fg = theme.diag.warning, bg = theme.ui.bg_p1 },
         BufferInactiveMod = { fg = theme.ui.special, bg = theme.ui.bg_p1 },
-        BufferInactiveTarget = { fg = theme.diag.error, bg = theme.ui.bg_p1 },
+        BufferInactiveTarget = {
+          fg = theme.diag.error,
+          bg = theme.ui.bg_p1,
+          bold = true,
+        },
 
         BufferCurrent = { fg = theme.ui.fg, bg = theme.ui.bg_m2 },
         BufferCurrentSign = { fg = theme.ui.bg, bg = theme.ui.bg_m2 },
@@ -44,7 +53,11 @@ return {
         BufferCurrentINFO = { fg = theme.diag.info, bg = theme.ui.bg_m2 },
         BufferCurrentWARN = { fg = theme.diag.warning, bg = theme.ui.bg_m2 },
         BufferCurrentMod = { fg = theme.ui.special, bg = theme.ui.bg_m2 },
-        BufferCurrentTarget = { fg = theme.diag.error, bg = theme.ui.bg_m2 },
+        BufferCurrentTarget = {
+          fg = theme.diag.error,
+          bg = theme.ui.bg_m2,
+          bold = true,
+        },
 
         -- Popular plugins that open floats will link to NormalFloat by default;
         -- set their background accordingly if you wish to keep them dark and borderless
@@ -52,7 +65,8 @@ return {
         -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
         -- More uniform colors for the popup menu.
-        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p2 }, -- add `blend = vim.o.pumblend` to enable transparency
+        -- add `blend = vim.o.pumblend` to enable transparency
+        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p2, blend = vim.o.pumblend },
         PmenuSel = { fg = "NONE", bg = theme.ui.bg_m3 },
         PmenuSbar = { bg = theme.ui.bg_m1 },
         PmenuThumb = { bg = theme.ui.bg_p2 },
@@ -99,6 +113,9 @@ return {
         CmpItemKindInterface = { fg = theme.ui.fg, bg = theme.syn.parameter },
         CmpItemKindColor = { fg = theme.ui.fg, bg = theme.syn.parameter },
         CmpItemKindTypeParameter = { fg = theme.ui.fg, bg = theme.syn.parameter },
+
+        -- Telescope
+        TelescopeBorder = { link = "FloatBorder" },
       }
     end,
     colors = {
