@@ -1,6 +1,6 @@
 local mappings = {
   n = {
-    ["<Esc>"] = { ":nohlsearch<CR>", "Clear search highlights" },
+    ["<Esc>"] = { ":nohlsearch<CR><Esc>", "Clear search highlights" },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -59,6 +59,7 @@ local mappings = {
     ["<M-k>"] = { "ddkP", "move line up" },
   },
   i = {
+    ["<Esc>"] = { "<Esc>:nohlsearch<CR>", "Clear highlights" },
     ["jk"] = { "<Esc>", "Exit insert mode", opts = { nowait = true } },
 
     -- same normal mappings for insert mode also
@@ -74,6 +75,11 @@ local mappings = {
     ["<C-Del>"] = { "<C-o>dw", "Delete word backwards" },
     ["<S-Del>"] = { "<C-o><S-d>", "Delete everything from cursor to right" },
     ["<M-BS>"] = { "<C-u>", "Delete everything from cursor to left" },
+
+    -- undo break-points
+    [","] = { ",<c-g>u", "Add undo break points" },
+    ["."] = { ".<c-g>u", "Add undo break points" },
+    [";"] = { ";<c-g>u", "Add undo break points" },
   },
 
   t = {
