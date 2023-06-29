@@ -1,56 +1,33 @@
-local cmp_present, cmp = pcall(require, "cmp")
----@diagnostic disable-next-line: unused-local
-local ls_present, ls = pcall(require, "luasnip")
-if not cmp_present or not ls_present then
+local present, cmp = pcall(require, "cmp")
+if not present then
   return
 end
 
-local fn = require "plugins.configs.cmp.fn"
+local cmp_fn = require "plugins.configs.cmp.functions"
+local cmp_mappings = require "plugins.configs.cmp.mappings"
+local cmp_sources = require "plugins.configs.cmp.sources"
 
 local opts = {
   completion = { completeopt = "menu,menuone" },
-  snippet = { expand = fn.expand },
+  snippet = { expand = cmp_fn.expand },
   window = {
     completion = {
       winhighlight = "Normal:NormalDark,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-      scrollbar = false,
+      scrollbar = true,
       col_offset = -3,
       side_padding = 0,
     },
     documentation = {
-      border = fn.border "FloatBorder",
+      border = cmp_fn.border "FloatBorder",
       winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = fn.format,
+    format = cmp_fn.format,
   },
-  mapping = cmp.mapping.preset.insert {
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-
-    ["<Tab>"] = cmp.mapping(fn.mappings["<Tab>"], { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(fn.mappings["<S-Tab>"], { "i", "s" }),
-    ["<CR>"] = cmp.mapping(
-      cmp.mapping.confirm { select = true, behavior = cmp.ConfirmBehavior.Insert },
-      { "i", "c" }
-    ),
-  },
-  sources = cmp.config.sources {
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    { name = "luasnip" }, -- For luasnip users.
-    { name = "luasnip_choice" },
-    { name = "buffer" },
-    { name = "calc" },
-    { name = "async_path" },
-    { name = "rg" },
-    { name = "doxygen" },
-    { name = "nerdfont" },
-  },
+  mapping = cmp.mapping.preset.insert(cmp_mappings),
+  sources = cmp.config.sources(cmp_sources),
 }
 
 cmp.setup(opts)

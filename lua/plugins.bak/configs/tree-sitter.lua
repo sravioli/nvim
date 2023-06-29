@@ -170,4 +170,3 @@ local opts = {
 }
 
 tsc.setup(opts)
-require("utils.fn").load_mappings("treesitter", {})

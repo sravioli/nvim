@@ -1,13 +1,12 @@
-local cmp = require "cmp"
 local ls = require "luasnip"
 
-local fn = {}
+local M = {}
 
-function fn.expand(args)
+function M.expand(args)
   ls.lsp_expand(args.body)
 end
 
-function fn.has_words_before()
+function M.has_words_before()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
@@ -18,7 +17,7 @@ function fn.has_words_before()
       == nil
 end
 
-function fn.format(entry, vim_item)
+function M.format(entry, vim_item)
   local present, lspkind = pcall(require, "lspkind")
   if not present then
     local icons = require "plugins.configs.cmp-wip.icons"
@@ -46,7 +45,7 @@ function fn.format(entry, vim_item)
   end
 end
 
-function fn.border(hl_name)
+function M.border(hl_name)
   return {
     { "╭", hl_name },
     { "─", hl_name },
@@ -59,30 +58,4 @@ function fn.border(hl_name)
   }
 end
 
-fn.mappings = {
-  ["<Tab>"] = function(fallback)
-    if cmp.visible() then
-      cmp.select_next_item()
-    -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-    -- this way you will only jump inside the snippet region
-    elseif ls.expand_or_jumpable() then
-      ls.expand_or_jump()
-    elseif fn.has_words_before() then
-      cmp.complete()
-    else
-      fallback()
-    end
-  end,
-
-  ["<S-Tab>"] = function(fallback)
-    if cmp.visible() then
-      cmp.select_prev_item()
-    elseif ls.jumpable(-1) then
-      ls.jump(-1)
-    else
-      fallback()
-    end
-  end,
-}
-
-return fn
+return M

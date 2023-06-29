@@ -1,4 +1,4 @@
-local icons = {
+return {
   Text = "",
   Method = "󰆧",
   Function = "󰊕",
@@ -25,5 +25,3 @@ local icons = {
   Operator = "󰆕",
   TypeParameter = "󰅲",
 }
-
-return icons
