@@ -1,5 +1,6 @@
 local cmp = require "cmp"
 local ls = require "luasnip"
+local cmp_fn = require "plugins.autocompletion.cmp.functions"
 
 return {
   ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -24,7 +25,7 @@ return {
     -- this way you will only jump inside the snippet region
     elseif ls.expand_or_jumpable() then
       ls.expand_or_jump()
-    elseif require("utils.fn").has_words_before() then
+    elseif cmp_fn.has_words_before() then
       cmp.complete()
     else
       fallback()
