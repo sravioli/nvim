@@ -58,6 +58,8 @@ vim.env.PATH = vim.fn.stdpath "data"
   .. (is_windows and ";" or ":")
   .. vim.env.PATH
 
+let.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/snippets"
+
 ---Neovim providers
 ---@class Providers
 ---@field node    table Path to the nodejs provider executable
