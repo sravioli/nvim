@@ -44,14 +44,13 @@ return {
       snippet = { expand = cmp_fn.expand },
       window = {
         completion = {
-          winhighlight = "Normal:NormalDark,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+          winhighlight = "Normal:NormalDark,CursorLine:Visual,Search:None",
           scrollbar = true,
           col_offset = -3,
           side_padding = 0,
         },
         documentation = {
-          border = cmp_fn.border "FloatBorder",
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+          winhighlight = "Normal:NormalDark,CursorLine:Visual,Search:None",
         },
       },
       formatting = {
