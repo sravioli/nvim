@@ -16,6 +16,7 @@ set.smartcase = true
 set.mouse = "a"
 set.hlsearch = true
 set.showmode = false
+set.pumblend = 10
 
 -- Numbers
 set.number = true
