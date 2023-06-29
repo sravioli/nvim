@@ -1,8 +1,7 @@
----Neovim autogroups
+---User defined autogroups
 ---@module "autogroups"
 ---@author sRavioli
 ---@license GPL-3.0
----@version 1.0.0
 
 ---@type function Shorthand for `vim.api.nvim_create_augroup`.
 ---Define the autocmd group name for the following ":autocmd" commands.  The
