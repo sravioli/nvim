@@ -1,5 +1,5 @@
 require "settings"
-require "lazy-nvim"
+require "plugins"
 require "utils.autocommands"
 
 require("utils.fn").load_mappings()
