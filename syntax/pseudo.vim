@@ -25,6 +25,7 @@ syntax keyword pcodeNumbersWords     zero uno due tre quattro cinque sei sette
                                    \ otto nove dieci
 syntax keyword pcodeBuiltinFunctions StampareAVideo LeggereDaTastiera AprireFile
                                    \ ChiudereFile LeggereDaFile ScrivereSuFile
+                                   \ Uscire
 
 
 syntax match pcodeDelimiters     /[,;()\[\]{}]/
