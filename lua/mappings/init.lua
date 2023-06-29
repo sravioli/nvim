@@ -6,4 +6,5 @@ return {
   neotree = require "mappings.neotree",
   gitsigns = require "mappings.gitsigns",
   todo_comments = require "mappings.todo-comments",
+  telescope = require "mappings.telescope",
 }
