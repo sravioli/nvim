@@ -9,4 +9,5 @@ return {
   { name = "rg" },
   { name = "doxygen" },
   { name = "nerdfont" },
+  { name = "neorg" },
 }
