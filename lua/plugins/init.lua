@@ -17,6 +17,7 @@ local spec = {
   { import = "plugins.lsp.lspconfig" },
   { import = "plugins.treesitter" },
   { import = "plugins.ui" },
+  { import = "plugins.editor" },
 }
 
 local config = {
