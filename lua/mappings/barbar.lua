@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local mappings = {
+return {
   plugin = true,
 
   n = {
@@ -61,5 +61,3 @@ local mappings = {
     -- :BarbarDisable - very bad command, should never be used
   },
 }
-
-return mappings

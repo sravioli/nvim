@@ -1,6 +1,6 @@
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
-local mappings = {
+return {
   plugin = true,
   n = {
     -- Repeat movement with ; and ,
@@ -59,5 +59,3 @@ local mappings = {
     ["T"] = { ts_repeat_move.builtin_T, "T movement (treesitter)" },
   },
 }
-
-return mappings

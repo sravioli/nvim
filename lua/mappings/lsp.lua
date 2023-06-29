@@ -1,6 +1,6 @@
 local __border = require("preferences").border
 
-local mappings = {
+return {
   plugin = true,
 
   n = {
@@ -124,5 +124,3 @@ local mappings = {
     },
   },
 }
-
-return mappings

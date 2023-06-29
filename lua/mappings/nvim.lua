@@ -1,4 +1,4 @@
-local mappings = {
+return {
   n = {
     ["<Esc>"] = { ":nohlsearch<CR><Esc>", "Clear search highlights" },
 
@@ -122,5 +122,3 @@ local mappings = {
     },
   },
 }
-
-return mappings
