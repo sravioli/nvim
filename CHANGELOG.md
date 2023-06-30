@@ -4,17 +4,23 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.2.0](https://github.com/sRavioli/nvim/compare/0.1.0..0.2.0) - 2023-06-30
+
 #### Features
+
 - **(plugins)** adjust lazy.nvim configuration - ([c653dbe](https://github.com/sRavioli/nvim/commit/c653dbec43127a4da48c7eba3701f77c2ca443f2)) - [@sRavioli](https://github.com/sRavioli)
 - add codespell config file - ([c66506b](https://github.com/sRavioli/nvim/commit/c66506b67b31394719df483fc595b86e009b0240)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - update - ([f67fdcc](https://github.com/sRavioli/nvim/commit/f67fdcc4799889473004d0f8d768cd96f2dea94a)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Revert
+
 - format licence to normal status - ([5bc0fc2](https://github.com/sRavioli/nvim/commit/5bc0fc27eb8409b14e0640b8ac48f64ea00868bc)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.1.0](https://github.com/sRavioli/nvim/compare/2a32d50bc7d3875995f878c8d34a8e35c11d9e96..0.1.0) - 2023-06-30
 
