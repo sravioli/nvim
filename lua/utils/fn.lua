@@ -3,7 +3,7 @@
 ---@author sRavioli
 ---@license GPL-3.0
 
-local M = {}
+local M = { telescope = {}, lsp = {} }
 
 ---Aligns a markdown table in insert mode
 M.align_table = function()
@@ -72,7 +72,7 @@ end
 ---@see https://github.com/neovim/neovim/issues/15770
 ---@see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
 ---@see `:h diagnostic-handlers`
-M.filter_diagnostics = function(diagnostics)
+M.lsp.filter_diagnostics = function(diagnostics)
   if not diagnostics then
     return {}
   end
@@ -92,7 +92,7 @@ M.filter_diagnostics = function(diagnostics)
   return vim.tbl_values(most_severe)
 end
 
-M.async_formatting = function(bufnr)
+M.lsp.async_formatting = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   vim.lsp.buf_request(
@@ -140,7 +140,7 @@ M.get_os = function()
   end
 end
 
-M.null_ls_autoformat = function(client, bufnr)
+M.lsp.autoformat = function(client, bufnr)
   local lsp_formatting = require("utils.augroups").null_ls
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds { group = lsp_formatting, buffer = bufnr }
@@ -163,10 +163,70 @@ M.null_ls_autoformat = function(client, bufnr)
         --   results, those results won't be applied.
         -- * Each save will result in writing the file to the disk twice.
         -- * `:wq` will not format the file before quitting.
-        -- M.async_formatting(bufnr) -- uncomment to enable async formatting
+        -- M.lsp.async_formatting(bufnr) -- uncomment to enable async formatting
       end,
     })
   end
+end
+
+M.telescope.fd = function()
+  local opts = {}
+  vim.fn.system "git rev-parse --is-inside-work-tree"
+  if vim.v.shell_error == 0 then
+    require("telescope.builtin").git_files(opts)
+  else
+    require("telescope.builtin").find_files(opts)
+  end
+end
+
+M.telescope.preview_img = function(filepath, bufnr, opts)
+  ---@diagnostic disable-next-line: redefined-local
+  local is_image = function(filepath)
+    local image_extensions = { "png", "jpg", "gif" } -- Supported image formats
+    local split_path = vim.split(filepath:lower(), ".", { plain = true })
+    local extension = split_path[#split_path]
+    return vim.tbl_contains(image_extensions, extension)
+  end
+  if is_image(filepath) then
+    local term = vim.api.nvim_open_term(bufnr, {})
+    local function send_output(_, data, _)
+      for _, d in ipairs(data) do
+        vim.api.nvim_chan_send(term, d .. "\r\n")
+      end
+    end
+    vim.fn.jobstart({ "chafa", filepath }, {
+      on_stdout = send_output,
+      stdout_buffered = true,
+      pty = true,
+    })
+  else
+    require("telescope.previewers.utils").set_preview_message(
+      bufnr,
+      opts.winid,
+      "Binary cannot be previewed"
+    )
+  end
+end
+
+M.telescope.buffer_previewer = function(filepath, bufnr, opts)
+  local previewers = require "telescope.previewers"
+  local Job = require "plenary.job"
+  filepath = vim.fn.expand(filepath)
+  Job:new({
+    command = "file",
+    args = { "--mime-type", "-b", filepath },
+    on_exit = function(j)
+      local mime_type = vim.split(j:result()[1], "/")[1]
+      if mime_type == "text" then
+        previewers.buffer_previewer_maker(filepath, bufnr, opts)
+      else
+        -- maybe we want to write something to the buffer here
+        vim.schedule(function()
+          vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
+        end)
+      end
+    end,
+  }):sync()
 end
 
 return M
