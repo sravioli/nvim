@@ -26,6 +26,16 @@ return {
           "nvim-treesitter/nvim-treesitter-textobjects",
         },
       },
+      {
+        "jmbuhr/otter.nvim",
+        dependencies = {
+          "neovim/nvim-lspconfig",
+          "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+          require("otter.config").setup()
+        end,
+      },
     },
   },
   event = "InsertEnter",

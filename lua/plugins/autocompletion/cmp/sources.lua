@@ -1,7 +1,7 @@
 return {
   { name = "nvim_lsp" },
   { name = "nvim_lua" },
-  { name = "luasnip" }, -- For luasnip users.
+  { name = "luasnip" },
   { name = "luasnip_choice" },
   { name = "buffer" },
   { name = "calc" },
@@ -10,4 +10,5 @@ return {
   { name = "doxygen" },
   { name = "nerdfont" },
   { name = "neorg" },
+  { name = "otter.nvim" },
 }
