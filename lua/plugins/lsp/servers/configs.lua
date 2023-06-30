@@ -10,10 +10,10 @@ M.on_attach = function(client, bufnr)
   -- load lsp mappings
   require("utils.fn").load_mappings("lsp", { buffer = bufnr })
 
-  -- if client.server_capabilities.documentSymbolProvider then
-  --   require("nvim-navic").attach(client, bufnr)
-  --   require("nvim-navbuddy").attach(client, bufnr)
-  -- end
+  -- attach navic
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 
   vim.diagnostic.config {
     virtual_text = false,
