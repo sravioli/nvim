@@ -10,11 +10,14 @@ return {
       return
     end
 
+    local diagnostics = null_ls.builtins.diagnostics
+    local formatting = null_ls.builtins.formatting
+
     local opts = {
       border = require("preferences").border,
       diagnostics_format = "[#{c}] #{m} (#{s})",
       update_in_insert = false,
-      on_attach = require("utils.fn").null_ls_autoformat,
+      on_attach = require("utils.fn").lsp.autoformat,
       sources = {
         -- null_ls.builtins.diagnostics.cspell,
         -- null_ls.builtins.code_actions.cspell.with {
@@ -28,42 +31,41 @@ return {
         --   },
         -- },
 
-        null_ls.builtins.diagnostics.codespell,
+        diagnostics.codespell,
 
-        null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.formatting.markdownlint,
-        null_ls.builtins.formatting.cbfmt,
+        diagnostics.markdownlint,
+        formatting.markdownlint,
+        formatting.cbfmt,
 
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.taplo,
+        formatting.stylua,
+        formatting.taplo,
 
-        null_ls.builtins.diagnostics.yamllint,
-        null_ls.builtins.formatting.yamlfix.with {
+        diagnostics.yamllint,
+        formatting.yamlfix.with {
           extra_args = function()
             local file = vim.fn.findfile ".yamlfix.toml"
             if file then
-              print "file found"
               return { "--config-file", file }
             else
-              print "no file, no config"
               return {}
             end
           end,
         },
-        null_ls.builtins.diagnostics.actionlint,
+        diagnostics.actionlint,
 
-        null_ls.builtins.formatting.fixjson,
+        formatting.fixjson,
 
-        null_ls.builtins.diagnostics.cpplint,
-        null_ls.builtins.formatting.clang_format.with {
+        diagnostics.cpplint,
+        formatting.clang_format.with {
           extra_args = {
             "--style",
-            "{SpacesBeforeTrailingComments: 2, AlignTrailingComments: {Kind: Always, OverEmptyLines: 2}}",
+            "{SpacesBeforeTrailingComments: 2, "
+              .. "AlignTrailingComments: {Kind: Always, OverEmptyLines: 2}}",
           },
         },
 
-        null_ls.builtins.formatting.latexindent,
-        null_ls.builtins.diagnostics.chktex,
+        formatting.latexindent,
+        diagnostics.chktex,
       },
     }
 
