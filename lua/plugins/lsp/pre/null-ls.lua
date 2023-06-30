@@ -3,7 +3,7 @@ return {
   -- and more via Lua.
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  event = "BufWinEnter",
+  event = "LspAttach",
   config = function()
     local present, null_ls = pcall(require, "null-ls")
     if not present then
