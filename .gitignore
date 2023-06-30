@@ -45,3 +45,5 @@ luac.out
 # lazy plugins spec
 lazy-lock.json
 
+# neodev
+.luarc.json
