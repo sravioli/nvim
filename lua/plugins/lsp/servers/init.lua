@@ -8,12 +8,12 @@ local configs = require "plugins.lsp.servers.configs"
 
 local servers = {
   "lua_ls",
-  -- "marksman",
-  -- "jsonls",
-  -- "taplo",
-  -- "yamlls",
-  -- "clangd",
-  -- "texlab",
+  "marksman",
+  "jsonls",
+  "taplo",
+  "yamlls",
+  "clangd",
+  "texlab",
   -- "powershell_es",
 }
 
@@ -25,14 +25,14 @@ for _, lsp in ipairs(servers) do
 
     settings = {
       Lua = require "plugins.lsp.servers.lua_ls",
-      -- texlab = require "plugins.configs.lsp.texlab",
+      texlab = require "plugins.lsp.servers.texlab",
     },
 
-    -- marksman = require "plugins.configs.lsp.marksman",
-    -- jsonls = require "plugins.configs.lsp.jsonls",
-    -- taplo = require "plugins.configs.lsp.taplo",
-    -- yamlls = require "plugins.configs.lsp.yamlls",
-    -- clangd = require "plugins.configs.lsp.clangd",
-    -- powershell_es = require "plugins.configs.lsp.powershell_es",
+    marksman = require "plugins.lsp.servers.marksman",
+    jsonls = require "plugins.lsp.servers.jsonls",
+    taplo = require "plugins.lsp.servers.taplo",
+    yamlls = require "plugins.lsp.servers.yamlls",
+    clangd = require "plugins.lsp.servers.clangd",
+    -- powershell_es = require "plugins.lsp.servers.powershell_es",
   }
 end
