@@ -10,14 +10,15 @@ return {
       -- 💻 Neovim setup for init.lua and plugin development with full signature
       -- help, docs and completion for the nvim lua API.
       "folke/neodev.nvim",
-      enabled = false,
+      enabled = true,
       opts = {
         library = {
           enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
           -- these settings will be used for your Neovim config directory
           runtime = true, -- runtime path
           types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-          plugins = true, -- installed opt or start plugins in packpath
+          -- plugins = true, -- installed opt or start plugins in packpath
+          plugins = { "nvim-dap-ui" },
           -- you can also specify the list of plugins to make available as a workspace library
           -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
