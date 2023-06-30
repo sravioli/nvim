@@ -12,12 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local spec = {
-  { import = "plugins.autocompletion" },
-  { import = "plugins.lsp.pre" },
-  { import = "plugins.lsp.lspconfig" },
-  { import = "plugins.treesitter" },
   { import = "plugins.ui" },
   { import = "plugins.editor" },
+  { import = "plugins.treesitter" },
+  { import = "plugins.lsp.pre" },
+  { import = "plugins.lsp.lspconfig" },
+  { import = "plugins.autocompletion" },
 }
 
 local config = {
@@ -64,7 +64,6 @@ local config = {
         "compiler",
         "bugreport",
         "ftplugin",
-        -- "editorconfig",
       },
     },
   },
