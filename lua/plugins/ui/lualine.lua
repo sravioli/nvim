@@ -6,7 +6,7 @@ return {
     { "nvim-tree/nvim-web-devicons" },
     { "rebelot/kanagawa.nvim" },
   },
-  event = "VeryLazy",
+  event = "UIEnter",
   opts = {
     options = {
       icons_enabled = true,
@@ -42,12 +42,17 @@ return {
         { "filename" },
       },
       lualine_c = {
-        { "branch", icon = "  ", color = "Comment" },
+        { "b:gitsigns_head", icon = "  ", color = "Comment" },
         {
           "diff",
-          symbols = { added = "  ", modified = "  ", removed = "  " },
-          -- source = diff_source,
+          symbols = {
+            added = "  ",
+            modified = "  ",
+            removed = "  ",
+          },
         },
+      },
+      lualine_x = {
         {
           "diagnostics",
           sources = { "nvim_lsp", "nvim_diagnostic" },
@@ -58,8 +63,6 @@ return {
             hint = "  ",
           },
         },
-      },
-      lualine_x = {
         {
           require("lazy.status").updates,
           cond = require("lazy.status").has_updates,
