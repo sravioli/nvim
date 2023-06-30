@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.1.0](https://github.com/sRavioli/nvim/compare/2a32d50bc7d3875995f878c8d34a8e35c11d9e96..0.1.0) - 2023-06-30
+
 #### Bug Fixes
+
 - **(cmp)** make cmp menu single line in cmdline - ([807dd99](https://github.com/sRavioli/nvim/commit/807dd9992805175603ffa3f39053830ca8907697)) - [@sRavioli](https://github.com/sRavioli)
 - **(cmp)** remove documentation border, rm useless winhighlight - ([4ac0889](https://github.com/sRavioli/nvim/commit/4ac088942097f67ead0bd0fbc37db72690e19dc2)) - [@sRavioli](https://github.com/sRavioli)
 - **(cmp)** load function from correct file - ([464ebcd](https://github.com/sRavioli/nvim/commit/464ebcdde1c28812e3a446ce6721fcc3ed1a6d81)) - [@sRavioli](https://github.com/sRavioli)
@@ -46,7 +49,9 @@ guidelines.
 - rename prefs to preferences in various requires - ([25f765c](https://github.com/sRavioli/nvim/commit/25f765c31944a40837051b060b416baece4867c2)) - [@sRavioli](https://github.com/sRavioli)
 - rename prefs.lua to preferences.lua - ([4e283ce](https://github.com/sRavioli/nvim/commit/4e283ce690e66b6f003cc3db36a1c178d65d922d)) - [@sRavioli](https://github.com/sRavioli)
 - set border to preferred style - ([97b164e](https://github.com/sRavioli/nvim/commit/97b164ef4f5e490c5cae5761089d1ffec1fc60a5)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(cmp)** install otter.nvim and add it to cmp sources - ([5bbd85c](https://github.com/sRavioli/nvim/commit/5bbd85cee7a8a3d31fbb73088b68409ee872fceb)) - [@sRavioli](https://github.com/sRavioli)
 - **(cmp)** auto select first entry - ([76e944a](https://github.com/sRavioli/nvim/commit/76e944a39ca7574abe40171f9c7a23c146f47536)) - [@sRavioli](https://github.com/sRavioli)
 - **(colorscheme)** override hi groups for barbar, remove bg_gutter - ([2aa179e](https://github.com/sRavioli/nvim/commit/2aa179ea3a520dce4fe00e14574069a4520acc33)) - [@sRavioli](https://github.com/sRavioli)
@@ -126,7 +131,9 @@ guidelines.
 - install nvim-treesitter, add mappings and config - ([5d96d48](https://github.com/sRavioli/nvim/commit/5d96d481ae60469cd001fd2b6906cd5736f3306b)) - [@sRavioli](https://github.com/sRavioli)
 - require user autocommands - ([927f93f](https://github.com/sRavioli/nvim/commit/927f93fd5e6770d9c705bfd9f09d1fb30872c95f)) - [@sRavioli](https://github.com/sRavioli)
 - create assets folder, add preferred border style - ([367f24e](https://github.com/sRavioli/nvim/commit/367f24e1a4888ba18a100baba9047701a28b51d0)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(config)** add settings file - ([7a4e4f8](https://github.com/sRavioli/nvim/commit/7a4e4f8ec3617d6cf6c5db3cec209b7400d352a2)) - [@sRavioli](https://github.com/sRavioli)
 - **(keymaps)** adjust spacing, lazy load - ([4078cd7](https://github.com/sRavioli/nvim/commit/4078cd7713e2ab2989773fbbb42494368dc7a981)) - [@sRavioli](https://github.com/sRavioli)
 - **(keymaps)** import old mappings - ([cd42c95](https://github.com/sRavioli/nvim/commit/cd42c95f192473281c05ff7eaf8b138471925070)) - [@sRavioli](https://github.com/sRavioli)
@@ -142,7 +149,9 @@ guidelines.
 - add license - ([336a7bf](https://github.com/sRavioli/nvim/commit/336a7bf4317f59b90fbf6f171419a72a81a847fe)) - [@sRavioli](https://github.com/sRavioli)
 - add sylua configuration file - ([8681ec5](https://github.com/sRavioli/nvim/commit/8681ec55f47db14cddeba187ca2737b6973a01f5)) - [@sRavioli](https://github.com/sRavioli)
 - add gitignore - ([e555cd9](https://github.com/sRavioli/nvim/commit/e555cd961c16cfe4a75baadb14ae1736f2161c3f)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Refactoring
+
 - **(keymaps)** rename `editor.lua` to `nvim.lua` - ([a803bdc](https://github.com/sRavioli/nvim/commit/a803bdcacf98f4298d9e5a26b0726507f16fd949)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins)** lazy load plugins on keymaps, not on events - ([b406462](https://github.com/sRavioli/nvim/commit/b406462da30206bb02512eb2b96b1dfc18eae467)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins)** adapt lazy-nvim plugins syntax, organize plugins better - ([b9a471b](https://github.com/sRavioli/nvim/commit/b9a471b7a9b6f590fb50f0a3db0e0fbcbc7f4167)) - [@sRavioli](https://github.com/sRavioli)
@@ -151,11 +160,12 @@ guidelines.
 - use `M` table, remove `@version` tag, add functions - ([f256304](https://github.com/sRavioli/nvim/commit/f256304adf72b79ef2ac6e6ab250495027703005)) - [@sRavioli](https://github.com/sRavioli)
 - move mason.nvim config out of mason-lspconfig - ([fb82239](https://github.com/sRavioli/nvim/commit/fb822397a1ece00f73a0dc78ad33d8a01db97172)) - [@sRavioli](https://github.com/sRavioli)
 - move border preference from assets to preference file - ([394f6cc](https://github.com/sRavioli/nvim/commit/394f6ccdadad5f0ca451ab049e3008e0b3209afb)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Revert
+
 - load null-ls on BufWinEnter - ([2c866a1](https://github.com/sRavioli/nvim/commit/2c866a1eba591c6fc0b205c0fd1f4f0e991add05)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 - - -
 Changelog generated by [cocogitto](https://github.com/cocogitto/cocogitto).
