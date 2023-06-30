@@ -7,7 +7,7 @@ local let = vim.g
 
 let.transparency = true
 
-set.clipboard = ""
+set.clipboard = "unnamedplus"
 set.cursorline = true
 
 -- set.fillchars = { eob = "~" }
