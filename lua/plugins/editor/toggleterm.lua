@@ -1,11 +1,27 @@
 return {
   -- A neovim lua plugin to help easily manage multiple terminal windows
   "akinsho/toggleterm.nvim",
-  event = "VeryLazy",
+  keys = {
+    {
+      "<M-i>",
+      "<cmd>ToggleTerm direction=float<CR>",
+      desc = "Toggle floating terminal",
+      mode = { "n", "t" },
+    },
+    {
+      "<M-h>",
+      "<cmd>ToggleTerm direction=horizontal<CR>",
+      desc = "Toggle horizontal terminal",
+      mode = { "n", "t" },
+    },
+    {
+      "<M-v>",
+      "<cmd>ToggleTerm direction=vertical<CR>",
+      desc = "Toggle vertical terminal",
+      mode = { "n", "t" },
+    },
+  },
   version = "*",
-  init = function()
-    require("utils.fn").load_mappings "toggleterm"
-  end,
   opts = {
     size = function(term)
       if term.direction == "horizontal" then

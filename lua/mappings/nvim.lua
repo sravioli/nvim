@@ -58,6 +58,7 @@ return {
     ["<M-j>"] = { "ddp", "move line down" },
     ["<M-k>"] = { "ddkP", "move line up" },
   },
+
   i = {
     ["<Esc>"] = { "<Esc>:nohlsearch<CR>", "Clear highlights" },
     ["jk"] = { "<Esc>", "Exit insert mode", opts = { nowait = true } },
@@ -83,10 +84,8 @@ return {
   },
 
   t = {
-    ["<C-x>"] = {
-      vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
-      "Escape terminal mode",
-    },
+    ["<Esc>"] = { "<C-\\><C-n>", "Escape terminal mode" },
+    ["jk"] = { "<C-\\><C-n>", "Escape terminal mode" },
   },
 
   v = {

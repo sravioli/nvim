@@ -6,10 +6,11 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
-  cmd = "Neotree",
-  init = function()
-    require("utils.fn").load_mappings("neotree", {})
-  end,
+  keys = {
+    { "<C-n>", ":Neotree reveal toggle<CR>", desc = "  Toggle Neotree" },
+    { "<leader>e", ":Neotree focus<CR>", desc = "  Focus Neotree" },
+    { "<leader>gs", ":Neotree git_status<CR>", desc = "  Neotree git status" },
+  },
   opts = {
     -- If a user has a sources list it will replace this one.
     -- Only sources listed here will be loaded.

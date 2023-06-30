@@ -3,9 +3,6 @@ return {
   lsp = require "mappings.lsp",
   barbar = require "mappings.barbar",
   treesitter = require "mappings.tree-sitter",
-  neotree = require "mappings.neotree",
   gitsigns = require "mappings.gitsigns",
   todo_comments = require "mappings.todo-comments",
-  telescope = require "mappings.telescope",
-  toggleterm = require "mappings.toggleterm",
 }

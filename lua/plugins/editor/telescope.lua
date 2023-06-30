@@ -11,10 +11,35 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   branch = "0.1.x",
-  event = "VeryLazy",
-  init = function()
-    require("utils.fn").load_mappings "telescope"
-  end,
+  keys = {
+    -- find
+    {
+      "<C-p>",
+      ":lua require('utils.fn').telescope.fd()<CR>",
+      desc = "Find files",
+    },
+    {
+      "<leader>ff",
+      ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!**/.git/*<CR>",
+      desc = "Find all",
+    },
+    { "<leader>fw", ":Telescope live_grep<CR>", desc = "Live grep" },
+    { "<leader>fb", ":Telescope buffers<CR>", desc = "Find buffers" },
+    { "<leader>fh", ":Telescope help_tags<CR>", desc = "Help page" },
+    { "<leader>fo", ":Telescope oldfiles<CR>", desc = "Find oldfiles" },
+    {
+      "<leader>fz",
+      ":Telescope current_buffer_fuzzy_find<CR>",
+      desc = "Find in current buffer",
+    },
+
+    -- git
+    { "<leader>cm", ":Telescope git_commits<CR>", desc = "Git commits" },
+    { "<leader>gt", ":Telescope git_status<CR>", desc = "Git status" },
+  },
+  -- init = function()
+  --   require("utils.fn").load_mappings "telescope"
+  -- end,
   config = function()
     local present, telescope = pcall(require, "telescope")
     if not present then
