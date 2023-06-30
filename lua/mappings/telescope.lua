@@ -2,9 +2,12 @@ return {
   plugin = true,
   n = {
     -- find
-    ["<C-p>"] = { ":Telescope find_files<CR>", "Find files" },
+    ["<C-p>"] = {
+      ":lua require('utils.fn').telescope.fd()<CR>",
+      "Find files",
+    },
     ["<leader>fa"] = {
-      ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,'!**/.git/*'<CR>",
+      ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!**/.git/*<CR>",
       "Find all",
     },
     ["<leader>fw"] = { ":Telescope live_grep<CR>", "Live grep" },
