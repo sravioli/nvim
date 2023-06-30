@@ -25,13 +25,16 @@ return {
       defaults = {
         vimgrep_arguments = {
           "rg",
-          "-L",
+          "--follow",
           "--color=never",
           "--no-heading",
           "--with-filename",
           "--line-number",
           "--column",
           "--smart-case",
+        },
+        preview = {
+          mime_hook = require("utils.fn").telescope.preview_img,
         },
         prompt_prefix = "   ",
         selection_caret = "  ",
@@ -53,9 +56,9 @@ return {
           height = 0.80,
           preview_cutoff = 120,
         },
-        -- file_sorter = require("telescope.sorters").get_fuzzy_file,
+        file_sorter = require("telescope.sorters").get_fuzzy_file,
         file_ignore_patterns = { "node_modules" },
-        -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "truncate" },
         winblend = 0,
         border = {},
@@ -63,12 +66,20 @@ return {
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        -- file_previewer = require("telescope.previewers").cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+        -- buffer_previewer_maker = require("utils.fn").telescope.buffer_previewer,
         mappings = {
-          n = { ["q"] = require("telescope.actions").close },
+          n = {
+            ["q"] = require("telescope.actions").close,
+            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+          },
+          i = {
+            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+          },
         },
       },
       extensions = {
