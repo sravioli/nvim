@@ -6,7 +6,7 @@ return {
       ":lua require('utils.fn').telescope.fd()<CR>",
       "Find files",
     },
-    ["<leader>fa"] = {
+    ["<leader>ff"] = {
       ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!**/.git/*<CR>",
       "Find all",
     },
@@ -22,8 +22,5 @@ return {
     -- git
     ["<leader>cm"] = { ":Telescope git_commits<CR>", "Git commits" },
     ["<leader>gt"] = { ":Telescope git_status<CR>", "Git status" },
-
-    -- pick a hidden term
-    ["<leader>pt"] = { ":Telescope terms<CR>", "Pick hidden term" },
   },
 }
