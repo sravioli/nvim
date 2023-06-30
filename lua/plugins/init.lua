@@ -35,6 +35,9 @@ local config = {
     },
   },
 
+  checker = { enabled = true, notify = false },
+  change_detection = { enabled = false },
+
   performance = {
     rtp = {
       disabled_plugins = {
