@@ -7,4 +7,5 @@ return {
   gitsigns = require "mappings.gitsigns",
   todo_comments = require "mappings.todo-comments",
   telescope = require "mappings.telescope",
+  toggleterm = require "mappings.toggleterm",
 }
