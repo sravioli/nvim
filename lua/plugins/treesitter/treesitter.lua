@@ -6,7 +6,7 @@ return {
     require("nvim-treesitter.install").update { with_sync = true }
   end,
   init = function()
-    require("utils.fn").load_mappings("treesitter", {})
+    require("utils.fn").mappings.load "treesitter"
   end,
   config = function()
     local present, tsc = pcall(require, "nvim-treesitter.configs")
