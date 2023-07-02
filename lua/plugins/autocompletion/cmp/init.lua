@@ -20,7 +20,7 @@ return {
         completion = {
           winhighlight = "Normal:NormalDark,CursorLine:Visual,Search:None",
           scrollbar = true,
-          col_offset = -3,
+          col_offset = -2, -- with -3 it would randomly clip
           side_padding = 0,
         },
         documentation = {
