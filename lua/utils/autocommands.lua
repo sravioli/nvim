@@ -66,29 +66,6 @@ au({ "InsertEnter", "WinLeave" }, {
   group = aug.cursor,
 })
 
--- (Barbecue) Gain better performance when moving the cursor around
-au({
-  "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-  "BufWinEnter",
-  "CursorHold",
-  "InsertLeave",
-
-  -- include these if you have set `show_modified` to `true`
-  "BufWritePost",
-  "TextChanged",
-  "TextChangedI",
-}, {
-  desc = "Update Barbecue winbar",
-  group = aug.barbecue,
-  callback = function()
-    local present, barbecue_ui = pcall(require, "barbecue.ui")
-    if not present then
-      return
-    end
-    barbecue_ui.update()
-  end,
-})
-
 ---@type table Doxygen highlight groups and what group to link to.
 ---Redefine and improve doxygen highlights groups
 local doxygen_patterns = {
