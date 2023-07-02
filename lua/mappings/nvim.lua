@@ -52,7 +52,7 @@ return {
     ["[["] = { "[[zz" },
 
     -- open code actions kinda like VSCode
-    ["<M-.>"] = { ":CodeActionMenu<CR>", "Open code actions" },
+    -- ["<M-.>"] = { ":CodeActionMenu<CR>", "Open code actions" },
 
     ["<leader>nf"] = { ":Neogen<CR>", "Generate docstrings with Neogen" },
     ["<M-j>"] = { "ddp", "move line down" },
