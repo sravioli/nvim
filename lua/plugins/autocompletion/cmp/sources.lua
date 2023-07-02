@@ -15,10 +15,11 @@ return {
     { name = "nvim_lsp_document_symbol" },
     { name = "nvim_lsp_signature_help" },
     ---Buffer/Vim-builtin functionality
+  }, {
     {
       name = "buffer",
       option = {
-        keyword_length = 5,
+        keyword_length = 4,
         ---A function that specifies the buffer numbers to complete.
         ---@return table bufs A list of visible buffers OR an empty list if the filesize is too large
         get_bufnrs = function()
@@ -54,12 +55,14 @@ return {
     { name = "latex_symbols" },
     { name = "treesitter" },
     { name = "neorg" },
+    { name = "otter" },
   }),
 
   ---Sources for when in `/` or `?` mode
   search = {
     { name = "cmdline_history" },
     { name = "rg" },
+    { name = "nvim_lsp_document_symbol" },
     {
       name = "buffer",
       option = {
