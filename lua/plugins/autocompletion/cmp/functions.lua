@@ -20,7 +20,7 @@ end
 function M.format(entry, vim_item)
   local present, lspkind = pcall(require, "lspkind")
   if not present then
-    local icons = require "plugins.configs.cmp-wip.icons"
+    local icons = require("preferences").kind_icons
     -- From kind_icons array
     vim_item.kind =
       -- This concatenates the icons with the name of the item kind
@@ -43,19 +43,6 @@ function M.format(entry, vim_item)
 
     return kind
   end
-end
-
-function M.border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
 end
 
 return M
