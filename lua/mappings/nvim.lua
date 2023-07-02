@@ -1,6 +1,6 @@
 return {
   n = {
-    ["<Esc>"] = { ":nohlsearch<CR><Esc>", "Clear search highlights" },
+    ["<Esc>"] = { "<cmd>nohlsearch<CR><Esc>", "Clear search highlights" },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -9,11 +9,11 @@ return {
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
     -- Copy all
-    ["<C-c>"] = { ":%yank+<CR>", "Copy whole file" },
+    ["<C-c>"] = { "<cmd>%yank+<CR>", "Copy whole file" },
 
     -- line numbers
-    ["<leader>n"] = { ":set number!<CR>", "Toggle line number" },
-    ["<leader>nr"] = { ":set relativenumber!<CR>", "Toggle relative number" },
+    ["<leader>n"] = { "<cmd>set number!<CR>", "Toggle line number" },
+    ["<leader>nr"] = { "<cmd>set relativenumber!<CR>", "Toggle relative number" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -40,8 +40,8 @@ return {
       opts = { expr = true },
     },
 
-    ["<C-s>"] = { ":write<CR>", "Save File" },
-    ["<C-z>"] = { ":undo<CR>", "Undo action" },
+    ["<C-s>"] = { "<cmd>write<CR>", "Save File" },
+    ["<C-z>"] = { "<cmd>undo<CR>", "Undo action" },
 
     -- do thing, then center screen to allow for better readability
     ["<C-u>"] = { "<C-u>zz" },
@@ -52,22 +52,22 @@ return {
     ["[["] = { "[[zz" },
 
     -- open code actions kinda like VSCode
-    -- ["<M-.>"] = { ":CodeActionMenu<CR>", "Open code actions" },
+    -- ["<M-.>"] = { "<cmd>CodeActionMenu<CR>", "Open code actions" },
 
-    ["<leader>nf"] = { ":Neogen<CR>", "Generate docstrings with Neogen" },
+    ["<leader>nf"] = { "<cmd>Neogen<CR>", "Generate docstrings with Neogen" },
     ["<M-j>"] = { "ddp", "move line down" },
     ["<M-k>"] = { "ddkP", "move line up" },
   },
 
   i = {
-    ["<Esc>"] = { "<Esc>:nohlsearch<CR>", "Clear highlights" },
+    ["<Esc>"] = { "<Esc><cmd>nohlsearch<CR>", "Clear highlights" },
     ["jk"] = { "<Esc>", "Exit insert mode", opts = { nowait = true } },
 
     -- same normal mappings for insert mode also
-    ["<C-s>"] = { "<C-o>:write<CR>", "Save file" },
-    ["<C-z>"] = { "<C-o>:undo<CR>", "Undo action" },
+    ["<C-s>"] = { "<cmd>write<CR>", "Save file" },
+    ["<C-z>"] = { "<cmd>undo<CR>", "Undo action" },
 
-    -- ["<M-.>"] = { "<C-o>:CodeActionMenu<CR>", "Open code actions" },
+    -- ["<M-.>"] = { "<C-o><cmd>CodeActionMenu<CR>", "Open code actions" },
 
     -- delete line directily in insert mode
     ["<M-k>"] = { "<C-o>dd", "Delete line" },

@@ -2,10 +2,10 @@ return {
   -- Hover plugin framework for Neovim
   "lewis6991/hover.nvim",
   keys = {
-    { "<leader>k", ":lua require('hover').hover()<CR>", desc = "hover.nvim" },
+    { "<leader>k", "<cmd>lua require('hover').hover()<CR>", desc = "hover.nvim" },
     {
       "gK",
-      ":lua require('hover').hover_select()<CR>",
+      "<cmd>lua require('hover').hover_select()<CR>",
       desc = "hover.nvim (select)",
     },
   },

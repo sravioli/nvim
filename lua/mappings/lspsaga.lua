@@ -2,11 +2,11 @@ return {
   plugin = true,
 
   n = {
-    ["<leader>fd"] = { ":Lspsaga lsp_finder<CR>", "Find symbol definition" },
+    ["<leader>fd"] = { "<cmd>Lspsaga lsp_finder<CR>", "Find symbol definition" },
 
-    ["<M-.>"] = { ":Lspsaga code_action<CR>", "Open code actions" },
+    ["<M-.>"] = { "<cmd>Lspsaga code_action<CR>", "Open code actions" },
 
-    ["<leader>rn"] = { ":Lspsaga rename<CR>", "Rename element" },
+    ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>", "Rename element" },
 
     ["gd"] = { "<cmd>Lspsaga goto_definition<CR>", "Goto definition" },
     ["gpd"] = { "<cmd>Lspsaga peek_definition<CR>", "Peek definition" },
@@ -30,10 +30,10 @@ return {
   },
 
   i = {
-    ["<M-.>"] = { "<C-o>:Lspsaga code_action<CR>", "Open code actions" },
+    ["<M-.>"] = { "<cmd>Lspsaga code_action<CR>", "Open code actions" },
   },
 
   v = {
-    ["<M-.>"] = { ":Lspsaga code_action<CR>", "Open code actions" },
+    ["<M-.>"] = { "<cmd>Lspsaga code_action<CR>", "Open code actions" },
   },
 }

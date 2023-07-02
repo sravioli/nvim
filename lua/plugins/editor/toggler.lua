@@ -4,7 +4,7 @@ return {
   keys = {
     {
       "<leader>i",
-      ":lua require('nvim-toggler').toggle()<CR>",
+      "<cmd>lua require('nvim-toggler').toggle()<CR>",
       desc = "Toggle word",
     },
   },

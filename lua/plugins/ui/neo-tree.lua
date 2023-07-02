@@ -7,9 +7,13 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "<C-n>", ":Neotree reveal toggle<CR>", desc = "  Toggle Neotree" },
-    { "<leader>e", ":Neotree focus<CR>", desc = "  Focus Neotree" },
-    { "<leader>gs", ":Neotree git_status<CR>", desc = "  Neotree git status" },
+    { "<C-n>", "<cmd>Neotree reveal toggle<CR>", desc = "  Toggle Neotree" },
+    { "<leader>e", "<cmd>Neotree focus<CR>", desc = "  Focus Neotree" },
+    {
+      "<leader>gs",
+      "<cmd>Neotree git_status<CR>",
+      desc = "  Neotree git status",
+    },
   },
   opts = {
     -- If a user has a sources list it will replace this one.
