@@ -14,6 +14,7 @@ return {
     local cmp_sources = require "plugins.autocompletion.cmp.sources"
 
     local opts = {
+      experimental = { ghost_text = true },
       completion = { completeopt = "menu,menuone" },
       snippet = { expand = cmp_fn.expand },
       window = {
