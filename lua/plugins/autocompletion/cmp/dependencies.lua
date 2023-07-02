@@ -7,7 +7,6 @@ return {
   { ---Autocompletion sources
     { ---Snippets
       { "saadparwaiz1/cmp_luasnip" }, ---luasnip completion source for nvim-cmp
-      -- { "doxnit/cmp-luasnip-choice", config = true }, ---Luasnip choice node completion source for nvim-cmp
     },
     { ---LSP
       { "hrsh7th/cmp-nvim-lsp" }, ---nvim-cmp source for neovim builtin LSP client
@@ -36,7 +35,6 @@ return {
       { "lukas-reineke/cmp-rg" }, ---ripgrep source for nvim-cmp
     },
     { ---Miscellaneous
-      { "tzachar/cmp-tabnine" }, ---TabNine plugin for hrsh7th/nvim-cmp
       { ---neovim completion for doxygen use in nvim-cmp
         "paopaol/cmp-doxygen",
         dependencies = {
