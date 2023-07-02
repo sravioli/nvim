@@ -3,7 +3,7 @@
 ---@author sRavioli
 ---@license GPL-3.0
 
-local M = { telescope = {}, lsp = {} }
+local M = { mappings = {}, telescope = {}, lsp = {} }
 
 ---Aligns a markdown table in insert mode
 M.align_table = function()
@@ -27,7 +27,17 @@ M.align_table = function()
   end
 end
 
-M.load_mappings = function(section, mapping_opt)
+---Detects the current OS
+---@return string OS_name The OS name (lnx | win)
+M.get_os = function()
+  if vim.loop.os_uname().sysname == "Linux" then
+    return "lnx"
+  else
+    return "win"
+  end
+end
+
+M.mappings.load = function(section, options)
   vim.schedule(function()
     local tbl_merge = vim.tbl_deep_extend
 
@@ -64,6 +74,45 @@ M.load_mappings = function(section, mapping_opt)
     end
   end)
 end
+
+M.mappings.unload = function(section, options)
+  vim.schedule(function()
+    local mappings = require "mappings"
+    local tbl_merge = vim.tbl_deep_extend
+
+    if type(section) == "string" then
+      mappings[section]["plugin"] = nil
+      mappings = { mappings[section] }
+    end
+
+    for _, sect in pairs(mappings) do
+      if sect.plugin then
+        return
+      end
+      sect.plugin = nil
+
+      for mode, mode_values in pairs(sect) do
+        local default_opts = tbl_merge("force", { mode = mode }, options or {})
+        ---@diagnostic disable-next-line: param-type-mismatch
+        for keybind, mapping_info in pairs(mode_values) do
+          -- merge default + user opts
+          local opts = tbl_merge("force", default_opts, mapping_info.opts or {})
+
+          mapping_info.opts, opts.mode = nil, nil
+          opts.desc = mapping_info[2]
+
+          vim.keymap.del(mode, keybind, opts)
+        end
+      end
+    end
+  end)
+end
+
+-- M.mappings.register = function()
+--   vim.schedule(function()
+--     return
+--   end)
+-- end
 
 ---Filters diagnostigs leaving only the most severe per line.
 ---@param diagnostics table[]
@@ -128,16 +177,6 @@ M.lsp.async_formatting = function(bufnr)
       end
     end
   )
-end
-
----Detects the current OS
----@return string OS_name The OS name (lnx | win)
-M.get_os = function()
-  if vim.loop.os_uname().sysname == "Linux" then
-    return "lnx"
-  else
-    return "win"
-  end
 end
 
 M.lsp.autoformat = function(client, bufnr)
