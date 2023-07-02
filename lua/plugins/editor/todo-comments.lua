@@ -4,7 +4,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "VeryLazy",
   init = function()
-    require("utils.fn").load_mappings("todo_comments", {})
+    require("utils.fn").mappings.load "todo_comments"
   end,
   config = true,
 }

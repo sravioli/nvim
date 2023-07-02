@@ -37,9 +37,6 @@ return {
     { "<leader>cm", ":Telescope git_commits<CR>", desc = "Git commits" },
     { "<leader>gt", ":Telescope git_status<CR>", desc = "Git status" },
   },
-  -- init = function()
-  --   require("utils.fn").load_mappings "telescope"
-  -- end,
   config = function()
     local present, telescope = pcall(require, "telescope")
     if not present then

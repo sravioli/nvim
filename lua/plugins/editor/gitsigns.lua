@@ -33,7 +33,7 @@ return {
       border = require("preferences").border,
     },
     on_attach = function(bufnr)
-      require("utils.fn").load_mappings("gitsigns", { buffer = bufnr })
+      require("utils.fn").mappings.load("gitsigns", { buffer = bufnr })
     end,
   },
 }

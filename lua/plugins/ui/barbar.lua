@@ -9,7 +9,7 @@ return {
   event = "BufAdd",
   init = function()
     vim.g.barbar_auto_setup = false
-    require("utils.fn").load_mappings("barbar", {})
+    require("utils.fn").mappings.load "barbar"
   end,
   opts = {
     -- Enable/disable animations
