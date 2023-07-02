@@ -8,13 +8,9 @@ M.on_attach = function(client, bufnr)
   client.server_capabilities.documentRangeFormattingProvider = false
 
   -- load lsp mappings
-  require("utils.fn").load_mappings("lsp", { buffer = bufnr })
+  require("utils.fn").mappings.load("lsp", { buffer = bufnr })
 
-  -- attach navic
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-  end
-
+  -- change diagnostic settings
   vim.diagnostic.config {
     virtual_text = false,
     float = {
@@ -25,10 +21,9 @@ M.on_attach = function(client, bufnr)
     severity_sort = true,
   }
 
-  require("lspconfig.ui.windows").default_options = {
-    border = __border,
-  }
+  require("lspconfig.ui.windows").default_options = { border = __border }
 
+  -- Define diagnostic signs
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
@@ -84,7 +79,7 @@ M.handlers = {
 
   ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
-    { border = __border }
+    { border = __border, focusable = false, relative = "cursor" }
   ),
 }
 
