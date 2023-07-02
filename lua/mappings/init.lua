@@ -5,4 +5,5 @@ return {
   treesitter = require "mappings.tree-sitter",
   gitsigns = require "mappings.gitsigns",
   todo_comments = require "mappings.todo-comments",
+  lspsaga = require "mappings.lspsaga",
 }
