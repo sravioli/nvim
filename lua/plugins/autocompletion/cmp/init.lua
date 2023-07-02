@@ -32,25 +32,22 @@ return {
         format = cmp_fn.format,
       },
       mapping = cmp.mapping.preset.insert(cmp_mappings),
-      sources = cmp.config.sources(cmp_sources),
+      sources = cmp_sources.cmp,
+
+      sorting = {
+        comparators = {
+          function(...)
+            return require("cmp_buffer"):compare_locality(...)
+          end,
+        },
+      },
     }
 
     cmp.setup(opts)
 
-    -- Set configuration for specific filetype.
-    cmp.setup.filetype("gitcommit", {
-      sources = cmp.config.sources({
-        { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-      }, {
-        { name = "buffer" },
-      }),
-    })
-
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" },
-      },
+      sources = cmp_sources.search,
       view = {
         entries = { name = "wildmenu", separator = " | " },
       },
@@ -60,19 +57,10 @@ return {
     -- `:` cmdline setup.
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp_sources.cmd,
       view = {
         entries = { name = "wildmenu", separator = " | " },
       },
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        {
-          name = "cmdline",
-          option = {
-            ignore_cmds = { "Man", "!" },
-          },
-        },
-      }),
     })
 
     -- If you want insert `(` after select function or method item
