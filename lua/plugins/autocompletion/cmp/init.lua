@@ -2,6 +2,7 @@ return {
   -- A completion plugin for neovim coded in Lua.
   "hrsh7th/nvim-cmp",
   dependencies = require "plugins.autocompletion.cmp.dependencies",
+  event = { "InsertEnter", "CmdlineEnter" },
   config = function()
     local present, cmp = pcall(require, "cmp")
     if not present then
