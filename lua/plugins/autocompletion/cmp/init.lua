@@ -1,44 +1,7 @@
 return {
   -- A completion plugin for neovim coded in Lua.
   "hrsh7th/nvim-cmp",
-  dependencies = {
-    -- vscode-like pictograms for neovim lsp completion items
-    { "onsails/lspkind.nvim" },
-    { -- QoL
-      "L3MON4D3/LuaSnip",
-      "windwp/nvim-autopairs",
-    },
-    { -- Cmp sources
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "lukas-reineke/cmp-rg",
-      "FelipeLema/cmp-async-path",
-      "chrisgrieser/cmp-nerdfont",
-      { "doxnit/cmp-luasnip-choice", config = true },
-      {
-        "paopaol/cmp-doxygen",
-        dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-treesitter/nvim-treesitter-textobjects",
-        },
-      },
-      {
-        "jmbuhr/otter.nvim",
-        dependencies = {
-          "neovim/nvim-lspconfig",
-          "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-          require("otter.config").setup()
-        end,
-      },
-    },
-  },
-  event = "InsertEnter",
+  dependencies = require "plugins.autocompletion.cmp.dependencies",
   config = function()
     local present, cmp = pcall(require, "cmp")
     if not present then
