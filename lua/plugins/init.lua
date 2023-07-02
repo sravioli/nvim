@@ -17,6 +17,7 @@ local spec = {
   { import = "plugins.editor" },
   { import = "plugins.treesitter" },
   { import = "plugins.lsp.pre" },
+  { import = "plugins.lsp.post" },
   { import = "plugins.lsp.lspconfig" },
   { import = "plugins.autocompletion" },
 }
