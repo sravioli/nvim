@@ -58,10 +58,10 @@ return {
           "diagnostics",
           sources = { "nvim_lsp", "nvim_diagnostic" },
           symbols = {
-            error = "  ",
-            warn = "  ",
-            info = "  ",
-            hint = "  ",
+            error = " " .. signs.Error,
+            warn = " " .. signs.Warn,
+            info = " " .. signs.Info,
+            hint = " " .. signs.Hint,
           },
         },
         {
