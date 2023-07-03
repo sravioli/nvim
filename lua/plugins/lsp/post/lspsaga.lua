@@ -30,9 +30,11 @@ return {
         quit = { "q", "<ESC>" },
       },
     },
+
     code_action = {
       show_server_name = true,
     },
+
     rename = {
       quit = "<Esc>",
     },
