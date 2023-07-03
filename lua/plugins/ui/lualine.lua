@@ -1,3 +1,4 @@
+local signs = require("preferences").signs
 return {
   ---A blazing fast and easy to configure neovim statusline plugin written in
   ---pure lua.
@@ -73,32 +74,32 @@ return {
           function()
             return require("lsp-progress").progress {
               format = function(messages)
-                local active_clients = vim.lsp.get_active_clients()
-                local client_count = #active_clients
+                local icon = "  "
                 if #messages > 0 then
-                  return " LSP:"
-                    .. client_count
-                    .. " "
-                    .. table.concat(messages, " ")
+                  return table.concat(messages, " ") .. icon
                 end
-                if #active_clients <= 0 then
-                  return " LSP:" .. client_count
+
+                local clients = vim.lsp.get_active_clients()
+                if #clients <= 0 then
+                  return icon
                 else
                   local client_names = {}
-                  for i, client in ipairs(active_clients) do
+                  for _, client in ipairs(clients) do
                     if client and client.name ~= "" then
-                      table.insert(client_names, "[" .. client.name .. "]")
-                      -- print("client[" .. i .. "]:" .. vim.inspect(client.name))
+                      local name = "[" .. client.name .. "]"
+                      if client.name == "null-ls" then
+                        name = "(󰟢)"
+                      end
+
+                      table.insert(client_names, name)
                     end
                   end
-                  return " LSP:"
-                    .. client_count
-                    .. " "
-                    .. table.concat(client_names, " ")
+                  return table.concat(client_names, " ") .. icon
                 end
               end,
             }
           end,
+          color = "Comment",
         },
         { "encoding" },
         {
