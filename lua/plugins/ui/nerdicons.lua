@@ -11,6 +11,6 @@ return {
     width = 0.5, -- flaot window width
     down = "<C-j>", -- Move down in preview
     up = "<C-k>", -- Move up in preview
-    copy = "<C-y>", -- Copy to the clipboard
+    copy = "<Tab>", -- Copy to the clipboard
   },
 }
