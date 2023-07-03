@@ -41,9 +41,10 @@ return {
       },
     },
     { name = "buffer-lines", option = { leading_whitespace = false } },
+    { name = "rg" },
     { name = "calc" },
     { name = "rpncalc" },
-    { name = "digraphs" },
+    -- { name = "digraphs" },
   }, { ---Filesystem paths
     { name = "async_path", option = { trailing_slash = true } },
   }, { ---Git
