@@ -24,11 +24,10 @@ return {
       desc = "Find all",
     },
     { "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
-    { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Find buffers" },
     { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help page" },
     { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "Find oldfiles" },
     {
-      "<leader>fz",
+      "<leader>fb",
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
       desc = "Find in current buffer",
     },
