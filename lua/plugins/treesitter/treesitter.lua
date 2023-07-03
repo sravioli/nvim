@@ -1,7 +1,7 @@
 return {
   ---Nvim Treesitter configurations and abstraction layer
   "nvim-treesitter/nvim-treesitter",
-  event = "BufWinEnter",
+  event = "BufReadPre",
   build = function()
     require("nvim-treesitter.install").update { with_sync = true }
   end,

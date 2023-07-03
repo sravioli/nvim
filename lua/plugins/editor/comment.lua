@@ -3,5 +3,5 @@ return {
   ---dot repeat, left-right/up-down motions, hooks, and more
   "numToStr/Comment.nvim",
   config = true,
-  event = "BufRead",
+  event = "BufReadPost",
 }
