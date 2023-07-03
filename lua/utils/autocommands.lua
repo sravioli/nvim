@@ -111,3 +111,13 @@ au("FileType", {
   end,
   group = aug.lua_functions,
 })
+
+---Refresh lualine on lsp update
+au("User", {
+  pattern = "LspProgressStatusUpdated",
+  desc = "Refresh lualine on LSP updates",
+  group = aug.lualine,
+  callback = function()
+    require("lualine").refresh()
+  end,
+})

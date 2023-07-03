@@ -19,4 +19,5 @@ return {
   buf_detect = aug("BufDetect", {}),
   lua_functions = aug("LuaFunctions", {}),
   null_ls = aug("LspFormatting", {}),
+  lualine = aug("Lualine", { clear = true }),
 }
