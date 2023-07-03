@@ -4,6 +4,59 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.3.0](https://github.com/sRavioli/nvim/compare/0.2.0..0.3.0) - 2023-07-03
+#### Bug Fixes
+- **(cmp)** remove cmp dependencies and sources (doxygen, otter) - ([8f8988e](https://github.com/sRavioli/nvim/commit/8f8988e2b47637b7b8fed455cf1b0aaf96678ccd)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** remove tabnine source - ([d0ec20b](https://github.com/sRavioli/nvim/commit/d0ec20b41ccd0d96eb5c669fd311ab2139ae990b)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** cmp icons are no longer clipped in the menu - ([17b34a2](https://github.com/sRavioli/nvim/commit/17b34a282ecf286607e49145d8575b307b2de415)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** capitalize ctrl key - ([57d9106](https://github.com/sRavioli/nvim/commit/57d91069a35aa68e2e9be9f00d00f40336caab97)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** adjust spacing between icon and description - ([0b69773](https://github.com/sRavioli/nvim/commit/0b69773d2e09a8bb77a17aba878ab2ef6ffdd607)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** change `:` to `<cmd>` - ([952210b](https://github.com/sRavioli/nvim/commit/952210b6c1c0d1224e29351f115aa4845b3d196e)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** disable non functional mapping - ([246ecc3](https://github.com/sRavioli/nvim/commit/246ecc354a3156d5c1fe9b5b8329b4e0c4e8732d)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** change hover mappings, remove definition keymaps - ([53846c7](https://github.com/sRavioli/nvim/commit/53846c73d3edbad80e8d4b4e96784fff59a29736)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** remove nvim-navic (use lspsaga) - ([24a61c5](https://github.com/sRavioli/nvim/commit/24a61c5b1980b6da8526fa77526dc3da58290692)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** change nerdicons confirm mapping - ([a239b52](https://github.com/sRavioli/nvim/commit/a239b524d4cf1df830a462fc7579c7ad55ceb1e3)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** remove EOL symbols for indent-blankline - ([bfbf85d](https://github.com/sRavioli/nvim/commit/bfbf85d8f343b409cf830967d89310f9de4f15f6)) - [@sRavioli](https://github.com/sRavioli)
+- **(telescope)** remove find buffers (use barbar), change find in buffer mapping - ([2c0198d](https://github.com/sRavioli/nvim/commit/2c0198d6fc0fe0dd79182b827c2840ea92a9ee17)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** remove barbecue autocommand - ([bac6520](https://github.com/sRavioli/nvim/commit/bac6520907d74a91f5c32b5d6afaff29c4dbf29a)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** nvim does not spam with notification if barbecue is not present - ([f1e1cf6](https://github.com/sRavioli/nvim/commit/f1e1cf6d93750024b6d8aceb13a41c9d5167aec2)) - [@sRavioli](https://github.com/sRavioli)
+- use new loading mapping syntax - ([e38dc73](https://github.com/sRavioli/nvim/commit/e38dc737e3165f7ffb6c52dd98c7f633540e7a30)) - [@sRavioli](https://github.com/sRavioli)
+- remove barbecue, change hover keymap - ([5ad8b80](https://github.com/sRavioli/nvim/commit/5ad8b801d44a6436fb78c8115a164896218e2752)) - [@sRavioli](https://github.com/sRavioli)
+- adopt new mappings syntax - ([233479f](https://github.com/sRavioli/nvim/commit/233479f43cd25fcfe940a8bff76c7c6d08438f12)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(cmp)** add sources - ([cb22397](https://github.com/sRavioli/nvim/commit/cb2239793d25369c6644d247debe8d40fe7b3d0c)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** add dependencies - ([622f8ed](https://github.com/sRavioli/nvim/commit/622f8ed51448c45c18cc96d36ff452acc23d44ee)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** enable ghost text - ([5d623ef](https://github.com/sRavioli/nvim/commit/5d623ef4f14e8cf413f5b0f9e49f119b8c885fa2)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** use new sources, add sorting function - ([45d1310](https://github.com/sRavioli/nvim/commit/45d13105e855c976440a2421bccaa3ff12e597d4)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** load nvim-cmp also on `CmdlineEnter` - ([00bc66c](https://github.com/sRavioli/nvim/commit/00bc66c507164be9af0470d500c3b41572566e91)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** add icons to mappings description - ([722ec61](https://github.com/sRavioli/nvim/commit/722ec611c9ea126074d4ed81d5fc210c8af90283)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** configure lsp further - ([8a41f80](https://github.com/sRavioli/nvim/commit/8a41f80c60ca76c1c900e703a538acf745a6ed71)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** load navic, remove navbuddy - ([582b595](https://github.com/sRavioli/nvim/commit/582b595b3311bee9e4c0cce60433c706e25f69de)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install lsp-lens and symbols-outline - ([75736dc](https://github.com/sRavioli/nvim/commit/75736dc4535138b7fa158379b88119829aa837d3)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install nerdicons - ([972dd2a](https://github.com/sRavioli/nvim/commit/972dd2a64a2a52113664096202bdd248331c6b4a)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install nvim-toggler - ([c12d953](https://github.com/sRavioli/nvim/commit/c12d953c2b8c97ba200c25123174bcd74bda15d3)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** configure lsp servers - ([f088799](https://github.com/sRavioli/nvim/commit/f088799b650f3f9b0474e417dc07fdb22d46e92e)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install indent-blankline - ([60bf014](https://github.com/sRavioli/nvim/commit/60bf0146affb377eff82855a36a28ec96b2d4131)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install barbacue.nvim - ([94631c6](https://github.com/sRavioli/nvim/commit/94631c682920c2e9c8e39bf7896a8674aa6f4aa9)) - [@sRavioli](https://github.com/sRavioli)
+- **(preferences)** add more symbols - ([aa8930b](https://github.com/sRavioli/nvim/commit/aa8930bb92153f0f96762b56d9f6c8d9ad37778c)) - [@sRavioli](https://github.com/sRavioli)
+- install lsp-progress and add it to lualine - ([2fc83cd](https://github.com/sRavioli/nvim/commit/2fc83cd7f0ba2c5dd1b3d37e819c015cea2bb6ea)) - [@sRavioli](https://github.com/sRavioli)
+- source `plugins.lsp.post` module - ([9136500](https://github.com/sRavioli/nvim/commit/91365007b8e7edfeef403a75b97701d13c66636d)) - [@sRavioli](https://github.com/sRavioli)
+- define diagnostic symbol globally - ([aa628fd](https://github.com/sRavioli/nvim/commit/aa628fd43dd3611e51b49491d2ccad121586973b)) - [@sRavioli](https://github.com/sRavioli)
+- move to `preference.lua` some defaults - ([903cfda](https://github.com/sRavioli/nvim/commit/903cfda4385d85a16808fefffdd94aabccbd0d98)) - [@sRavioli](https://github.com/sRavioli)
+- install lspsaga mappings - ([3d7ce84](https://github.com/sRavioli/nvim/commit/3d7ce84a71d50db80d88839239e13e7d5a58791d)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(keymaps)** restore `:` in text (instead of `<cmd>`) - ([6dd7062](https://github.com/sRavioli/nvim/commit/6dd70620edbf2892e52a5b67549ce094c42ff534)) - [@sRavioli](https://github.com/sRavioli)
+- formatting - ([eb3570e](https://github.com/sRavioli/nvim/commit/eb3570eda681a9e9189c4b00f045627f3f676eba)) - [@sRavioli](https://github.com/sRavioli)
+- format changelog - ([d5f57e4](https://github.com/sRavioli/nvim/commit/d5f57e46f28eb357e8ba829ee5158865be6f175c)) - [@sRavioli](https://github.com/sRavioli)
+#### Refactoring
+- **(cmp)** add sources for cmdline, search and normal - ([c810351](https://github.com/sRavioli/nvim/commit/c810351857e09084313932546ce4e558a538b933)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp)** move nvim-cmp dependencies to separate file - ([a257d4f](https://github.com/sRavioli/nvim/commit/a257d4fd3140eb671cd2d731abea860e5734ac1c)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** use lspsaga lua api, add icons to descriptions - ([837b489](https://github.com/sRavioli/nvim/commit/837b489dbfcc2df54a459f3cb83fba9c3b69fb50)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** rename `load_mappings` to `mappings.load` - ([ba56c13](https://github.com/sRavioli/nvim/commit/ba56c130a0e9fa6a6da3719a99e4a39b32b001e8)) - [@sRavioli](https://github.com/sRavioli)
+- change `--` comments to `---` - ([8ec23a2](https://github.com/sRavioli/nvim/commit/8ec23a2a06f095e401489e8099b42896049e2716)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 
 ## [0.2.0](https://github.com/sRavioli/nvim/compare/0.1.0..0.2.0) - 2023-06-30
 
