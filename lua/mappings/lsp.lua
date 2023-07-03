@@ -29,7 +29,7 @@ return {
       function()
         vim.lsp.buf.signature_help()
       end,
-      "LSP signature help",
+      "󰋖  LSP signature help",
     },
 
     ["<leader>D"] = {
@@ -39,81 +39,81 @@ return {
       "LSP definition type",
     },
 
-    -- ["<leader>ra"] = {
-    --   function()
-    --     require("nvchad_ui.renamer").open()
-    --   end,
-    --   "LSP rename",
-    -- },
+    ["<leader>ra"] = {
+      function()
+        vim.lsp.buf.rename()
+      end,
+      "󰑕  LSP rename",
+    },
 
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "LSP code action",
+      "󱐋  LSP code action",
     },
 
     ["gr"] = {
       function()
         vim.lsp.buf.references()
       end,
-      "LSP references",
+      "   LSP references",
     },
 
     ["<leader>f"] = {
       function()
         vim.diagnostic.open_float { border = __border }
       end,
-      "Floating diagnostic",
+      "󱖫  Floating diagnostic",
     },
 
     ["[d"] = {
       function()
         vim.diagnostic.goto_prev { float = { border = __border } }
       end,
-      "Goto prev",
+      "󰼨  Goto prev",
     },
 
     ["]d"] = {
       function()
         vim.diagnostic.goto_next { float = { border = __border } }
       end,
-      "Goto next",
+      "󰼧  Goto next",
     },
 
     ["<leader>q"] = {
       function()
         vim.diagnostic.setloclist()
       end,
-      "Diagnostic setloclist",
+      "󱖫  Diagnostic setloclist",
     },
 
     ["<leader>fm"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
-      "LSP async formatting",
+      "󰉢  LSP async formatting",
     },
 
     ["<leader>wa"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
-      "Add workspace folder",
+      "󰉗  Add workspace folder",
     },
 
     ["<leader>wr"] = {
       function()
         vim.lsp.buf.remove_workspace_folder()
       end,
-      "Remove workspace folder",
+      "󰉘  Remove workspace folder",
     },
 
     ["<leader>wl"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
-      "List workspace folders",
+      "  List workspace folders",
     },
   },
 }

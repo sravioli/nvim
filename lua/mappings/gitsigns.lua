@@ -16,7 +16,7 @@ return {
         end)
         return "<Ignore>"
       end,
-      "Jump to next hunk",
+      "󱋿  Jump to next hunk",
       opts = { expr = true },
     },
 
@@ -30,7 +30,7 @@ return {
         end)
         return "<Ignore>"
       end,
-      "Jump to prev hunk",
+      "󱋿  Jump to prev hunk",
       opts = { expr = true },
     },
 
