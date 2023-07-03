@@ -8,22 +8,15 @@ return {
       function()
         vim.lsp.buf.declaration()
       end,
-      "LSP declaration",
+      "󰞘  LSP declaration",
     },
 
-    ["gd"] = {
+    ["<leader>K"] = {
       function()
-        vim.lsp.buf.definition()
+        vim.lsp.buf.hover()
       end,
-      "LSP definition",
+      "󱓂  LSP hover",
     },
-
-    -- ["K"] = {
-    --   function()
-    --     vim.lsp.buf.hover()
-    --   end,
-    --   "LSP hover",
-    -- },
 
     ["gi"] = {
       function()
