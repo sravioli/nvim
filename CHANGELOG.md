@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.4.0](https://github.com/sRavioli/nvim/compare/0.3.0..0.4.0) - 2023-07-03
+#### Bug Fixes
+- **(lsp)** remove signs from `on_attach()` since they are loaded globally - ([3505793](https://github.com/sRavioli/nvim/commit/3505793ac29ec23aafb472a97d3dfeb8a2f21f0f)) - [@sRavioli](https://github.com/sRavioli)
+- **(lualine)** require signs, rewrite lsp progress function - ([8ffa655](https://github.com/sRavioli/nvim/commit/8ffa6551992416defc12f2ff6d0551814bc32c68)) - [@sRavioli](https://github.com/sRavioli)
+- **(lualine)** use preferred diagnostic signs - ([9c11edf](https://github.com/sRavioli/nvim/commit/9c11edf67da6e90f5e223c7349a940799b24b438)) - [@sRavioli](https://github.com/sRavioli)
+- **(settings)** load correct diagnostic signs - ([2612993](https://github.com/sRavioli/nvim/commit/2612993c3746f4d053dc1255ec70eae88deaad4f)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(preferences)** use more readable diagnostic signs - ([2808508](https://github.com/sRavioli/nvim/commit/2808508951ed6f86aff3ad6271f0f6dd3754c50f)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.3.0](https://github.com/sRavioli/nvim/compare/0.2.0..0.3.0) - 2023-07-03
 #### Bug Fixes
 - **(cmp)** remove cmp dependencies and sources (doxygen, otter) - ([8f8988e](https://github.com/sRavioli/nvim/commit/8f8988e2b47637b7b8fed455cf1b0aaf96678ccd)) - [@sRavioli](https://github.com/sRavioli)
