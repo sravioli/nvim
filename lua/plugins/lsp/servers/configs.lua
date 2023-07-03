@@ -12,12 +12,26 @@ M.on_attach = function(client, bufnr)
 
   ---change diagnostic settings
   vim.diagnostic.config {
-    virtual_text = false,
+    underline = true,
+
+    virtual_text = {
+      severity = {
+        min = vim.diagnostic.severity.ERROR,
+      },
+      source = "always",
+      spacing = 1,
+      prefix = require("preferences").signs.Error,
+    },
+
+    signs = true,
+
     float = {
+      severity_sort = true,
+      header = " Diagnotics:",
       source = "always", ---Or "if_many"
     },
-    signs = true,
-    underline = true,
+
+    update_in_insert = false,
     severity_sort = true,
   }
 
