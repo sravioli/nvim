@@ -51,7 +51,12 @@ local preferences = {
     TypeParameter = "󰅲",
   },
 
-  signs = { Error = " ", Warn = " ", Hint = " ", Info = " " },
+  signs = {
+    Error = " ",
+    Warn = " ",
+    Hint = " ",
+    Info = " ",
+  },
 }
 
 return preferences
