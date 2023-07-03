@@ -49,13 +49,11 @@ return {
   }, { ---Git
     { name = "conventionalcommits" },
   }, { ---Miscellaneous
-    { name = "doxygen" },
     { name = "emoji" },
     { name = "nerdfont" },
     { name = "latex_symbols" },
     { name = "treesitter" },
     { name = "neorg" },
-    { name = "otter" },
   }),
 
   ---Sources for when in `/` or `?` mode

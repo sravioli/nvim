@@ -35,27 +35,10 @@ return {
       { "lukas-reineke/cmp-rg" }, ---ripgrep source for nvim-cmp
     },
     { ---Miscellaneous
-      { ---neovim completion for doxygen use in nvim-cmp
-        "paopaol/cmp-doxygen",
-        dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-treesitter/nvim-treesitter-textobjects",
-        },
-      },
       { "hrsh7th/cmp-emoji" }, ---nvim-cmp source for emoji
       { "chrisgrieser/cmp-nerdfont" }, ---nvim-cmp source for nerdfont icons
       { "kdheepak/cmp-latex-symbols" }, ---Add latex symbol support for nvim-cmp.
       { "ray-x/cmp-treesitter" }, ---cmp source for treesitter
-      { ---Just ask an otter! 🦦
-        "jmbuhr/otter.nvim",
-        dependencies = {
-          "neovim/nvim-lspconfig",
-          "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-          require("otter.config").setup()
-        end,
-      },
     },
   },
 }
