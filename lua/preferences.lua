@@ -1,5 +1,6 @@
 local preferences = {
   border = "rounded",
+
   border_chars = function(hl_name)
     return {
       { "╭", hl_name },
@@ -12,6 +13,7 @@ local preferences = {
       { "│", hl_name },
     }
   end,
+
   kind_icons = {
     Text = "",
     Method = "󰆧",

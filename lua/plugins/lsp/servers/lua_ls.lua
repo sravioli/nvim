@@ -1,6 +1,6 @@
 return {
   format = {
-    enable = false, -- use null-ls
+    enable = false, ---use null-ls
   },
 
   filetypes = { "lua" },
@@ -24,7 +24,7 @@ return {
       [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
     },
 
-    -- adjust these two values if your performance is not optimal
+    ---adjust these two values if your performance is not optimal
     maxPreload = 2000,
     preloadFileSize = 1000,
   },

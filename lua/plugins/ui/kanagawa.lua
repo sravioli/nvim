@@ -1,14 +1,14 @@
 return {
-  -- NeoVim dark colorscheme inspired by the colors of the famous painting by
-  -- Katsushika Hokusai.
+  ---NeoVim dark colorscheme inspired by the colors of the famous painting by
+  ---Katsushika Hokusai.
   "rebelot/kanagawa.nvim",
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
   opts = {
     compile = true,
-    transparent = true, -- do not set background color
-    dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+    transparent = true, ---do not set background color
+    dimInactive = false, ---dim inactive window `:h hl-NormalNC`
     commentStyle = { italic = false },
     overrides = function(colors)
       local theme = colors.theme
@@ -17,16 +17,16 @@ return {
         FloatBorder = { bg = "NONE" },
         FloatTitle = { bg = "NONE" },
 
-        -- Save an hlgroup with dark background and dimmed foreground
-        -- so that you can use it where your still want darker windows.
-        -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+        ---Save an hlgroup with dark background and dimmed foreground
+        ---so that you can use it where your still want darker windows.
+        ---E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
         NormalDark = {
           fg = theme.ui.fg_dim,
           bg = theme.ui.bg_m1,
           blend = vim.o.pumblend,
         },
 
-        -- Barbar highlight groups
+        ---Barbar highlight groups
         BufferInactive = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1 },
         BufferInactiveSign = { fg = theme.ui.bg, bg = theme.ui.bg_p1 },
         BufferInactiveADDED = { fg = theme.diff.add, bg = theme.ui.bg_p1 },
@@ -59,19 +59,19 @@ return {
           bold = true,
         },
 
-        -- Popular plugins that open floats will link to NormalFloat by default;
-        -- set their background accordingly if you wish to keep them dark and borderless
-        -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-        -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+        ---Popular plugins that open floats will link to NormalFloat by default;
+        ---set their background accordingly if you wish to keep them dark and borderless
+        ---LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+        ---MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
-        -- More uniform colors for the popup menu.
-        -- add `blend = vim.o.pumblend` to enable transparency
+        ---More uniform colors for the popup menu.
+        ---add `blend = vim.o.pumblend` to enable transparency
         Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p2, blend = vim.o.pumblend },
         PmenuSel = { fg = "NONE", bg = theme.ui.bg_m3 },
         PmenuSbar = { bg = theme.ui.bg_m1 },
         PmenuThumb = { bg = theme.ui.bg_p2 },
 
-        -- Cmp
+        ---Cmp
         CmpItemAbbrDeprecated = {
           fg = theme.syn.deprecated,
           bg = "NONE",
@@ -81,9 +81,9 @@ return {
         CmpItemAbbrMatchFuzzy = { fg = theme.ui.bg_search, bg = "NONE", bold = true },
         CmpItemMenu = { fg = theme.ui.special, bg = "NONE", italic = true },
 
-        -- CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
-        -- CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
-        -- CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
+        ---CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
+        ---CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
+        ---CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
 
         CmpItemKindText = { fg = theme.ui.bg, bg = theme.syn.string },
         CmpItemKindEnum = { fg = theme.ui.bg, bg = theme.syn.string },
@@ -114,10 +114,10 @@ return {
         CmpItemKindColor = { fg = theme.ui.fg, bg = theme.syn.parameter },
         CmpItemKindTypeParameter = { fg = theme.ui.fg, bg = theme.syn.parameter },
 
-        -- Telescope
+        ---Telescope
         TelescopeBorder = { link = "FloatBorder" },
 
-        -- Nerd icons
+        ---Nerd icons
         NerdIconNormal = { link = "NormalFloat" },
         NerdIconBorder = { link = "FloatBorder" },
       }

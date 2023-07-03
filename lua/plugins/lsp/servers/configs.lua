@@ -3,18 +3,18 @@ local M = {}
 local __border = require("preferences").border
 
 M.on_attach = function(client, bufnr)
-  -- prefer null-ls
+  ---prefer null-ls
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
 
-  -- load lsp mappings
+  ---load lsp mappings
   require("utils.fn").mappings.load("lsp", { buffer = bufnr })
 
-  -- change diagnostic settings
+  ---change diagnostic settings
   vim.diagnostic.config {
     virtual_text = false,
     float = {
-      source = "always", -- Or "if_many"
+      source = "always", ---Or "if_many"
     },
     signs = true,
     underline = true,
@@ -23,14 +23,14 @@ M.on_attach = function(client, bufnr)
 
   require("lspconfig.ui.windows").default_options = { border = __border }
 
-  -- Define diagnostic signs
+  ---Define diagnostic signs
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
-  -- Show diagnostic in a floating window.
+  ---Show diagnostic in a floating window.
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()

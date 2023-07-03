@@ -1,6 +1,6 @@
 return {
-  -- Use Neovim as a language server to inject LSP diagnostics, code actions,
-  -- and more via Lua.
+  ---Use Neovim as a language server to inject LSP diagnostics, code actions,
+  ---and more via Lua.
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufWinEnter",
@@ -10,7 +10,9 @@ return {
       return
     end
 
+    ---@type table Shorthand for `null_ls.builtins.diagnostics`
     local diagnostics = null_ls.builtins.diagnostics
+    ---@type table Shorthand for `null_ls.builtins.formatting`
     local formatting = null_ls.builtins.formatting
 
     local opts = {

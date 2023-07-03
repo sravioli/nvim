@@ -20,7 +20,7 @@ M.align_table = function()
     local col = #curr_line:sub(1, colnr):gsub("[^|]", "")
     local pos = #vim.fn.matchstr(curr_line:sub(1, colnr), ".*|\\s*\\zs.*")
 
-    -- `l` means left aligned and `1` means one space of cell padding
+    ---`l` means left aligned and `1` means one space of cell padding
     vim.cmd "Tabularize/|/l1"
     vim.cmd "normal! 0"
     vim.fn.search(("[^|]*|"):rep(col) .. ("\\s\\{-\\}"):rep(pos), "ce", linenr)
@@ -51,7 +51,7 @@ M.mappings.load = function(section, options)
       for mode, mode_values in pairs(section_values) do
         local default_opts = tbl_merge("force", { mode = mode }, mapping_opt or {})
         for keybind, mapping_info in pairs(mode_values) do
-          -- merge default + user opts
+          ---merge default + user opts
           local opts = tbl_merge("force", default_opts, mapping_info.opts or {})
 
           mapping_info.opts, opts.mode = nil, nil
@@ -95,7 +95,7 @@ M.mappings.unload = function(section, options)
         local default_opts = tbl_merge("force", { mode = mode }, options or {})
         ---@diagnostic disable-next-line: param-type-mismatch
         for keybind, mapping_info in pairs(mode_values) do
-          -- merge default + user opts
+          ---merge default + user opts
           local opts = tbl_merge("force", default_opts, mapping_info.opts or {})
 
           mapping_info.opts, opts.mode = nil, nil
@@ -107,12 +107,6 @@ M.mappings.unload = function(section, options)
     end
   end)
 end
-
--- M.mappings.register = function()
---   vim.schedule(function()
---     return
---   end)
--- end
 
 ---Filters diagnostigs leaving only the most severe per line.
 ---@param diagnostics table[]
@@ -126,18 +120,18 @@ M.lsp.filter_diagnostics = function(diagnostics)
     return {}
   end
 
-  -- find the "worst" diagnostic per line
+  ---find the "worst" diagnostic per line
   local most_severe = {}
   for _, cur in pairs(diagnostics) do
     local max = most_severe[cur.lnum]
 
-    -- higher severity has lower value (`:h diagnostic-severity`)
+    ---higher severity has lower value (`:h diagnostic-severity`)
     if not max or cur.severity < max.severity then
       most_severe[cur.lnum] = cur
     end
   end
 
-  -- return list of diagnostics
+  ---return list of diagnostics
   return vim.tbl_values(most_severe)
 end
 
@@ -151,12 +145,12 @@ M.lsp.async_formatting = function(bufnr)
     function(err, res, ctx)
       if err then
         local err_msg = type(err) == "string" and err or err.message
-        -- you can modify the log message / level (or ignore it completely)
+        ---you can modify the log message / level (or ignore it completely)
         vim.notify("formatting: " .. err_msg, vim.log.levels.WARN)
         return
       end
 
-      -- don't apply results if buffer is unloaded or has been modified
+      ---don't apply results if buffer is unloaded or has been modified
       if
         not vim.api.nvim_buf_is_loaded(bufnr)
         or vim.api.nvim_buf_get_option(bufnr, "modified")
@@ -187,22 +181,22 @@ M.lsp.autoformat = function(client, bufnr)
       group = lsp_formatting,
       buffer = bufnr,
       callback = function()
-        -- SYNC FORMATTING
+        ---SYNC FORMATTING
         vim.lsp.buf.format { bufnr = bufnr }
 
-        -- ASYNC FORMATTING
-        -- Caveats!
-        -- Async formatting works by sending a formatting request, then applying
-        -- and writing results once they're received. This lets you move the
-        -- cursor, scroll, and otherwise interact with the window while waiting
-        -- for results, which can make formatting seem more responsive (but
-        -- doesn't actually speed it up).
-        -- The async formatting implementation here comes with the following caveats:
-        -- * If you edit the buffer in between sending a request and receiving
-        --   results, those results won't be applied.
-        -- * Each save will result in writing the file to the disk twice.
-        -- * `:wq` will not format the file before quitting.
-        -- M.lsp.async_formatting(bufnr) -- uncomment to enable async formatting
+        ---ASYNC FORMATTING
+        ---Caveats!
+        ---Async formatting works by sending a formatting request, then applying
+        ---and writing results once they're received. This lets you move the
+        ---cursor, scroll, and otherwise interact with the window while waiting
+        ---for results, which can make formatting seem more responsive (but
+        ---doesn't actually speed it up).
+        ---The async formatting implementation here comes with the following caveats:
+        ---* If you edit the buffer in between sending a request and receiving
+        ---  results, those results won't be applied.
+        ---* Each save will result in writing the file to the disk twice.
+        ---* `:wq` will not format the file before quitting.
+        ---M.lsp.async_formatting(bufnr) ---uncomment to enable async formatting
       end,
     })
   end
@@ -221,7 +215,7 @@ end
 M.telescope.preview_img = function(filepath, bufnr, opts)
   ---@diagnostic disable-next-line: redefined-local
   local is_image = function(filepath)
-    local image_extensions = { "png", "jpg", "gif" } -- Supported image formats
+    local image_extensions = { "png", "jpg", "gif" } ---Supported image formats
     local split_path = vim.split(filepath:lower(), ".", { plain = true })
     local extension = split_path[#split_path]
     return vim.tbl_contains(image_extensions, extension)
@@ -259,7 +253,7 @@ M.telescope.buffer_previewer = function(filepath, bufnr, opts)
       if mime_type == "text" then
         previewers.buffer_previewer_maker(filepath, bufnr, opts)
       else
-        -- maybe we want to write something to the buffer here
+        ---maybe we want to write something to the buffer here
         vim.schedule(function()
           vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
         end)

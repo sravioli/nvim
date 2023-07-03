@@ -1,5 +1,5 @@
 return {
-  -- improve neovim lsp experience
+  ---improve neovim lsp experience
   "glepnir/lspsaga.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",

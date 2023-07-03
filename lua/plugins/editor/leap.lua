@@ -1,5 +1,5 @@
 return {
-  -- Neovim's answer to the mouse 🦘
+  ---Neovim's answer to the mouse 🦘
   "ggandor/leap.nvim",
   dependencies = { "tpope/vim-repeat" },
   init = function()

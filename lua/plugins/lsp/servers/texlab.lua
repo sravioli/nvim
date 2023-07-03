@@ -19,7 +19,7 @@ return {
     args = {
       "--reuse-window",
       "--execute-command",
-      "toggle_synctex", -- Open Sioyek in synctex mode.
+      "toggle_synctex", ---Open Sioyek in synctex mode.
       "--inverse-search",
       [[nvim --headless -c "Lazy load nvim-lspconfig" %f -c "%l" --server ]]
         .. vim.v.servername,

@@ -1,7 +1,7 @@
 return {
-  -- Indent guides for Neovim
+  ---Indent guides for Neovim
   "lukas-reineke/indent-blankline.nvim",
-  event = "BufWinEnter",
+  event = "BufRead",
   opts = {
     show_end_of_line = true,
     show_current_context = true,

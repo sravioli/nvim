@@ -1,5 +1,5 @@
 return {
-  -- The neovim tabline plugin.
+  ---The neovim tabline plugin.
   "romgrk/barbar.nvim",
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
@@ -12,25 +12,25 @@ return {
     require("utils.fn").mappings.load "barbar"
   end,
   opts = {
-    -- Enable/disable animations
+    ---Enable/disable animations
     animation = false,
 
-    -- Enable/disable auto-hiding the tab bar when there is a single buffer
+    ---Enable/disable auto-hiding the tab bar when there is a single buffer
     auto_hide = true,
 
-    -- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
+    ---Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
     hide = { extensions = true, inactive = false },
 
-    -- Enable highlighting visible buffers
+    ---Enable highlighting visible buffers
     highlight_visible = false,
 
     icons = {
-      -- Configure the base icons on the bufferline.
-      -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
+      ---Configure the base icons on the bufferline.
+      ---Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
       buffer_index = false,
       buffer_number = false,
       button = "×",
-      -- Enables / disables diagnostic symbols
+      ---Enables / disables diagnostic symbols
       diagnostics = {
         [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
         [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
@@ -43,16 +43,16 @@ return {
         deleted = { enabled = true, icon = "-" },
       },
 
-      -- Configure the icons on the bufferline when modified or pinned.
-      -- Supports all the base icon options.
+      ---Configure the icons on the bufferline when modified or pinned.
+      ---Supports all the base icon options.
       modified = { button = "●" },
       pinned = { button = "", filename = true },
 
-      -- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
+      ---Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
       preset = "slanted",
 
-      -- Configure the icons on the bufferline based on the visibility of a buffer.
-      -- Supports all the base icon options, plus `modified` and `pinned`.
+      ---Configure the icons on the bufferline based on the visibility of a buffer.
+      ---Supports all the base icon options, plus `modified` and `pinned`.
       alternate = { filetype = { enabled = false } },
       current = { buffer_index = false },
       inactive = { button = "󰒲" },

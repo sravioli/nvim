@@ -10,7 +10,7 @@ let.transparency = true
 set.clipboard = "unnamedplus"
 set.cursorline = true
 
--- set.fillchars = { eob = "~" }
+---set.fillchars = { eob = "~" }
 set.ignorecase = true
 set.smartcase = true
 set.mouse = "a"
@@ -18,19 +18,19 @@ set.hlsearch = true
 set.showmode = false
 set.pumblend = 10
 
--- Numbers
+---Numbers
 set.number = true
 set.relativenumber = true
 set.numberwidth = 2
 set.ruler = false
 
--- Tab
+---Tab
 set.tabstop = 2
 set.shiftwidth = 2
 set.expandtab = true
 
--- disable nvim intro
--- set.shortmess:append "sI"
+---disable nvim intro
+---set.shortmess:append "sI"
 
 set.signcolumn = "yes"
 set.splitbelow = true
@@ -41,18 +41,18 @@ set.undofile = true
 
 set.colorcolumn = "80"
 
--- interval for writing swap file to disk, also used by gitsigns
+---interval for writing swap file to disk, also used by gitsigns
 set.updatetime = 250
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
+---go to previous/next line with h,l,left arrow and right arrow
+---when cursor reaches end/beginning of line
 set.whichwrap:append "<>[]hl"
 
 let.mapleader = " "
 
 let.editorconfig = true
 
--- add binaries installed by mason.nvim to path
+---add binaries installed by mason.nvim to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath "data"
   .. "/mason/bin"
@@ -100,7 +100,7 @@ for prov, paths in pairs(providers) do
   let[prov .. "_host_prog"] = paths[fn.get_os()]
 end
 
--- Define diagnostic signs
+---Define diagnostic signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

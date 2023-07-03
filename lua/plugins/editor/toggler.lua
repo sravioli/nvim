@@ -1,15 +1,15 @@
 return {
-  -- invert text in vim, purely with lua.
+  ---invert text in vim, purely with lua.
   "nguyenvukhang/nvim-toggler",
   keys = {
     {
       "<leader>i",
       "<cmd>lua require('nvim-toggler').toggle()<CR>",
-      desc = "Toggle word",
+      desc = "󰨙  Toggle word",
     },
   },
   opts = {
-    -- your own inverses
+    ---your own inverses
     inverses = {
       ["True"] = "False",
       ["TRUE"] = "FALSE",
@@ -36,9 +36,9 @@ return {
       ["minimum"] = "maximum",
       ["min"] = "max",
     },
-    -- removes the default <leader>i keymap
+    ---removes the default <leader>i keymap
     remove_default_keybinds = true,
-    -- removes the default set of inverses
+    ---removes the default set of inverses
     remove_default_inverses = false,
   },
 }

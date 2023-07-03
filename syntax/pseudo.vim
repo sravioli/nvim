@@ -1,7 +1,7 @@
 " Vim syntaxtax file
 " Language: pseudocode
 " Maintainer: Simone Fidanza
-" Latest Revision: 2023-06-16 16:53
+" Latest Revision: 2023-07-03 15:33
 
 if exists("b:current_syntaxtax")
   finish

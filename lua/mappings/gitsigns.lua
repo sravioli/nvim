@@ -1,11 +1,11 @@
--- local gs = package.loaded.gitsigns
+---local gs = package.loaded.gitsigns
 local gs = require "gitsigns"
 
 return {
   plugin = true,
 
   n = {
-    -- Navigation through hunks
+    ---Navigation through hunks
     ["]c"] = {
       function()
         if vim.wo.diff then
@@ -34,7 +34,7 @@ return {
       opts = { expr = true },
     },
 
-    -- Actions
+    ---Actions
     ["<leader>hs"] = { gs.stage_hunk, "󰊢  Stage hunk" },
     ["<leader>hr"] = { gs.reset_hunk, "󰊢  Reset hunk" },
 

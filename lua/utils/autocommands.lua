@@ -14,7 +14,7 @@ local au = vim.api.nvim_create_autocmd
 ---@type table User defined augroups
 local aug = require "utils.augroups"
 
--- Restore the >_ cursor when exiting nvim
+---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
   desc = "Restore WindowsTerminal cursor shape upon exit",
   pattern = "*",
@@ -22,7 +22,7 @@ au("VimLeave", {
   group = aug.cursor,
 })
 
--- Highlight text on yank
+---Highlight text on yank
 au("TextYankPost", {
   desc = "Highlight selection on yank",
   group = aug.yank_highlight,
@@ -32,7 +32,7 @@ au("TextYankPost", {
   end,
 })
 
--- Quit from some windows by only pressing q
+---Quit from some windows by only pressing q
 au("FileType", {
   desc = "Exit some views with 'q'",
   pattern = {
@@ -52,7 +52,7 @@ au("FileType", {
   group = aug.exit_views,
 })
 
--- When having multiple buffers, show cursor only in the active one
+---When having multiple buffers, show cursor only in the active one
 au({ "InsertLeave", "WinEnter" }, {
   desc = "Show cursor in current buffer",
   pattern = "*",
@@ -84,13 +84,13 @@ au("FileType", {
   callback = function()
     for _, doxygen in ipairs(doxygen_patterns) do
       local pattern, highlight = doxygen.pattern, doxygen.highlight
-      vim.cmd(string.format("highlight link %s %s", pattern, highlight)) -- Define highlighting attributes
+      vim.cmd(string.format("highlight link %s %s", pattern, highlight)) ---Define highlighting attributes
     end
   end,
   group = aug.custom_highlights,
 })
 
--- Set filetype to "pseudo"
+---Set filetype to "pseudo"
 au({ "BufNewFile", "BufRead" }, {
   desc = "Set custom filetype for `.pseudo` files",
   pattern = "*.pseudo",
@@ -98,15 +98,7 @@ au({ "BufNewFile", "BufRead" }, {
   group = aug.buf_detect,
 })
 
--- Change some highlight groups for markdown
--- au("FileType", {
---   desc = "Change highlight groups",
---   pattern = "markdown",
---   command = [[highlight! link @text.emphasis Italic]],
---   group = aug.custom_highlights,
--- })
-
--- Enable markdown auto-align table
+---Enable markdown auto-align table
 au("FileType", {
   desc = "Align markdown tables as you type",
   pattern = "markdown",

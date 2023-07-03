@@ -1,6 +1,8 @@
 return {
-  -- Snippet Engine for Neovim written in Lua.
+  ---Snippet Engine for Neovim written in Lua.
   "L3MON4D3/LuaSnip",
+  dependencies = { "rafamadriz/friendly-snippets" },
+  event = "InsertEnter",
   build = "make install_jsregexp",
   config = function()
     local present, ls = pcall(require, "luasnip")
@@ -12,6 +14,7 @@ return {
       history = true,
       update_events = { "TextChanged", "TextChangedI" },
       region_check_events = { "CursorMoved", "CursorHold", "InsertEnter" },
+      ---All the LuaSnip nodes that should be included in a snippet file
       snip_env = {
         s = ls.snippet,
         sn = ls.snippet_node,
@@ -43,19 +46,19 @@ return {
 
     ls.config.set_config(opts)
 
-    -- vscode format
+    ---vscode format
     require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip.loaders.from_vscode").lazy_load {
       paths = vim.g.vscode_snippets_path or "",
     }
 
-    -- snipmate format
+    ---snipmate format
     require("luasnip.loaders.from_snipmate").load()
     require("luasnip.loaders.from_snipmate").lazy_load {
       paths = vim.g.snipmate_snippets_path or "",
     }
 
-    -- lua format
+    ---lua format
     require("luasnip.loaders.from_lua").load()
     require("luasnip.loaders.from_lua").lazy_load {
       paths = vim.g.lua_snippets_path or "",
@@ -72,5 +75,4 @@ return {
       end,
     })
   end,
-  dependencies = { "rafamadriz/friendly-snippets" },
 }

@@ -12,7 +12,7 @@ return {
     printWidth = 79,
   },
 
-  validate = true, -- TODO: conflicts between Kubernetes resources and kustomization.yaml
+  validate = true, ---TODO: conflicts between Kubernetes resources and kustomization.yaml
   hover = true,
   completion = true,
 

@@ -1,5 +1,5 @@
 return {
-  -- Hover plugin framework for Neovim
+  ---Hover plugin framework for Neovim
   "lewis6991/hover.nvim",
   keys = {
     { "<leader>k", "<cmd>lua require('hover').hover()<CR>", desc = "hover.nvim" },
@@ -11,7 +11,7 @@ return {
   },
   opts = {
     init = function()
-      -- Require providers
+      ---Require providers
       require "hover.providers.lsp"
       -- require "hover.providers.gh"
       -- require "hover.providers.gh_user"

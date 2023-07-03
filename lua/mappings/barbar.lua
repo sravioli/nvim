@@ -6,14 +6,14 @@ return {
   n = {
     ["<S-Tab>"] = { "<cmd>BufferPrevious<CR>", "󰒭  Next buffer", opts = opts },
     ["<Tab>"] = { "<cmd>BufferNext<CR>", "󰒮  Prev buffer", opts = opts },
-    -- Re-order to previous/next
+    ---Re-order to previous/next
     ["<A-<>"] = {
       "<cmd>BufferMovePrevious<CR>",
       "󰁎  Move buffer left",
       opts = opts,
     },
     ["<A->>"] = { "<cmd>BufferMoveNext<CR>", "  Move buffer right", opts = opts },
-    -- Goto buffer in position...
+    ---Goto buffer in position...
     ["<A-1>"] = { "<cmd>BufferGoto 1<CR>", "󰎤  Goto buffer 1", opts = opts },
     ["<A-2>"] = { "<cmd>BufferGoto 2<CR>", "󰎧  Goto buffer 2", opts = opts },
     ["<A-3>"] = { "<cmd>BufferGoto 3<CR>", "󰎪  Goto buffer 3", opts = opts },
@@ -24,21 +24,21 @@ return {
     ["<A-8>"] = { "<cmd>BufferGoto 8<CR>", "󰎹  Goto buffer 8", opts = opts },
     ["<A-9>"] = { "<cmd>BufferGoto 9<CR>", "󰎼  Goto buffer 9", opts = opts },
     ["<A-0>"] = { "<cmd>BufferLast<CR>", "󰘁  Goto last buffer", opts = opts },
-    -- Pin/unpin buffer
+    ---Pin/unpin buffer
     ["<A-p>"] = { "<cmd>BufferPin<CR>", "  Pin buffer", opts = opts },
-    -- Close buffer
+    ---Close buffer
     ["<leader>bx"] = { "<cmd>BufferClose<CR>", "  Close buffer", opts = opts },
-    -- Wipeout buffer
-    --                 <cmd>BufferWipeout
-    -- Close commands
-    --                 <cmd>BufferCloseAllButCurrent
-    --                 <cmd>BufferCloseAllButPinned
-    --                 <cmd>BufferCloseAllButCurrentOrPinned
-    --                 <cmd>BufferCloseBuffersLeft
-    --                 <cmd>BufferCloseBuffersRight
-    -- Magic buffer-picking mode
+    ---Wipeout buffer
+    ---                <cmd>BufferWipeout
+    ---Close commands
+    ---                <cmd>BufferCloseAllButCurrent
+    ---                <cmd>BufferCloseAllButPinned
+    ---                <cmd>BufferCloseAllButCurrentOrPinned
+    ---                <cmd>BufferCloseBuffersLeft
+    ---                <cmd>BufferCloseBuffersRight
+    ---Magic buffer-picking mode
     ["<leader>bp"] = { "<cmd>BufferPick<CR>", "󰢷  Pick buffer", opts = opts },
-    -- Sort automatically by...
+    ---Sort automatically by...
     ["<leader>bb"] = {
       "<cmd>BufferOrderByBufferNumber<CR>",
       "  Re-order buffers by number",
@@ -60,8 +60,8 @@ return {
       opts = opts,
     },
 
-    -- Other:
-    -- :BarbarEnable - enables barbar (enabled by default)
-    -- :BarbarDisable - very bad command, should never be used
+    ---Other:
+    ---:BarbarEnable - enables barbar (enabled by default)
+    ---:BarbarDisable - very bad command, should never be used
   },
 }

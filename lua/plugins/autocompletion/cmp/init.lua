@@ -1,5 +1,5 @@
 return {
-  -- A completion plugin for neovim coded in Lua.
+  ---A completion plugin for neovim coded in Lua.
   "hrsh7th/nvim-cmp",
   dependencies = require "plugins.autocompletion.cmp.dependencies",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -21,7 +21,7 @@ return {
         completion = {
           winhighlight = "Normal:NormalDark,CursorLine:Visual,Search:None",
           scrollbar = true,
-          col_offset = -2, -- with -3 it would randomly clip
+          col_offset = -2, ---with -3 it would randomly clip
           side_padding = 0,
         },
         documentation = {
@@ -54,8 +54,8 @@ return {
       },
     })
 
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    -- `:` cmdline setup.
+    ---Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    ---`:` cmdline setup.
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp_sources.cmd,
@@ -64,7 +64,7 @@ return {
       },
     })
 
-    -- If you want insert `(` after select function or method item
+    ---If you want insert `(` after select function or method item
     local cmp_autopairs = require "nvim-autopairs.completion.cmp"
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,

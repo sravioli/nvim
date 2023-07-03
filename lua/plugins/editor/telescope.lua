@@ -1,5 +1,5 @@
 return {
-  -- Find, Filter, Preview, Pick. All lua, all the time.
+  ---Find, Filter, Preview, Pick. All lua, all the time.
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -12,29 +12,29 @@ return {
   },
   branch = "0.1.x",
   keys = {
-    -- find
+    ---find
     {
       "<C-p>",
       "<cmd>lua require('utils.fn').telescope.fd()<CR>",
-      desc = "Find files",
+      desc = "  Find files",
     },
     {
       "<leader>ff",
       "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!**/.git/*<CR>",
-      desc = "Find all",
+      desc = "  Find all files",
     },
-    { "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help page" },
-    { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "Find oldfiles" },
+    { "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "  Live grep" },
+    { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "  Find help" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "  Find old files" },
     {
       "<leader>fb",
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-      desc = "Find in current buffer",
+      desc = "  Find word in buffer",
     },
 
-    -- git
-    { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "Git commits" },
-    { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "Git status" },
+    ---git
+    -- { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "  Git commits" },
+    -- { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "  Git status" },
   },
   config = function()
     local present, telescope = pcall(require, "telescope")
@@ -85,14 +85,14 @@ return {
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
-        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+        set_env = { ["COLORTERM"] = "truecolor" }, ---default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        -- file_previewer = require("telescope.previewers").cat.new,
+        ---file_previewer = require("telescope.previewers").cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        -- Developer configurations: Not meant for general override
+        ---Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-        -- buffer_previewer_maker = require("utils.fn").telescope.buffer_previewer,
+        ---buffer_previewer_maker = require("utils.fn").telescope.buffer_previewer,
         mappings = {
           n = {
             ["q"] = require("telescope.actions").close,
@@ -105,11 +105,11 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-          -- the default case_mode is "smart_case"
+          fuzzy = true, ---false will only do exact matching
+          override_generic_sorter = true, ---override the generic sorter
+          override_file_sorter = true, ---override the file sorter
+          case_mode = "smart_case", ---or "ignore_case" or "respect_case"
+          ---the default case_mode is "smart_case"
         },
       },
     }
