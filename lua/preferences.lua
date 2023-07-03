@@ -18,6 +18,15 @@ local preferences = {
     Text = "",
     Method = "󰆧",
     Function = "󰊕",
+    Package = "",
+    String = "󰅳 ",
+    Number = " ",
+    Boolean = " ",
+    Array = " ",
+    Null = "󰟢 ",
+    Object = "󰐾 ",
+    Component = "󰡱",
+    Fragment = "",
     Constructor = "",
     Field = "󰇽",
     Variable = "󰂡",
@@ -41,6 +50,8 @@ local preferences = {
     Operator = "󰆕",
     TypeParameter = "󰅲",
   },
+
+  signs = { Error = " ", Warn = " ", Hint = " ", Info = " " },
 }
 
 return preferences
