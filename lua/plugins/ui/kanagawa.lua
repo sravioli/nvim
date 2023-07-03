@@ -116,6 +116,10 @@ return {
 
         -- Telescope
         TelescopeBorder = { link = "FloatBorder" },
+
+        -- Nerd icons
+        NerdIconNormal = { link = "NormalFloat" },
+        NerdIconBorder = { link = "FloatBorder" },
       }
     end,
     colors = {
