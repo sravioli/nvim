@@ -78,9 +78,9 @@ return {
     ["<M-BS>"] = { "<C-u>", "Delete everything from cursor to left" },
 
     -- undo break-points
-    [","] = { ",<c-g>u", "Add undo break points" },
-    ["."] = { ".<c-g>u", "Add undo break points" },
-    [";"] = { ";<c-g>u", "Add undo break points" },
+    [","] = { ",<C-g>u", "Add undo break points" },
+    ["."] = { ".<C-g>u", "Add undo break points" },
+    [";"] = { ";<C-g>u", "Add undo break points" },
   },
 
   t = {
