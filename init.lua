@@ -1,11 +1,11 @@
 ---Source neovim settings
-require "settings"
+require "srv.settings"
 
 ---Load plugins
-require "plugins"
+require "srv.plugins"
 
 ---Load user autocommands
-require "utils.autocommands"
+require "srv.utils.autocommands"
 
 ---Load non-plugin keymaps
-require("utils.fn").mappings.load()
+require("srv.utils.fn").mappings.load()
