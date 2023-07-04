@@ -20,7 +20,7 @@ return {
       function()
         require("lspsaga.rename"):lsp_rename()
       end,
-      "󰑕   Lspsaga rename",
+      "󰑕  Lspsaga rename",
     },
 
     ["gd"] = {
@@ -66,7 +66,7 @@ return {
       function()
         require("lspsaga.callhierarchy"):send_method(3)
       end,
-      "   Lspsaga outgoing call hierarchy",
+      "  Lspsaga outgoing call hierarchy",
     },
 
     ["<leader>o"] = {
