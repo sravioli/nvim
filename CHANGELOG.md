@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.5.0](https://github.com/sRavioli/nvim/compare/0.4.0..0.5.0) - 2023-07-04
+#### Bug Fixes
+- **(cmp)** add rg as source and remove diagraph - ([ca867df](https://github.com/sRavioli/nvim/commit/ca867dfda91bc90aedfb91e8cfd8a40074f31e74)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** description spacing - ([cff0502](https://github.com/sRavioli/nvim/commit/cff0502911a5de1439e24d3c0b11334571564436)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** load leap on keymaps, change config - ([be387c1](https://github.com/sRavioli/nvim/commit/be387c1f7e4d3ccddc0be19ee1087c88562a11aa)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(keymaps)** change plugins keymaps - ([0ebdcd7](https://github.com/sRavioli/nvim/commit/0ebdcd76ad2bdb9714801a525e0406beab7945e4)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** install trouble - ([6852bf1](https://github.com/sRavioli/nvim/commit/6852bf166a7283a448cd4e60bd0100cad157caa0)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** change some events - ([b551270](https://github.com/sRavioli/nvim/commit/b5512707776c65adbd7b1e0583fe10df39d713b3)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** add which-key groups, and register them - ([e675b76](https://github.com/sRavioli/nvim/commit/e675b768a33afae21253429f8912fb00534579a4)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(cmp)** uninstall diagraph source - ([4364fba](https://github.com/sRavioli/nvim/commit/4364fbae3242e6aef25ea496dfd9d8ce1bb6df4e)) - [@sRavioli](https://github.com/sRavioli)
+#### Refactoring
+- move everything to user folder (`srv`) - ([eb07517](https://github.com/sRavioli/nvim/commit/eb0751788ebd956ba31c7b91fd571f85f563c2d5)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.4.0](https://github.com/sRavioli/nvim/compare/0.3.0..0.4.0) - 2023-07-03
 #### Bug Fixes
 - **(lsp)** remove signs from `on_attach()` since they are loaded globally - ([3505793](https://github.com/sRavioli/nvim/commit/3505793ac29ec23aafb472a97d3dfeb8a2f21f0f)) - [@sRavioli](https://github.com/sRavioli)
