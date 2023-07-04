@@ -10,7 +10,9 @@
 ---do what you intended.
 local aug = vim.api.nvim_create_augroup
 
-return {
+---User defined autogroups
+---@class Autogroups
+local autogroups = {
   cursor = aug("CursorGroup", {}),
   exit_views = aug("ExitViews", {}),
   yank_highlight = aug("YankHighlight", {}),
@@ -21,3 +23,5 @@ return {
   null_ls = aug("LspFormatting", {}),
   lualine = aug("Lualine", { clear = true }),
 }
+
+return autogroups
