@@ -123,19 +123,10 @@ au("User", {
 })
 
 au("FileType", {
-  pattern = { "*" },
-  desc = "Set the colorcolumn for all files",
-  group = aug.buf_detect,
-  callback = function()
-    vim.wo.colorcolumn = "80"
-  end,
-})
-
-au("FileType", {
   pattern = "lua",
   desc = "Change the colorcolumn for lua files",
   group = aug.buf_detect,
   callback = function()
-    vim.wo.colorcolumn = "85"
+    vim.opt_local.colorcolumn = "85"
   end,
 })
