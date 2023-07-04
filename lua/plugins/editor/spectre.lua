@@ -3,7 +3,7 @@ return {
   "nvim-pack/nvim-spectre",
   keys = {
     {
-      "<leader>S",
+      "<leader>sr",
       ":lua require('spectre').open()<CR>",
       desc = "󰊠  Open Spectre",
     },
