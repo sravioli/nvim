@@ -1,6 +1,13 @@
+---Global user preferences
+---@class Preferences
+---@field border string The preferred border for UI windows and similar
+---@field border_chars function<table> The characters to use as a border
+---@field kind_icons table<string> The icons to use for the various kinds
+---@field signs table<string> The icons to use for diagnostics messages
 local preferences = {
   border = "rounded",
 
+  ---@param hl_name string The highlight to set for the border character
   border_chars = function(hl_name)
     return {
       { "╭", hl_name },
