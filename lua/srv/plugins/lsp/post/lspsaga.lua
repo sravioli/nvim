@@ -44,7 +44,7 @@ return {
       code_action = "󰌵 ",
       incoming = "󰁍 ",
       outgoing = " ",
-      hover = " ",
+      hover = " 󱓂",
     },
 
     symbol_in_winbar = {
