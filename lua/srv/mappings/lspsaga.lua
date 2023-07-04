@@ -9,7 +9,7 @@ return {
       "  Lspsaga find definition",
     },
 
-    ["<M-.>"] = {
+    ["<leader>ca"] = {
       function()
         require("lspsaga.codeaction"):code_action()
       end,
@@ -33,14 +33,14 @@ return {
       function()
         require("lspsaga.definition"):goto_definition(2)
       end,
-      "   Lspsaga type definition",
+      "  Lspsaga type definition",
     },
 
     ["gpd"] = {
       function()
         require("lspsaga.definition"):peek_definition(1)
       end,
-      "   Lspsaga peek definition",
+      "  Lspsaga peek definition",
     },
     ["gpt"] = {
       function()
@@ -77,17 +77,8 @@ return {
     },
   },
 
-  i = {
-    ["<M-.>"] = {
-      function()
-        require("lspsaga.codeaction"):code_action()
-      end,
-      "󱐋  Open code actions",
-    },
-  },
-
   v = {
-    ["<M-.>"] = {
+    ["<leader>ca"] = {
       function()
         require("lspsaga.codeaction"):code_action()
       end,
