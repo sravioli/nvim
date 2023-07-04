@@ -3,10 +3,16 @@
 ---@author sRavioli
 ---@license GPL-3.0
 
-local M = { mappings = {}, telescope = {}, lsp = {} }
+---User defined utility functions
+---@class Functions
+---@field mappings table<function> Functions related to keymaps
+---@field telescope table<function> Functions related to the telescope plugin
+---@field lsp table<function> Function related to the Language Server Protocol
+local Functions = { mappings = {}, telescope = {}, lsp = {} }
 
 ---Aligns a markdown table in insert mode
-M.align_table = function()
+---@return nil
+Functions.align_table = function()
   local pattern = "^%s*|%s.*%s|%s*$"
   local linenr, colnr = vim.fn.line ".", vim.fn.col "."
   local curr_line = vim.fn.getline "."
@@ -28,8 +34,8 @@ M.align_table = function()
 end
 
 ---Detects the current OS
----@return string OS_name The OS name (lnx | win)
-M.get_os = function()
+---@return string OS The OS name that can be lnx|win
+Functions.get_os = function()
   if vim.loop.os_uname().sysname == "Linux" then
     return "lnx"
   else
@@ -37,7 +43,12 @@ M.get_os = function()
   end
 end
 
-M.mappings.load = function(section, options)
+---Loads the required keymaps. When called with no arguments it will load only the
+---non-plugins keymaps, eg. the one that do not have `plugin = true` in their declaration.
+---@param section string The name of the keymaps section to load
+---@param options table A tabale containing the options to pass to `vim.keymap.set()`
+---@return nil
+Functions.mappings.load = function(section, options)
   vim.schedule(function()
     local tbl_merge = vim.tbl_deep_extend
 
@@ -49,7 +60,7 @@ M.mappings.load = function(section, options)
       section_values.plugin = nil
 
       for mode, mode_values in pairs(section_values) do
-        local default_opts = tbl_merge("force", { mode = mode }, mapping_opt or {})
+        local default_opts = tbl_merge("force", { mode = mode }, options or {})
         for keybind, mapping_info in pairs(mode_values) do
           ---merge default + user opts
           local opts = tbl_merge("force", default_opts, mapping_info.opts or {})
@@ -75,7 +86,12 @@ M.mappings.load = function(section, options)
   end)
 end
 
-M.mappings.unload = function(section, options)
+---Unloads the required keymaps. When called with no arguments it will unload only the
+---non-plugins keymaps, eg. the one that do not have `plugin = true` in their declaration.
+---@param section string The name of the keymaps section to unload
+---@param options table A tabale containing the options to pass to `vim.keymap.del()`
+---@return nil
+Functions.mappings.unload = function(section, options)
   vim.schedule(function()
     local mappings = require "srv.mappings"
     local tbl_merge = vim.tbl_deep_extend
@@ -111,11 +127,11 @@ end
 ---Filters diagnostigs leaving only the most severe per line.
 ---@param diagnostics table[]
 ---@return table[]
----@see https://www.reddit.com/r/neovim/comments/mvhfw7/can_built_in_lsp_diagnostics_be_limited_to_show_a/gvd8rb9/
----@see https://github.com/neovim/neovim/issues/15770
----@see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
----@see `:h diagnostic-handlers`
-M.lsp.filter_diagnostics = function(diagnostics)
+---see https://www.reddit.com/r/neovim/comments/mvhfw7/can_built_in_lsp_diagnostics_be_limited_to_show_a/gvd8rb9/
+---see https://github.com/neovim/neovim/issues/15770
+---see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
+---see `:h diagnostic-handlers`
+Functions.lsp.filter_diagnostics = function(diagnostics)
   if not diagnostics then
     return {}
   end
@@ -135,7 +151,7 @@ M.lsp.filter_diagnostics = function(diagnostics)
   return vim.tbl_values(most_severe)
 end
 
-M.lsp.async_formatting = function(bufnr)
+Functions.lsp.async_formatting = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   vim.lsp.buf_request(
@@ -173,7 +189,7 @@ M.lsp.async_formatting = function(bufnr)
   )
 end
 
-M.lsp.autoformat = function(client, bufnr)
+Functions.lsp.autoformat = function(client, bufnr)
   local lsp_formatting = require("srv.utils.augroups").null_ls
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds { group = lsp_formatting, buffer = bufnr }
@@ -196,13 +212,13 @@ M.lsp.autoformat = function(client, bufnr)
         ---  results, those results won't be applied.
         ---* Each save will result in writing the file to the disk twice.
         ---* `:wq` will not format the file before quitting.
-        ---M.lsp.async_formatting(bufnr) ---uncomment to enable async formatting
+        ---Functions.lsp.async_formatting(bufnr) ---uncomment to enable async formatting
       end,
     })
   end
 end
 
-M.telescope.fd = function()
+Functions.telescope.fd = function()
   local opts = {}
   vim.fn.system "git rev-parse --is-inside-work-tree"
   if vim.v.shell_error == 0 then
@@ -212,7 +228,7 @@ M.telescope.fd = function()
   end
 end
 
-M.telescope.preview_img = function(filepath, bufnr, opts)
+Functions.telescope.preview_img = function(filepath, bufnr, opts)
   ---@diagnostic disable-next-line: redefined-local
   local is_image = function(filepath)
     local image_extensions = { "png", "jpg", "gif" } ---Supported image formats
@@ -241,7 +257,7 @@ M.telescope.preview_img = function(filepath, bufnr, opts)
   end
 end
 
-M.telescope.buffer_previewer = function(filepath, bufnr, opts)
+Functions.telescope.buffer_previewer = function(filepath, bufnr, opts)
   local previewers = require "telescope.previewers"
   local Job = require "plenary.job"
   filepath = vim.fn.expand(filepath)
@@ -262,4 +278,4 @@ M.telescope.buffer_previewer = function(filepath, bufnr, opts)
   }):sync()
 end
 
-return M
+return Functions
