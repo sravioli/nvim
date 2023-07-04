@@ -19,7 +19,7 @@ return {
       { "amarakon/nvim-cmp-buffer-lines" }, ---nvim-cmp completion source for buffer lines
       { "hrsh7th/cmp-calc" }, ---nvim-cmp source for math calculation
       { "PhilRunninger/cmp-rpncalc" }, ---nvim-cmp source for math calculations using Reverse Polish Notation
-      { "dmitmel/cmp-digraphs" }, ---A nvim-cmp source for completing digraphs.
+      -- { "dmitmel/cmp-digraphs" }, ---A nvim-cmp source for completing digraphs.
     },
     { ---Filesystem paths
       { "FelipeLema/cmp-async-path" }, ---nvim-cmp source for path (async version)
