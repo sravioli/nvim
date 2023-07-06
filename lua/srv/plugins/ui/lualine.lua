@@ -89,7 +89,7 @@ return {
                       if client and client.name ~= "" then
                         local name = "[" .. client.name .. "]"
                         if client.name == "null-ls" then
-                          name = "(" .. icons.kinds.Null .. ")"
+                          name = "(󰟢)"
                         end
 
                         table.insert(client_names, name)
