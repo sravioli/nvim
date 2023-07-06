@@ -20,7 +20,7 @@ M.on_attach = function(client, bufnr)
       },
       source = "always",
       spacing = 1,
-      prefix = require("srv.preferences").signs.Error,
+      prefix = require("srv.preferences").icons.diagnostics.Error,
     },
 
     signs = true,
