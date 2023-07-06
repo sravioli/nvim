@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.6.3](https://github.com/sRavioli/nvim/compare/0.6.2..0.6.3) - 2023-07-06
+#### Bug Fixes
+- **(github)** add permission to write to workflow - ([bf32f97](https://github.com/sRavioli/nvim/commit/bf32f9700965b9af0c6e5bf1509059a75d960eb8)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** make workflow run on dispatch - ([feba023](https://github.com/sRavioli/nvim/commit/feba023a65d5893f860022927792a2135cf0b515)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.2](https://github.com/sRavioli/nvim/compare/0.6.1..0.6.2) - 2023-07-06
 #### Bug Fixes
 - **(github)** semicolons in workflow - ([5738405](https://github.com/sRavioli/nvim/commit/5738405a0447940924cb40c01405aafd5862f36a)) - [@sRavioli](https://github.com/sRavioli)
