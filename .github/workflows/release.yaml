@@ -2,30 +2,32 @@
 name: ci
 run-name: Perform release from latest tag
 
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
-  cog_check_job:
+  release:
+    name: Create a GitHub release
     runs-on: ubuntu-latest
-    name: Create release
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout main
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Semver release
-        uses: cocogitto/cocogitto-action@v3
-        id: release
+      - name: SemVer release
+        uses: cocogitto/cocogitto-action@v3.5
+        id: relase
         with:
+          check-latest-tag-only: true
           release: true
 
-      - name: Generate Changelog
+      - name: Generate changelog
         run: >-
-          cog changelog --at ${{ steps.release.outputs.version }} -t remote  --remote
-          github.com --owner sRavioli --repository nvim > GITHUB_CHANGELOG.md
-
-      - name: Print version
-        run: echo '${{ steps.release.outputs.version }}'
+          cog changelog --at ${{ steps.release.outputs.version }} --template
+          remote > GITHUB_CHANGELOG.md
 
       - name: Upload github release
         uses: softprops/action-gh-release@v1
