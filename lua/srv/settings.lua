@@ -394,6 +394,23 @@ set.updatetime = 250
 set.whichwrap:append "<>[]hl"
 
 ---@type string
+---_(local to window)_ **Default:** `""`
+---`'colorcolumn'` is a comma-separated list of screen columns that are highlighted with
+---ColorColumn `hl-ColorColumn`.  Useful to align text.  Will make screen redrawing
+---slower. The screen column can be an absolute number, or a number preceded with
+---`'+'` or `'-'`, which is added to or subtracted from `'textwidth'`.
+---
+---```vim
+---:set cc=+1  " highlight column after 'textwidth'
+---:set cc=+1,+2,+3  " highlight three columns after 'textwidth'
+---:hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+---```
+---
+---When `'textwidth'` is zero then the items with `'-'` and `'+'` are not used.
+---A maximum of 256 columns are highlighted.
+set.colorcolumn = "81"
+
+---@type string
 ---_(global)_ **Default:** `"\"`
 ---To define a mapping which uses the `g:mapleader` variable, the special string
 ---`"<Leader>"` can be used.  It is replaced with the string value of `g:mapleader`.
@@ -468,7 +485,7 @@ for prov, paths in pairs(providers) do
 end
 
 ---Load the diagnostic signs
-local signs = require("srv.preferences").signs
+local signs = require("srv.preferences").icons.diagnostics
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
