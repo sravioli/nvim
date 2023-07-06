@@ -38,6 +38,8 @@ return {
       ["<leader>s"] = { name = "+search" },
       ["<leader>x"] = { name = "+diagnostics/quickfix" },
       ["<leader>t"] = { name = "+toggle" },
+      ["<leader>d"] = { name = "+debug" },
+      ["<leader>da"] = { name = "+adapters" },
     },
   },
   config = function(_, opts)
