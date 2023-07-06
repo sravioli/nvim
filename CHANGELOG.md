@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.5](https://github.com/sRavioli/nvim/compare/0.7.4..0.7.5) - 2023-07-06
+#### Hotfixes
+- **(cog)** remove old configs - ([39a2064](https://github.com/sRavioli/nvim/commit/39a2064fc3e63b41b4eec0c486e83ff7055dce36)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.4](https://github.com/sRavioli/nvim/compare/0.7.3..0.7.4) - 2023-07-06
 #### Hotfixes
 - **(cog)** use correct git push command - ([9c93656](https://github.com/sRavioli/nvim/commit/9c936568b356934358a1a1efea9047bdb0f5d55d)) - [@sRavioli](https://github.com/sRavioli)
