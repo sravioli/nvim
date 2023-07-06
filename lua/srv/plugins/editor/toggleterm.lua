@@ -5,19 +5,19 @@ return {
     {
       "<M-i>",
       "<cmd>ToggleTerm direction=float<CR>",
-      desc = "Toggle floating terminal",
+      desc = "  Toggle floating terminal",
       mode = { "n", "t" },
     },
     {
       "<M-h>",
       "<cmd>ToggleTerm direction=horizontal<CR>",
-      desc = "Toggle horizontal terminal",
+      desc = "  Toggle horizontal terminal",
       mode = { "n", "t" },
     },
     {
       "<M-v>",
       "<cmd>ToggleTerm direction=vertical<CR>",
-      desc = "Toggle vertical terminal",
+      desc = "  Toggle vertical terminal",
       mode = { "n", "t" },
     },
   },
