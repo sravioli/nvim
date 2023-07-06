@@ -20,7 +20,7 @@ end
 function M.format(entry, vim_item)
   local present, lspkind = pcall(require, "lspkind")
   if not present then
-    local icons = require("srv.preferences").kind_icons
+    local icons = require("srv.preferences").icons.kinds
     -- From kind_icons array
     vim_item.kind =
       -- This concatenates the icons with the name of the item kind
