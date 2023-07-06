@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.6.2](https://github.com/sRavioli/nvim/compare/0.6.1..0.6.2) - 2023-07-06
+#### Bug Fixes
+- **(github)** semicolons in workflow - ([5738405](https://github.com/sRavioli/nvim/commit/5738405a0447940924cb40c01405aafd5862f36a)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.1](https://github.com/sRavioli/nvim/compare/0.6.0..0.6.1) - 2023-07-06
 #### Bug Fixes
 - **(cog)** add branch whitelists - ([5f07b87](https://github.com/sRavioli/nvim/commit/5f07b8710cf6346fe99e63cd42eed19a322905fb)) - [@sRavioli](https://github.com/sRavioli)
