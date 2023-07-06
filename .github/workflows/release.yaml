@@ -6,7 +6,8 @@ permissions:
   contents: write
 
 on:
-  workflow_dispatch: ~
+  push:
+    tags: ['*']
 
 jobs:
   release:
@@ -25,25 +26,25 @@ jobs:
           git config --global user.email github-actions@github.com;
           git config --global user.name github-actions;
 
+      - name: Fetch latest tag
+        run: >-
+          echo "LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)"
+          >> "$GITHUB_ENV"
+
       - name: SemVer release
         uses: cocogitto/cocogitto-action@v3.5
         id: relase
-        # with:
-        #  # check-latest-tag-only: true
-        #   release: true
-        #   git-user: github-actions
-        #   git-user-email: github-actions@github.com
 
       - name: Generate changelog
         run: >-
-          cog changelog --at ${{ steps.release.outputs.version }} --template
+          cog changelog --at ${{env.LATEST_TAG }} --template
           remote > GITHUB_CHANGELOG.md
 
       - name: print
-        run: echo ${{ steps.release.outputs.version }}
+        run: echo ${{ env.LATEST_TAG }}
 
       - name: Upload github release
         uses: softprops/action-gh-release@v1
         with:
           body_path: GITHUB_CHANGELOG.md
-          tag_name: ${{ steps.release.outputs.version }}
+          tag_name: ${{ env.LATEST_TAG }}
