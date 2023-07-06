@@ -29,7 +29,7 @@ jobs:
         uses: cocogitto/cocogitto-action@v3.5
         id: relase
         with:
-          check-latest-tag-only: true
+          # check-latest-tag-only: true
           release: true
           git-user: github-actions
           git-user-email: github-actions@github.com
@@ -38,6 +38,9 @@ jobs:
         run: >-
           cog changelog --at ${{ steps.release.outputs.version }} --template
           remote > GITHUB_CHANGELOG.md
+
+      - name: print
+        run: echo ${{ steps.release.outputs.version }}
 
       - name: Upload github release
         uses: softprops/action-gh-release@v1
