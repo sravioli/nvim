@@ -53,7 +53,7 @@ return {
             end
           end,
         },
-        diagnostics.actionlint,
+        -- diagnostics.actionlint,
 
         formatting.fixjson,
 
