@@ -8,12 +8,12 @@ return {
       desc = "󰊠  Open Spectre",
     },
     {
-      "<leader>sw",
+      "<leader>sW",
       ":lua require('spectre').open_visual({select_word=true})<CR>",
       desc = "󰊠  Search current word",
     },
     {
-      "<leader>sw",
+      "<leader>sW",
       '<esc>:lua require("spectre").open_visual()<CR>',
       desc = "󰊠  Search current word",
       mode = "v",
