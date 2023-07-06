@@ -1,7 +1,7 @@
 ignore_merge_commits = false
 branch_whitelist = []
 pre_bump_hooks = []
-post_bump_hooks = ["git push", "git push {{version}}"]
+post_bump_hooks = ["git push", "git push origin {{version}}"]
 pre_package_bump_hooks = []
 post_package_bump_hooks = []
 
