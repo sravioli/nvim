@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.0](https://github.com/sRavioli/nvim/compare/0.6.0..0.7.0) - 2023-07-06
+#### Bug Fixes
+- **(lsp)** disable actionlint - ([505a199](https://github.com/sRavioli/nvim/commit/505a1990d470ad310bb0c9ce56f020004dcf0634)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** load correct diagnostic signs - ([c72c32f](https://github.com/sRavioli/nvim/commit/c72c32f993dca812c70f2e2075f78dffb2b268aa)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** incorrect null-ls symbol spacing - ([9264745](https://github.com/sRavioli/nvim/commit/92647451d24a7906090e858f71da1196443f02f2)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(github)** add auto release action - ([72ce306](https://github.com/sRavioli/nvim/commit/72ce306b780ba6ffb82a80fdb99f331148f28fba)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- add yamlfix file - ([05839bc](https://github.com/sRavioli/nvim/commit/05839bc095a0ed6867c30a1d0be1bae6a2ca3a4c)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.5.0](https://github.com/sRavioli/nvim/compare/0.4.0..0.5.0) - 2023-07-04
 #### Bug Fixes
 - **(cmp)** add rg as source and remove diagraph - ([ca867df](https://github.com/sRavioli/nvim/commit/ca867dfda91bc90aedfb91e8cfd8a40074f31e74)) - [@sRavioli](https://github.com/sRavioli)
