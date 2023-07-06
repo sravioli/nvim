@@ -4,6 +4,44 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.6.1](https://github.com/sRavioli/nvim/compare/0.6.0..0.6.1) - 2023-07-06
+#### Bug Fixes
+- **(cog)** add branch whitelists - ([5f07b87](https://github.com/sRavioli/nvim/commit/5f07b8710cf6346fe99e63cd42eed19a322905fb)) - [@sRavioli](https://github.com/sRavioli)
+- **(cog)** keep cog config up to date - ([56c072c](https://github.com/sRavioli/nvim/commit/56c072c972542c2c8a5b9c12cbd2a360bc97d09d)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** rewrite workflow run - ([6ade1e2](https://github.com/sRavioli/nvim/commit/6ade1e250337543215a054fc1183e07d01791c86)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** add permission to write to workflow - ([bf32f97](https://github.com/sRavioli/nvim/commit/bf32f9700965b9af0c6e5bf1509059a75d960eb8)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** make workflow run on dispatch - ([feba023](https://github.com/sRavioli/nvim/commit/feba023a65d5893f860022927792a2135cf0b515)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** semicolons in workflow - ([5738405](https://github.com/sRavioli/nvim/commit/5738405a0447940924cb40c01405aafd5862f36a)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** add git config in workflow - ([7088c37](https://github.com/sRavioli/nvim/commit/7088c37c74ba52cccb8c4aaed2b48540d2b65f37)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** auto release workflow formatting - ([5c291a4](https://github.com/sRavioli/nvim/commit/5c291a43e15f8379471749876cf0a80800f2d6f1)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** disable actionlint - ([505a199](https://github.com/sRavioli/nvim/commit/505a1990d470ad310bb0c9ce56f020004dcf0634)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** load correct diagnostic signs - ([c72c32f](https://github.com/sRavioli/nvim/commit/c72c32f993dca812c70f2e2075f78dffb2b268aa)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** incorrect null-ls symbol spacing - ([9264745](https://github.com/sRavioli/nvim/commit/92647451d24a7906090e858f71da1196443f02f2)) - [@sRavioli](https://github.com/sRavioli)
+- . - ([5966c23](https://github.com/sRavioli/nvim/commit/5966c234ba25aa69bcdda1762f6746e2eb9106d2)) - [@sRavioli](https://github.com/sRavioli)
+- add - ([dd652a4](https://github.com/sRavioli/nvim/commit/dd652a442093ad7e8f9b01f737d5dc6146caf9e2)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(github)** add auto release action - ([72ce306](https://github.com/sRavioli/nvim/commit/72ce306b780ba6ffb82a80fdb99f331148f28fba)) - [@sRavioli](https://github.com/sRavioli)
+#### Hotfixes
+- **(cog)** remove old configs - ([39a2064](https://github.com/sRavioli/nvim/commit/39a2064fc3e63b41b4eec0c486e83ff7055dce36)) - [@sRavioli](https://github.com/sRavioli)
+- **(cog)** use correct git push command - ([9c93656](https://github.com/sRavioli/nvim/commit/9c936568b356934358a1a1efea9047bdb0f5d55d)) - [@sRavioli](https://github.com/sRavioli)
+- **(github)** move action in `workflows/` folder - ([ca63ea0](https://github.com/sRavioli/nvim/commit/ca63ea04f38433ad07ffdee8b55ff1e894846e59)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(version)** 0.6.3 - ([41e9af8](https://github.com/sRavioli/nvim/commit/41e9af8988b57dc969f03053d5fb36192a000131)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.6.2 - ([7a6ae11](https://github.com/sRavioli/nvim/commit/7a6ae1152e41b6e8fa73be02b1ff6498369d314f)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.6.1 - ([0c42dd8](https://github.com/sRavioli/nvim/commit/0c42dd89f1712c8a9b90a84583337dab604f7aff)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.0 - ([6f9e9c6](https://github.com/sRavioli/nvim/commit/6f9e9c697c7156a8b853c2587baa3e9c92a9dab2)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.5 - ([3aaf10e](https://github.com/sRavioli/nvim/commit/3aaf10e4ef533ce3ad1c6622fb131d88e005208b)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.4 - ([debc2df](https://github.com/sRavioli/nvim/commit/debc2df2ed86f73ae5da6174faeb3888ba6d1f01)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.3 - ([50b8ce7](https://github.com/sRavioli/nvim/commit/50b8ce7c2d6115fe9a6a09789d7f539f4c66e2df)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.2 - ([e40ea2b](https://github.com/sRavioli/nvim/commit/e40ea2b3bfc4798ed22d1eb1f6bc6b257f66fdd8)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.1 - ([7451766](https://github.com/sRavioli/nvim/commit/74517665c341a58814e82adfbba91f2248c98974)) - [@sRavioli](https://github.com/sRavioli)
+- **(version)** 0.7.0 - ([f883273](https://github.com/sRavioli/nvim/commit/f883273c2c1c7a3527da43d7e6f35b3df6dd2ab1)) - [@sRavioli](https://github.com/sRavioli)
+- add yamlfix file - ([05839bc](https://github.com/sRavioli/nvim/commit/05839bc095a0ed6867c30a1d0be1bae6a2ca3a4c)) - [@sRavioli](https://github.com/sRavioli)
+#### Refactoring
+- **(github)** rewrite release workflow - ([1d5d09c](https://github.com/sRavioli/nvim/commit/1d5d09c442dc03f108fdef991bcad2b3f45b98d3)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.3](https://github.com/sRavioli/nvim/compare/0.6.2..0.6.3) - 2023-07-06
 #### Bug Fixes
 - **(github)** add permission to write to workflow - ([bf32f97](https://github.com/sRavioli/nvim/commit/bf32f9700965b9af0c6e5bf1509059a75d960eb8)) - [@sRavioli](https://github.com/sRavioli)
