@@ -2,6 +2,9 @@
 name: ci
 run-name: Perform release from latest tag
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch: ~
 
