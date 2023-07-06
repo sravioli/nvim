@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.2](https://github.com/sRavioli/nvim/compare/0.7.1..0.7.2) - 2023-07-06
+#### Bug Fixes
+- **(github)** auto release workflow formatting - ([5c291a4](https://github.com/sRavioli/nvim/commit/5c291a43e15f8379471749876cf0a80800f2d6f1)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.1](https://github.com/sRavioli/nvim/compare/0.7.0..0.7.1) - 2023-07-06
 #### Hotfixes
 - **(github)** move action in `workflows/` folder - ([ca63ea0](https://github.com/sRavioli/nvim/commit/ca63ea04f38433ad07ffdee8b55ff1e894846e59)) - [@sRavioli](https://github.com/sRavioli)
