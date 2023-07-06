@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.3](https://github.com/sRavioli/nvim/compare/0.7.2..0.7.3) - 2023-07-06
+#### Bug Fixes
+- **(cog)** keep cog config up to date - ([56c072c](https://github.com/sRavioli/nvim/commit/56c072c972542c2c8a5b9c12cbd2a360bc97d09d)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.2](https://github.com/sRavioli/nvim/compare/0.7.1..0.7.2) - 2023-07-06
 #### Bug Fixes
 - **(github)** auto release workflow formatting - ([5c291a4](https://github.com/sRavioli/nvim/commit/5c291a43e15f8379471749876cf0a80800f2d6f1)) - [@sRavioli](https://github.com/sRavioli)
