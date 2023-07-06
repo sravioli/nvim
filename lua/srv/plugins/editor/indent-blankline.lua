@@ -6,5 +6,17 @@ return {
     show_end_of_line = true,
     show_current_context = true,
     use_treesitter = true,
+    filetype_exclude = {
+      "help",
+      "alpha",
+      "dashboard",
+      "neo-tree",
+      "Trouble",
+      "lazy",
+      "mason",
+      "notify",
+      "toggleterm",
+      "lazyterm",
+    },
   },
 }
