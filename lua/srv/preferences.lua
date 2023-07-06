@@ -1,69 +1,89 @@
 ---Global user preferences
 ---@class Preferences
 ---@field border string The preferred border for UI windows and similar
----@field border_chars function<table> The characters to use as a border
----@field kind_icons table<string> The icons to use for the various kinds
----@field signs table<string> The icons to use for diagnostics messages
-local preferences = {
-  border = "rounded",
+---@field icons Icons
+local Preferences = {}
 
-  ---@param hl_name string The highlight to set for the border character
-  border_chars = function(hl_name)
-    return {
-      { "╭", hl_name },
-      { "─", hl_name },
-      { "╮", hl_name },
-      { "│", hl_name },
-      { "╯", hl_name },
-      { "─", hl_name },
-      { "╰", hl_name },
-      { "│", hl_name },
-    }
-  end,
+Preferences.border = "rounded"
 
-  kind_icons = {
-    Text = "",
-    Method = "󰆧",
-    Function = "󰊕",
-    Package = "",
-    String = "󰅳 ",
-    Number = " ",
-    Boolean = " ",
-    Array = " ",
-    Null = "󰟢 ",
-    Object = "󰐾 ",
-    Component = "󰡱",
-    Fragment = "",
-    Constructor = "",
-    Field = "󰇽",
-    Variable = "󰂡",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = " ",
-    Color = "󰏘",
-    File = "󰈙",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰅲",
-  },
+---Various icons for kinds, diagnostics, etc.
+---@class Icons table<table>
+Preferences.icons = {}
 
-  signs = {
-    Error = " ",
-    Warn = " ",
-    Hint = " ",
-    Info = " ",
-  },
+---@enum kinds Icons for the various kinds
+Preferences.icons.kinds = {
+  Array = " ",
+  Boolean = " ",
+  Class = " ",
+  Color = " ",
+  Component = "󰡱",
+  Constant = "󰏿",
+  Constructor = "",
+  Copilot = " ",
+  Enum = " ",
+  EnumMember = " ",
+  Event = "",
+  Field = "󰇽",
+  File = "󰈙",
+  Folder = "󰉋",
+  Fragment = "",
+  Function = "󰊕",
+  Interface = "",
+  Key = " ",
+  Keyword = "󰌋",
+  Method = " ",
+  Module = " ",
+  Null = "󰟢 ",
+  Number = " ",
+  Object = " ",
+  Operator = "󰆕",
+  Package = "",
+  Property = "󰜢",
+  Reference = " ",
+  Snippet = " ",
+  String = "󰅳 ",
+  Struct = " ",
+  Text = " ",
+  TypeParameter = " ",
+  Unit = " ",
+  Value = " ",
+  Variable = "󰂡",
 }
 
-return preferences
+---@enum diagnostics Icons for diagnostic messages
+Preferences.icons.diagnostics = {
+  Error = " ",
+  Warn = " ",
+  Hint = " ",
+  Info = " ",
+}
+
+---@enum dap Icons for dap diagnostics
+Preferences.icons.dap = {
+  Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+  Breakpoint = " ",
+  BreakpointCondition = " ",
+  BreakpointRejected = { " ", "DiagnosticError" },
+  LogPoint = ".>",
+}
+
+---@enum git Icons for git signs
+Preferences.icons.git = {
+  Branch = "  ",
+
+  Added = "  ",
+  Modified = "  ",
+  Removed = "  ",
+  Renamed = "",
+
+  Deleted = "󰆴",
+
+  ---Status type
+  Untracked = "",
+  Ignored = "",
+  Unstaged = "󱋭",
+  Staged = "",
+  Conflict = "",
+}
+
+return Preferences
