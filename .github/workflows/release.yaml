@@ -3,8 +3,7 @@ name: ci
 run-name: Perform release from latest tag
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch: ~
 
 jobs:
   release:
