@@ -7,12 +7,12 @@ return {
     ["<S-Tab>"] = { "<cmd>BufferPrevious<CR>", "󰒭  Next buffer", opts = opts },
     ["<Tab>"] = { "<cmd>BufferNext<CR>", "󰒮  Prev buffer", opts = opts },
     ---Re-order to previous/next
-    ["<leader>b<"] = {
+    ["<leader>bh"] = {
       "<cmd>BufferMovePrevious<CR>",
       "󰁎  Move buffer left",
       opts = opts,
     },
-    ["<leader>b>"] = {
+    ["<leader>bl"] = {
       "<cmd>BufferMoveNext<CR>",
       "  Move buffer right",
       opts = opts,
@@ -53,7 +53,7 @@ return {
       "󰒼  Re-order buffers by directory",
       opts = opts,
     },
-    ["<leader>bl"] = {
+    ["<leader>bL"] = {
       "<cmd>BufferOrderByLanguage<CR>",
       "  Re-order buffers by language",
       opts = opts,
