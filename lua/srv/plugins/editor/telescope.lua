@@ -11,6 +11,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   branch = "0.1.x",
+  cmd = "Telescope",
   keys = {
     ---find
     {
@@ -20,16 +21,20 @@ return {
     },
     {
       "<leader>ff",
-      "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!**/.git/*<CR>",
+      "<cmd>Telescope find_files find_command="
+        .. "rg,--ignore,--hidden,--files,--glob,!**/.git/*,--glob,**/node_modules/*<CR>",
       desc = "  Find all files",
     },
-    { "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "  Live grep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "  Find help" },
     { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "  Find old files" },
+    ---search
+    { "<leader>sw", "<cmd>Telescope live_grep<CR>", desc = "  Search word" },
+    { "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "  Search help" },
+    { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "  Search keymaps" },
+    { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "  Resume search" },
     {
-      "<leader>fb",
+      "<leader>sb",
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-      desc = "  Find word in buffer",
+      desc = "  Search word in buffer",
     },
 
     ---git
@@ -82,7 +87,6 @@ return {
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "truncate" },
         winblend = 0,
-        border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, ---default = nil,
