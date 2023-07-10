@@ -26,7 +26,6 @@ return {
     defaults = {
       mode = { "n", "v" },
       ["g"] = { name = "+goto" },
-      ["gz"] = { name = "+surround" },
       ["]"] = { name = "+next" },
       ["["] = { name = "+prev" },
       ["<leader>b"] = { name = "+buffer" },
@@ -34,7 +33,6 @@ return {
       ["<leader>f"] = { name = "+file/find" },
       ["<leader>g"] = { name = "+git" },
       ["<leader>h"] = { name = "+hunks" },
-      ["<leader>q"] = { name = "+quit/session" },
       ["<leader>s"] = { name = "+search" },
       ["<leader>x"] = { name = "+diagnostics/quickfix" },
       ["<leader>t"] = { name = "+toggle" },
