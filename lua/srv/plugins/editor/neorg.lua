@@ -4,37 +4,56 @@ return {
   "nvim-neorg/neorg",
   dependencies = { "nvim-lua/plenary.nvim" },
   build = ":Neorg sync-parsers",
+  cmd = "Neorg",
   ft = "norg",
   opts = {
     load = {
-      ["core.defaults"] = {}, ---Loads default behaviour
-      ["core.concealer"] = { ---Adds pretty icons to your documents
-        config = {
-          folds = false,
-          icon_preset = "varied",
-        },
-      },
-      ["core.dirman"] = { ---Manages Neorg workspaces
-        config = {
-          workspaces = {
-            notes = "~/notes",
-            L31 = "~/L31/norg",
-          },
-        },
-      },
+      ---Loads default behaviour
+      ["core.defaults"] = {},
+
+      ---Get completions in Neorg files
       ["core.completion"] = {
         config = {
           engine = "nvim-cmp",
           name = "(Norg)",
         },
       },
+
+      ---Display Markup as Icons, not Text
+      ["core.concealer"] = {
+        config = {
+          folds = false,
+          icon_preset = "varied",
+        },
+      },
+
+      ---The Most Critical Component of any Organized Workflow
+      ["core.dirman"] = {
+        config = {
+          workspaces = {
+            notes = "~/notes",
+            kb = "~/kb",
+          },
+        },
+      },
+
+      ---Convert Neorg Files to other Filetypes with core.export
       ["core.export"] = {},
+      ---Neorg's Markdown Exporter
       ["core.export.markdown"] = {
         config = {
           extension = "md",
           extensions = "all",
         },
       },
+
+      ---Powerpoint in Neorg
+      ["core.presenter"] = {
+        config = { zen_mode = "zen-mode" },
+      },
+
+      ---Write notes, not boilerplate.
+      ["core.summary"] = {},
     },
   },
 }
