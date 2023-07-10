@@ -22,7 +22,7 @@ return {
     {
       "<leader>ff",
       "<cmd>Telescope find_files find_command="
-        .. "rg,--ignore,--hidden,--files,--glob,!**/.git/*,--glob,**/node_modules/*<CR>",
+        .. "rg,--ignore,--hidden,--files,--glob,!**/.git/*,--glob,!**/node_modules/*<CR>",
       desc = "  Find all files",
     },
     { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "  Find old files" },
