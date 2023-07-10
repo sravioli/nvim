@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.6.2](https://github.com/sRavioli/nvim/compare/0.6.1..0.6.2) - 2023-07-10
+#### Bug Fixes
+- **(plugins)** ignore `**node_modules/*` when searching all files w/ Telescope - ([c1985de](https://github.com/sRavioli/nvim/commit/c1985de9384043a09304eb05b2185bbf19d98e92)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** remove filetype exclude for indent-blankline - ([5542963](https://github.com/sRavioli/nvim/commit/55429639ac0d1a9730515a897340c790cdf1c293)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** remove which-key unused mappings - ([038b309](https://github.com/sRavioli/nvim/commit/038b3095b078f839abbf6ad4c1836e122a151172)) - [@sRavioli](https://github.com/sRavioli)
+- remove weird changelog - ([dca320b](https://github.com/sRavioli/nvim/commit/dca320b29784e9e4710c714fcf1c1bed35326d01)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(keymaps)** improve line moving mappings - ([364e1d3](https://github.com/sRavioli/nvim/commit/364e1d3bcf11a16968db68677c87cc3febaaf305)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** load more neorg modules - ([acc2e36](https://github.com/sRavioli/nvim/commit/acc2e3663c1bec66ff97e75629cd8f754904a993)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** install zen-mode - ([2bffd37](https://github.com/sRavioli/nvim/commit/2bffd3766dcf9f0e4bc50ab9929bd8038821ee09)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.1](https://github.com/sRavioli/nvim/compare/0.6.0..0.6.1) - 2023-07-06
 #### Bug Fixes
 - **(cog)** add branch whitelists - ([5f07b87](https://github.com/sRavioli/nvim/commit/5f07b8710cf6346fe99e63cd42eed19a322905fb)) - [@sRavioli](https://github.com/sRavioli)
