@@ -61,8 +61,8 @@ return {
     ---["<M-.>"] = { "<cmd>CodeActionMenu<CR>", "Open code actions" },
 
     -- ["<leader>nf"] = { "<cmd>Neogen<CR>", "Generate docstrings with Neogen" },
-    ["<M-j>"] = { "ddp", "  move line down" },
-    ["<M-k>"] = { "ddkP", "  move line up" },
+    ["<M-k>"] = { "<cmd>move .-2<CR>==", "  move line up" },
+    ["<M-j>"] = { "<cmd>move .+1<CR>==", "  move line down" },
   },
 
   i = {
@@ -75,8 +75,11 @@ return {
 
     ---["<M-.>"] = { "<C-o><cmd>CodeActionMenu<CR>", "Open code actions" },
 
-    ---delete line directily in insert mode
-    ["<M-k>"] = { "<C-o>dd", "󰆴  Delete line" },
+    ---Move lines
+    ["<M-k>"] = { "<cmd>move .-2<CR><C-o>==", "  move line up" },
+    ["<M-j>"] = { "<cmd>move .+1<CR><C-o>==", "  move line down" },
+    -- ["<M-j>"] = { "<Esc>:move .+1<CR>==i", "  move line down" },
+    -- ["<M-k>"] = { "<Esc>:move .-2<CR>==i", "  move line up" },
 
     ---C-w but backwards
     ["<C-Del>"] = { "<C-o>dw", "󰭜  Delete word backwards" },
@@ -105,6 +108,9 @@ return {
       "  Move down",
       opts = { expr = true },
     },
+    ---Move lines
+    ["<M-k>"] = { ":move '<-2<CR>gv=gv", "  move line up" },
+    ["<M-j>"] = { ":move '>+1<CR>gv=gv", "  move line down" },
   },
 
   x = {
