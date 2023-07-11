@@ -11,6 +11,13 @@ return {
     require("srv.utils.fn").mappings.load "lspsaga"
   end,
   opts = {
+    symbol_in_winbar = {
+      enable = true,
+      separator = " > ",
+    },
+
+    callhierarchy = {},
+
     outline = {
       win_width = 40,
       preview_width = 0.35,
@@ -44,12 +51,7 @@ return {
       code_action = "󰌵 ",
       incoming = "󰁍 ",
       outgoing = " ",
-      hover = "󱓂 ",
-    },
-
-    symbol_in_winbar = {
-      enable = true,
-      separator = " > ",
+      lines = { "╰", "├", "│", "─", "╮" },
     },
   },
 }
