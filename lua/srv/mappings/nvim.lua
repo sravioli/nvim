@@ -90,6 +90,7 @@ return {
     [","] = { ",<C-g>u", "󰕌  Add undo break-points" },
     ["."] = { ".<C-g>u", "󰕌  Add undo break-points" },
     [";"] = { ";<C-g>u", "󰕌  Add undo break-points" },
+    [" "] = { " <C-g>u", "󰕌  Add undo break-points" },
   },
 
   t = {
