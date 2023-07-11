@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.6.3](https://github.com/sRavioli/nvim/compare/0.6.2..0.6.3) - 2023-07-11
+#### Bug Fixes
+- **(keymaps)** change select all mapping to `<A-a>` - ([99c9659](https://github.com/sRavioli/nvim/commit/99c96590e573093e8974ff4aec6697f1ee229017)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(lsp)** update lspsaga config - ([243c1b8](https://github.com/sRavioli/nvim/commit/243c1b8a0291ee104b37febca783d87f8c4a11b8)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** personalize neorg concealer - ([a052781](https://github.com/sRavioli/nvim/commit/a05278165fec999b224542a0d6a0a45f0454fb36)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add autocmd to activate concealer for norg files - ([35bb98f](https://github.com/sRavioli/nvim/commit/35bb98fcc1904fbd196a716b859cfec2ab8deabb)) - [@sRavioli](https://github.com/sRavioli)
+#### Revert
+- **(keymaps)** use `<cmd>` instead of lua functions for lspsaga - ([a5aed0f](https://github.com/sRavioli/nvim/commit/a5aed0f477b49823a8632a4f2fc182d86c4efed8)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.2](https://github.com/sRavioli/nvim/compare/0.6.1..0.6.2) - 2023-07-10
 #### Bug Fixes
 - **(plugins)** ignore `**node_modules/*` when searching all files w/ Telescope - ([c1985de](https://github.com/sRavioli/nvim/commit/c1985de9384043a09304eb05b2185bbf19d98e92)) - [@sRavioli](https://github.com/sRavioli)
