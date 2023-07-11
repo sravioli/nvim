@@ -12,7 +12,7 @@ return {
     ["<C-c>"] = { "<cmd>%yank+<CR>", "  Copy file contents" },
 
     ---Select all
-    ["<C-a>"] = { "gg0vG$", "󰒉  Select whole file" },
+    ["<M-a>"] = { "gg0vG$", "󰒉  Select whole file" },
 
     ---line numbers
     ["<leader>n"] = { "<cmd>set number!<CR>", "󰔡  Toggle line number" },
