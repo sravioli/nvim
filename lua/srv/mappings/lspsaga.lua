@@ -2,87 +2,35 @@ return {
   plugin = true,
 
   n = {
-    ["<leader>fd"] = {
-      function()
-        require("lspsaga.finder"):lsp_finder()
-      end,
-      "  Lspsaga find definition",
-    },
-
-    ["<leader>ca"] = {
-      function()
-        require("lspsaga.codeaction"):code_action()
-      end,
-      "󱐋  Lspsaga code actions",
-    },
-
-    ["<leader>rn"] = {
-      function()
-        require("lspsaga.rename"):lsp_rename()
-      end,
-      "󰑕  Lspsaga rename",
-    },
-
-    ["gd"] = {
-      function()
-        require("lspsaga.definition"):goto_definition(1)
-      end,
-      "󰞘  Lspsaga definition",
-    },
+    ["<leader>fd"] = { "<cmd>Lspsaga finder<CR>", "  Lspsaga find definition" },
+    ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "󱐋  Lspsaga code actions" },
+    ["<leader>rn"] = { "<cmd>Lspsaga lsp_rename", "󰑕  Lspsaga rename" },
+    ["gd"] = { "<cmd>Lspsaga goto_definition<CR>", "󰞘  Lspsaga definition" },
     ["gT"] = {
-      function()
-        require("lspsaga.definition"):goto_definition(2)
-      end,
+      "<cmd>Lspsaga goto_type_definition<CR>",
       "  Lspsaga type definition",
     },
 
-    ["gpd"] = {
-      function()
-        require("lspsaga.definition"):peek_definition(1)
-      end,
-      "  Lspsaga peek definition",
-    },
+    ["gpd"] = { "<cmd>Lspsaga peek_definition<CR>", "  Lspsaga peek definition" },
     ["gpt"] = {
-      function()
-        require("lspsaga.definition"):goto_definition(2)
-      end,
+      "<cmd>Lspsaga peek_type_definition<CR>",
       "  Lspsaga peek type definition",
     },
-
-    ["K"] = {
-      function()
-        require("lspsaga.hover"):render_hover_doc()
-      end,
-      "󱔗  Lspsaga hover docs",
-    },
+    ["K"] = { "<cmd>Lspsaga hover_docs<CR>", "󱔗  Lspsaga hover docs" },
 
     ["<Leader>ci"] = {
-      function()
-        require("lspsaga.callhierarchy"):send_method(2)
-      end,
+      "<cmd>Lspsaga incoming_calls<CR>",
       "  Lspsaga incoming call hierarchy",
     },
     ["<Leader>co"] = {
-      function()
-        require("lspsaga.callhierarchy"):send_method(3)
-      end,
+      "<cmd>Lspsaga outgoing_calls<CR>",
       "  Lspsaga outgoing call hierarchy",
     },
 
-    ["<leader>o"] = {
-      function()
-        require("lspsaga.outline"):outline()
-      end,
-      "󰧮  Lspsaga outline",
-    },
+    ["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "󰧮  Lspsaga outline" },
   },
 
   v = {
-    ["<leader>ca"] = {
-      function()
-        require("lspsaga.codeaction"):code_action()
-      end,
-      "󱐋  Open code actions",
-    },
+    ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "󱐋  Lspsaga code actions" },
   },
 }
