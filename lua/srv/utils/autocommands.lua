@@ -130,3 +130,13 @@ au("FileType", {
     vim.opt_local.colorcolumn = "85"
   end,
 })
+
+au("FileType", {
+  pattern = "norg",
+  desc = "activate conceal",
+  group = aug.buf_detect,
+  callback = function()
+    vim.opt_local.conceallevel = 3
+    vim.opt_local.concealcursor = "n"
+  end,
+})
