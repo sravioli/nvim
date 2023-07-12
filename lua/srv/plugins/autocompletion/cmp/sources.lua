@@ -40,7 +40,7 @@ return {
         end,
       },
     },
-    { name = "buffer-lines", option = { leading_whitespace = false } },
+    -- { name = "buffer-lines", option = { leading_whitespace = false } },
     { name = "rg" },
     { name = "calc" },
     { name = "rpncalc" },
