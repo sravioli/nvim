@@ -43,6 +43,10 @@ Functions.get_os = function()
   end
 end
 
+Functions.update_timestamp = function()
+  return
+end
+
 ---Loads the required keymaps. When called with no arguments it will load only the
 ---non-plugins keymaps, eg. the one that do not have `plugin = true` in their declaration.
 ---@param section? string The name of the keymaps section to load
