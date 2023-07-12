@@ -4,23 +4,31 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.7.1](https://github.com/sRavioli/nvim/compare/0.7.0..0.7.1) - 2023-07-12
+
 #### Bug Fixes
+
 - **(plugins)** typo in lsp-progress declaration - ([6997066](https://github.com/sRavioli/nvim/commit/699706651bbd26b08e4e96b6ff5deaf4844a10be)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils)** don't create opts table, pass empty table in `telescope.fd()` - ([baa9420](https://github.com/sRavioli/nvim/commit/baa94208124d3f6613be35cf5b0433946a09210c)) - [@sRavioli](https://github.com/sRavioli)
 - change nerdicons keymap - ([ade4e48](https://github.com/sRavioli/nvim/commit/ade4e48678bb16501d975295521d73279b98d14d)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Documentation
+
 - **(settings)** remove redundant comment when requiring module - ([14e678b](https://github.com/sRavioli/nvim/commit/14e678bfaf2dd3641955c841ae9a82637602cf16)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(cog)** add post bump hooks - ([95ffe66](https://github.com/sRavioli/nvim/commit/95ffe6644c92e012ff2ca1582159a26d3331c73c)) - [@sRavioli](https://github.com/sRavioli)
 - **(ui)** add alpha configuration - ([be8782d](https://github.com/sRavioli/nvim/commit/be8782d061adef9f207d437c334ae9f6431d1f92)) - [@sRavioli](https://github.com/sRavioli)
 - add plugins section for filetype - ([7e19bd6](https://github.com/sRavioli/nvim/commit/7e19bd61101a6c47e89651fd54c1deccd5eb3534)) - [@sRavioli](https://github.com/sRavioli)
 - import assets from old config - ([4cc07b2](https://github.com/sRavioli/nvim/commit/4cc07b2b39ce0fe1139abbb7349d5bf05d142ea5)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(changelog)** format - ([262176e](https://github.com/sRavioli/nvim/commit/262176e8878775757f957a6d5ea77e042a918fe2)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.7.0](https://github.com/sRavioli/nvim/compare/0.6.3..0.7.0) - 2023-07-12
 
