@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.0](https://github.com/sRavioli/nvim/compare/0.6.3..0.7.0) - 2023-07-12
+#### Bug Fixes
+- **(cmp)** disable buffer-lines source - ([898ad4b](https://github.com/sRavioli/nvim/commit/898ad4b93333797164f235a3e7003540dbf72b1b)) - [@sRavioli](https://github.com/sRavioli)
+- **(keymaps)** call correct lspsaga command on hover docs - ([97154de](https://github.com/sRavioli/nvim/commit/97154de5de630d8088682bb0e01f780f3c3a2ff3)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(keymaps)** add undo break-point for the space key - ([cb63d14](https://github.com/sRavioli/nvim/commit/cb63d148e9488831b5075ee30ec92590236d8344)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add shell for function to automatically update timestamps - ([470c8e3](https://github.com/sRavioli/nvim/commit/470c8e37ffdfea4398948a252de236bff99adaea)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.6.3](https://github.com/sRavioli/nvim/compare/0.6.2..0.6.3) - 2023-07-11
 #### Bug Fixes
 - **(keymaps)** change select all mapping to `<A-a>` - ([99c9659](https://github.com/sRavioli/nvim/commit/99c96590e573093e8974ff4aec6697f1ee229017)) - [@sRavioli](https://github.com/sRavioli)
