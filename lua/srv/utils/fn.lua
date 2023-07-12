@@ -223,12 +223,11 @@ Functions.lsp.autoformat = function(client, bufnr)
 end
 
 Functions.telescope.fd = function()
-  local opts = {}
   vim.fn.system "git rev-parse --is-inside-work-tree"
   if vim.v.shell_error == 0 then
-    require("telescope.builtin").git_files(opts)
+    require("telescope.builtin").git_files {}
   else
-    require("telescope.builtin").find_files(opts)
+    require("telescope.builtin").find_files {}
   end
 end
 
