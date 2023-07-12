@@ -1,4 +1,3 @@
----User defined functions
 ---@module "srv.utils.fn"
 local fn = require "srv.utils.fn"
 
