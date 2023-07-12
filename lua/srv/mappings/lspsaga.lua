@@ -16,7 +16,7 @@ return {
       "<cmd>Lspsaga peek_type_definition<CR>",
       "  Lspsaga peek type definition",
     },
-    ["K"] = { "<cmd>Lspsaga hover_docs<CR>", "󱔗  Lspsaga hover docs" },
+    ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "󱔗  Lspsaga hover docs" },
 
     ["<Leader>ci"] = {
       "<cmd>Lspsaga incoming_calls<CR>",
