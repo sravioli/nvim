@@ -2,7 +2,11 @@
 branch_whitelist = ["main"]
 ignore_merge_commits = true
 pre_bump_hooks = []
-post_bump_hooks = ["git push", "git push origin {{version}}"]
+post_bump_hooks = [
+  "markdownlint-cli2 --fix ./CHANGELOG.md",
+  "git push",
+  "git push origin {{version}}",
+]
 
 [commit_types]
 hotfix = { changelog_title = "Hotfixes" }
