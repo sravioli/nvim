@@ -2,7 +2,7 @@ return {
   ---get the nerdfont icons inside neovim
   "glepnir/nerdicons.nvim",
   keys = {
-    { "<leader>ni", "<cmd>NerdIcons<CR>", desc = "󱩯  Search nerdfont icons" },
+    { "<leader>si", "<cmd>NerdIcons<CR>", desc = "󱩯  Search nerdfont icons" },
   },
   opts = {
     border = require("srv.preferences").border, ---Border
