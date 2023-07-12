@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local spec = {
   { import = "srv.plugins.ui" },
+  { import = "srv.plugins.ft" },
   { import = "srv.plugins.dap" },
   { import = "srv.plugins.editor" },
   { import = "srv.plugins.treesitter" },
