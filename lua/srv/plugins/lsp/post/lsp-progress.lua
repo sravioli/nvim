@@ -3,5 +3,7 @@ return {
   "linrongbin16/lsp-progress.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "LspAttach",
-  config = true,
+  config = function()
+    require("lsp-progress").setup()
+  end,
 }
