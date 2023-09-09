@@ -4,19 +4,25 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.7.2](https://github.com/sRavioli/nvim/compare/0.7.1..0.7.2) - 2023-09-09
+
 #### Bug Fixes
+
 - manually invoke config for lsp-progress - ([040eb12](https://github.com/sRavioli/nvim/commit/040eb121835a8141b2372e3c578547d18ea72668)) - [@sRavioli](https://github.com/sRavioli)
 - make lsp-progress callback smaller - ([d610fed](https://github.com/sRavioli/nvim/commit/d610feda43bf4ed5c8217a641d7061576aeb94be)) - [@sRavioli](https://github.com/sRavioli)
 - remove border from assets, already in preferences - ([aadc82d](https://github.com/sRavioli/nvim/commit/aadc82da95478fe7d0605df4d64b3662ce0ead28)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(plugins)** add plugins for markdown - ([893b6dd](https://github.com/sRavioli/nvim/commit/893b6dd9260267fc5ce43b74ed4b53f63c4f6573)) - [@sRavioli](https://github.com/sRavioli)
 - **(ui)** `:Neotree reveal toggle` would sometimes error - ([9b70cbf](https://github.com/sRavioli/nvim/commit/9b70cbf3ff0369b7aa6164235e2f597f0f1cc734)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(changelog)** format - ([442f683](https://github.com/sRavioli/nvim/commit/442f6831f0c8539db4cf9a26d02be8c730177fc0)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.7.1](https://github.com/sRavioli/nvim/compare/0.7.0..0.7.1) - 2023-07-12
 
