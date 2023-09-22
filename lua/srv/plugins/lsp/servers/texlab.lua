@@ -2,13 +2,23 @@ return {
   auxDirectory = "build",
 
   build = {
-    executable = "latexmk",
+    -- executable = "latexmk",
+    -- args = {
+    --   "-pdf",
+    --   "-interaction=nonstopmode",
+    --   "-synctex=1",
+    --   "-outdir=build",
+    --   "%f",
+    -- },
+    executable = "tectonic",
     args = {
-      "-pdf",
-      "-interaction=nonstopmode",
-      "-synctex=1",
-      "-outdir=build",
+      "-X",
+      "compile",
       "%f",
+      "--synctex",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--outdir=build",
     },
     forwardSearchAfter = true,
     onSave = true,
