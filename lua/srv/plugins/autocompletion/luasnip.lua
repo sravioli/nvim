@@ -3,7 +3,15 @@ return {
   "L3MON4D3/LuaSnip",
   dependencies = { "rafamadriz/friendly-snippets" },
   event = "InsertEnter",
-  build = "make install_jsregexp",
+  -- build = "make install_jsregexp",
+  build = function()
+    local os = require("srv.utils.fn").get_os()
+    if os == "win" then
+      return ""
+    else
+      return "make install_jsregexp"
+    end
+  end,
   config = function()
     local present, ls = pcall(require, "luasnip")
     if not present then
