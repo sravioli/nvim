@@ -4,10 +4,11 @@ return {
   dependencies = { "rafamadriz/friendly-snippets" },
   event = "InsertEnter",
   -- build = "make install_jsregexp",
+  version = "v2.*",
   build = function()
     local os = require("srv.utils.fn").get_os()
     if os == "win" then
-      return ""
+      return [[gcc -IC:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\lua51_include\ -O2 -fPIC -c C:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\jsregexp\jsregexp.c -o jsregexp.o]]
     else
       return "make install_jsregexp"
     end
