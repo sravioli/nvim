@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.3](https://github.com/sRavioli/nvim/compare/0.7.2..0.7.3) - 2023-09-25
+#### Bug Fixes
+- adjust luasnip snippet path - ([7b54d6e](https://github.com/sRavioli/nvim/commit/7b54d6e9a0dfe5b1119578bfa0ab4b6c559569bc)) - [@sRavioli](https://github.com/sRavioli)
+- remove luasnip build on windows - ([5bb69ce](https://github.com/sRavioli/nvim/commit/5bb69ce61a4872fb73b2192aed39525e617a28a6)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(lsp)** move to tectonic - ([aeb50bf](https://github.com/sRavioli/nvim/commit/aeb50bfd9c5428167453b6bfa37d0a93fbac138e)) - [@sRavioli](https://github.com/sRavioli)
+- add obsidian snippets - ([f4a0829](https://github.com/sRavioli/nvim/commit/f4a0829c3fff776e746e54af1972d7523e335561)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- bump - ([ebc55eb](https://github.com/sRavioli/nvim/commit/ebc55eb31f3c86401805357fbccd860e1ca16d9f)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 
 ## [0.7.2](https://github.com/sRavioli/nvim/compare/0.7.1..0.7.2) - 2023-09-09
 
