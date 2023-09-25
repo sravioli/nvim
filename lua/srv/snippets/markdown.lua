@@ -22,11 +22,10 @@ return {
     { trig = "note", dscr = "Python Markdown note block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! note "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!note] {title}
+      >
+      > {body}
+      
 
       ]],
       { title = i(1, "Nota"), body = i(2) }
@@ -37,11 +36,9 @@ return {
     { trig = "abstract", dscr = "Python Markdown abstract block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! abstract "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!abstract] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Sommario"), body = i(2) }
@@ -52,11 +49,9 @@ return {
     { trig = "info", dscr = "Python Markdown info block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! info "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!info] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Info"), body = i(2) }
@@ -67,11 +62,9 @@ return {
     { trig = "tip", dscr = "Python Markdown tip block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! tip "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!tip] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Consiglio"), body = i(2) }
@@ -82,11 +75,9 @@ return {
     { trig = "success", dscr = "Python Markdown success block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! success "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!success] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Successo"), body = i(2) }
@@ -97,11 +88,9 @@ return {
     { trig = "question", dscr = "Python Markdown question block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! question "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!question] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Domanda"), body = i(2) }
@@ -112,11 +101,9 @@ return {
     { trig = "warning", dscr = "Python Markdown warning block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! warning "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!warning] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Attenzione"), body = i(2) }
@@ -127,12 +114,10 @@ return {
     { trig = "failure", dscr = "Python Markdown failure block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! failure "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
-
+      > [!failure] {title}
+      >
+      > {body}
+      
       ]],
       { title = i(1, "Errore"), body = i(2) }
     )
@@ -142,11 +127,9 @@ return {
     { trig = "danger", dscr = "Python Markdown danger block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! danger "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!danger] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Pericolo"), body = i(2) }
@@ -157,11 +140,9 @@ return {
     { trig = "bug", dscr = "Python Markdown bug block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! bug "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!bug] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Bug"), body = i(2) }
@@ -172,12 +153,10 @@ return {
     { trig = "example", dscr = "Python Markdown example block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! example "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
-
+      > [!example] {title}
+      >
+      > {body}
+      
       ]],
       { title = i(1, "Esempio"), body = i(2) }
     )
@@ -187,14 +166,39 @@ return {
     { trig = "quote", dscr = "Python Markdown quote block" },
     fmt(
       [[
-      <!-- markdownlint-disable code-block-style -->
-      !!! quote "{title}"
-          
-          {body}
-      <!-- markdownlint-enable code-block-style -->
+      > [!quote] {title}
+      >
+      > {body}
 
       ]],
       { title = i(1, "Author"), body = i(2) }
+    )
+  ),
+  s(
+    { trig = "obsmeta", dscr = "Add Obsidian YAML metadata" },
+    fmt(
+      [[
+      ---
+      aliases: [{aliases}]
+      tags: [{tag_camel_case}, {tag_initials}]
+      title: {title}
+      description: {desc}
+      author: sRavioli
+      created: {date}
+      updated: {date}
+
+      ---
+      ]],
+      {
+        aliases = i(1),
+        tag_camel_case = i(2, "DocumentTag"),
+        tag_initials = l(l._1:gsub("%l", ""):gsub("%W", ""), 2),
+        title = i(3, "titolo"),
+        desc = i(4, "descrizione"),
+        date = f(function()
+          return os.date "%Y-%m-%d %H:%M"
+        end),
+      }
     )
   ),
 }
