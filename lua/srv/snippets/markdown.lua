@@ -186,8 +186,8 @@ return {
       author: sRavioli
       created: {date}
       updated: {date}
-
       ---
+
       ]],
       {
         aliases = i(1),
