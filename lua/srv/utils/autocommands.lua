@@ -138,3 +138,12 @@ au("FileType", {
     vim.opt_local.concealcursor = "n"
   end,
 })
+
+au("BufWritePre", {
+  pattern = "*",
+  desc = "update last modified flag",
+  group = aug.lua_functions,
+  callback = function()
+    require("srv.utils.fn").update_timestamp()
+  end,
+})

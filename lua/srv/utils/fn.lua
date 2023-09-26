@@ -44,7 +44,29 @@ Functions.get_os = function()
 end
 
 Functions.update_timestamp = function()
-  return
+  -- file not modifiable
+  local bufnr = vim.api.nvim_get_current_buf()
+  if not vim.api.nvim_buf_get_option(bufnr, "modifiable") then
+    return
+  end
+
+  local date_time = os.date "%Y-%m-%d %H:%M"
+  local pattern =
+    [[\(Last\)\?\s*\([Cc]hanged\?\|[Mm]odified\|[Uu]pdated\?\)\s*:\s*\zs.*]]
+
+  local line = 1
+  while line <= 30 do
+    vim.fn.setline(
+      line,
+      vim.fn.substitute(vim.fn.getline(line), pattern, date_time, "gc")
+    )
+    line = line + 1
+  end
+
+  --   if vim.fn.search("\\vlast (change|update):?", "wncp") > 0 then
+  --     print "Changed file header!"
+  --   end
+  -- end
 end
 
 ---Loads the required keymaps. When called with no arguments it will load only the
