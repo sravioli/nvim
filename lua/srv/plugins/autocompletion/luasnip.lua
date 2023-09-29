@@ -1,7 +1,10 @@
 return {
   ---Snippet Engine for Neovim written in Lua.
   "L3MON4D3/LuaSnip",
-  dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = {
+    { "rafamadriz/friendly-snippets" },
+    { "lervag/vimtex" },
+  },
   event = "InsertEnter",
   -- build = "make install_jsregexp",
   version = "v2.*",
@@ -21,6 +24,12 @@ return {
 
     local opts = {
       history = true,
+      ft_func = require("luasnip.extras.filetype_functions").from_pos_or_filetype,
+      load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft {
+        tex = { "latex" },
+        markdown = { "markdown", "latex", "tex" },
+      },
+      enable_autosnippets = true,
       update_events = { "TextChanged", "TextChangedI" },
       region_check_events = { "CursorMoved", "CursorHold", "InsertEnter" },
       ---All the LuaSnip nodes that should be included in a snippet file
