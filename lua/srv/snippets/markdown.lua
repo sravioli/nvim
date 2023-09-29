@@ -1,22 +1,19 @@
 ---@diagnostic disable: undefined-global
 return {
-  s({ trig = "mi", dscr = "Inline math" }, fmt([[\({}\)]], i(1))),
+  s({ trig = "mi", dscr = "Inline math" }, fmt([[${}$]], i(1))),
   s(
     { trig = "mb", dscr = "Math block" },
     fmt(
       [[
-      \[
+      $$
         {}
-      \]
+      $$
 
       ]],
       i(1)
     )
   ),
-  s(
-    { trig = "mbs", dscr = "Math block short" },
-    { t "\\[ ", i(1), t { " \\]", "" } }
-  ),
+  s({ trig = "mbs", dscr = "Math block short" }, { t "$$ ", i(1), t { " $$", "" } }),
 
   s(
     { trig = "note", dscr = "Python Markdown note block" },
@@ -179,10 +176,14 @@ return {
     fmt(
       [[
       ---
-      aliases: [{aliases}]
-      tags: [{tag_camel_case}, {tag_initials}]
+      aliases: 
+        - {aliases}
+      tags:
+        - {tag_camel_case}
+        - {tag_initials}
       title: {title}
-      description: {desc}
+      description: >- 
+        {desc}
       author: sRavioli
       created: {date}
       updated: {date}

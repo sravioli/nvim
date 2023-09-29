@@ -18,4 +18,7 @@ return {
       { repeat_duplicates = true }
     )
   ),
+  s({ trig = "peppe", dscr = "peppe" }, fmt("\\infty", {})),
+
+  -- s({ trig = "oo" }, t { "\\infty" }),
 }
