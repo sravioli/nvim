@@ -99,17 +99,27 @@ au({ "BufNewFile", "BufRead" }, {
 })
 
 ---Enable markdown auto-align table
+-- au("FileType", {
+--   desc = "Align markdown tables as you type",
+--   pattern = "markdown",
+--   callback = function()
+--     vim.keymap.set(
+--       "i",
+--       "<Bar>",
+--       "<Bar> <C-o>:lua require('srv.utils.fn').align_table()<CR>"
+--     )
+--   end,
+--   group = aug.lua_functions,
+-- })
+
 au("FileType", {
-  desc = "Align markdown tables as you type",
+  desc = "Change tabstop and shitfwidth",
   pattern = "markdown",
   callback = function()
-    vim.keymap.set(
-      "i",
-      "<Bar>",
-      "<Bar> <C-o>:lua require('srv.utils.fn').align_table()<CR>"
-    )
+    vim.opt.tabstop = 2
+    vim.opt.shiftwidth = 2
   end,
-  group = aug.lua_functions,
+  group = aug.buf_detect,
 })
 
 ---Refresh lualine on lsp update
