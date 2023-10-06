@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.4](https://github.com/sRavioli/nvim/compare/0.7.3..0.7.4) - 2023-10-06
+#### Bug Fixes
+- **(plugins)** disable scopes for indent-blankline - ([1faa43c](https://github.com/sRavioli/nvim/commit/1faa43cbfd6428e4dca8e39fae906a5854a29d3b)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** rewrite LaTeX snippets from scratch, add more snippets - ([1fe9ab4](https://github.com/sRavioli/nvim/commit/1fe9ab44e3f5f6e6f1cd4a54207d0463b9258a0f)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** adjust spacing for obsidian metadata snippet - ([7135d1e](https://github.com/sRavioli/nvim/commit/7135d1e4c6b9bbe69c62c4a97cf685c794983099)) - [@sRavioli](https://github.com/sRavioli)
+- **(treesitter)** use clangd compiler - ([758e20e](https://github.com/sRavioli/nvim/commit/758e20e7d736df3ecde05e077afbad2a736236ff)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** disable mkdwn auto-align table and adjust shiftwidth - ([7ac8323](https://github.com/sRavioli/nvim/commit/7ac8323d0267a90bdf799b7d862b178e07ca56e6)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(ft)** add vimlatex - ([1081ff9](https://github.com/sRavioli/nvim/commit/1081ff979e5fa550bc3308f3f340d56cea315822)) - [@sRavioli](https://github.com/sRavioli)
+- **(luasnip)** add luasnip deps, add `ft_func` and `load_ft_func` - ([bd75cbe](https://github.com/sRavioli/nvim/commit/bd75cbe7357915060a9303c55408ae1e39826397)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** add latex and lua snippets - ([a47557a](https://github.com/sRavioli/nvim/commit/a47557a4f8614d0d54af5d0b30a6cdc2eaeb57e7)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add luasnip utility functions - ([abb4de2](https://github.com/sRavioli/nvim/commit/abb4de255977d34bbfea073851c532feff9fe897)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** create function to update 'last modified' field on save - ([0a01312](https://github.com/sRavioli/nvim/commit/0a01312dea4d2dd99c985c165d9cc478f3c0b226)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.3](https://github.com/sRavioli/nvim/compare/0.7.2..0.7.3) - 2023-09-25
 #### Bug Fixes
 - adjust luasnip snippet path - ([7b54d6e](https://github.com/sRavioli/nvim/commit/7b54d6e9a0dfe5b1119578bfa0ab4b6c559569bc)) - [@sRavioli](https://github.com/sRavioli)
