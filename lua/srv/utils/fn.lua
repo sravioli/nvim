@@ -7,8 +7,9 @@
 ---@class Functions
 ---@field mappings table<function> Functions related to keymaps
 ---@field telescope table<function> Functions related to the telescope plugin
----@field lsp table<function> Function related to the Language Server Protocol
-local Functions = { mappings = {}, telescope = {}, lsp = {} }
+---@field lsp table<function> Functions related to the Language Server Protocol
+---@field snippets table<function> Functions related to LuaSnip
+local Functions = { mappings = {}, telescope = {}, lsp = {}, snippets = {} }
 
 ---Aligns a markdown table in insert mode
 ---@return nil
@@ -301,6 +302,35 @@ Functions.telescope.buffer_previewer = function(filepath, bufnr, opts)
       end
     end,
   }):sync()
+end
+
+---Condense the LuaSnip snippet context for snippets
+---@param trig string The sequence that triggers the snippet.
+---@param name string Can be used by e.g. nvim-compe to identify the snippet.
+---@param desc string|table The description. Can be multiline (either with `\n` or table).
+---@param snippetType? string Determines if this snippet has to be triggered manually (`"snippet"`) or automatically (`"autosnippet"`).
+---@param trigEngine? string|function How `trig` is interpreted. Defaults to `"plain"` and supports: `"pattern"`, `ecma"`, `"vim"` or a custom function.
+---@param wordTrig? boolean Whether to expand the snippet if the word (`[%w_]+`) matches `trig` entirely. `True` by default.
+---@param priority? number The priority of the snippet. `1000` by default. Snippets with high priority will be matched to a trigger before those with a lower one
+---@return table context The assembled LuaSnip context
+Functions.snippets.snip = function(
+  trig,
+  name,
+  desc,
+  snippetType,
+  wordTrig,
+  trigEngine,
+  priority
+)
+  return {
+    trig = trig,
+    name = name,
+    desc = desc,
+    snippetType = snippetType and snippetType or "snippet",
+    trigEngine = trigEngine and trigEngine or "plain",
+    wordTrig = wordTrig and true,
+    priority = priority or 1000,
+  }
 end
 
 return Functions
