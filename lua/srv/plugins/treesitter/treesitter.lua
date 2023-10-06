@@ -185,5 +185,6 @@ return {
     }
 
     tsc.setup(opts)
+    require("nvim-treesitter.install").compilers = { "clang" }
   end,
 }
