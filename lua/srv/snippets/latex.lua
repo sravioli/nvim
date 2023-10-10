@@ -421,11 +421,11 @@ return {
 
   ---Functions
   s(
-    snip("nsqrt", "square root of n", "", "autosnippet", false),
+    snip("n^2rt", "square root of n", "", "autosnippet", false),
     fmta([[\sqrt[<>]{<>}]], { i(1), i(2) })
   ),
   s(
-    snip("sqrt", "square root", "", "autosnippet", false),
+    snip("^2rt", "square root", "", "autosnippet", false),
     fmta([[\sqrt{<>}]], i(1))
   ),
   s(snip("ln", "natural log", "", "autosnippet", false), t { [[\ln]] }),
@@ -454,6 +454,7 @@ return {
   s(snip("o+", "oplus", "", "autosnippet", false), t { [[\oplus]] }),
   s(snip("ox", "otimes", "", "autosnippet", false), t { [[\otimes]] }),
   s(snip("pu", "physical units", "", "autosnippet", false), fmta([[\pu{<>}]], i(1))),
+  s(snip("sq", "squared", "", "autosnippet", false), t { "^2" }),
 
   ---Fractions
   s(
