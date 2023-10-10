@@ -63,6 +63,14 @@ return {
     -- ["<leader>nf"] = { "<cmd>Neogen<CR>", "Generate docstrings with Neogen" },
     ["<M-k>"] = { "<cmd>move .-2<CR>==", "  move line up" },
     ["<M-j>"] = { "<cmd>move .+1<CR>==", "  move line down" },
+
+    ---Toggle typewriter mode
+    ["<leader>zz"] = {
+      function()
+        require("srv.utils.fn").typewriter_toggle()
+      end,
+      "󰔡  Toggle typewriter scrolling",
+    },
   },
 
   i = {
