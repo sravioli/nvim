@@ -2,13 +2,14 @@
 ---@module "functions"
 ---@author sRavioli
 ---@license GPL-3.0
+---last updated: 2023-10-13 15:11
 
 ---User defined utility functions
 ---@class Functions
----@field mappings table<function> Functions related to keymaps
----@field telescope table<function> Functions related to the telescope plugin
----@field lsp table<function> Functions related to the Language Server Protocol
----@field snippets table<function> Functions related to LuaSnip
+---@field mappings table Functions related to keymaps
+---@field telescope table Functions related to the telescope plugin
+---@field lsp table Functions related to the Language Server Protocol
+---@field snippets table Functions related to LuaSnip
 local Functions = { mappings = {}, telescope = {}, lsp = {}, snippets = {} }
 
 ---Aligns a markdown table in insert mode
@@ -44,6 +45,7 @@ Functions.get_os = function()
   end
 end
 
+---Updates the last changed/modified/etc timestamp of a file
 Functions.update_timestamp = function()
   -- file not modifiable
   local bufnr = vim.api.nvim_get_current_buf()
