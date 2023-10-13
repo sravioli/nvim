@@ -70,7 +70,8 @@ Functions.update_timestamp = function()
 end
 
 local typewriter_state = false
----Toggles the typewriter scroll. Has to be called in each buffer.
+---Toggles typewriter scroll. Has to be called in each buffer.
+---@return nil
 Functions.typewriter_toggle = function()
   if typewriter_state then
     vim.opt_local.scrolloff = 0
@@ -78,7 +79,7 @@ Functions.typewriter_toggle = function()
     vim.opt_local.scrolloff =
       math.floor(vim.api.nvim_win_get_height(vim.api.nvim_get_current_win()) / 2)
   end
-  typewriter_state = not typewriter_state -- Toggle the state
+  typewriter_state = not typewriter_state -- toggle the state
 end
 
 ---Loads the required keymaps. When called with no arguments it will load only the
