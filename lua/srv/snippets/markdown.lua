@@ -202,4 +202,18 @@ return {
       }
     )
   ),
+
+  s(
+    { trig = "cpsex", dscr = "Esercizio di Calcolo di Probabilità e Statistica" },
+    fmt(
+      [[
+      **Traccia**: {}
+
+      **Breve**: 
+
+      **Svolgimento**: {}
+    ]],
+      { i(1), i(0) }
+    )
+  ),
 }
