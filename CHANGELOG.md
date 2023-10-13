@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.7.6](https://github.com/sRavioli/nvim/compare/0.7.5..0.7.6) - 2023-10-13
+#### Bug Fixes
+- **(snippets)** turn `ox` trigger into `oX` to prevent accidental expansion - ([835aafd](https://github.com/sRavioli/nvim/commit/835aafd48af0d6965431d60980cf72e9c3aea818)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** incorrect spelling and spacing for snippet - ([3fd9c7b](https://github.com/sRavioli/nvim/commit/3fd9c7b5187721d9997dcd8604c1cee45c21933b)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(neovide)** add settings for neovide - ([bf1c794](https://github.com/sRavioli/nvim/commit/bf1c79441409fbff40e4e582baf12edffeba824b)) - [@sRavioli](https://github.com/sRavioli)
+- **(settings)** load neovide seettings if running neovide - ([e6b8753](https://github.com/sRavioli/nvim/commit/e6b87531159435665a8f60e96a4261084ce024cb)) - [@sRavioli](https://github.com/sRavioli)
+- **(ui)** disable transparency for neovide, recompile at runtime - ([379bcdc](https://github.com/sRavioli/nvim/commit/379bcdc9fd13202546b114d67bffed4b99efadfa)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.4](https://github.com/sRavioli/nvim/compare/0.7.3..0.7.4) - 2023-10-06
 #### Bug Fixes
 - **(plugins)** disable scopes for indent-blankline - ([1faa43c](https://github.com/sRavioli/nvim/commit/1faa43cbfd6428e4dca8e39fae906a5854a29d3b)) - [@sRavioli](https://github.com/sRavioli)
