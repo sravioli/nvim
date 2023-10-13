@@ -113,14 +113,14 @@ au({ "BufNewFile", "BufRead" }, {
 -- })
 
 ---activate typewriter scroll in markdown files
-au("FileType", {
-  desc = "Activate typewriter scrolling",
-  pattern = "markdown",
-  callback = function()
-    require("srv.utils.fn").typewriter_toggle()
-  end,
-  group = aug.lua_functions,
-})
+-- au("FileType", {
+--   desc = "Activate typewriter scrolling",
+--   pattern = "markdown",
+--   callback = function()
+--     require("srv.utils.fn").typewriter_toggle()
+--   end,
+--   group = aug.lua_functions,
+-- })
 
 au("FileType", {
   desc = "Change tabstop and shitfwidth",
