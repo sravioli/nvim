@@ -54,7 +54,7 @@
 ---```lua
 ---vim.o.guifont = "Source Code Pro:h14"
 ---```
-vim.opt.guifont = "FiraCode Nerd Font:h15"
+vim.opt.guifont = "FiraCode Nerd Font Propo:h15:#h-normal"
 
 ---LINE SPACING
 ---Controls spacing between lines, may also be negative.
@@ -83,10 +83,10 @@ vim.g.neovide_scale_factor = 0.7
 ---vim.g.neovide_padding_right = 0
 ---vim.g.neovide_padding_left = 0
 ---```
-vim.g.neovide_padding_top = 1
-vim.g.neovide_padding_bottom = 1
-vim.g.neovide_padding_right = 1
-vim.g.neovide_padding_left = 1
+vim.g.neovide_padding_top = 3
+vim.g.neovide_padding_bottom = 3
+vim.g.neovide_padding_right = 3
+vim.g.neovide_padding_left = 3
 
 ---BACKGROUND COLOR (CURRENTLY MACOS ONLY)
 ---
@@ -125,8 +125,8 @@ vim.g.neovide_padding_left = 1
 ---vim.g.neovide_floating_blur_amount_x = 2.0
 ---vim.g.neovide_floating_blur_amount_y = 2.0
 ---```
-vim.g.neovide_floating_blur_amount_x = 2.0
-vim.g.neovide_floating_blur_amount_y = 2.0
+vim.g.neovide_floating_blur_amount_x = 0.0
+vim.g.neovide_floating_blur_amount_y = 0.0
 
 ---TRANSPARENCY
 ---Setting `g:neovide_transparency` to a value between 0.0 and 1.0 will set the opacity
@@ -135,7 +135,7 @@ vim.g.neovide_floating_blur_amount_y = 2.0
 ---```lua
 ---vim.g.neovide_transparency = 0.8
 ---```
-vim.g.neovide_transparency = 0.8
+vim.g.neovide_transparency = 1
 
 ---SCROLL ANIMATION LENGTH
 ---Sets how long the scroll animation takes to complete, measured in seconds.
@@ -213,7 +213,7 @@ vim.g.neovide_refresh_rate_idle = 1
 ---```
 vim.g.neovide_no_idle = false
 
----Confirm Quit
+---CONFIRM QUIT
 ---If set to `true`, quitting while having unsaved changes will require confirmation.
 ---Enabled by default.
 ---
@@ -222,7 +222,7 @@ vim.g.neovide_no_idle = false
 ---```
 vim.g.neovide_confirm_quit = true
 
----Fullscreen
+---FULLSCREEN
 ---Setting `g:neovide_fullscreen` to a boolean value will set whether the app should
 ---take up the entire screen. This uses the so called "windowed fullscreen" mode that
 ---is sometimes used in games which want quick window switching.
@@ -230,7 +230,7 @@ vim.g.neovide_confirm_quit = true
 ---```lua
 ---vim.g.neovide_fullscreen = true
 ---```
-vim.g.neovide_fullscreen = true
+vim.g.neovide_fullscreen = false
 
 ---REMEMBER PREVIOUS WINDOW SIZE
 ---Setting `g:neovide_remember_window_size` to a boolean value will determine whether
