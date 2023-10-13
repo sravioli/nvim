@@ -1,3 +1,11 @@
+local function transparency()
+  if vim.g.neovide then
+    return false
+  else
+    return true
+  end
+end
+
 return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by
   ---Katsushika Hokusai.
@@ -7,7 +15,7 @@ return {
   build = ":KanagawaCompile",
   opts = {
     compile = true,
-    transparent = true, ---do not set background color
+    transparent = transparency(),
     dimInactive = false, ---dim inactive window `:h hl-NormalNC`
     commentStyle = { italic = false },
     overrides = function(colors)
@@ -135,5 +143,6 @@ return {
   },
   init = function()
     vim.cmd.colorscheme "kanagawa"
+    vim.cmd "KanagawaCompile"
   end,
 }
