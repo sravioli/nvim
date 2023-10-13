@@ -452,7 +452,7 @@ return {
     fmta([[\binom{<>}{<>}]], { i(1, "n"), i(2, "k") })
   ),
   s(snip("o+", "oplus", "", "autosnippet", false), t { [[\oplus]] }),
-  s(snip("ox", "otimes", "", "autosnippet", false), t { [[\otimes]] }),
+  s(snip("oX", "otimes", "", "autosnippet", false), t { [[\otimes]] }),
   s(snip("pu", "physical units", "", "autosnippet", false), fmta([[\pu{<>}]], i(1))),
   s(snip("sq", "squared", "", "autosnippet", false), t { "^2" }),
 
