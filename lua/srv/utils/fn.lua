@@ -53,23 +53,20 @@ Functions.update_timestamp = function()
     return
   end
 
-  local date_time = os.date "%Y-%m-%d %H:%M"
-  local pattern =
-    [[\(Last\)\?\s*\([Cc]hanged\?\|[Mm]odified\|[Uu]pdated\?\)\s*:\s*\zs.*]]
+  local MAX_LINES = 30
+  local buflines = vim.api.nvim_buf_line_count(bufnr)
 
-  local line = 1
-  while line <= 30 do
+  for line = 1, (buflines < MAX_LINES and buflines or MAX_LINES) do
     vim.fn.setline(
       line,
-      vim.fn.substitute(vim.fn.getline(line), pattern, date_time, "gc")
+      vim.fn.substitute(
+        vim.fn.getline(line),
+        [[\(Last\)\?\s*\([Cc]hanged\?\|[Mm]odified\|[Uu]pdated\?\)\s*:\s*\zs.*]],
+        os.date "%Y-%m-%d %H:%M", -- format: YYYY-MM-DD HH:mm
+        "gc"
+      )
     )
-    line = line + 1
   end
-
-  --   if vim.fn.search("\\vlast (change|update):?", "wncp") > 0 then
-  --     print "Changed file header!"
-  --   end
-  -- end
 end
 
 local typewriter_state = false
