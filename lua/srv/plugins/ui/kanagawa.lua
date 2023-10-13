@@ -143,6 +143,6 @@ return {
   },
   init = function()
     vim.cmd.colorscheme "kanagawa"
-    vim.cmd "KanagawaCompile"
+    -- vim.cmd "KanagawaCompile"
   end,
 }
