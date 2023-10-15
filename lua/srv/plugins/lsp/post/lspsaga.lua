@@ -18,15 +18,9 @@ return {
 
     callhierarchy = {},
 
-    outline = {
-      win_width = 40,
-      preview_width = 0.35,
-      auto_resize = true,
-      -- custom_sort = nil,
-      keys = {
-        expand_or_jump = { "<CR>", "o" },
-      },
-    },
+    code_action = { enable = false },
+
+    diagnostic = { enable = false },
 
     finder = {
       min_width = 40,
@@ -38,8 +32,16 @@ return {
       },
     },
 
-    code_action = {
-      show_server_name = true,
+    lightbulb = { virtual_text = false },
+
+    outline = {
+      win_width = 40,
+      preview_width = 0.35,
+      auto_resize = true,
+      -- custom_sort = nil,
+      keys = {
+        expand_or_jump = { "<CR>", "o" },
+      },
     },
 
     rename = {
@@ -51,7 +53,7 @@ return {
       code_action = "󰌵 ",
       incoming = "󰁍 ",
       outgoing = " ",
-      lines = { "╰", "├", "│", "─", "╮" },
+      lines = { "╰", "├", "│", "─", "╭" },
     },
   },
 }
