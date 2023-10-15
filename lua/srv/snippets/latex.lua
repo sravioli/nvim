@@ -63,7 +63,7 @@ end
 ---@return string result The LaTeX formatted binomial coefficient.
 format.binomial.expand_simple = function(capture)
   local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
-  return string.format([[\frac{%d!}{%d! \cdot %d!}]], n, k, n - k)
+  return string.format([[\frac{%d!}{%d! \cdot (%d - %d)!}]], n, k, n, k)
 end
 
 ---Expands an inline binomial coefficient and evaluates the difference.
