@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.8.0](https://github.com/sRavioli/nvim/compare/0.7.6..0.8.0) - 2023-10-15
+#### Bug Fixes
+- **(autocommands)** disable automatic typewriter toggle for md files - ([8f8a6f5](https://github.com/sRavioli/nvim/commit/8f8a6f54dfb86f68f9eef16f0904bcb51076f15e)) - [@sRavioli](https://github.com/sRavioli)
+- **(codespell)** remove italian - ([ac49c66](https://github.com/sRavioli/nvim/commit/ac49c66438485e258b4a3fd725f89c613e1b5e03)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** conform typewriter toggle to toggle keymaps - ([b874bb3](https://github.com/sRavioli/nvim/commit/b874bb34cb83811b1ab943eb1f37008a522ffbfc)) - [@sRavioli](https://github.com/sRavioli)
+- **(neovide)** disable transparency and fullscreen, increase padding - ([1818dd5](https://github.com/sRavioli/nvim/commit/1818dd540363569958ec10eb4380dc68ef9fd658)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** make logic operator triggers uppercase to prevent accidental expansion - ([a36fdae](https://github.com/sRavioli/nvim/commit/a36fdae8fc691a556dca378dcdfb0f00eebba34d)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** LDoc comments - ([bac69cc](https://github.com/sRavioli/nvim/commit/bac69cc19b77fe493944fb78bf6c4472b41e95d5)) - [@sRavioli](https://github.com/sRavioli)
+- remove codespell configuration file - ([3f42447](https://github.com/sRavioli/nvim/commit/3f4244781e572af5055aa9f39a0926270e839b6c)) - [@sRavioli](https://github.com/sRavioli)
+- temporary disable theme compilation at runtime - ([1b3aac8](https://github.com/sRavioli/nvim/commit/1b3aac803c7a602881c8bf8180e8f1cf844e35e0)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(mappings)** activate code action keybinds - ([dc13bfb](https://github.com/sRavioli/nvim/commit/dc13bfbca852780a4eaa2fe19c6778b3bb3eb62d)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** disable virtual text lightbulb, disable code actions and diagnostics - ([bfdcf73](https://github.com/sRavioli/nvim/commit/bfdcf73d13cedf7cac75532ac98ef61b97fa6ee5)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add better documentation for typewriter function - ([e06ee8d](https://github.com/sRavioli/nvim/commit/e06ee8d895227db23ef44a11445410235c772157)) - [@sRavioli](https://github.com/sRavioli)
+#### Refactoring
+- **(snippets)** move all formatting functions into the `format` class and categorize them - ([86accb8](https://github.com/sRavioli/nvim/commit/86accb83d623cbd9e6d4e82b587c9544e84ea0db)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** rewrite function to update timestamp - ([efac941](https://github.com/sRavioli/nvim/commit/efac9412e05a610cd4cd3b3fc49c57cf6ab28f2e)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.7.6](https://github.com/sRavioli/nvim/compare/0.7.5..0.7.6) - 2023-10-13
 #### Bug Fixes
 - **(snippets)** turn `ox` trigger into `oX` to prevent accidental expansion - ([835aafd](https://github.com/sRavioli/nvim/commit/835aafd48af0d6965431d60980cf72e9c3aea818)) - [@sRavioli](https://github.com/sRavioli)
