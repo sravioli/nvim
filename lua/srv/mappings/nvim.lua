@@ -65,7 +65,7 @@ return {
     ["<M-j>"] = { "<cmd>move .+1<CR>==", "  move line down" },
 
     ---Toggle typewriter mode
-    ["<leader>zz"] = {
+    ["<leader>tT"] = {
       function()
         require("srv.utils.fn").typewriter_toggle()
       end,
