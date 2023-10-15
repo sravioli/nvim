@@ -58,7 +58,7 @@ return {
     ["[["] = { "[[zz" },
 
     ---open code actions kinda like VSCode
-    ---["<M-.>"] = { "<cmd>CodeActionMenu<CR>", "Open code actions" },
+    ["<M-.>"] = { "<cmd>CodeActionMenu<CR>", "󱐋  Open code actions" },
 
     -- ["<leader>nf"] = { "<cmd>Neogen<CR>", "Generate docstrings with Neogen" },
     ["<M-k>"] = { "<cmd>move .-2<CR>==", "  move line up" },
@@ -81,7 +81,7 @@ return {
     ["<C-s>"] = { "<cmd>write<CR>", "󰆓  Save file" },
     ["<C-z>"] = { "<cmd>undo<CR>", "  Undo action" },
 
-    ---["<M-.>"] = { "<C-o><cmd>CodeActionMenu<CR>", "Open code actions" },
+    ["<M-.>"] = { "<C-o><cmd>CodeActionMenu<CR>", "󱐋  Open code actions" },
 
     ---Move lines
     ["<M-k>"] = { "<cmd>move .-2<CR><C-o>==", "  move line up" },
