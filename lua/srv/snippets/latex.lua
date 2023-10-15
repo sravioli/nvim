@@ -2,12 +2,30 @@
 
 local snip = require("srv.utils.fn").snippets.snip
 
----Formats a Greek letter snippet to latex syntax (eg. `@al` --> `\alpha`)
----@param captures table<string> The regex matches from the LuaSnip trigger.
----@param ending? string The string to append to the regex match. Defaults to `""`
----@param upper? string The uppercase variant (if present) of the lowercase letter. This is present for letters whose uppercase version do not have a LaTeX command (eg. `\alpha` -> `A`). Defaults to `""`
----@return string command The LaTeX command (or letter) corresponding to the trigger.
-local function fmt_greek(captures, ending, upper)
+---@class Format Useful function to format strings in LaTeX
+---@field greek table Contains a function to format greek letters
+---@field factorial table Contains functions to expand or evaluate factorials
+---@field binomial table Contains functions to expand or evaluate binomial coefficients
+local format = { greek = {}, factorial = {}, binomial = {} }
+
+---Expands a Greek letter to LaTeX format.
+---This function takes a table of LuaSnip captures, an optional ending string and an
+---optional uppercase letter. It will return the corresponding LaTeX command for the
+---given univocal capture. It also supports variant letters (eg. `\varepsilon`)
+---The input should be as follows: `<optional-variant-flag><univocal-two-letter-code>`,
+---so, for example: `al` is `\alpha`, `vep` is `\varepsilon` (while `ep` is `\epsilon`).
+---
+---@param captures table<string, string>|table<string> A table of captures that can have either one or two strings. In the first case: `captures[1]` is the variant flag (`v`) that tells the function that it should return the variant letter, `captures[2]` is the univocal two letter code that identifies the Greek letter. Defaults to an empty string.
+---@param ending? string An optional ending string to append to the result of the expansion.
+---@param upper? string The uppercase style of the identified Greek letter. Useful for letters whose uppercase version does not have a LaTeX command representation (eg. `\alpha -> A`). Defaults to an empty string.
+---@return string command The correspondent LaTeX command based on @{captures}.
+---
+---@usage
+----- Example usage
+---local command = format.greek.expand({ "al" }, "pha", "A") -- will be `\alpha`
+---local command = format.greek.expand({ "Al" }, "pha", "A") -- will be `A`
+---local command = format.greek.expand({ "v", "th" }, "eta", "E") -- will be `\vartheta`
+format.greek.expand = function(captures, ending, upper)
   local idx = (#captures < 2 and 1 or 2) ---variant check (eg. `@vep` -> `varepsilon`)
   return captures[idx]:match "%u" and upper ---return the uppercase letter if given
     or string.format( ---otherwise format the captures accordingly
@@ -16,6 +34,84 @@ local function fmt_greek(captures, ending, upper)
         .. captures[idx], ---use either the 1st capture (for non-variant) or 2nd
       ending or "" ---append the ending string if given
     )
+end
+
+---Expands a factorial expression to LaTeX commands.
+---@param n number Any positive integer number.
+---@return string result The resulting expansion of @{n}!.
+format.factorial.expand = function(n)
+  local result = tostring(n)
+  for i = n - 1, 2, -1 do
+    result = result .. (i > 1 and " \\cdot " or "") .. i
+  end
+  return result
+end
+
+---Evaluates any factorial expression.
+---@param n number Any positive integer number.
+---@return string result The result of @{n}!.
+format.factorial.evaluate = function(n)
+  local result = 1
+  for i = 1, n do
+    result = result * i
+  end
+  return result
+end
+
+---Expands an inline binomial expression to it's display form eg. `n!/(n! * (n - k)!)`.
+---@param capture string The string captured by LuaSnip.
+---@return string result The LaTeX formatted binomial coefficient.
+format.binomial.expand_simple = function(capture)
+  local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
+  return string.format([[\frac{%d!}{%d! \cdot %d!}]], n, k, n - k)
+end
+
+---Expands an inline binomial coefficient and evaluates the difference.
+---@param capture string The string captured by LuaSnip.
+---@return string result The LaTeX formatted binomial coefficient.
+format.binomial.expand = function(capture)
+  local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
+  return string.format([[\frac{%d!}{%d! \cdot %d!}]], n, k, n - k)
+end
+
+---Completely expands an inline binomial expression.
+---@param capture string The string captured by LuaSnip.
+---@return string result The LaTeX formatted binomial coefficient.
+format.binomial.expand_full = function(capture)
+  local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
+  n, k = tonumber(n), tonumber(k)
+
+  ---Check if the expanded factorial should be surrounded by parentheses.
+  ---@param n number Any positive integer.
+  ---@return string result The expansion of `n!` surrounded by parentheses or not.
+  local check_expand = function(n)
+    return (
+      n < 3 and tostring(n) or string.format("(%s)", format.factorial.expand(n))
+    )
+  end
+
+  return string.format(
+    "\\frac{%s}{%s}",
+    format.factorial.expand(n), -- the numerator will always be this
+    ( -- need to handle all the possible denumerators
+      n - k == k -- don't repeat yourself, write "k^2"
+        and ((k < 3 and k or string.format("{(%s)}", format.factorial.expand(k))) .. "^2")
+      or string.format( -- numbers are different
+        "%s \\cdot %s", -- use this template to format them
+        check_expand(k),
+        check_expand(n - k)
+      )
+    )
+  )
+end
+
+---Solves a binomial coefficient.
+---@param capture string The string captured by LuaSnip.
+---@return string result The result of the binomial coefficient.
+format.binomial.solve = function(capture)
+  local fact = format.factorial.evaluate
+  local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
+  return tostring(fact(n) / (fact(k) * fact(n - k)))
 end
 
 ---@type table Table containing the various parenthesis
@@ -130,6 +226,77 @@ return {
     snippetType = "autosnippet",
   }, l("\\ddot{" .. l.POSTFIX_MATCH .. "}")),
 
+  ---Automatically print the factorial
+  postfix(
+    {
+      trig = "!",
+      dscr = "expand factorial to latex",
+      match_pattern = "%d+$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return format.factorial.expand(parent.snippet.env.POSTFIX_MATCH)
+    end)
+  ),
+  postfix(
+    {
+      trig = "!e",
+      dscr = "evaluate factorial",
+      match_pattern = "%d+$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return tostring(format.factorial.evaluate(parent.snippet.env.POSTFIX_MATCH))
+    end)
+  ),
+
+  ---Automatically expand the binomial coefficient
+  postfix(
+    {
+      trig = ";",
+      dscr = "Simple binomial expand",
+      match_pattern = "C?%(%d+[,;]%s+%d+%)$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return format.binomial.expand_simple(parent.snippet.env.POSTFIX_MATCH)
+    end)
+  ),
+
+  postfix(
+    {
+      trig = ";E",
+      dscr = "Binomial expand",
+      match_pattern = "C?%(%d+[,;]%s+%d+%)$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return format.binomial.expand(parent.snippet.env.POSTFIX_MATCH)
+    end)
+  ),
+  postfix(
+    {
+      trig = ";e",
+      dscr = "full binomial expansion",
+      match_pattern = "C?%(%d+[,;]%s+%d+%)$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return format.binomial.expand_full(parent.snippet.env.POSTFIX_MATCH)
+    end)
+  ),
+  postfix(
+    {
+      trig = ";s",
+      dscr = "solve the binomial coefficient",
+      match_pattern = "C?%(%d+[,;]%s+%d+%)$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      return format.binomial.solve(parent.snippet.env.POSTFIX_MATCH)
+    end)
+  ),
+
   ----------------------------------------------------------------------------------
   ---// AUTOSNIPPETS // ------------------------------------------------------------
   ----------------------------------------------------------------------------------
@@ -143,85 +310,85 @@ return {
   s( ---ALPHA
     snip("@([Aa]l)", "alpha", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "pha", "A")
+      return format.greek.expand(s.captures, "pha", "A")
     end)
   ),
   s( ---BETA
     snip("@([Bb]e)", "beta", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "ta", "B")
+      return format.greek.expand(s.captures, "ta", "B")
     end)
   ),
   s( ---GAMMA
     snip("@([Gg]a)", "gamma", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "mma")
+      return format.greek.expand(s.captures, "mma")
     end)
   ),
   s( ---DELTA
     snip("@([Dd]e)", "delta", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "lta")
+      return format.greek.expand(s.captures, "lta")
     end)
   ),
   s( ---EPSILON
     snip("@(v?)([Ee]p)", "epsilon", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "silon", "E")
+      return format.greek.expand(s.captures, "silon", "E")
     end)
   ),
   s( ---ZETA
     snip("@([Zz]e)", "zeta", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "ta", "Z")
+      return format.greek.expand(s.captures, "ta", "Z")
     end)
   ),
   s( ---ETA
     snip("@([Ee]t)", "eta", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "a", "H")
+      return format.greek.expand(s.captures, "a", "H")
     end)
   ),
   s( ---THETA
     snip("@(v?)([Tt]h)", "theta", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "eta")
+      return format.greek.expand(s.captures, "eta")
     end)
   ),
   s( ---IOTA
     snip("@([Ii]o)", "iota", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "ta", "I")
+      return format.greek.expand(s.captures, "ta", "I")
     end)
   ),
   s( ---KAPPA
     snip("@([Kk]a)", "kappa", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "ppa", "K")
+      return format.greek.expand(s.captures, "ppa", "K")
     end)
   ),
   s( ---LAMBDA
     snip("@([Ll]a)", "lambda", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "mbda")
+      return format.greek.expand(s.captures, "mbda")
     end)
   ),
   s( ---MU
     snip("@([Mm]u)", "mu", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "", "M")
+      return format.greek.expand(s.captures, "", "M")
     end)
   ),
   s( ---NU
     snip("@([Nn]u)", "nu", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "", "N")
+      return format.greek.expand(s.captures, "", "N")
     end)
   ),
   s( ---XI
     snip("@([Xx]i)", "xi", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures)
+      return format.greek.expand(s.captures)
     end)
   ),
   s( ---OMICRON
@@ -233,55 +400,55 @@ return {
   s( ---PI
     snip("@([Pp]i)", "pi", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures)
+      return format.greek.expand(s.captures)
     end)
   ),
   s( ---RHO
     snip("@(v?)([Rr]h)", "rho", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "o", "P")
+      return format.greek.expand(s.captures, "o", "P")
     end)
   ),
   s( ---SIGMA
     snip("@([Ss]i)", "sigma", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "gma")
+      return format.greek.expand(s.captures, "gma")
     end)
   ),
   s( ---TAU
     snip("@([Tt]a)", "tau", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "u", "T")
+      return format.greek.expand(s.captures, "u", "T")
     end)
   ),
   s( ---UPSILON
     snip("@([Uu]p)", "upsilon", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "silon")
+      return format.greek.expand(s.captures, "silon")
     end)
   ),
   s( ---PHI
     snip("@(v?)([Pp]h)", "phi", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "i")
+      return format.greek.expand(s.captures, "i")
     end)
   ),
   s( ---CHI
     snip("@([Cc]h)", "chi", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "i", "X")
+      return format.greek.expand(s.captures, "i", "X")
     end)
   ),
   s( ---PSI
     snip("@([Pp]s)", "psi", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "i")
+      return format.greek.expand(s.captures, "i")
     end)
   ),
   s( ---OMEGA
     snip("@([Oo]m)", "omega", "", "autosnippet", false, "pattern"),
     f(function(_, s)
-      return fmt_greek(s.captures, "ega")
+      return format.greek.expand(s.captures, "ega")
     end)
   ),
 
@@ -450,6 +617,10 @@ return {
   s(
     snip("binom", "binomial coefficients", "", "autosnippet"),
     fmta([[\binom{<>}{<>}]], { i(1, "n"), i(2, "k") })
+  ),
+  s(
+    snip("ibin", "inline binomial coefficients", "", "autosnippet"),
+    fmta([[C(<>; <>)]], { i(1, "n"), i(2, "k") })
   ),
   s(snip("o+", "oplus", "", "autosnippet", false), t { [[\oplus]] }),
   s(snip("oX", "otimes", "", "autosnippet", false), t { [[\otimes]] }),
