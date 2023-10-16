@@ -157,8 +157,7 @@ return {
           ---indent guides
           with_markers = true,
           indent_marker = "│",
-          last_indent_marker = "└",
-          highlight = "Comment",
+          last_indent_marker = "╰",
           ---expander config, needed for nesting files
           with_expanders = nil, ---if nil and file nesting is enabled, will enable expanders
           expander_collapsed = "",
@@ -181,7 +180,7 @@ return {
         },
         name = {
           trailing_slash = false,
-          highlight_opened_files = false, ---Requires `enable_opened_markers = true`.
+          highlight_opened_files = true, ---Requires `enable_opened_markers = true`.
           ---Take values in { false (no highlight), true (only loaded),
           ---"all" (both loaded and unloaded)}. For more information,
           ---see the `show_unloaded` config of the `buffers` source.
