@@ -297,6 +297,20 @@ return {
     end)
   ),
 
+  postfix(
+    {
+      trig = "/",
+      dscr = "evaluates the fraction",
+      match_pattern = "%(%d+%s?/%d+%s?%)$",
+      snippetType = "snippet",
+    },
+    f(function(_, parent)
+      local n, k = parent.snippet.env.POSTFIX_MATCH:match "^%((%d+)%s?/(%d+)%s?%)$"
+      print(n, k)
+      return tostring(n / k)
+    end)
+  ),
+
   ----------------------------------------------------------------------------------
   ---// AUTOSNIPPETS // ------------------------------------------------------------
   ----------------------------------------------------------------------------------
