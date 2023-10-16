@@ -10,14 +10,18 @@ return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by
   ---Katsushika Hokusai.
   "rebelot/kanagawa.nvim",
+  enabled = true,
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
+  init = function()
+    vim.cmd.colorscheme "kanagawa"
+  end,
   opts = {
     compile = true,
     transparent = transparency(),
     dimInactive = false, ---dim inactive window `:h hl-NormalNC`
-    commentStyle = { italic = false },
+    commentStyle = { italic = true },
     overrides = function(colors)
       local theme = colors.theme
       return {
@@ -141,8 +145,4 @@ return {
     },
     theme = "dragon",
   },
-  init = function()
-    vim.cmd.colorscheme "kanagawa"
-    -- vim.cmd "KanagawaCompile"
-  end,
 }
