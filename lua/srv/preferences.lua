@@ -56,6 +56,8 @@ Preferences.icons.diagnostics = {
   Warn = " ",
   Hint = " ",
   Info = " ",
+  Debug = " ",
+  Trace = " ",
 }
 
 ---@enum dap Icons for dap diagnostics
