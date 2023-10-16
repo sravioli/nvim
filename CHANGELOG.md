@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.1](https://github.com/sRavioli/nvim/compare/0.9.0..0.9.1) - 2023-10-16
+#### Bug Fixes
+- **(colorscheme)** remove neovide theme - ([07984d2](https://github.com/sRavioli/nvim/commit/07984d26064df6bc74f8804c98a90850af56c6a2)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(colorscheme)** comments are italicised - ([3f68f50](https://github.com/sRavioli/nvim/commit/3f68f50e5cd655ddac065a2989df93bdbb0668f6)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** install `nvim-notify` - ([4915378](https://github.com/sRavioli/nvim/commit/4915378fbecef2a081db1f801e56cf3ae54e58b3)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** recompile `kanagawa.nvim` when inside neovide, restore on exit - ([23cc60e](https://github.com/sRavioli/nvim/commit/23cc60ef9baa5a76a6a2d0d6857ebb47afc57464)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** notify when toggling typewriter scroll - ([d0b6743](https://github.com/sRavioli/nvim/commit/d0b67437df61480f9dfd70f965141c01266e4aa9)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(plugins)** add more toggle switches - ([0d1b7d1](https://github.com/sRavioli/nvim/commit/0d1b7d19c8467e01b4ccf607453eaa26ebdc7936)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.0](https://github.com/sRavioli/nvim/compare/0.8.1..0.9.0) - 2023-10-16
 #### Bug Fixes
 - **(plugins)** remove old `ui` folder - ([47c7c95](https://github.com/sRavioli/nvim/commit/47c7c95c1b22d4263e3b33ae1397a8a99dd4606e)) - [@sRavioli](https://github.com/sRavioli)
