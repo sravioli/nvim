@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.0](https://github.com/sRavioli/nvim/compare/0.8.1..0.9.0) - 2023-10-16
+#### Bug Fixes
+- **(plugins)** remove old `ui` folder - ([47c7c95](https://github.com/sRavioli/nvim/commit/47c7c95c1b22d4263e3b33ae1397a8a99dd4606e)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(snippets)** add snippet to evaluate fractions inside parentheses - ([5b6eaa1](https://github.com/sRavioli/nvim/commit/5b6eaa1692792d5b8f2588ad3aa7724e94e1adc5)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- remove useles changelog - ([f30f0ad](https://github.com/sRavioli/nvim/commit/f30f0ad87c802ace365a2852da90b785bf7e1795)) - [@sRavioli](https://github.com/sRavioli)
+#### Refactoring
+- **(plugins)** ditch `editor folder`, group plugins in a better way - ([278a291](https://github.com/sRavioli/nvim/commit/278a2911d2b61618a2c9bada9dea036c49d629e6)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** move colorschemes to own folder - ([db22efe](https://github.com/sRavioli/nvim/commit/db22efe3219084c51966e2babf2fae48986bf758)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.8.1](https://github.com/sRavioli/nvim/compare/0.8.0..0.8.1) - 2023-10-15
 #### Hotfixes
 - **(snippets)** make `format.binomial.expand_simple()` not solve `n - k` - ([03cbaf9](https://github.com/sRavioli/nvim/commit/03cbaf9754f13d8bf2683192092ae79ae0e3f0f0)) - [@sRavioli](https://github.com/sRavioli)
