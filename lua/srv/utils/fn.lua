@@ -2,7 +2,7 @@
 ---@module "functions"
 ---@author sRavioli
 ---@license GPL-3.0
----last updated: 2023-10-13 15:11
+---last updated: 2023-10-16 15:46
 
 ---User defined utility functions
 ---@class Functions
@@ -80,6 +80,10 @@ Functions.typewriter_toggle = function()
       math.floor(vim.api.nvim_win_get_height(vim.api.nvim_get_current_win()) / 2)
   end
   typewriter_state = not typewriter_state -- toggle the state
+  require "notify"(
+    (typewriter_state and "En" or "Dis") .. "abled typewriter scrolling",
+    "info"
+  )
 end
 
 ---Loads the required keymaps. When called with no arguments it will load only the
