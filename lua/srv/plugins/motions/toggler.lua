@@ -38,6 +38,8 @@ return {
       ["."] = ":",
       ["minimum"] = "maximum",
       ["min"] = "max",
+      ["- [ ]"] = "- [X]",
+      ["[ ]"] = "[X]",
     },
     ---removes the default <leader>i keymap
     remove_default_keybinds = true,
