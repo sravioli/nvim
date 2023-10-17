@@ -3,16 +3,12 @@ return {
 
   n = {
     ["]t"] = {
-      function()
-        require("todo-comments").jump_next()
-      end,
+      function() require("todo-comments").jump_next() end,
       "Next todo comment",
     },
 
     ["[t"] = {
-      function()
-        require("todo-comments").jump_prev()
-      end,
+      function() require("todo-comments").jump_prev() end,
       "Previous todo comment",
     },
   },

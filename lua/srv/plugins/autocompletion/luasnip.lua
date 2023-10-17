@@ -18,9 +18,7 @@ return {
   end,
   config = function()
     local present, ls = pcall(require, "luasnip")
-    if not present then
-      return
-    end
+    if not present then return end
 
     local opts = {
       history = true,

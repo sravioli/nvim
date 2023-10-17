@@ -23,9 +23,7 @@ return {
     "epwalsh/obsidian.nvim",
     enabled = false,
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-    event = "BufReadPre "
-      .. vim.fn.expand "~"
-      .. [[\Documents\knowledge-base\**.md]],
+    event = "BufReadPre " .. vim.fn.expand "~" .. [[\Documents\knowledge-base\**.md]],
     dependencies = {
       { "nvim-lua/plenary.nvim" }, ---Required.
       { "hrsh7th/nvim-cmp" }, ---Optional, for completion.
@@ -116,9 +114,7 @@ return {
     ---Easily follow markdown links with this neovim plugin
     "jghauser/follow-md-links.nvim",
     ft = "markdown",
-    init = function()
-      vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
-    end,
+    init = function() vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true }) end,
   },
   {
     ---Catalyze your Fenced Markdown Code-block editing!
@@ -127,9 +123,7 @@ return {
     keys = {
       {
         "<leader>ce",
-        function()
-          require("femaco.edit").edit_code_block()
-        end,
+        function() require("femaco.edit").edit_code_block() end,
         desc = "󱚌  Edit code block with FeMaco",
       },
     },
@@ -182,9 +176,7 @@ return {
       -- @param base_filetype: The filetype which FeMaco is called from, not the
       -- filetype of the injected language (this is the current buffer so you can
       -- get it from vim.bo.filetyp).
-      ensure_newline = function(base_filetype)
-        return true
-      end,
+      ensure_newline = function(base_filetype) return true end,
     },
   },
 }

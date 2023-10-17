@@ -2,17 +2,11 @@ return {
   ---Nvim Treesitter configurations and abstraction layer
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPre",
-  build = function()
-    require("nvim-treesitter.install").update { with_sync = true }
-  end,
-  init = function()
-    require("srv.utils.fn").mappings.load "treesitter"
-  end,
+  build = function() require("nvim-treesitter.install").update { with_sync = true } end,
+  init = function() require("srv.utils.fn").mappings.load "treesitter" end,
   config = function()
     local present, tsc = pcall(require, "nvim-treesitter.configs")
-    if not present then
-      return
-    end
+    if not present then return end
 
     local opts = {
       ---A list of parser names, or "all" (the five listed parsers should always be installed)

@@ -8,12 +8,8 @@ return {
     ---Navigation through hunks
     ["]c"] = {
       function()
-        if vim.wo.diff then
-          return "]c"
-        end
-        vim.schedule(function()
-          require("gitsigns").next_hunk()
-        end)
+        if vim.wo.diff then return "]c" end
+        vim.schedule(function() require("gitsigns").next_hunk() end)
         return "<Ignore>"
       end,
       "󱋿  Jump to next hunk",
@@ -22,12 +18,8 @@ return {
 
     ["[c"] = {
       function()
-        if vim.wo.diff then
-          return "[c"
-        end
-        vim.schedule(function()
-          require("gitsigns").prev_hunk()
-        end)
+        if vim.wo.diff then return "[c" end
+        vim.schedule(function() require("gitsigns").prev_hunk() end)
         return "<Ignore>"
       end,
       "󱋿  Jump to prev hunk",
@@ -43,9 +35,7 @@ return {
     ["<leader>hR"] = { gs.reset_buffer, "󰊢  Reset buffer" },
     ["<leader>hp"] = { gs.preview_hunk, "󰊢  Preview hunk" },
     ["<leader>hb"] = {
-      function()
-        gs.blame_line { full = true }
-      end,
+      function() gs.blame_line { full = true } end,
       "󰊢  Enable line blame",
     },
     ["<leader>tb"] = {
@@ -54,9 +44,7 @@ return {
     },
     ["<leader>hd"] = { gs.diffthis, "󰊢  Diff this" },
     ["<leader>hD"] = {
-      function()
-        gs.diffthis "~"
-      end,
+      function() gs.diffthis "~" end,
       "󰊢  Diff this",
     },
     ["<leader>td"] = { gs.toggle_deleted, "󰊢  Toggle deleted" },
@@ -64,16 +52,12 @@ return {
 
   v = {
     ["<leader>hs"] = {
-      function()
-        gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
-      end,
+      function() gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" } end,
       "󰊢  Stage hunk",
     },
 
     ["<leader>hr"] = {
-      function()
-        gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
-      end,
+      function() gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" } end,
       "󰊢  Reset hunk",
     },
   },

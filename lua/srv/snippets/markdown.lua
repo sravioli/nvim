@@ -196,9 +196,7 @@ return {
         tag_initials = l(l._1:gsub("%l", ""):gsub("%W", ""), 2),
         title = i(3, "titolo"),
         desc = i(4, "descrizione"),
-        date = f(function()
-          return os.date "%Y-%m-%d %H:%M"
-        end),
+        date = f(function() return os.date "%Y-%m-%d %H:%M" end),
       }
     )
   ),

@@ -14,9 +14,7 @@ return {
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
-  init = function()
-    vim.cmd.colorscheme "kanagawa"
-  end,
+  init = function() vim.cmd.colorscheme "kanagawa" end,
   opts = {
     compile = true,
     transparent = transparency(),

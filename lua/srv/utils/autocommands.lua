@@ -18,9 +18,7 @@ au("VimEnter", {
   desc = "recompile kanagawa at runtime inside neovide",
   pattern = "*",
   callback = function()
-    if vim.g.neovide then
-      vim.cmd "KanagawaCompile"
-    end
+    if vim.g.neovide then vim.cmd "KanagawaCompile" end
   end,
 })
 
@@ -28,9 +26,7 @@ au("VimLeave", {
   desc = "recompile kanagawa for neovim when exiting neovide",
   pattern = "*",
   callback = function()
-    if vim.g.neovide then
-      vim.cmd "!nvim --headless +KanagawaCompile +q"
-    end
+    if vim.g.neovide then vim.cmd "!nvim --headless +KanagawaCompile +q" end
   end,
 })
 
@@ -47,9 +43,7 @@ au("TextYankPost", {
   desc = "Highlight selection on yank",
   group = aug.yank_highlight,
   pattern = "*",
-  callback = function()
-    vim.highlight.on_yank { higroup = "Search", timeout = 200 }
-  end,
+  callback = function() vim.highlight.on_yank { higroup = "Search", timeout = 200 } end,
 })
 
 ---Quit from some windows by only pressing q
@@ -164,9 +158,7 @@ au("FileType", {
   pattern = "lua",
   desc = "Change the colorcolumn for lua files",
   group = aug.buf_detect,
-  callback = function()
-    vim.opt_local.colorcolumn = "85"
-  end,
+  callback = function() vim.opt_local.colorcolumn = "85" end,
 })
 
 au("FileType", {
@@ -183,7 +175,5 @@ au("BufWritePre", {
   pattern = "*",
   desc = "update last modified flag",
   group = aug.lua_functions,
-  callback = function()
-    require("srv.utils.fn").update_timestamp()
-  end,
+  callback = function() require("srv.utils.fn").update_timestamp() end,
 })

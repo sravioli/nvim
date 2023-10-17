@@ -6,9 +6,7 @@ return {
   build = ":Neorg sync-parsers",
   cmd = "Neorg",
   ft = "norg",
-  init = function()
-    vim.g.localleader = "\\"
-  end,
+  init = function() vim.g.localleader = "\\" end,
   opts = {
     load = {
       ---Loads default behaviour
@@ -21,9 +19,7 @@ return {
             ---The title field generates a title for the file based on the filename.
             {
               "title",
-              function()
-                return vim.fn.expand "%:p:t:r"
-              end,
+              function() return vim.fn.expand "%:p:t:r" end,
             },
 
             ---The description field is always kept empty for the user to fill in.
@@ -32,9 +28,7 @@ return {
             ---The authors field is autopopulated by querying the current user's system username.
             {
               "authors",
-              function()
-                return require("neorg.external.helpers").get_username()
-              end,
+              function() return require("neorg.external.helpers").get_username() end,
             },
 
             ---The categories field is always kept empty for the user to fill in.
@@ -43,27 +37,21 @@ return {
             ---The created field is populated with the current date as returned by `os.date`.
             {
               "created",
-              function()
-                return os.date "%Y-%m-%d %H:%M"
-              end,
+              function() return os.date "%Y-%m-%d %H:%M" end,
             },
 
             ---When creating fresh, new metadata, the updated field is populated the same way
             ---as the `created` date.
             {
               "updated",
-              function()
-                return os.date "%Y-%m-%d %H:%M"
-              end,
+              function() return os.date "%Y-%m-%d %H:%M" end,
             },
 
             ---The version field determines which Norg version was used when the file
             ---was created.
             {
               "version",
-              function()
-                return require("neorg.config").norg_version
-              end,
+              function() return require("neorg.config").norg_version end,
             },
           },
           type = "auto",

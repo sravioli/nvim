@@ -7,9 +7,7 @@ return {
   },
   branch = "main",
   event = "LspAttach",
-  init = function()
-    require("srv.utils.fn").mappings.load "lspsaga"
-  end,
+  init = function() require("srv.utils.fn").mappings.load "lspsaga" end,
   opts = {
     symbol_in_winbar = {
       enable = true,

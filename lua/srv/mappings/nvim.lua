@@ -66,9 +66,7 @@ return {
 
     ---Toggle typewriter mode
     ["<leader>tT"] = {
-      function()
-        require("srv.utils.fn").typewriter_toggle()
-      end,
+      function() require("srv.utils.fn").typewriter_toggle() end,
       "󰔡  Toggle typewriter scrolling",
     },
   },

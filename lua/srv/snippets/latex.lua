@@ -85,9 +85,7 @@ format.binomial.expand_full = function(capture)
   ---@param n number Any positive integer.
   ---@return string result The expansion of `n!` surrounded by parentheses or not.
   local check_expand = function(n)
-    return (
-      n < 3 and tostring(n) or string.format("(%s)", format.factorial.expand(n))
-    )
+    return (n < 3 and tostring(n) or string.format("(%s)", format.factorial.expand(n)))
   end
 
   return string.format(
@@ -234,9 +232,9 @@ return {
       match_pattern = "%d+$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return format.factorial.expand(parent.snippet.env.POSTFIX_MATCH)
-    end)
+    f(
+      function(_, parent) return format.factorial.expand(parent.snippet.env.POSTFIX_MATCH) end
+    )
   ),
   postfix(
     {
@@ -245,9 +243,11 @@ return {
       match_pattern = "%d+$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return tostring(format.factorial.evaluate(parent.snippet.env.POSTFIX_MATCH))
-    end)
+    f(
+      function(_, parent)
+        return tostring(format.factorial.evaluate(parent.snippet.env.POSTFIX_MATCH))
+      end
+    )
   ),
 
   ---Automatically expand the binomial coefficient
@@ -258,9 +258,11 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return format.binomial.expand_simple(parent.snippet.env.POSTFIX_MATCH)
-    end)
+    f(
+      function(_, parent)
+        return format.binomial.expand_simple(parent.snippet.env.POSTFIX_MATCH)
+      end
+    )
   ),
 
   postfix(
@@ -270,9 +272,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return format.binomial.expand(parent.snippet.env.POSTFIX_MATCH)
-    end)
+    f(
+      function(_, parent) return format.binomial.expand(parent.snippet.env.POSTFIX_MATCH) end
+    )
   ),
   postfix(
     {
@@ -281,9 +283,11 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return format.binomial.expand_full(parent.snippet.env.POSTFIX_MATCH)
-    end)
+    f(
+      function(_, parent)
+        return format.binomial.expand_full(parent.snippet.env.POSTFIX_MATCH)
+      end
+    )
   ),
   postfix(
     {
@@ -292,9 +296,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(function(_, parent)
-      return format.binomial.solve(parent.snippet.env.POSTFIX_MATCH)
-    end)
+    f(
+      function(_, parent) return format.binomial.solve(parent.snippet.env.POSTFIX_MATCH) end
+    )
   ),
 
   postfix(
@@ -323,147 +327,99 @@ return {
   ---Greek letters
   s( ---ALPHA
     snip("@([Aa]l)", "alpha", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "pha", "A")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "pha", "A") end)
   ),
   s( ---BETA
     snip("@([Bb]e)", "beta", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "ta", "B")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "ta", "B") end)
   ),
   s( ---GAMMA
     snip("@([Gg]a)", "gamma", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "mma")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "mma") end)
   ),
   s( ---DELTA
     snip("@([Dd]e)", "delta", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "lta")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "lta") end)
   ),
   s( ---EPSILON
     snip("@(v?)([Ee]p)", "epsilon", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "silon", "E")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "silon", "E") end)
   ),
   s( ---ZETA
     snip("@([Zz]e)", "zeta", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "ta", "Z")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "ta", "Z") end)
   ),
   s( ---ETA
     snip("@([Ee]t)", "eta", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "a", "H")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "a", "H") end)
   ),
   s( ---THETA
     snip("@(v?)([Tt]h)", "theta", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "eta")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "eta") end)
   ),
   s( ---IOTA
     snip("@([Ii]o)", "iota", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "ta", "I")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "ta", "I") end)
   ),
   s( ---KAPPA
     snip("@([Kk]a)", "kappa", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "ppa", "K")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "ppa", "K") end)
   ),
   s( ---LAMBDA
     snip("@([Ll]a)", "lambda", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "mbda")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "mbda") end)
   ),
   s( ---MU
     snip("@([Mm]u)", "mu", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "", "M")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "", "M") end)
   ),
   s( ---NU
     snip("@([Nn]u)", "nu", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "", "N")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "", "N") end)
   ),
   s( ---XI
     snip("@([Xx]i)", "xi", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures)
-    end)
+    f(function(_, s) return format.greek.expand(s.captures) end)
   ),
   s( ---OMICRON
     snip("@([Oo]M)", "omicron", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return s.captures[1]:gsub(".$", "")
-    end)
+    f(function(_, s) return s.captures[1]:gsub(".$", "") end)
   ),
   s( ---PI
     snip("@([Pp]i)", "pi", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures)
-    end)
+    f(function(_, s) return format.greek.expand(s.captures) end)
   ),
   s( ---RHO
     snip("@(v?)([Rr]h)", "rho", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "o", "P")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "o", "P") end)
   ),
   s( ---SIGMA
     snip("@([Ss]i)", "sigma", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "gma")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "gma") end)
   ),
   s( ---TAU
     snip("@([Tt]a)", "tau", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "u", "T")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "u", "T") end)
   ),
   s( ---UPSILON
     snip("@([Uu]p)", "upsilon", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "silon")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "silon") end)
   ),
   s( ---PHI
     snip("@(v?)([Pp]h)", "phi", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "i")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "i") end)
   ),
   s( ---CHI
     snip("@([Cc]h)", "chi", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "i", "X")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "i", "X") end)
   ),
   s( ---PSI
     snip("@([Pp]s)", "psi", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "i")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "i") end)
   ),
   s( ---OMEGA
     snip("@([Oo]m)", "omega", "", "autosnippet", false, "pattern"),
-    f(function(_, s)
-      return format.greek.expand(s.captures, "ega")
-    end)
+    f(function(_, s) return format.greek.expand(s.captures, "ega") end)
   ),
 
   ---Fonts
@@ -475,24 +431,15 @@ return {
   s(snip("#sf", "mathsf", "", "autosnippet", false), fmta([[\mathsf{<>}]], i(1))),
   s(snip("#cal", "mathcal", "", "autosnippet", false), fmta([[\mathcal{<>}]], i(1))),
   s(snip("#scr", "mathscr", "", "autosnippet", false), fmta([[\mathscr{<>}]], i(1))),
-  s(
-    snip("#frak", "mathfrak", "", "autosnippet", false),
-    fmta([[\mathfrak{<>}]], i(1))
-  ),
+  s(snip("#frak", "mathfrak", "", "autosnippet", false), fmta([[\mathfrak{<>}]], i(1))),
 
   ---Arrows
-  s(
-    snip("<->", "left-right arrow", "", "autosnippet", false),
-    t { [[\leftrightarrow]] }
-  ),
+  s(snip("<->", "left-right arrow", "", "autosnippet", false), t { [[\leftrightarrow]] }),
   s(snip("->", "right arrow", "", "autosnippet", false), t { [[\rightarrow]] }),
   s(snip("=>", "right arrow", "", "autosnippet", false), t { [[\Rightarrow]] }),
   s(snip("-<", "left arrow", "", "autosnippet", false), t { [[\leftarrow]] }),
   s(snip("=<", "left arrow", "", "autosnippet", false), t { [[\Leftarrow]] }),
-  s(
-    snip("<=>", "left-right arrow", "", "autosnippet", false),
-    t { [[\Leftrightarrow]] }
-  ),
+  s(snip("<=>", "left-right arrow", "", "autosnippet", false), t { [[\Leftrightarrow]] }),
   s(snip("|->", "maps to", "", "autosnippet", false), t { [[\mapsto]] }),
   s(snip("|-->", "long maps to", "", "autosnippet", false), t { [[\longmapsto]] }),
 
@@ -503,10 +450,7 @@ return {
   s(snip("Im", "imaginary part", "", "autosnippet", false), t { [[\Im]] }),
   s(snip("VV", "nabla", "", "autosnippet", false), t { [[\nabla]] }),
   s(snip("EE", "exists", "", "autosnippet", false), t { [[\exists]] }),
-  s(
-    snip("part", "partial derivative", "", "autosnippet", false),
-    t { [[\partial]] }
-  ),
+  s(snip("part", "partial derivative", "", "autosnippet", false), t { [[\partial]] }),
   s(snip("nEE", "does not exists", "", "autosnippet", false), t { [[\nexists]] }),
   s(snip("\\0", "empty set", "", "autosnippet", false), t { [[\emptyset]] }),
   s(snip("/0", "nothing", "", "autosnippet", false), t { [[\nothing]] }),
@@ -605,10 +549,7 @@ return {
     snip("n^2rt", "square root of n", "", "autosnippet", false),
     fmta([[\sqrt[<>]{<>}]], { i(1), i(2) })
   ),
-  s(
-    snip("^2rt", "square root", "", "autosnippet", false),
-    fmta([[\sqrt{<>}]], i(1))
-  ),
+  s(snip("^2rt", "square root", "", "autosnippet", false), fmta([[\sqrt{<>}]], i(1))),
   s(snip("ln", "natural log", "", "autosnippet", false), t { [[\ln]] }),
   s(snip("log", "logarithm", "", "autosnippet", false), t { [[\log]] }),
   s(snip("lo2", "logarithm base 2", "", "autosnippet", false), t { [[\log_2]] }),
@@ -642,10 +583,7 @@ return {
   s(snip("sq", "squared", "", "autosnippet", false), t { "^2" }),
 
   ---Fractions
-  s(
-    snip("//", "fraction", "", "autosnippet"),
-    fmta([[\frac{<>}{<>}]], { i(1), i(2) })
-  ),
+  s(snip("//", "fraction", "", "autosnippet"), fmta([[\frac{<>}{<>}]], { i(1), i(2) })),
 
   ---Parenthesis
   s(
@@ -657,13 +595,9 @@ return {
       wordTrig = false,
     },
     fmt([[\left{}{}\right{}]], {
-      f(function(_, s)
-        return parentheses[s.captures[1]][1]
-      end),
+      f(function(_, s) return parentheses[s.captures[1]][1] end),
       i(1),
-      f(function(_, s)
-        return parentheses[s.captures[1]][2]
-      end),
+      f(function(_, s) return parentheses[s.captures[1]][2] end),
     })
   ),
 
@@ -681,14 +615,7 @@ return {
     l(l.LS_CAPTURE_1 .. "{" .. l.LS_CAPTURE_2 .. "}")
   ),
   s(
-    snip(
-      "([%^_]){([%d]+)}(%d)",
-      "sub/sup-scrip",
-      "",
-      "autosnippet",
-      false,
-      "pattern"
-    ),
+    snip("([%^_]){([%d]+)}(%d)", "sub/sup-scrip", "", "autosnippet", false, "pattern"),
     l(l.LS_CAPTURE_1 .. "{" .. l.LS_CAPTURE_2 .. l.LS_CAPTURE_3 .. "}")
   ),
 

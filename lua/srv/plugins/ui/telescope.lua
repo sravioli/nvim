@@ -43,9 +43,7 @@ return {
   },
   config = function()
     local present, telescope = pcall(require, "telescope")
-    if not present then
-      return
-    end
+    if not present then return end
 
     local opts = {
       defaults = {

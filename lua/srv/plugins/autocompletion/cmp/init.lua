@@ -5,9 +5,7 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
   config = function()
     local present, cmp = pcall(require, "cmp")
-    if not present then
-      return
-    end
+    if not present then return end
 
     local cmp_fn = require "srv.plugins.autocompletion.cmp.functions"
     local cmp_mappings = require "srv.plugins.autocompletion.cmp.mappings"
@@ -37,9 +35,7 @@ return {
 
       sorting = {
         comparators = {
-          function(...)
-            return require("cmp_buffer"):compare_locality(...)
-          end,
+          function(...) return require("cmp_buffer"):compare_locality(...) end,
         },
       },
     }

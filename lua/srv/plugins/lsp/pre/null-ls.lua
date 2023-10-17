@@ -6,9 +6,7 @@ return {
   event = "BufWinEnter",
   config = function()
     local present, null_ls = pcall(require, "null-ls")
-    if not present then
-      return
-    end
+    if not present then return end
 
     ---@type table Shorthand for `null_ls.builtins.diagnostics`
     local diagnostics = null_ls.builtins.diagnostics

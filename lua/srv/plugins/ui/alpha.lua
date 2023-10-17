@@ -6,9 +6,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local present, alpha = pcall(require, "alpha")
-    if not present then
-      return
-    end
+    if not present then return end
 
     local term_size = {
       width = math.floor(vim.fn.winwidth(0) * 0.85),
