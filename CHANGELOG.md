@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.2](https://github.com/sRavioli/nvim/compare/0.9.1..0.9.2) - 2023-10-19
+#### Bug Fixes
+- **(plugins:ui)** use custom kinds for `nvim-notify` - ([39ab120](https://github.com/sRavioli/nvim/commit/39ab120978e0390670fdb2a7a73d1ddb50bb2247)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** change neo-tree indent markers, don't highlight as comment - ([337a28e](https://github.com/sRavioli/nvim/commit/337a28ed4a03340e698049c97a44715760a082f7)) - [@sRavioli](https://github.com/sRavioli)
+- **(stylua)** change stylua formatting method - ([9c897b6](https://github.com/sRavioli/nvim/commit/9c897b659b3c00a763d2d6748ac5295f8daa1f02)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(plugins:motions)** add markdown checkbox switcher for `nvim-toggler` - ([6b82f2c](https://github.com/sRavioli/nvim/commit/6b82f2caf74c9888c94f98c444064a624d73194f)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** install `surround-ui` - ([afc9ba0](https://github.com/sRavioli/nvim/commit/afc9ba0f20936944b65772f1de2b0b1cf3ad9093)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** install `nvim-colorizer` - ([e9de0e4](https://github.com/sRavioli/nvim/commit/e9de0e45e61df1d27c32f7b9ad9d17454a74ef8a)) - [@sRavioli](https://github.com/sRavioli)
+- **(preferences)** add new diagnostics icons - ([9c84613](https://github.com/sRavioli/nvim/commit/9c846134bf91591dc59d812cea6faacfccb68323)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets:toml)** add stylua config as toml snippet - ([bfdbb24](https://github.com/sRavioli/nvim/commit/bfdbb24b3833507a6b9b99c5f3a81e0e7c0b0f8b)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(plugins:lsp)** handle `null-ls` deprecaiton, use `none-ls` - ([f9e3a2f](https://github.com/sRavioli/nvim/commit/f9e3a2f2c1ae91b9cc8e1fa88f7c341fcd3bfc72)) - [@sRavioli](https://github.com/sRavioli)
+- format with stylua - ([44ba336](https://github.com/sRavioli/nvim/commit/44ba336445aa2e10f8eff0453af5ba8f6f41a96f)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.1](https://github.com/sRavioli/nvim/compare/0.9.0..0.9.1) - 2023-10-16
 #### Bug Fixes
 - **(colorscheme)** remove neovide theme - ([07984d2](https://github.com/sRavioli/nvim/commit/07984d26064df6bc74f8804c98a90850af56c6a2)) - [@sRavioli](https://github.com/sRavioli)
