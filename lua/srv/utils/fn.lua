@@ -2,7 +2,6 @@
 ---@module "functions"
 ---@author sRavioli
 ---@license GPL-3.0
----last updated: 2023-10-16 15:46
 
 ---User defined utility functions
 ---@class Functions
@@ -87,7 +86,7 @@ end
 ---Loads the required keymaps. When called with no arguments it will load only the
 ---non-plugins keymaps, eg. the one that do not have `plugin = true` in their declaration.
 ---@param section? string The name of the keymaps section to load
----@param options? table A tabale containing the options to pass to `vim.keymap.set()`
+---@param options? table A table containing the options to pass to `vim.keymap.set()`
 ---@return nil
 Functions.mappings.load = function(section, options)
   vim.schedule(function()
