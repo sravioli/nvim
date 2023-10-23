@@ -11,6 +11,7 @@ return {
   },
   opts = {
     window = {
+      width = vim.api.nvim_get_option_value("colorcolumn", { scope = "local" }) + 15,
       options = {
         signcolumn = "no", -- disable signcolumn
         -- number = false, -- disable number column
