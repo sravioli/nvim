@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.3](https://github.com/sRavioli/nvim/compare/0.9.2..0.9.3) - 2023-10-23
+#### Bug Fixes
+- **(mappings:lspsaga)** add `<CR>` to keymap end, change mapping - ([4d17eec](https://github.com/sRavioli/nvim/commit/4d17eec5ca622332a73aaafabd8f8bc1cd161e4c)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** use correct colors for lualine groups, use icons for fileformat - ([bbf8670](https://github.com/sRavioli/nvim/commit/bbf867004d7748be94ea35e0bb4a996378e1bace)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(plugins:ui)** change `zen-mode` window width - ([de58991](https://github.com/sRavioli/nvim/commit/de589916e8d3aad5225ce3d2042040a1406e0b9b)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** enable indent-blankline scope highlight - ([db33d4e](https://github.com/sRavioli/nvim/commit/db33d4e28078b309addf53049f6ca83b33f8193f)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets:latex)** add snippets - ([f8a54f0](https://github.com/sRavioli/nvim/commit/f8a54f06d71f527858df2dc13dc2b32c409afb2f)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(utils:fn)** fix typo in documentation - ([8c255aa](https://github.com/sRavioli/nvim/commit/8c255aa02a76d93549e7ddf76045a2010c12c734)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.2](https://github.com/sRavioli/nvim/compare/0.9.1..0.9.2) - 2023-10-19
 #### Bug Fixes
 - **(plugins:ui)** use custom kinds for `nvim-notify` - ([39ab120](https://github.com/sRavioli/nvim/commit/39ab120978e0390670fdb2a7a73d1ddb50bb2247)) - [@sRavioli](https://github.com/sRavioli)
