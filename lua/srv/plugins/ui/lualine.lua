@@ -10,6 +10,7 @@ return {
   event = "UIEnter",
   opts = function()
     local icons = require("srv.preferences").icons
+    local theme = require("kanagawa.colors").setup({ theme = "dragon" }).theme
     return {
       options = {
         icons_enabled = true,
@@ -45,7 +46,11 @@ return {
           { "filename" },
         },
         lualine_c = {
-          { "b:gitsigns_head", icon = icons.git.Branch, color = "Comment" },
+          {
+            "b:gitsigns_head",
+            icon = icons.git.Branch,
+            color = { fg = theme.syn.comment },
+          },
           {
             "diff",
             symbols = {
@@ -96,16 +101,21 @@ return {
                 end,
               }
             end,
-            color = "Comment",
+            color = { fg = theme.syn.comment },
           },
           { "encoding" },
           {
             "fileformat",
             icons_enabled = true,
+            -- symbols = {
+            --   unix = "LF",
+            --   dos = "CRLF",
+            --   mac = "CR",
+            -- },
             symbols = {
-              unix = "LF",
-              dos = "CRLF",
-              mac = "CR",
+              unix = "", -- e712
+              dos = "", -- e70f
+              mac = "", -- e711
             },
           },
         },
