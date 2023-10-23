@@ -604,6 +604,10 @@ return {
   ---Auto sub/sup-script
   s(snip("__", "subscript", "", "autosnippet", false), fmta([[_{<>}]], i(1))),
   s(snip("^^", "supscript", "", "autosnippet", false), fmta([[^{<>}]], i(1))),
+  s(
+    snip("([%^_])%*", "convert to \\ast", "", "autosnippet", false, "pattern"),
+    fmta([[<>\ast]], { l(l.LS_CAPTURE_1) })
+  ),
 
   s(
     snip("\\?([%a])(%d)", "subscript", "", "autosnippet", true, "pattern"),
@@ -617,6 +621,20 @@ return {
   s(
     snip("([%^_]){([%d]+)}(%d)", "sub/sup-scrip", "", "autosnippet", false, "pattern"),
     l(l.LS_CAPTURE_1 .. "{" .. l.LS_CAPTURE_2 .. l.LS_CAPTURE_3 .. "}")
+  ),
+
+  s(
+    {
+      trig = "declvar",
+      desc = "declare variable",
+      snippetType = "autosnippet",
+      wordTrig = false,
+    },
+    fmta(
+      [[\def\<name>{\pu{<val>}} <name_tex> = \pu{<val>}]],
+      { name = i(1), val = i(2), name_tex = i(3) },
+      { repeat_duplicates = true }
+    )
   ),
 
   ----------------------------------------------------------------------------------
