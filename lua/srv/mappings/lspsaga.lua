@@ -4,7 +4,7 @@ return {
   n = {
     ["<leader>fd"] = { "<cmd>Lspsaga finder<CR>", "  Lspsaga find definition" },
     ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "󱐋  Lspsaga code actions" },
-    ["<leader>rn"] = { "<cmd>Lspsaga lsp_rename", "󰑕  Lspsaga rename" },
+    ["<leader>cr"] = { "<cmd>Lspsaga rename<CR>", "󰑕  Lspsaga code rename" },
     ["gd"] = { "<cmd>Lspsaga goto_definition<CR>", "󰞘  Lspsaga definition" },
     ["gT"] = {
       "<cmd>Lspsaga goto_type_definition<CR>",
