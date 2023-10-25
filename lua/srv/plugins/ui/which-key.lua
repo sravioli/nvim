@@ -35,6 +35,7 @@ return {
       ["<leader>h"] = { name = "+hunks" },
       ["<leader>s"] = { name = "+search" },
       ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      ["<leader>r"] = { name = "+refactor" },
       ["<leader>t"] = { name = "+toggle" },
       ["<leader>d"] = { name = "+debug" },
       ["<leader>da"] = { name = "+adapters" },
