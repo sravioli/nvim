@@ -24,5 +24,4 @@ return {
       always_update = false,
     },
   },
-  peppe = "#FFFFFF",
 }
