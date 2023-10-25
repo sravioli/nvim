@@ -16,7 +16,7 @@ return {
   {
     ---minimal, opinionated neovim filetype plugin for (La)TeX and Markdown
     "ryleelyman/latex.nvim",
-    config = {},
+    opts = {},
   },
   {
     ---Neovim plugin for Obsidian, written in Lua
