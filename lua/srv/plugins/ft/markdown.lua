@@ -152,7 +152,7 @@ return {
       {
         "<leader>cp",
         function() require("nabla").popup { border = require("srv.preferences").border } end,
-        "∇  Open Nabla popup",
+        desc = "∇  Open Nabla popup",
       },
     },
   },
