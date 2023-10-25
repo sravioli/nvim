@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.5](https://github.com/sRavioli/nvim/compare/0.9.4..0.9.5) - 2023-10-25
+#### Features
+- **(plugins:ft)** install `vim-ditto` - ([eb9718a](https://github.com/sRavioli/nvim/commit/eb9718a71df6f3799015c8a6d04b9939a7afd066)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(vim-ditto)** add dittofile - ([10013a7](https://github.com/sRavioli/nvim/commit/10013a7c3952d4f958e33083b91de4076d6b4601)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.3](https://github.com/sRavioli/nvim/compare/0.9.2..0.9.3) - 2023-10-23
 #### Bug Fixes
 - **(mappings:lspsaga)** add `<CR>` to keymap end, change mapping - ([4d17eec](https://github.com/sRavioli/nvim/commit/4d17eec5ca622332a73aaafabd8f8bc1cd161e4c)) - [@sRavioli](https://github.com/sRavioli)
