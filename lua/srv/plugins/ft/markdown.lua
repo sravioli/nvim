@@ -155,5 +155,29 @@ return {
         desc = "∇  Open Nabla popup",
       },
     },
+    { ---🙊 Stop repeating yourself
+      "dbmrq/vim-ditto",
+      ft = "markdown",
+      keys = {
+        { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
+      },
+      init = function()
+        vim.g.ditto_min_word_length = 5
+        vim.g.ditto_min_repetitions = 4
+        vim.g.ditto_hlgroups = {
+          "@punctuation",
+          "@constant",
+          "@define",
+          "@string",
+          "@number",
+          "@field",
+          "@conditional",
+          "@type",
+        }
+        vim.g.ditto_dir = vim.fn.stdpath "config"
+        vim.g.ditto_file = ".ditto.txt"
+        vim.cmd "au FileType markdown,text,tex DittoOn"
+      end,
+    },
   },
 }
