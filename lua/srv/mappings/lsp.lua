@@ -29,7 +29,7 @@ return {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>cR"] = {
       function() vim.lsp.buf.rename() end,
       "󰑕  LSP rename",
     },
