@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.9.6](https://github.com/sRavioli/nvim/compare/0.9.5..0.9.6) - 2023-10-26
+#### Bug Fixes
+- **(plugins:autocompletion)** remove `vimtex` from luasnip dependencies - ([cb4221d](https://github.com/sRavioli/nvim/commit/cb4221d1d2d844e058450d5f047be2ea553fd9e5)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(plugins:ft)** install `vimtex`, update `vim-ditto`, move `obsidian.nvim` to bottom - ([7f4d9fd](https://github.com/sRavioli/nvim/commit/7f4d9fd3bade7582a959838a5c5369f96975bda8)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.5](https://github.com/sRavioli/nvim/compare/0.9.4..0.9.5) - 2023-10-25
 #### Features
 - **(plugins:ft)** install `vim-ditto` - ([eb9718a](https://github.com/sRavioli/nvim/commit/eb9718a71df6f3799015c8a6d04b9939a7afd066)) - [@sRavioli](https://github.com/sRavioli)
