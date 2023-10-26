@@ -101,7 +101,7 @@ return {
       keys = {
         { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
         { "<leader>Da", "<cmd>Ditto<CR>", desc = "🙊 Activate ditto" },
-        { "<leaderDx", "<cmd>NoDitto<CR>", decs = "🙊 Deactivate ditto" },
+        { "<leaderDx", "<cmd>NoDitto<CR>", desc = "🙊 Deactivate ditto" },
         { "<leader>Ds", "<cmd>DittoSent<CR>", desc = "🙊 Ditto on current sentence" },
         { "<leader>Dp", "<cmd>DittoPar<CR>", desc = "🙊 Ditto on current paragraph" },
         { "<leader>Df", "<cmd>DittoFile<CR>", desc = "🙊 Ditto on current file" },
