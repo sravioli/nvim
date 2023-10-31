@@ -14,7 +14,7 @@ return {
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
-  init = function() vim.cmd.colorscheme "kanagawa" end,
+  init = function() vim.cmd.colorscheme "kanagawa-wave" end,
   opts = {
     compile = true,
     transparent = transparency(),
@@ -68,11 +68,6 @@ return {
           bg = theme.ui.bg_m2,
           bold = true,
         },
-
-        ---Popular plugins that open floats will link to NormalFloat by default;
-        ---set their background accordingly if you wish to keep them dark and borderless
-        ---LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-        ---MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
         ---More uniform colors for the popup menu.
         ---add `blend = vim.o.pumblend` to enable transparency
