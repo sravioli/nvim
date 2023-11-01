@@ -38,6 +38,9 @@ return {
           function(...) return require("cmp_buffer"):compare_locality(...) end,
         },
       },
+      view = {
+        entries = { name = "custom", selection_order = "near_cursor" },
+      },
     }
 
     cmp.setup(opts)
