@@ -7,8 +7,7 @@ local function transparency()
 end
 
 return {
-  ---NeoVim dark colorscheme inspired by the colors of the famous painting by
-  ---Katsushika Hokusai.
+  ---NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
   "rebelot/kanagawa.nvim",
   enabled = true,
   lazy = false,
@@ -16,10 +15,8 @@ return {
   build = ":KanagawaCompile",
   init = function() vim.cmd.colorscheme "kanagawa-wave" end,
   opts = {
-    compile = true,
-    transparent = transparency(),
-    dimInactive = false, ---dim inactive window `:h hl-NormalNC`
-    commentStyle = { italic = true },
+    compile = true, -- enable compiling the colorscheme
+    transparent = transparency(), -- do not set background color
     overrides = function(colors)
       local theme = colors.theme
       return {
@@ -86,38 +83,38 @@ return {
         CmpItemAbbrMatchFuzzy = { fg = theme.ui.bg_search, bg = "NONE", bold = true },
         CmpItemMenu = { fg = theme.ui.special, bg = "NONE", italic = true },
 
-        ---CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
-        ---CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
-        ---CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
+        CmpItemKindField = { fg = theme.ui.bg, bg = theme.syn.identifier },
+        CmpItemKindProperty = { fg = theme.ui.bg, bg = theme.syn.identifier },
+        CmpItemKindEvent = { fg = theme.ui.bg, bg = theme.syn.identifier },
 
         CmpItemKindText = { fg = theme.ui.bg, bg = theme.syn.string },
-        CmpItemKindEnum = { fg = theme.ui.bg, bg = theme.syn.string },
-        CmpItemKindKeyword = { fg = theme.ui.bg, bg = theme.syn.string },
+        CmpItemKindEnum = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindKeyword = { fg = theme.ui.bg, bg = theme.syn.keyword },
 
-        CmpItemKindConstant = { fg = theme.ui.fg, bg = theme.syn.constant },
-        CmpItemKindConstructor = { fg = theme.ui.fg, bg = theme.syn.constant },
-        CmpItemKindReference = { fg = theme.ui.fg, bg = theme.syn.constant },
+        CmpItemKindConstant = { fg = theme.ui.bg, bg = theme.syn.constant },
+        CmpItemKindConstructor = { fg = theme.ui.bg, bg = theme.syn.special1 },
+        CmpItemKindReference = { fg = theme.ui.bg, bg = theme.syn.identifier },
 
-        CmpItemKindFunction = { fg = theme.ui.fg, bg = theme.syn.fun },
-        CmpItemKindStruct = { fg = theme.ui.fg, bg = theme.syn.fun },
-        CmpItemKindClass = { fg = theme.ui.fg, bg = theme.syn.fun },
-        CmpItemKindModule = { fg = theme.ui.fg, bg = theme.syn.fun },
-        CmpItemKindOperator = { fg = theme.ui.fg, bg = theme.syn.fun },
+        CmpItemKindFunction = { fg = theme.ui.bg, bg = theme.syn.fun },
+        CmpItemKindStruct = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindClass = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindModule = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindOperator = { fg = theme.ui.bg, bg = theme.syn.operator },
 
-        CmpItemKindVariable = { fg = theme.ui.fg, bg = "#7E8294" },
-        CmpItemKindFile = { fg = theme.ui.fg, bg = "#7E8294" },
+        CmpItemKindVariable = { fg = theme.ui.bg, bg = theme.syn.parameter },
+        CmpItemKindFile = { fg = theme.ui.bg, bg = theme.syn.parameter },
 
-        CmpItemKindUnit = { fg = theme.ui.fg, bg = theme.syn.type },
-        CmpItemKindSnippet = { fg = theme.ui.fg, bg = theme.syn.type },
-        CmpItemKindFolder = { fg = theme.ui.fg, bg = theme.syn.type },
+        CmpItemKindUnit = { fg = theme.ui.bg, bg = theme.syn.special2 },
+        CmpItemKindSnippet = { fg = theme.ui.bg, bg = theme.syn.special2 },
+        CmpItemKindFolder = { fg = theme.ui.bg, bg = theme.syn.special2 },
 
-        CmpItemKindMethod = { fg = theme.ui.fg, bg = theme.syn.identifier },
-        CmpItemKindValue = { fg = theme.ui.fg, bg = theme.syn.identifier },
-        CmpItemKindEnumMember = { fg = theme.ui.fg, bg = theme.syn.identifier },
+        CmpItemKindMethod = { fg = theme.ui.bg, bg = theme.syn.fun },
+        CmpItemKindValue = { fg = theme.ui.bg, bg = theme.syn.fun },
+        CmpItemKindEnumMember = { fg = theme.ui.bg, bg = theme.syn.constant },
 
-        CmpItemKindInterface = { fg = theme.ui.fg, bg = theme.syn.parameter },
-        CmpItemKindColor = { fg = theme.ui.fg, bg = theme.syn.parameter },
-        CmpItemKindTypeParameter = { fg = theme.ui.fg, bg = theme.syn.parameter },
+        CmpItemKindInterface = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindColor = { fg = theme.ui.bg, bg = theme.syn.type },
+        CmpItemKindTypeParameter = { fg = theme.ui.bg, bg = theme.syn.parameter },
 
         ---Telescope
         TelescopeBorder = { link = "FloatBorder" },
@@ -127,15 +124,6 @@ return {
         NerdIconBorder = { link = "FloatBorder" },
       }
     end,
-    colors = {
-      theme = {
-        all = {
-          ui = {
-            bg_gutter = "NONE",
-          },
-        },
-      },
-    },
-    theme = "dragon",
+    colors = { theme = { all = { ui = { bg_gutter = "NONE" } } } },
   },
 }
