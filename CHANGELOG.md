@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.10.0](https://github.com/sRavioli/nvim/compare/0.9.7..0.10.0) - 2023-11-01
+#### Bug Fixes
+- **(cmp:functions)** use plain text in cmp autocompletion menu if `lspkind` isn't present - ([c82cd9b](https://github.com/sRavioli/nvim/commit/c82cd9b0aaf0aba4edcffd5f9d43d70291039160)) - [@sRavioli](https://github.com/sRavioli)
+- **(cmp:sources)** remove sources that where polliting results - ([54c9db6](https://github.com/sRavioli/nvim/commit/54c9db63ead338c8a40d74109bba388aba5d791c)) - [@sRavioli](https://github.com/sRavioli)
+- **(colorschemes:kanagawa)** redefine all cmp highlights - ([3480869](https://github.com/sRavioli/nvim/commit/3480869ba0f8edd3546fcb97b6406e4a4c3674ae)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(cmp)** make possible to use bottom-down sorting in autocompletion menu - ([7146f5f](https://github.com/sRavioli/nvim/commit/7146f5f06866da1f4d179d98285d5d5cf2d98e6d)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(plugins:colorschemes)** remove comments, specify the wave theme - ([65bfe50](https://github.com/sRavioli/nvim/commit/65bfe5053e5fb69ff279041f73cb042e0f9997d0)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.7](https://github.com/sRavioli/nvim/compare/0.9.6..0.9.7) - 2023-10-26
 #### Hotfixes
 - **(plugins:ft)** `desc` -> `desc` in `vim-ditto` - ([3c5de61](https://github.com/sRavioli/nvim/commit/3c5de6188133afde16483ab19d39ad172f404a56)) - [@sRavioli](https://github.com/sRavioli)
