@@ -13,13 +13,11 @@ function M.has_words_before()
 end
 
 function M.format(entry, vim_item)
-  local present, lspkind = pcall(require, "lspkind")
-  if not present then
-    local icons = require("srv.preferences").icons.kinds
-    -- From kind_icons array
-    vim_item.kind =
-      -- This concatenates the icons with the name of the item kind
-      string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+  local lspkind_present, lspkind = pcall(require, "lspkind")
+  if not lspkind_present then
+    ---just return the kind
+    vim_item.kind = string.format("[%s]", vim_item.kind)
+
     -- Source
     vim_item.menu = ({
       buffer = "[Buffer]",
@@ -34,11 +32,13 @@ function M.format(entry, vim_item)
     local kind = lspkind.cmp_format {
       mode = "symbol_text",
       maxwidth = 50,
+      ellipsis_char = "...",
+      preset = "default",
     }(entry, vim_item)
-    local strings = vim.split(kind.kind, "%s", { trimempty = true })
-    kind.kind = " " .. (strings[1] or "") .. " "
-    kind.menu = "    (" .. (strings[2] or "") .. ")"
 
+    local strings = vim.split(kind.kind, "%s", { trimempty = true })
+    kind.kind = string.format(" %s ", strings[1] or "")
+    kind.menu = string.format("    (%s)", strings[2] or "")
     return kind
   end
 end
