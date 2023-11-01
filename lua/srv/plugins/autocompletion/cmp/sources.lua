@@ -40,21 +40,9 @@ return {
         end,
       },
     },
-    -- { name = "buffer-lines", option = { leading_whitespace = false } },
     { name = "rg" },
-    { name = "calc" },
-    { name = "rpncalc" },
-    -- { name = "digraphs" },
   }, { ---Filesystem paths
     { name = "async_path", option = { trailing_slash = true } },
-  }, { ---Git
-    { name = "conventionalcommits" },
-  }, { ---Miscellaneous
-    { name = "emoji" },
-    { name = "nerdfont" },
-    { name = "latex_symbols" },
-    { name = "treesitter" },
-    { name = "neorg" },
   }),
 
   ---Sources for when in `/` or `?` mode
