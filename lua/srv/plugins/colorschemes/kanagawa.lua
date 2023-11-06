@@ -38,7 +38,7 @@ return {
         BufferInactiveSign = { fg = theme.ui.bg, bg = theme.ui.bg_p1 },
         BufferInactiveADDED = { fg = theme.vcs.added, bg = theme.ui.bg_p1 },
         BufferInactiveCHANGED = { fg = theme.vcs.changed, bg = theme.ui.bg_p1 },
-        BufferInactiveDELETED = { fg = theme.vcs.deleted, bg = theme.ui.bg_p1 },
+        BufferInactiveDELETED = { fg = theme.vcs.removed, bg = theme.ui.bg_p1 },
         BufferInactiveERROR = { fg = theme.diag.error, bg = theme.ui.bg_p1 },
         BufferInactiveHINT = { fg = theme.diag.hint, bg = theme.ui.bg_p1 },
         BufferInactiveINFO = { fg = theme.diag.info, bg = theme.ui.bg_p1 },
