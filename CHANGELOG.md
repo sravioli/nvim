@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.10.3](https://github.com/sRavioli/nvim/compare/0.10.2..0.10.3) - 2023-11-06
+#### Features
+- **(plugins:ui)** change `toggleterm` float size - ([4987db3](https://github.com/sRavioli/nvim/commit/4987db3ef2c50b72bde3a53a3913aab23b3a4c7d)) - [@sRavioli](https://github.com/sRavioli)
+#### Hotfixes
+- **(colorscheme:kanagawa)** `deleted` -> `removed` (1st isn't a kanagawa highlight) - ([2c5e6d6](https://github.com/sRavioli/nvim/commit/2c5e6d6aa947bca19d315b97f04fa232b8cad8dc)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 
 ## [0.10.1](https://github.com/sRavioli/nvim/compare/0.10.0..0.10.1) - 2023-11-06
 
