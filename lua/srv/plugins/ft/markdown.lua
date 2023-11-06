@@ -53,6 +53,7 @@ return {
   {
     ---Easily follow markdown links with this neovim plugin
     "jghauser/follow-md-links.nvim",
+    enabled = false,
     ft = "markdown",
     init = function() vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true }) end,
   },
@@ -82,7 +83,7 @@ return {
       -- @param base_filetype: The filetype which FeMaco is called from, not the
       -- filetype of the injected language (this is the current buffer so you can
       -- get it from vim.bo.filetyp).
-      ensure_newline = function(base_filetype) return true end,
+      ensure_newline = function(_) return true end,
     },
   },
   { ---take your scientific notes ✏️ in Neovim
