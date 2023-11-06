@@ -37,6 +37,12 @@ return {
     end,
     float_opts = {
       border = require("srv.preferences").border,
+      width = math.floor(
+        vim.api.nvim_win_get_width(vim.api.nvim_get_current_win()) * 0.85
+      ),
+      height = math.floor(
+        vim.api.nvim_win_get_height(vim.api.nvim_get_current_win()) * 0.85
+      ),
     },
     highlights = {
       FloatBorder = {
