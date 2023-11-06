@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.10.1](https://github.com/sRavioli/nvim/compare/0.10.0..0.10.1) - 2023-11-06
+#### Bug Fixes
+- **(colorschemes:kanagawa)** use vsc colors for git status for barbar - ([c5e7f54](https://github.com/sRavioli/nvim/commit/c5e7f54c0ef7eee8020447f45ea2d130a8c2a4ed)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(cog)** restore the formatting of the changelog - ([ec3c84c](https://github.com/sRavioli/nvim/commit/ec3c84c0e9f5f20dc4e00fde4c76b9e1ea821862)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets:markdown)** add snippet to quickly add obsidian metadata to university notes - ([087fda3](https://github.com/sRavioli/nvim/commit/087fda3f62f1a2e47e67237931d6748cad77a453)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.10.0](https://github.com/sRavioli/nvim/compare/0.9.7..0.10.0) - 2023-11-01
 #### Bug Fixes
 - **(cmp:functions)** use plain text in cmp autocompletion menu if `lspkind` isn't present - ([c82cd9b](https://github.com/sRavioli/nvim/commit/c82cd9b0aaf0aba4edcffd5f9d43d70291039160)) - [@sRavioli](https://github.com/sRavioli)
