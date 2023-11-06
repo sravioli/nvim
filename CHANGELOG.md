@@ -4,113 +4,164 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.10.1](https://github.com/sRavioli/nvim/compare/0.10.0..0.10.1) - 2023-11-06
+
 #### Bug Fixes
+
 - **(colorschemes:kanagawa)** use vsc colors for git status for barbar - ([c5e7f54](https://github.com/sRavioli/nvim/commit/c5e7f54c0ef7eee8020447f45ea2d130a8c2a4ed)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(cog)** restore the formatting of the changelog - ([ec3c84c](https://github.com/sRavioli/nvim/commit/ec3c84c0e9f5f20dc4e00fde4c76b9e1ea821862)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets:markdown)** add snippet to quickly add obsidian metadata to university notes - ([087fda3](https://github.com/sRavioli/nvim/commit/087fda3f62f1a2e47e67237931d6748cad77a453)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.10.0](https://github.com/sRavioli/nvim/compare/0.9.7..0.10.0) - 2023-11-01
+
 #### Bug Fixes
+
 - **(cmp:functions)** use plain text in cmp autocompletion menu if `lspkind` isn't present - ([c82cd9b](https://github.com/sRavioli/nvim/commit/c82cd9b0aaf0aba4edcffd5f9d43d70291039160)) - [@sRavioli](https://github.com/sRavioli)
 - **(cmp:sources)** remove sources that where polliting results - ([54c9db6](https://github.com/sRavioli/nvim/commit/54c9db63ead338c8a40d74109bba388aba5d791c)) - [@sRavioli](https://github.com/sRavioli)
 - **(colorschemes:kanagawa)** redefine all cmp highlights - ([3480869](https://github.com/sRavioli/nvim/commit/3480869ba0f8edd3546fcb97b6406e4a4c3674ae)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(cmp)** make possible to use bottom-down sorting in autocompletion menu - ([7146f5f](https://github.com/sRavioli/nvim/commit/7146f5f06866da1f4d179d98285d5d5cf2d98e6d)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(plugins:colorschemes)** remove comments, specify the wave theme - ([65bfe50](https://github.com/sRavioli/nvim/commit/65bfe5053e5fb69ff279041f73cb042e0f9997d0)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.7](https://github.com/sRavioli/nvim/compare/0.9.6..0.9.7) - 2023-10-26
+
 #### Hotfixes
+
 - **(plugins:ft)** `desc` -> `desc` in `vim-ditto` - ([3c5de61](https://github.com/sRavioli/nvim/commit/3c5de6188133afde16483ab19d39ad172f404a56)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.6](https://github.com/sRavioli/nvim/compare/0.9.5..0.9.6) - 2023-10-26
+
 #### Bug Fixes
+
 - **(plugins:autocompletion)** remove `vimtex` from luasnip dependencies - ([cb4221d](https://github.com/sRavioli/nvim/commit/cb4221d1d2d844e058450d5f047be2ea553fd9e5)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(plugins:ft)** install `vimtex`, update `vim-ditto`, move `obsidian.nvim` to bottom - ([7f4d9fd](https://github.com/sRavioli/nvim/commit/7f4d9fd3bade7582a959838a5c5369f96975bda8)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.5](https://github.com/sRavioli/nvim/compare/0.9.4..0.9.5) - 2023-10-25
+
 #### Features
+
 - **(plugins:ft)** install `vim-ditto` - ([eb9718a](https://github.com/sRavioli/nvim/commit/eb9718a71df6f3799015c8a6d04b9939a7afd066)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(vim-ditto)** add dittofile - ([10013a7](https://github.com/sRavioli/nvim/commit/10013a7c3952d4f958e33083b91de4076d6b4601)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.3](https://github.com/sRavioli/nvim/compare/0.9.2..0.9.3) - 2023-10-23
+
 #### Bug Fixes
+
 - **(mappings:lspsaga)** add `<CR>` to keymap end, change mapping - ([4d17eec](https://github.com/sRavioli/nvim/commit/4d17eec5ca622332a73aaafabd8f8bc1cd161e4c)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:ui)** use correct colors for lualine groups, use icons for fileformat - ([bbf8670](https://github.com/sRavioli/nvim/commit/bbf867004d7748be94ea35e0bb4a996378e1bace)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(plugins:ui)** change `zen-mode` window width - ([de58991](https://github.com/sRavioli/nvim/commit/de589916e8d3aad5225ce3d2042040a1406e0b9b)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:ui)** enable indent-blankline scope highlight - ([db33d4e](https://github.com/sRavioli/nvim/commit/db33d4e28078b309addf53049f6ca83b33f8193f)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets:latex)** add snippets - ([f8a54f0](https://github.com/sRavioli/nvim/commit/f8a54f06d71f527858df2dc13dc2b32c409afb2f)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(utils:fn)** fix typo in documentation - ([8c255aa](https://github.com/sRavioli/nvim/commit/8c255aa02a76d93549e7ddf76045a2010c12c734)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.2](https://github.com/sRavioli/nvim/compare/0.9.1..0.9.2) - 2023-10-19
+
 #### Bug Fixes
+
 - **(plugins:ui)** use custom kinds for `nvim-notify` - ([39ab120](https://github.com/sRavioli/nvim/commit/39ab120978e0390670fdb2a7a73d1ddb50bb2247)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:ui)** change neo-tree indent markers, don't highlight as comment - ([337a28e](https://github.com/sRavioli/nvim/commit/337a28ed4a03340e698049c97a44715760a082f7)) - [@sRavioli](https://github.com/sRavioli)
 - **(stylua)** change stylua formatting method - ([9c897b6](https://github.com/sRavioli/nvim/commit/9c897b659b3c00a763d2d6748ac5295f8daa1f02)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(plugins:motions)** add markdown checkbox switcher for `nvim-toggler` - ([6b82f2c](https://github.com/sRavioli/nvim/commit/6b82f2caf74c9888c94f98c444064a624d73194f)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:motions)** install `surround-ui` - ([afc9ba0](https://github.com/sRavioli/nvim/commit/afc9ba0f20936944b65772f1de2b0b1cf3ad9093)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:ui)** install `nvim-colorizer` - ([e9de0e4](https://github.com/sRavioli/nvim/commit/e9de0e45e61df1d27c32f7b9ad9d17454a74ef8a)) - [@sRavioli](https://github.com/sRavioli)
 - **(preferences)** add new diagnostics icons - ([9c84613](https://github.com/sRavioli/nvim/commit/9c846134bf91591dc59d812cea6faacfccb68323)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets:toml)** add stylua config as toml snippet - ([bfdbb24](https://github.com/sRavioli/nvim/commit/bfdbb24b3833507a6b9b99c5f3a81e0e7c0b0f8b)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(plugins:lsp)** handle `null-ls` deprecaiton, use `none-ls` - ([f9e3a2f](https://github.com/sRavioli/nvim/commit/f9e3a2f2c1ae91b9cc8e1fa88f7c341fcd3bfc72)) - [@sRavioli](https://github.com/sRavioli)
 - format with stylua - ([44ba336](https://github.com/sRavioli/nvim/commit/44ba336445aa2e10f8eff0453af5ba8f6f41a96f)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.1](https://github.com/sRavioli/nvim/compare/0.9.0..0.9.1) - 2023-10-16
+
 #### Bug Fixes
+
 - **(colorscheme)** remove neovide theme - ([07984d2](https://github.com/sRavioli/nvim/commit/07984d26064df6bc74f8804c98a90850af56c6a2)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(colorscheme)** comments are italicised - ([3f68f50](https://github.com/sRavioli/nvim/commit/3f68f50e5cd655ddac065a2989df93bdbb0668f6)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins:ui)** install `nvim-notify` - ([4915378](https://github.com/sRavioli/nvim/commit/4915378fbecef2a081db1f801e56cf3ae54e58b3)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils)** recompile `kanagawa.nvim` when inside neovide, restore on exit - ([23cc60e](https://github.com/sRavioli/nvim/commit/23cc60ef9baa5a76a6a2d0d6857ebb47afc57464)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:fn)** notify when toggling typewriter scroll - ([d0b6743](https://github.com/sRavioli/nvim/commit/d0b67437df61480f9dfd70f965141c01266e4aa9)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(plugins)** add more toggle switches - ([0d1b7d1](https://github.com/sRavioli/nvim/commit/0d1b7d19c8467e01b4ccf607453eaa26ebdc7936)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.9.0](https://github.com/sRavioli/nvim/compare/0.8.1..0.9.0) - 2023-10-16
+
 #### Bug Fixes
+
 - **(plugins)** remove old `ui` folder - ([47c7c95](https://github.com/sRavioli/nvim/commit/47c7c95c1b22d4263e3b33ae1397a8a99dd4606e)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(snippets)** add snippet to evaluate fractions inside parentheses - ([5b6eaa1](https://github.com/sRavioli/nvim/commit/5b6eaa1692792d5b8f2588ad3aa7724e94e1adc5)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - remove useles changelog - ([f30f0ad](https://github.com/sRavioli/nvim/commit/f30f0ad87c802ace365a2852da90b785bf7e1795)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Refactoring
+
 - **(plugins)** ditch `editor folder`, group plugins in a better way - ([278a291](https://github.com/sRavioli/nvim/commit/278a2911d2b61618a2c9bada9dea036c49d629e6)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins)** move colorschemes to own folder - ([db22efe](https://github.com/sRavioli/nvim/commit/db22efe3219084c51966e2babf2fae48986bf758)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.8.1](https://github.com/sRavioli/nvim/compare/0.8.0..0.8.1) - 2023-10-15
+
 #### Hotfixes
+
 - **(snippets)** make `format.binomial.expand_simple()` not solve `n - k` - ([03cbaf9](https://github.com/sRavioli/nvim/commit/03cbaf9754f13d8bf2683192092ae79ae0e3f0f0)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.8.0](https://github.com/sRavioli/nvim/compare/0.7.6..0.8.0) - 2023-10-15
+
 #### Bug Fixes
+
 - **(autocommands)** disable automatic typewriter toggle for md files - ([8f8a6f5](https://github.com/sRavioli/nvim/commit/8f8a6f54dfb86f68f9eef16f0904bcb51076f15e)) - [@sRavioli](https://github.com/sRavioli)
 - **(codespell)** remove italian - ([ac49c66](https://github.com/sRavioli/nvim/commit/ac49c66438485e258b4a3fd725f89c613e1b5e03)) - [@sRavioli](https://github.com/sRavioli)
 - **(mappings)** conform typewriter toggle to toggle keymaps - ([b874bb3](https://github.com/sRavioli/nvim/commit/b874bb34cb83811b1ab943eb1f37008a522ffbfc)) - [@sRavioli](https://github.com/sRavioli)
@@ -119,21 +170,29 @@ guidelines.
 - **(utils)** LDoc comments - ([bac69cc](https://github.com/sRavioli/nvim/commit/bac69cc19b77fe493944fb78bf6c4472b41e95d5)) - [@sRavioli](https://github.com/sRavioli)
 - remove codespell configuration file - ([3f42447](https://github.com/sRavioli/nvim/commit/3f4244781e572af5055aa9f39a0926270e839b6c)) - [@sRavioli](https://github.com/sRavioli)
 - temporary disable theme compilation at runtime - ([1b3aac8](https://github.com/sRavioli/nvim/commit/1b3aac803c7a602881c8bf8180e8f1cf844e35e0)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(mappings)** activate code action keybinds - ([dc13bfb](https://github.com/sRavioli/nvim/commit/dc13bfbca852780a4eaa2fe19c6778b3bb3eb62d)) - [@sRavioli](https://github.com/sRavioli)
 - **(plugins)** disable virtual text lightbulb, disable code actions and diagnostics - ([bfdcf73](https://github.com/sRavioli/nvim/commit/bfdcf73d13cedf7cac75532ac98ef61b97fa6ee5)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils)** add better documentation for typewriter function - ([e06ee8d](https://github.com/sRavioli/nvim/commit/e06ee8d895227db23ef44a11445410235c772157)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Refactoring
+
 - **(snippets)** move all formatting functions into the `format` class and categorize them - ([86accb8](https://github.com/sRavioli/nvim/commit/86accb83d623cbd9e6d4e82b587c9544e84ea0db)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils)** rewrite function to update timestamp - ([efac941](https://github.com/sRavioli/nvim/commit/efac9412e05a610cd4cd3b3fc49c57cf6ab28f2e)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.7.6](https://github.com/sRavioli/nvim/compare/0.7.5..0.7.6) - 2023-10-13
+
 #### Bug Fixes
+
 - **(snippets)** turn `ox` trigger into `oX` to prevent accidental expansion - ([835aafd](https://github.com/sRavioli/nvim/commit/835aafd48af0d6965431d60980cf72e9c3aea818)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets)** incorrect spelling and spacing for snippet - ([3fd9c7b](https://github.com/sRavioli/nvim/commit/3fd9c7b5187721d9997dcd8604c1cee45c21933b)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(neovide)** add settings for neovide - ([bf1c794](https://github.com/sRavioli/nvim/commit/bf1c79441409fbff40e4e582baf12edffeba824b)) - [@sRavioli](https://github.com/sRavioli)
 - **(settings)** load neovide seettings if running neovide - ([e6b8753](https://github.com/sRavioli/nvim/commit/e6b87531159435665a8f60e96a4261084ce024cb)) - [@sRavioli](https://github.com/sRavioli)
 - **(ui)** disable transparency for neovide, recompile at runtime - ([379bcdc](https://github.com/sRavioli/nvim/commit/379bcdc9fd13202546b114d67bffed4b99efadfa)) - [@sRavioli](https://github.com/sRavioli)
@@ -141,13 +200,17 @@ guidelines.
 - - -
 
 ## [0.7.4](https://github.com/sRavioli/nvim/compare/0.7.3..0.7.4) - 2023-10-06
+
 #### Bug Fixes
+
 - **(plugins)** disable scopes for indent-blankline - ([1faa43c](https://github.com/sRavioli/nvim/commit/1faa43cbfd6428e4dca8e39fae906a5854a29d3b)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets)** rewrite LaTeX snippets from scratch, add more snippets - ([1fe9ab4](https://github.com/sRavioli/nvim/commit/1fe9ab44e3f5f6e6f1cd4a54207d0463b9258a0f)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets)** adjust spacing for obsidian metadata snippet - ([7135d1e](https://github.com/sRavioli/nvim/commit/7135d1e4c6b9bbe69c62c4a97cf685c794983099)) - [@sRavioli](https://github.com/sRavioli)
 - **(treesitter)** use clangd compiler - ([758e20e](https://github.com/sRavioli/nvim/commit/758e20e7d736df3ecde05e077afbad2a736236ff)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils)** disable mkdwn auto-align table and adjust shiftwidth - ([7ac8323](https://github.com/sRavioli/nvim/commit/7ac8323d0267a90bdf799b7d862b178e07ca56e6)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(ft)** add vimlatex - ([1081ff9](https://github.com/sRavioli/nvim/commit/1081ff979e5fa550bc3308f3f340d56cea315822)) - [@sRavioli](https://github.com/sRavioli)
 - **(luasnip)** add luasnip deps, add `ft_func` and `load_ft_func` - ([bd75cbe](https://github.com/sRavioli/nvim/commit/bd75cbe7357915060a9303c55408ae1e39826397)) - [@sRavioli](https://github.com/sRavioli)
 - **(snippets)** add latex and lua snippets - ([a47557a](https://github.com/sRavioli/nvim/commit/a47557a4f8614d0d54af5d0b30a6cdc2eaeb57e7)) - [@sRavioli](https://github.com/sRavioli)
@@ -157,17 +220,22 @@ guidelines.
 - - -
 
 ## [0.7.3](https://github.com/sRavioli/nvim/compare/0.7.2..0.7.3) - 2023-09-25
+
 #### Bug Fixes
+
 - adjust luasnip snippet path - ([7b54d6e](https://github.com/sRavioli/nvim/commit/7b54d6e9a0dfe5b1119578bfa0ab4b6c559569bc)) - [@sRavioli](https://github.com/sRavioli)
 - remove luasnip build on windows - ([5bb69ce](https://github.com/sRavioli/nvim/commit/5bb69ce61a4872fb73b2192aed39525e617a28a6)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(lsp)** move to tectonic - ([aeb50bf](https://github.com/sRavioli/nvim/commit/aeb50bfd9c5428167453b6bfa37d0a93fbac138e)) - [@sRavioli](https://github.com/sRavioli)
 - add obsidian snippets - ([f4a0829](https://github.com/sRavioli/nvim/commit/f4a0829c3fff776e746e54af1972d7523e335561)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - bump - ([ebc55eb](https://github.com/sRavioli/nvim/commit/ebc55eb31f3c86401805357fbccd860e1ca16d9f)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.7.2](https://github.com/sRavioli/nvim/compare/0.7.1..0.7.2) - 2023-09-09
 
