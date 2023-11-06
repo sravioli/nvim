@@ -8,6 +8,14 @@ return {
   ["<C-Space>"] = cmp.mapping.complete(),
   ["<C-e>"] = cmp.mapping.abort(),
 
+  ["<M-p>"] = cmp.mapping(function()
+    if ls.choice_active() then ls.change_choice(-1) end
+  end, { "i", "s" }),
+
+  ["<M-n>"] = cmp.mapping(function()
+    if ls.choice_active() then ls.change_choice(1) end
+  end, { "i", "s" }),
+
   ["<S-Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_prev_item()
