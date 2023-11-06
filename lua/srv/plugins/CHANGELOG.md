@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.10.2](https://github.com/sRavioli/nvim/compare/0.10.1..0.10.2) - 2023-11-06
+#### Bug Fixes
+- **(plugins:autocompletion)** change `<CR>` to safely select entries - ([4299409](https://github.com/sRavioli/nvim/commit/4299409d926050bfd604a372e93c96c06b341700)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** disable `follow-md-links`, remove linter warnings - ([8acefc1](https://github.com/sRavioli/nvim/commit/8acefc1c0e88ac97e460e85f2fa90c9b5c39db13)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(plugins:autocompletion)** add luasnip choice node mappings - ([c55ee7d](https://github.com/sRavioli/nvim/commit/c55ee7df5fb5fe052c25bcfca679c0f419ba8496)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets:markdown)** turn insert nodes into choice nodes - ([6053ab1](https://github.com/sRavioli/nvim/commit/6053ab1e6e5a7f600eb8b00c42ab5ae076d84d3f)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(changelog)** format changelog - ([fcf52c8](https://github.com/sRavioli/nvim/commit/fcf52c87e2c0d395757a0aa94dda39882cb15d77)) - [@sRavioli](https://github.com/sRavioli)
+- **(cog)** change path separator to windows - ([0c41b7a](https://github.com/sRavioli/nvim/commit/0c41b7a147c5fe97bacf67025b7d456b7be8b9b3)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.9.4](https://github.com/sRavioli/nvim/compare/0.9.3..0.9.4) - 2023-10-25
 #### Bug Fixes
 - **(mappings:lsp)** change lsp rename command - ([386e873](https://github.com/sRavioli/nvim/commit/386e873c9de0907593633b7d640161e46be4f849)) - [@sRavioli](https://github.com/sRavioli)
