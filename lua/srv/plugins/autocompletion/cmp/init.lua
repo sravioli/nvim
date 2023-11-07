@@ -1,7 +1,37 @@
 return {
   ---A completion plugin for neovim coded in Lua.
   "hrsh7th/nvim-cmp",
-  dependencies = require "srv.plugins.autocompletion.cmp.dependencies",
+  dependencies = {
+    { ---Other plugins
+      { "L3MON4D3/LuaSnip" }, ---Snippet Engine for Neovim written in Lua.
+      { "onsails/lspkind.nvim" }, ---vscode-like pictograms for neovim lsp completion items
+      { "windwp/nvim-autopairs" }, ---autopairs for neovim written by lua
+    },
+    { ---Autocompletion sources
+      { ---Snippets
+        { "saadparwaiz1/cmp_luasnip" }, ---luasnip completion source for nvim-cmp
+      },
+      { ---LSP
+        { "hrsh7th/cmp-nvim-lsp" }, ---nvim-cmp source for neovim builtin LSP client
+        { "hrsh7th/cmp-nvim-lsp-document-symbol" }, ---nvim-cmp source for textDocument/documentSymbol via nvim-lsp.
+        { "hrsh7th/cmp-nvim-lsp-signature-help" }, ---cmp-nvim-lsp-signature-help
+        { "hrsh7th/cmp-nvim-lua" }, ---nvim-cmp source for nvim lua
+      },
+      { ---Buffer/Vim-builtin functionality
+        { "hrsh7th/cmp-buffer" }, ---nvim-cmp source for buffer words
+      },
+      { ---Filesystem paths
+        { "FelipeLema/cmp-async-path" }, ---nvim-cmp source for path (async version)
+      },
+      { ---Command line
+        { "hrsh7th/cmp-cmdline" }, ---nvim-cmp source for vim's cmdline
+        { "dmitmel/cmp-cmdline-history" }, ---Source for nvim-cmp which reads results from command-line or search histories
+      },
+      { ---Fuzzy finding
+        { "lukas-reineke/cmp-rg" }, ---ripgrep source for nvim-cmp
+      },
+    },
+  },
   event = { "InsertEnter", "CmdlineEnter" },
   config = function()
     local present, cmp = pcall(require, "cmp")
