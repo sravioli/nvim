@@ -4,38 +4,54 @@ return {
   keys = {
     {
       "<leader>i",
-      "<cmd>lua require('nvim-toggler').toggle()<CR>",
+      function() require("nvim-toggler").toggle() end,
       desc = "󰨙  Toggle word",
     },
   },
   opts = {
     ---your own inverses
     inverses = {
+      ["true"] = "false",
       ["True"] = "False",
       ["TRUE"] = "FALSE",
-      ["vim"] = "emacs",
+
       ["TD"] = "LR",
+
       ["input"] = "output",
+      ["Input"] = "Output",
+      ["INPUT"] = "OUTPUT",
+
       ["enable"] = "disable",
       ["Enable"] = "Disable",
+      ["ENABLE"] = "DISABLE",
+
       ["enabled"] = "disabled",
       ["Enabled"] = "Disabled",
+      ["ENABLED"] = "DISABLED",
+
+      ["top"] = "bottom",
+      ["Top"] = "Bottom",
+      ["TOP"] = "BOTTOM",
+
+      ["plus"] = "minus",
+      ["Plus"] = "Minus",
+      ["PLUS"] = "MINUS",
+
       ["east"] = "ovest",
       ["north"] = "south",
+
       ["sì"] = "no",
       ["AND"] = "OR",
       ["begin"] = "end",
       ["up"] = "down",
       ["left"] = "right",
-      ["hardware"] = "hardware",
+      ["hardware"] = "software",
       ["for"] = "while",
       ["int"] = "float",
       ["=="] = "!=",
       [">"] = "<",
       ["+"] = "-",
       ["*"] = "/",
-      [","] = ";",
-      ["."] = ":",
       ["minimum"] = "maximum",
       ["min"] = "max",
       ["- [ ]"] = "- [X]",
@@ -44,6 +60,6 @@ return {
     ---removes the default <leader>i keymap
     remove_default_keybinds = true,
     ---removes the default set of inverses
-    remove_default_inverses = false,
+    remove_default_inverses = true,
   },
 }
