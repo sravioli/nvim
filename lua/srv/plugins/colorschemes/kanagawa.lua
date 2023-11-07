@@ -37,7 +37,7 @@ return {
         BufferInactive = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
         BufferInactiveSign = { fg = theme.ui.bg, bg = theme.ui.bg_p1 },
         BufferInactiveADDED = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
-        BufferInactiveCHANGED = { fg = theme.comment, bg = theme.ui.bg_p1 },
+        BufferInactiveCHANGED = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
         BufferInactiveDELETED = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
         BufferInactiveERROR = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
         BufferInactiveHINT = { fg = theme.syn.comment, bg = theme.ui.bg_p1 },
