@@ -66,6 +66,13 @@ return {
           bold = true,
         },
 
+        ---Neotree
+        NeoTreeTabInactive = { link = "BufferInactive" },
+        NeoTreeTabActive = { link = "BufferCurrent" },
+        NeoTreeTabBackground = { fg = theme.ui.bg, bg = theme.ui.bg },
+        NeoTreeTabSeparatorInactive = { fg = theme.ui.bg_p1, bg = theme.ui.bg },
+        NeoTreeTabSeparatorActive = { fg = theme.ui.bg_m2, bg = theme.ui.bg },
+
         ---More uniform colors for the popup menu.
         ---add `blend = vim.o.pumblend` to enable transparency
         Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p2, blend = vim.o.pumblend },
