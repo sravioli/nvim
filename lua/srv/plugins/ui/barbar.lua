@@ -15,16 +15,23 @@ return {
     local signs = require("srv.preferences").icons.diagnostics
     return {
       ---Enable/disable animations
-      animation = false,
+      animation = true,
 
       ---Enable/disable auto-hiding the tab bar when there is a single buffer
       auto_hide = true,
+
+      ---Enable/disable current/total tabpages indicator (top right corner)
+      tabpages = true,
+
+      ---A buffer to this direction will be focused (if it exists) when closing the current buffer.
+      ---Valid options are 'left' (the default), 'previous', and 'right'
+      focus_on_close = "previous",
 
       ---Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
       hide = { extensions = true, inactive = false },
 
       ---Enable highlighting visible buffers
-      highlight_visible = false,
+      highlight_visible = true,
 
       icons = {
         ---Configure the base icons on the bufferline.
@@ -39,6 +46,7 @@ return {
           [vim.diagnostic.severity.INFO] = { enabled = true, icon = signs.Info },
           [vim.diagnostic.severity.HINT] = { enabled = true, icon = signs.Hint },
         },
+
         gitsigns = {
           added = { enabled = true, icon = "+" },
           changed = { enabled = true, icon = "~" },
