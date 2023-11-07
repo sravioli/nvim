@@ -27,7 +27,7 @@ M.on_attach = function(client, bufnr)
 
     float = {
       severity_sort = true,
-      header = " Diagnotics:",
+      header = " Diagnostics:",
       source = "always", ---Or "if_many"
     },
 
