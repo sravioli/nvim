@@ -1,16 +1,17 @@
 return {
   ---Snippet Engine for Neovim written in Lua.
   "L3MON4D3/LuaSnip",
-  dependencies = {
-    { "rafamadriz/friendly-snippets" },
-  },
+  dependencies = { { "rafamadriz/friendly-snippets" } },
   event = "InsertEnter",
-  -- build = "make install_jsregexp",
   version = "v2.*",
   build = function()
     local os = require("srv.utils.fn").get_os()
     if os == "win" then
-      return [[gcc -IC:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\lua51_include\ -O2 -fPIC -c C:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\jsregexp\jsregexp.c -o jsregexp.o]]
+      return [[gcc ]]
+        .. [[-IC:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\lua51_include\ ]]
+        .. [[-O2 -fPIC ]]
+        .. [[-c C:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\jsregexp\jsregexp.c ]]
+        .. [[-o jsregexp.o]]
     else
       return "make install_jsregexp"
     end
@@ -29,8 +30,7 @@ return {
       enable_autosnippets = true,
       update_events = { "TextChanged", "TextChangedI" },
       region_check_events = { "CursorMoved", "CursorHold", "InsertEnter" },
-      ---All the LuaSnip nodes that should be included in a snippet file
-      snip_env = {
+      snip_env = { ---All the LuaSnip nodes that should be included in a snippet file
         s = ls.snippet,
         sn = ls.snippet_node,
         isn = ls.indent_snippet_node,
