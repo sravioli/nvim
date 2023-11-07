@@ -3,9 +3,35 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", ---not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-tree/nvim-web-devicons" },
+    { "MunifTanjim/nui.nvim" },
+    {
+      ---Image Preview for Neovim 🖼
+      "adelarsq/image_preview.nvim",
+      config = true,
+    },
+    {
+      ---This plugins prompts the user to pick a window and returns the window id of
+      ---the picked window
+      "s1n7ax/nvim-window-picker",
+      name = "window-picker",
+      version = "2.*",
+      opts = {
+        hint = "floating-big-letter",
+        filter_rules = {
+          include_current_win = false,
+          autoselect_one = true,
+          -- filter using buffer options
+          bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { "terminal", "quickfix" },
+          },
+        },
+      },
+    },
   },
   keys = {
     { "<C-n>", "<cmd>Neotree toggle<CR>", desc = "  Toggle Neotree" },
