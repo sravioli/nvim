@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.11.1](https://github.com/sRavioli/nvim/compare/0.11.0..0.11.1) - 2023-11-07
+#### Bug Fixes
+- remove extra changelog - ([3ec0410](https://github.com/sRavioli/nvim/commit/3ec04102770be654d6de8d67c41604daabfd39cf)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.10.4](https://github.com/sRavioli/nvim/compare/0.10.3..0.10.4) - 2023-11-06
 #### Bug Fixes
 - remove extra changelog - ([70007e6](https://github.com/sRavioli/nvim/commit/70007e63d19176e602a4b697c7c7bec565adcd92)) - [@sRavioli](https://github.com/sRavioli)
