@@ -35,7 +35,18 @@ return {
   },
   keys = {
     { "<C-n>", "<cmd>Neotree toggle<CR>", desc = "  Toggle Neotree" },
-    { "<leader>e", "<cmd>Neotree focus<CR>", desc = "  Focus Neotree" },
+    {
+      "<leader>e",
+      function()
+        local p = vim.fn.expand "%:p"
+        if vim.fn.filereadable(p) == 1 then
+          vim.cmd(
+            "Neotree action=focus source=filesystem position=left reveal_file=" .. p
+          )
+        end
+      end,
+      desc = "  Focus Neotree (current file)",
+    },
   },
   opts = function()
     local git = require("srv.preferences").icons.git
