@@ -4,14 +4,18 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.13.0](https://github.com/sRavioli/nvim/compare/0.12.0..0.13.0) - 2023-11-10
+
 #### Features
+
 - **(cog)** add changelog autoformat pre-bump hook - ([cd6d315](https://github.com/sRavioli/nvim/commit/cd6d31513427b7b69bcb24ed0660ebd8914818db)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(changelog)** format changelog - ([3f5a7a9](https://github.com/sRavioli/nvim/commit/3f5a7a9322e587d9265c4cd2c7a5661f31d30b07)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.12.0](https://github.com/sRavioli/nvim/compare/0.11.1..0.12.0) - 2023-11-10
 
