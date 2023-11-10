@@ -48,6 +48,14 @@ return {
       desc = "  Focus Neotree (current file)",
     },
   },
+  ---open neo-tree when `nvim .`
+  init = function()
+    if vim.fn.argc(-1) == 1 then
+      ---@diagnostic disable-next-line: param-type-mismatch
+      local stat = vim.loop.fs_stat(vim.fn.argv(0))
+      if stat and stat.type == "directory" then require "neo-tree" end
+    end
+  end,
   opts = {
     ---The name used here must be the same name you would use in a require() call.
     sources = { "filesystem", "git_status" },
