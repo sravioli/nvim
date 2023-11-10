@@ -54,7 +54,7 @@
 ---```lua
 ---vim.o.guifont = "Source Code Pro:h14"
 ---```
-vim.opt.guifont = "FiraCode Nerd Font Propo:h15:#h-normal"
+vim.opt.guifont = "FiraCode Nerd Font Propo:h10.1:#h-normal"
 
 ---LINE SPACING
 ---Controls spacing between lines, may also be negative.
@@ -62,7 +62,7 @@ vim.opt.guifont = "FiraCode Nerd Font Propo:h15:#h-normal"
 ---```lua
 ---vim.opt.linespace = 0
 ---```
-vim.opt.linespace = 0
+vim.opt.linespace = 1
 
 ---SCALE
 ---In addition to setting the font itself, this setting allows to change the scale
@@ -72,10 +72,11 @@ vim.opt.linespace = 0
 ---```lua
 ---vim.g.neovide_scale_factor = 1.0
 ---```
-vim.g.neovide_scale_factor = 0.7
+vim.g.neovide_scale_factor = 1.0
 
 ---PADDING
----Controls the space between the window border and the actual Neovim, which is filled with the background color instead.
+---Controls the space between the window border and the actual Neovim, which is
+---filled with the background color instead.
 ---
 ---```lua
 ---vim.g.neovide_padding_top = 0
@@ -106,16 +107,8 @@ vim.g.neovide_padding_left = 3
 ---vim.g.transparency = 0.8
 ---vim.g.neovide_background_color = "#0f1117" .. alpha()
 ---```
---[[ 
-  -- Helper function for transparency formatting
-  local alpha = function()
-    return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
-  end
-  -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_transparency = 0.0
-  vim.g.transparency = 0.8
-  vim.g.neovide_background_color = "#0f1117" .. alpha() 
-]]
+vim.g.neovide_transparency = 0
+vim.g.transparency = 0
 
 ---FLOATING BLUR AMOUNT
 ---Setting `g:neovide_floating_blur_amount_x` and `g:neovide_floating_blur_amount_y`
@@ -125,8 +118,8 @@ vim.g.neovide_padding_left = 3
 ---vim.g.neovide_floating_blur_amount_x = 2.0
 ---vim.g.neovide_floating_blur_amount_y = 2.0
 ---```
-vim.g.neovide_floating_blur_amount_x = 0.0
-vim.g.neovide_floating_blur_amount_y = 0.0
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
 
 ---TRANSPARENCY
 ---Setting `g:neovide_transparency` to a value between 0.0 and 1.0 will set the opacity
@@ -230,7 +223,7 @@ vim.g.neovide_confirm_quit = true
 ---```lua
 ---vim.g.neovide_fullscreen = true
 ---```
-vim.g.neovide_fullscreen = false
+vim.g.neovide_fullscreen = true
 
 ---REMEMBER PREVIOUS WINDOW SIZE
 ---Setting `g:neovide_remember_window_size` to a boolean value will determine whether
@@ -273,39 +266,39 @@ vim.g.neovide_profiler = false
 --[[
   ```lua
   augroup ime_input
-      autocmd!
-      autocmd InsertLeave * execute "let g:neovide_input_ime=v:false"
-      autocmd InsertEnter * execute "let g:neovide_input_ime=v:true"
-      autocmd CmdlineEnter [/\?] execute "let g:neovide_input_ime=v:false"
-      autocmd CmdlineLeave [/\?] execute "let g:neovide_input_ime=v:true"
+    autocmd!
+    autocmd InsertLeave * execute "let g:neovide_input_ime=v:false"
+    autocmd InsertEnter * execute "let g:neovide_input_ime=v:true"
+    autocmd CmdlineEnter [/\?] execute "let g:neovide_input_ime=v:false"
+    autocmd CmdlineLeave [/\?] execute "let g:neovide_input_ime=v:true"
   augroup END
   ```
 
   ```lua
   local function set_ime(args)
-      if args.event:match("Enter$") then
-          vim.g.neovide_input_ime = true
-      else
-          vim.g.neovide_input_ime = false
-      end
+    if args.event:match("Enter$") then
+      vim.g.neovide_input_ime = true
+    else
+      vim.g.neovide_input_ime = false
+    end
   end
 
   local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
 
   vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
-      group = ime_input,
-      pattern = "*",
-      callback = set_ime
+    group = ime_input,
+    pattern = "*",
+    callback = set_ime
   })
 
   vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
-      group = ime_input,
-      pattern = "[/\\?]",
-      callback = set_ime
+    group = ime_input,
+    pattern = "[/\\?]",
+    callback = set_ime
   })
   ```
 ]]
--- vim.g.neovide_input_ime = true
+vim.g.neovide_input_ime = true
 
 ---TOUCH DEADZONE
 ---Setting `g:neovide_touch_deadzone` to a value equal or higher than 0.0 will set how

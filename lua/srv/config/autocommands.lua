@@ -12,23 +12,23 @@
 local au = vim.api.nvim_create_autocmd
 
 ---@type table User defined augroups
-local aug = require "srv.utils.augroups"
+local aug = require "srv.config.augroups"
 
-au("VimEnter", {
-  desc = "recompile kanagawa at runtime inside neovide",
-  pattern = "*",
-  callback = function()
-    if vim.g.neovide then vim.cmd "KanagawaCompile" end
-  end,
-})
-
-au("VimLeave", {
-  desc = "recompile kanagawa for neovim when exiting neovide",
-  pattern = "*",
-  callback = function()
-    if vim.g.neovide then vim.cmd "!nvim --headless +KanagawaCompile +q" end
-  end,
-})
+-- au("VimEnter", {
+--   desc = "recompile kanagawa at runtime inside neovide",
+--   pattern = "*",
+--   callback = function()
+--     if vim.g.neovide then vim.cmd "KanagawaCompile" end
+--   end,
+-- })
+--
+-- au("VimLeave", {
+--   desc = "recompile kanagawa for neovim when exiting neovide",
+--   pattern = "*",
+--   callback = function()
+--     if vim.g.neovide then vim.cmd "!nvim --headless +KanagawaCompile +q" end
+--   end,
+-- })
 
 ---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
