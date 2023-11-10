@@ -1,6 +1,6 @@
 ---@module 'srv.utils.keymaps'
 ---@author sravioli
----@license GNU-GPLv3.0
+---@license GNU-GPLv3
 
 ---@class KeymapUtils
 local M = {}
