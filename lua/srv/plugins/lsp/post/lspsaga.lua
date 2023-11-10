@@ -7,7 +7,6 @@ return {
   },
   branch = "main",
   event = "LspAttach",
-  init = function() require("srv.utils.fn").mappings.load "lspsaga" end,
   opts = {
     symbol_in_winbar = {
       enable = true,
@@ -54,4 +53,9 @@ return {
       lines = { "╰", "├", "│", "─", "╭" },
     },
   },
+
+  config = function(_, opts)
+    require("lspsaga").setup(opts)
+    require("srv.utils.keymaps").load("lspsaga", { silent = true })
+  end,
 }
