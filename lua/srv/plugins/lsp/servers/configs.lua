@@ -8,7 +8,7 @@ M.on_attach = function(client, bufnr)
   client.server_capabilities.documentRangeFormattingProvider = false
 
   ---load lsp mappings
-  require("srv.utils.fn").mappings.load("lsp", { buffer = bufnr })
+  require("srv.utils.keymaps").load("lsp", { buffer = bufnr })
 
   ---change diagnostic settings
   vim.diagnostic.config {
