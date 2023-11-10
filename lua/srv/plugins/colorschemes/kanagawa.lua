@@ -16,7 +16,8 @@ return {
   init = function() vim.cmd.colorscheme "kanagawa-wave" end,
   opts = {
     compile = true, -- enable compiling the colorscheme
-    transparent = transparency(), -- do not set background color
+    -- transparent = transparency(), -- do not set background color
+    transparent = false,
     overrides = function(colors)
       local theme = colors.theme
       return {
