@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.12.0](https://github.com/sRavioli/nvim/compare/0.11.1..0.12.0) - 2023-11-10
+
 #### Bug Fixes
+
 - **(cog)** remove changelog formatting - ([fcf9e28](https://github.com/sRavioli/nvim/commit/fcf9e28cfc7221ead1db8a70288d549867ce265b)) - [@sRavioli](https://github.com/sRavioli)
 - **(config)** move configuration files to `config` folder - ([877e9bc](https://github.com/sRavioli/nvim/commit/877e9bca2d5ba45f41510b32c7236ca63d140eac)) - [@sRavioli](https://github.com/sRavioli)
 - **(mappings)** conform mappings to new spec - ([97914eb](https://github.com/sRavioli/nvim/commit/97914eb52a9cc09ad46cde1b9b5d5819740bdcf7)) - [@sRavioli](https://github.com/sRavioli)
@@ -21,7 +24,9 @@ guidelines.
 - **(plugins:ui)** load `barbar` mappings after setup, not during init - ([4b800d2](https://github.com/sRavioli/nvim/commit/4b800d2f54eeb0e3a1557c94c0e7bd8ea4ffc900)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:fn)** load correct config files - ([c27ceee](https://github.com/sRavioli/nvim/commit/c27ceee38a1b831900fe51d89446111c63bfd544)) - [@sRavioli](https://github.com/sRavioli)
 - load correct configuration files - ([39fe0d3](https://github.com/sRavioli/nvim/commit/39fe0d37618e92406c0532022ac5a4a40b2b355a)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(colorschemes:kanagawa)** disable kanagawa transparency - ([4f1857c](https://github.com/sRavioli/nvim/commit/4f1857c34a4daad26bebd00644bf7c4c1da2e7bc)) - [@sRavioli](https://github.com/sRavioli)
 - **(mappings)** add mappings for `duck.lua` - ([9982f18](https://github.com/sRavioli/nvim/commit/9982f182d8196863c9982198b79cb45242f1d77e)) - [@sRavioli](https://github.com/sRavioli)
 - **(mappings)** add hls-lens keymaps - ([d72bca9](https://github.com/sRavioli/nvim/commit/d72bca958eb0afb860d90473c67fc45375bbeac9)) - [@sRavioli](https://github.com/sRavioli)
@@ -40,12 +45,13 @@ guidelines.
 - **(utils:duck)** integrate `duck` plugin - ([a6bec47](https://github.com/sRavioli/nvim/commit/a6bec47ec6752ca189eb9a16ee1074f710699f14)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:keymaps)** create keymaps spec, add functions to load mappings - ([def7d72](https://github.com/sRavioli/nvim/commit/def7d720298bb0d61078d7b9e82b153a84ec1691)) - [@sRavioli](https://github.com/sRavioli)
 - load keymaps with new function - ([fe62677](https://github.com/sRavioli/nvim/commit/fe62677cc54189b606b3495a919ea8f58de4e860)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(changelog)** format changelog - ([9f41050](https://github.com/sRavioli/nvim/commit/9f41050c3d526d2329f4a3616f95c09c86ce617b)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:keymaps)** update keymaps module license name - ([0e4f4bc](https://github.com/sRavioli/nvim/commit/0e4f4bcbeba0006f635a320def4d902a6f51b35b)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.11.1](https://github.com/sRavioli/nvim/compare/0.11.0..0.11.1) - 2023-11-07
 
