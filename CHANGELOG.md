@@ -4,6 +4,48 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [0.12.0](https://github.com/sRavioli/nvim/compare/0.11.1..0.12.0) - 2023-11-10
+#### Bug Fixes
+- **(cog)** remove changelog formatting - ([fcf9e28](https://github.com/sRavioli/nvim/commit/fcf9e28cfc7221ead1db8a70288d549867ce265b)) - [@sRavioli](https://github.com/sRavioli)
+- **(config)** move configuration files to `config` folder - ([877e9bc](https://github.com/sRavioli/nvim/commit/877e9bca2d5ba45f41510b32c7236ca63d140eac)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** conform mappings to new spec - ([97914eb](https://github.com/sRavioli/nvim/commit/97914eb52a9cc09ad46cde1b9b5d5819740bdcf7)) - [@sRavioli](https://github.com/sRavioli)
+- **(mapppings)** remove `todo-comments` keymaps, use `lazy.nvim` key handler - ([a68fdea](https://github.com/sRavioli/nvim/commit/a68fdeadd635058bbb5df2d1200cc3bc71a7a441)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugin:ui)** change `toggleterm` float dimensions to function, update highlights - ([4f3d2d4](https://github.com/sRavioli/nvim/commit/4f3d2d4dd8c293f7a0f7cf3f14c577b05f5a219a)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:autocompletion)** don't pcall luasnip in it's config - ([96df81f](https://github.com/sRavioli/nvim/commit/96df81fa6e5e8ff8a0ccdc442634565ef19c7629)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:autocompletion)** make `cmp` folder a single file, move other files to `utils` - ([b7e4b14](https://github.com/sRavioli/nvim/commit/b7e4b14ffdfd3cda3dbe06cae820149d171f39b7)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** use new keymaps api - ([43c11cb](https://github.com/sRavioli/nvim/commit/43c11cbb4d8027255602de19a792bf8f91a1b634)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** correctly lazy load `lspsaga` mappings - ([0d9a68a](https://github.com/sRavioli/nvim/commit/0d9a68a3a39a0d24b7c8a7eea06b98515e30dc47)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:treesitter)** change opts to table, load mappings after config - ([d0c2b36](https://github.com/sRavioli/nvim/commit/d0c2b3654f18b7c38867697917d0e7f4e23d88ab)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** change scrollbar highlights - ([b7c54a1](https://github.com/sRavioli/nvim/commit/b7c54a1def0a7fb37a855fa17a689bed2eeb3724)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** disable `neo-tree` libuv file watcher [#914](https://github.com/nvim-neo-tree/neo-tree.nvim/issues/914) - ([597ba84](https://github.com/sRavioli/nvim/commit/597ba844a6592b6ba8f3ccea4d1ad51315fbeef3)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** load `barbar` mappings after setup, not during init - ([4b800d2](https://github.com/sRavioli/nvim/commit/4b800d2f54eeb0e3a1557c94c0e7bd8ea4ffc900)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** load correct config files - ([c27ceee](https://github.com/sRavioli/nvim/commit/c27ceee38a1b831900fe51d89446111c63bfd544)) - [@sRavioli](https://github.com/sRavioli)
+- load correct configuration files - ([39fe0d3](https://github.com/sRavioli/nvim/commit/39fe0d37618e92406c0532022ac5a4a40b2b355a)) - [@sRavioli](https://github.com/sRavioli)
+#### Features
+- **(colorschemes:kanagawa)** disable kanagawa transparency - ([4f1857c](https://github.com/sRavioli/nvim/commit/4f1857c34a4daad26bebd00644bf7c4c1da2e7bc)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** add mappings for `duck.lua` - ([9982f18](https://github.com/sRavioli/nvim/commit/9982f182d8196863c9982198b79cb45242f1d77e)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** add hls-lens keymaps - ([d72bca9](https://github.com/sRavioli/nvim/commit/d72bca958eb0afb860d90473c67fc45375bbeac9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** install `vim-pencil` - ([6a189b7](https://github.com/sRavioli/nvim/commit/6a189b78e911bd50f693558041a00c54172bdc39)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** install `numb.nvim` to peek lines - ([1a451ec](https://github.com/sRavioli/nvim/commit/1a451ec0f137d39b985960a952952d528f0c18ac)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:treesitter)** install `neogen` for better annotations - ([528a60a](https://github.com/sRavioli/nvim/commit/528a60abd2e96ecd62ee91f17ddc4df1d5e87613)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** setup `hls-lens` for scrollbar - ([7ec7868](https://github.com/sRavioli/nvim/commit/7ec7868b2a464453a736e92b564f6f800c5971c9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** install `scrollbar` - ([f2c1b89](https://github.com/sRavioli/nvim/commit/f2c1b89ae8045b44e42b99d9e08742e7b67b5980)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** install `hls-lens` - ([0c07f6c](https://github.com/sRavioli/nvim/commit/0c07f6ccbc84e2d6a568af2ebbbeb0ec42c12196)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** add neogen keymap group to `which-key` - ([a5a61e2](https://github.com/sRavioli/nvim/commit/a5a61e21d575141f77367cb43b9aea628c59857d)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** group empty directories in `neo-tree` - ([6575a60](https://github.com/sRavioli/nvim/commit/6575a601ff326b3eb9063b008e3fcafb7f15c639)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** load `neo-tree` when running `nvim .` - ([f5f96ac](https://github.com/sRavioli/nvim/commit/f5f96ac23fb00ab9bf5f65c88808c1e1ab71e98a)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** change `indent-blankline` indent char - ([dfcb388](https://github.com/sRavioli/nvim/commit/dfcb388d5eb5bc1dd17b3de8e42b9836290f8460)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** use new keymaps api for loading `gitsigns` keymaps - ([21aacfb](https://github.com/sRavioli/nvim/commit/21aacfb4ec6817cbe1decb017284ad0118a70ba8)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:duck)** add module annotations for `duck.lua` - ([e99f038](https://github.com/sRavioli/nvim/commit/e99f0382ca6e39ab66a9954659e1ab986d51ea35)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:duck)** integrate `duck` plugin - ([a6bec47](https://github.com/sRavioli/nvim/commit/a6bec47ec6752ca189eb9a16ee1074f710699f14)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:keymaps)** create keymaps spec, add functions to load mappings - ([def7d72](https://github.com/sRavioli/nvim/commit/def7d720298bb0d61078d7b9e82b153a84ec1691)) - [@sRavioli](https://github.com/sRavioli)
+- load keymaps with new function - ([fe62677](https://github.com/sRavioli/nvim/commit/fe62677cc54189b606b3495a919ea8f58de4e860)) - [@sRavioli](https://github.com/sRavioli)
+#### Miscellaneous Chores
+- **(changelog)** format changelog - ([9f41050](https://github.com/sRavioli/nvim/commit/9f41050c3d526d2329f4a3616f95c09c86ce617b)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:keymaps)** update keymaps module license name - ([0e4f4bc](https://github.com/sRavioli/nvim/commit/0e4f4bcbeba0006f635a320def4d902a6f51b35b)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 
 ## [0.11.1](https://github.com/sRavioli/nvim/compare/0.11.0..0.11.1) - 2023-11-07
 
