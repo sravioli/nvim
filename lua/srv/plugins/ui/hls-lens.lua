@@ -6,7 +6,7 @@ return {
     calm_down = true,
   },
   config = function(_, opts)
-    require("hlslens").setup(opts)
+    require("scrollbar.handlers.search").setup(opts)
     require("srv.utils.keymaps").load("hls-lens", { noremap = true, silent = true })
   end,
 }
