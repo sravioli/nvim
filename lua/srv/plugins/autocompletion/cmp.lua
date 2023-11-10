@@ -33,18 +33,15 @@ return {
     },
   },
   event = { "InsertEnter", "CmdlineEnter" },
-  config = function()
-    local present, cmp = pcall(require, "cmp")
-    if not present then return end
 
-    local cmp_fn = require "srv.plugins.autocompletion.cmp.functions"
-    local cmp_mappings = require "srv.plugins.autocompletion.cmp.mappings"
-    local cmp_sources = require "srv.plugins.autocompletion.cmp.sources"
+  config = function()
+    local cmp = require "cmp"
+    local cmp_utils = require "srv.utils.cmp"
 
     local opts = {
       experimental = { ghost_text = true },
       completion = { completeopt = "menu,menuone" },
-      snippet = { expand = cmp_fn.expand },
+      snippet = { expand = cmp_utils.functions.expand },
       window = {
         completion = {
           winhighlight = "Normal:NormalDark,CursorLine:Visual,Search:None",
@@ -58,10 +55,10 @@ return {
       },
       formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = cmp_fn.format,
+        format = cmp_utils.functions.format,
       },
-      mapping = cmp.mapping.preset.insert(cmp_mappings),
-      sources = cmp_sources.cmp,
+      mapping = cmp.mapping.preset.insert(cmp_utils.mappings),
+      sources = cmp_utils.sources.cmp,
 
       sorting = {
         comparators = {
@@ -77,7 +74,7 @@ return {
 
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp_sources.search,
+      sources = cmp_utils.sources.search,
       view = {
         entries = { name = "wildmenu", separator = " | " },
       },
@@ -87,14 +84,16 @@ return {
     ---`:` cmdline setup.
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp_sources.cmd,
+      sources = cmp_utils.sources.cmd,
       view = {
         entries = { name = "wildmenu", separator = " | " },
       },
     })
 
     ---If you want insert `(` after select function or method item
-    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    cmp.event:on(
+      "confirm_done",
+      require("nvim-autopairs.completion.cmp").on_confirm_done()
+    )
   end,
 }

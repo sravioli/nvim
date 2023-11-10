@@ -1,9 +1,17 @@
-local ls = require "luasnip"
+---@module 'srv.utils.cmp.functions'
+---@author sravioli
+---@license GNU-GPL v3.0
 
+---Utility functions related to `nvim-cmp`
+---@class CmpFunctions
 local M = {}
 
-function M.expand(args) ls.lsp_expand(args.body) end
+---Expands the given luasnip snippet
+---@param args any The text to expand
+function M.expand(args) require("luasnip").lsp_expand(args.body) end
 
+---Checks if words are present before text to start completing
+---@return boolean has_words_before Whether words are present
 function M.has_words_before()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -12,6 +20,9 @@ function M.has_words_before()
       == nil
 end
 
+---Formats the autocompletion menu
+---@param entry any
+---@param vim_item table
 function M.format(entry, vim_item)
   local lspkind_present, lspkind = pcall(require, "lspkind")
   if not lspkind_present then
