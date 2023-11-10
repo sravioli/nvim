@@ -31,7 +31,7 @@ return {
       border = require("srv.preferences").border,
     },
     on_attach = function(bufnr)
-      require("srv.utils.fn").mappings.load("gitsigns", { buffer = bufnr })
+      require("srv.utils.keymaps").load("gitsigns", { buffer = bufnr })
     end,
   },
 }
