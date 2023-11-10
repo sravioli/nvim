@@ -7,10 +7,7 @@ return {
     { "rebelot/kanagawa.nvim" },
   },
   event = "BufAdd",
-  init = function()
-    vim.g.barbar_auto_setup = false
-    require("srv.utils.fn").mappings.load "barbar"
-  end,
+  init = function() vim.g.barbar_auto_setup = false end,
   opts = function()
     local signs = require("srv.preferences").icons.diagnostics
     return {
@@ -69,5 +66,10 @@ return {
         visible = { modified = { buffer_number = true } },
       },
     }
+  end,
+
+  config = function(_, opts)
+    require("barbar").setup(opts)
+    require("srv.utils.keymaps").load("barbar", { noremap = true, silent = true })
   end,
 }
