@@ -10,4 +10,4 @@ require "srv.plugins"
 require "srv.config.autocommands"
 
 ---Load non-plugin keymaps
-require("srv.utils.fn").mappings.load()
+require("srv.utils.keymaps").load()
