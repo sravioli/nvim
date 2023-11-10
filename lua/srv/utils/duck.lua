@@ -1,3 +1,7 @@
+---@module 'srv.utils.duck'
+---@author sravioli
+---@license GNU-GPLv3
+
 ---@class Duck
 local M = {}
 
