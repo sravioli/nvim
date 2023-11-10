@@ -313,7 +313,7 @@ return {
 
       ---This will use the OS level file watchers to detect changes instead of relying
       ---on nvim autocmd events
-      use_libuv_file_watcher = true,
+      use_libuv_file_watcher = false, ---EPERM error on windows
     },
 
     git_status = {
