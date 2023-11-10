@@ -74,11 +74,11 @@ return {
     },
 
     ["<M-d>"] = {
-      function() require("srv.utils.duck").hatch() end,
+      function() require("srv.utils.duck"):hatch() end,
       "🦆  hatch a duck",
     },
     ["<M-c>"] = {
-      function() require("srv.utils.duck").cook() end,
+      function() require("srv.utils.duck"):cook() end,
       "🍳  cook a duck",
     },
   },
