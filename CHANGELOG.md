@@ -4,28 +4,38 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.11.1](https://github.com/sRavioli/nvim/compare/0.11.0..0.11.1) - 2023-11-07
+
 #### Bug Fixes
+
 - remove extra changelog - ([3ec0410](https://github.com/sRavioli/nvim/commit/3ec04102770be654d6de8d67c41604daabfd39cf)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.10.4](https://github.com/sRavioli/nvim/compare/0.10.3..0.10.4) - 2023-11-06
+
 #### Bug Fixes
+
 - remove extra changelog - ([70007e6](https://github.com/sRavioli/nvim/commit/70007e63d19176e602a4b697c7c7bec565adcd92)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(colorschemes:kanagawa)** make inactive buffer tab fg as comment - ([70d5714](https://github.com/sRavioli/nvim/commit/70d57148556f59663a4232186e01f24ac278d108)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
 
 ## [0.10.3](https://github.com/sRavioli/nvim/compare/0.10.2..0.10.3) - 2023-11-06
+
 #### Features
+
 - **(plugins:ui)** change `toggleterm` float size - ([4987db3](https://github.com/sRavioli/nvim/commit/4987db3ef2c50b72bde3a53a3913aab23b3a4c7d)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Hotfixes
+
 - **(colorscheme:kanagawa)** `deleted` -> `removed` (1st isn't a kanagawa highlight) - ([2c5e6d6](https://github.com/sRavioli/nvim/commit/2c5e6d6aa947bca19d315b97f04fa232b8cad8dc)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.10.1](https://github.com/sRavioli/nvim/compare/0.10.0..0.10.1) - 2023-11-06
 
