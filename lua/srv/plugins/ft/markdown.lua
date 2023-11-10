@@ -218,4 +218,18 @@ return {
       end, { noremap = false, expr = true })
     end,
   },
+  {
+    ---Rethinking Vim as a tool for writing
+    "preservim/vim-pencil",
+    ft = { "markdown" },
+    cmd = { "Pencil", "PencilOff", "PencilToggle", "PencilSoft", "PencilHard" },
+    init = function()
+      vim.cmd "let g:pencil#wrapModeDefault = 'hard'"
+      vim.cmd "let g:pencil#autoformat = 1"
+      vim.cmd(
+        "let g:pencil#textwidth = "
+          .. vim.api.nvim_get_option_value("colorcolumn", { scope = "local" })
+      )
+    end,
+  },
 }
