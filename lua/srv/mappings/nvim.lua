@@ -1,4 +1,7 @@
+---@class Mappings
 return {
+  autoload = true,
+
   n = {
     ["<Esc>"] = { "<cmd>nohlsearch<CR><Esc>", "  Clear search highlights" },
 
@@ -91,6 +94,8 @@ return {
     ["<C-Del>"] = { "<C-o>dw", "󰭜  Delete word backwards" },
     ["<S-Del>"] = { "<C-o><S-d>", "󰭜  Delete everything from cursor to right" },
     ["<M-BS>"] = { "<C-u>", "󰹿  Delete everything from cursor to left" },
+
+    -- ["<C-S-v>"] = { "<C-o>p" },
 
     ---undo break-points
     [","] = { ",<C-g>u", "󰕌  Add undo break-points" },

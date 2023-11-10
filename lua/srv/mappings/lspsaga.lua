@@ -1,5 +1,5 @@
 return {
-  plugin = true,
+  autoload = false,
 
   n = {
     ["<leader>fd"] = { "<cmd>Lspsaga finder<CR>", "  Lspsaga find definition" },

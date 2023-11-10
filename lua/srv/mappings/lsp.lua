@@ -1,7 +1,8 @@
 local __border = require("srv.preferences").border
 
+---@class Mappings
 return {
-  plugin = true,
+  autoload = false,
 
   n = {
     ["gD"] = {

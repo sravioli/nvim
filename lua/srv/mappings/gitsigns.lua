@@ -1,8 +1,8 @@
----local gs = package.loaded.gitsigns
 local gs = require "gitsigns"
 
+---@class Mappings
 return {
-  plugin = true,
+  autoload = false,
 
   n = {
     ---Navigation through hunks

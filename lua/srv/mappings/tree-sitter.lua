@@ -1,7 +1,9 @@
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
+---@class Mappings
 return {
-  plugin = true,
+  autoload = false,
+
   n = {
     ---Repeat movement with ; and ,
     ---ensure ; goes forward and , goes backward regardless of the last direction

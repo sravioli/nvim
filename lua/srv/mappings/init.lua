@@ -1,9 +1,18 @@
+---@class Keymaps: table[]
+---@field barbar? Mappings
+---@field gitsigns? Mappings
+---@field hls-lens? Mappings
+---@field lsp? Mappings
+---@field lspsaga? Mappings
+---@field luasnip? Mappings
+---@field nvim? Mappings
+---@field tree-sitter? Mappings
 return {
   nvim = require "srv.mappings.nvim",
   lsp = require "srv.mappings.lsp",
   barbar = require "srv.mappings.barbar",
   treesitter = require "srv.mappings.tree-sitter",
   gitsigns = require "srv.mappings.gitsigns",
-  todo_comments = require "srv.mappings.todo-comments",
   lspsaga = require "srv.mappings.lspsaga",
+  ["hls-lens"] = require "srv.mappings.hls-lens",
 }
