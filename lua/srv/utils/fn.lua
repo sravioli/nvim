@@ -220,7 +220,7 @@ Functions.lsp.async_formatting = function(bufnr)
 end
 
 Functions.lsp.autoformat = function(client, bufnr)
-  local lsp_formatting = require("srv.utils.augroups").null_ls
+  local lsp_formatting = require("srv.config.augroups").null_ls
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds { group = lsp_formatting, buffer = bufnr }
     vim.api.nvim_create_autocmd("BufWritePre", {
