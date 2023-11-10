@@ -2,13 +2,28 @@
 ---@author sravioli
 ---@license GNU-GPLv3
 
+---The Duck module makes it possible to have a duck that waddles around the screen.
 ---@class Duck
 local M = {}
 
 local notify = require "notify"
 
-M.list = {}
+---@private
+---
+---list of active ducks
+M.ducks = {}
 
+---@private
+---
+---Configuration for duck appearance and behavior.
+---
+---@class Duck.config
+---@field character string character representing the duck.
+---@field speed     number speed of duck animation.
+---@field width     number width of the duck window.
+---@field height    number height of the duck window.
+---@field color     string color of the duck.
+---@field blend     number blend value for the duck window.
 M.config = {
   character = "🦆",
   speed = 10,
@@ -18,16 +33,22 @@ M.config = {
   blend = 100,
 }
 
-M.waddle = function(duck, speed)
+---@private
+---
+---Makes a duck waddle on the screen.
+---
+---@param duck  number window ID of the duck.
+M.waddle = function(duck)
   local timer = vim.loop.new_timer()
   if not timer then
     notify("duck: could not create timer!", "error")
     return
   end
-  local new_duck = { name = duck, timer = timer }
-  table.insert(M.list, new_duck)
 
-  local waddle_period = 1000 / (speed or M.config.speed)
+  local new_duck = { name = duck, timer = timer }
+  table.insert(M.ducks, new_duck)
+
+  local waddle_period = 1000 / M.config.speed
   vim.loop.timer_start(
     timer,
     1000,
@@ -56,9 +77,10 @@ M.waddle = function(duck, speed)
   )
 end
 
-M.hatch = function(character, speed, color)
+---Creates a new duck and starts its animation.
+function M:hatch()
   local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_lines(buf, 0, 1, true, { character or M.config.character })
+  vim.api.nvim_buf_set_lines(buf, 0, 1, true, { M.config.character })
 
   local duck = vim.api.nvim_open_win(buf, false, {
     relative = "cursor",
@@ -72,30 +94,30 @@ M.hatch = function(character, speed, color)
     "hi Duck"
       .. duck
       .. " guifg="
-      .. (color or M.config.color)
+      .. M.config.color
       .. " guibg=none blend="
       .. M.config.blend
   )
   vim.api.nvim_win_set_option(duck, "winhighlight", "Normal:Duck" .. duck)
 
-  M.waddle(duck, speed)
+  M.waddle(duck)
 end
-M.cook = function()
-  local last_duck = M.list[#M.list]
+
+---Cooks the last hatched duck.
+function M:cook()
+  local last_duck = M.ducks[#M.ducks]
 
   if not last_duck then
-    notify "There are no more ducks to cook!"
+    notify "You've cooked all the ducks!"
     return
   end
 
   local duck = last_duck["name"]
   local timer = last_duck["timer"]
-  table.remove(M.list, #M.list)
+  table.remove(M.ducks, #M.ducks)
   timer:stop()
 
   vim.api.nvim_win_close(duck, true)
 end
-
-M.setup = function(opts) M.config = vim.tbl_deep_extend("force", M.config, opts or {}) end
 
 return M
