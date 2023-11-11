@@ -6,7 +6,9 @@
 ---@class Duck
 local M = {}
 
-local notify = require "notify"
+---safe require `nvim-notify`
+local notify_installed, notify = pcall(require, "notify")
+if notify_installed then vim.notify = notify end
 
 ---@private
 ---
@@ -90,16 +92,10 @@ function M:hatch()
     width = M.config.width,
     height = M.config.height,
   })
-  vim.cmd(
-    "hi Duck"
-      .. duck
-      .. " guifg="
-      .. M.config.color
-      .. " guibg=none blend="
-      .. M.config.blend
-  )
-  vim.api.nvim_win_set_option(duck, "winhighlight", "Normal:Duck" .. duck)
 
+  vim.api.nvim_set_hl(0, "Duck", { fg = M.config.color, blend = M.config.blend })
+
+  vim.api.nvim_win_set_option(duck, "winhighlight", "Normal:Duck" .. duck)
   M.waddle(duck)
 end
 
@@ -108,7 +104,7 @@ function M:cook()
   local last_duck = M.ducks[#M.ducks]
 
   if not last_duck then
-    notify "You've cooked all the ducks!"
+    vim.notify("You've cooked all the ducks!", vim.log.levels.INFO)
     return
   end
 
