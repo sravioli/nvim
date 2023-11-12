@@ -2,16 +2,16 @@
 ---@class Preferences
 ---@field border string The preferred border for UI windows and similar
 ---@field icons Icons
-local Preferences = {}
+local M = {}
 
-Preferences.border = "rounded"
+M.border = "rounded"
 
 ---Various icons for kinds, diagnostics, etc.
 ---@class Icons table<table>
-Preferences.icons = {}
+M.icons = {}
 
 ---@enum kinds Icons for the various kinds
-Preferences.icons.kinds = {
+M.icons.kinds = {
   Array = " ",
   Boolean = " ",
   Class = " ",
@@ -51,7 +51,7 @@ Preferences.icons.kinds = {
 }
 
 ---@enum diagnostics Icons for diagnostic messages
-Preferences.icons.diagnostics = {
+M.icons.diagnostics = {
   Error = " ",
   Warn = " ",
   Hint = " ",
@@ -61,7 +61,7 @@ Preferences.icons.diagnostics = {
 }
 
 ---@enum dap Icons for dap diagnostics
-Preferences.icons.dap = {
+M.icons.dap = {
   Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
   Breakpoint = " ",
   BreakpointCondition = " ",
@@ -70,7 +70,7 @@ Preferences.icons.dap = {
 }
 
 ---@enum git Icons for git signs
-Preferences.icons.git = {
+M.icons.git = {
   Branch = "  ",
 
   Added = "  ",
@@ -88,4 +88,4 @@ Preferences.icons.git = {
   Conflict = "",
 }
 
-return Preferences
+return M
