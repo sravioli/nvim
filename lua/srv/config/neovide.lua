@@ -54,7 +54,12 @@
 ---```lua
 ---vim.o.guifont = "Source Code Pro:h14"
 ---```
-vim.opt.guifont = "FiraCode Nerd Font Propo:h10.1:#h-normal"
+vim.opt.guifont = ""
+  .. "FiraCode_Nerd_Font_Propo,"
+  .. "NotoColorEmoji"
+  .. ":h10.3"
+  .. ":#h-normal"
+  .. ":#e-antialias"
 
 ---LINE SPACING
 ---Controls spacing between lines, may also be negative.
@@ -62,7 +67,7 @@ vim.opt.guifont = "FiraCode Nerd Font Propo:h10.1:#h-normal"
 ---```lua
 ---vim.opt.linespace = 0
 ---```
-vim.opt.linespace = 1
+vim.opt.linespace = -1
 
 ---SCALE
 ---In addition to setting the font itself, this setting allows to change the scale
@@ -223,7 +228,7 @@ vim.g.neovide_confirm_quit = true
 ---```lua
 ---vim.g.neovide_fullscreen = true
 ---```
-vim.g.neovide_fullscreen = true
+vim.g.neovide_fullscreen = false
 
 ---REMEMBER PREVIOUS WINDOW SIZE
 ---Setting `g:neovide_remember_window_size` to a boolean value will determine whether
