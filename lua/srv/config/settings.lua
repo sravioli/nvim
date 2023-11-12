@@ -21,6 +21,12 @@ local set = vim.opt
 ---Key with no value returns `nil`.
 local let = vim.g
 
+-- If you want to use plugins, but for some reason don't wish to use netrw, then
+-- you need to avoid loading both the plugin and the autoload portions of netrw.
+-- You may do so by placing the following two lines in your <.vimrc>:
+let.loaded_netrw = 1
+let.loaded_netrwPlugin = 1
+
 ---@type string
 ---_(global)_ **Default:** `""`
 ---This option is a list of comma-separated names. These names are recognized:
@@ -138,16 +144,16 @@ set.smartcase = true
 ---To temporarily disable mouse support, hold the shift key while using the mouse.
 ---
 ---Mouse support can be enabled for different modes:
---- - **n**	Normal mode
---- - **v**	Visual mode
---- - **i**	Insert mode
---- - **c**	Command-line mode
---- - **h**	all previous modes when editing a help file
---- - **a**	all previous modes
---- - **r**	for `hit-enter` and `more-prompt` prompt
+--- - **n** Normal mode
+--- - **v** Visual mode
+--- - **i** Insert mode
+--- - **c** Command-line mode
+--- - **h** all previous modes when editing a help file
+--- - **a** all previous modes
+--- - **r** for `hit-enter` and `more-prompt` prompt
 ---
 ---Left-click anywhere in a text buffer to place the cursor there.  This works
----with operators too, e.g. type `d` then left-click to delete text	from the
+---with operators too, e.g. type `d` then left-click to delete text from the
 ---current cursor position to the position where you clicked.
 ---
 ---Drag the `status-line` or vertical separator of a window to resize it.
@@ -162,10 +168,10 @@ set.smartcase = true
 ---register if possible. See also `'clipboard'`.
 ---
 ---Related options:
----`'mousefocus'`	window focus follows mouse pointer
----`'mousemodel'`	what mouse button does which action
----`'mousehide'`	hide mouse pointer while typing text
----`'selectmode'`	whether to start Select mode or Visual mode
+---`'mousefocus'` window focus follows mouse pointer
+---`'mousemodel'` what mouse button does which action
+---`'mousehide'`  hide mouse pointer while typing text
+---`'selectmode'` whether to start Select mode or Visual mode
 ---
 ---The `:behave` command provides some "profiles" for mouse behavior.
 set.mouse = "a"
