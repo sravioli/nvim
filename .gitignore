@@ -42,8 +42,6 @@ luac.out
 *.x86_64
 *.hex
 
-# lazy plugins spec
-lazy-lock.json
 
 # neodev
 .luarc.json
