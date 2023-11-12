@@ -4,7 +4,11 @@ return {
   main = "ibl",
   event = "BufReadPost",
   opts = {
-    indent = { char = "│" },
-    scope = { enabled = true },
+    scope = {
+      enabled = true,
+      include = {
+        node_type = { lua = { "return_statement", "table_constructor" } },
+      },
+    },
   },
 }
