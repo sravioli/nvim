@@ -3,17 +3,19 @@ return {
   "ziontee113/icon-picker.nvim",
   dependencies = { { "stevearc/dressing.nvim" } },
   keys = {
-    { "<leader>si", "<cmd>IconPickerYank<CR>", desc = "󱩯  Search icons and more" },
+    {
+      "<leader>si",
+      "<cmd>IconPickerYank alt_font emoji html_colors nerd_font_v3 symbols<CR>",
+      desc = "󱩯  Search icons and more",
+    },
     {
       "<M-i>",
-      "<cmd>IconPickerInsert<CR>",
+      "<cmd>IconPickerInsert alt_font emoji html_colors nerd_font_v3 symbols<CR>",
       desc = "󱩯  Search icons and more",
       mode = "i",
     },
   },
-  config = function()
-    require("icon-picker").setup {
-      disable_legacy_commands = true,
-    }
-  end,
+  opts = {
+    disable_legacy_commands = true,
+  },
 }
