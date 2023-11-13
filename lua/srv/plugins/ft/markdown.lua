@@ -101,11 +101,11 @@ return {
       ft = "markdown",
       keys = {
         { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
-        { "<leader>Da", "<cmd>Ditto<CR>", desc = "🙊 Activate ditto" },
-        { "<leaderDx", "<cmd>NoDitto<CR>", desc = "🙊 Deactivate ditto" },
-        { "<leader>Ds", "<cmd>DittoSent<CR>", desc = "🙊 Ditto on current sentence" },
-        { "<leader>Dp", "<cmd>DittoPar<CR>", desc = "🙊 Ditto on current paragraph" },
-        { "<leader>Df", "<cmd>DittoFile<CR>", desc = "🙊 Ditto on current file" },
+        { "<leader>Oa", "<cmd>Ditto<CR>", desc = "🙊 Activate ditto" },
+        { "<leader>Ox", "<cmd>NoDitto<CR>", desc = "🙊 Deactivate ditto" },
+        { "<leader>Os", "<cmd>DittoSent<CR>", desc = "🙊 Ditto on current sentence" },
+        { "<leader>Op", "<cmd>DittoPar<CR>", desc = "🙊 Ditto on current paragraph" },
+        { "<leader>Of", "<cmd>DittoFile<CR>", desc = "🙊 Ditto on current file" },
       },
       init = function()
         vim.g.ditto_min_word_length = 5
