@@ -40,6 +40,8 @@ return {
       ["east"] = "ovest",
       ["north"] = "south",
 
+      ["before"] = "after",
+
       ["sì"] = "no",
       ["AND"] = "OR",
       ["begin"] = "end",
