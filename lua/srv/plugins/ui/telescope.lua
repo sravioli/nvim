@@ -2,13 +2,20 @@ return {
   ---Find, Filter, Preview, Pick. All lua, all the time.
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    "nvim-lua/plenary.nvim",
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-treesitter/nvim-treesitter" },
+    { "nvim-tree/nvim-web-devicons" },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
+      enabled = vim.fn.executable "make" == 1,
+      config = function()
+        require("srv.utils.fun.lazy").on_load(
+          "telescope.nvim",
+          function() require("telescope").load_extension "fzf" end
+        )
+      end,
     },
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons",
   },
   branch = "0.1.x",
   cmd = "Telescope",
@@ -41,35 +48,17 @@ return {
     -- { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "  Git commits" },
     -- { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "  Git status" },
   },
-  config = function()
-    local present, telescope = pcall(require, "telescope")
+
+  opts = function()
+    local present, _ = pcall(require, "telescope")
     if not present then return end
 
-    local opts = {
+    return {
       defaults = {
-        vimgrep_arguments = {
-          "rg",
-          "--follow",
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-        },
-        preview = {
-          mime_hook = require("srv.utils.fn").telescope.preview_img,
-        },
-        prompt_prefix = "   ",
-        selection_caret = "  ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        layout_strategy = "flex", ---swaps between `horizontal` and `vertical`
+
         layout_config = {
           horizontal = {
-            prompt_position = "top",
             preview_width = 0.55,
             results_width = 0.8,
           },
@@ -80,43 +69,76 @@ return {
           height = 0.80,
           preview_cutoff = 120,
         },
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "node_modules" },
-        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        path_display = { "truncate" },
-        winblend = 0,
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        color_devicons = true,
-        set_env = { ["COLORTERM"] = "truecolor" }, ---default = nil,
-        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        ---file_previewer = require("telescope.previewers").cat.new,
-        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        ---Developer configurations: Not meant for general override
-        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-        ---buffer_previewer_maker = require("srv.utils.fn").telescope.buffer_previewer,
+
+        winblend = vim.opt.pumblend:get(),
+        prompt_prefix = "   ",
+        selection_caret = "󰁔 ",
+
+        path_display = { "truncate", shorten = { len = 1, exclude = { 1, -1 } } },
+
         mappings = {
+          i = {
+            ["<C-j>"] = {
+              require("telescope.actions").move_selection_next,
+              type = "action",
+              opts = { nowait = true, silent = true },
+            },
+
+            ["<C-k>"] = {
+              require("telescope.actions").move_selection_previous,
+              type = "action",
+              opts = { nowait = true, silent = true },
+            },
+
+            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+
+            ["<C-n>"] = require("telescope.actions").cycle_history_next,
+            ["<C-p>"] = require("telescope.actions").cycle_history_prev,
+          },
+
           n = {
             ["q"] = require("telescope.actions").close,
             ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
           },
-          i = {
-            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-          },
         },
+
+        preview = {
+          check_mime_type = true,
+        },
+
+        vimgrep_arguments = {
+          "rg",
+          "--follow",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+        },
+
+        set_env = { COLORTERM = "truecolor" },
+
+        color_devicons = true,
       },
+
+      -- pickers = {},
+
       extensions = {
         fzf = {
-          fuzzy = true, ---false will only do exact matching
-          override_generic_sorter = true, ---override the generic sorter
-          override_file_sorter = true, ---override the file sorter
-          case_mode = "smart_case", ---or "ignore_case" or "respect_case"
-          ---the default case_mode is "smart_case"
+          ---false will only do exact matching
+          fuzzy = true,
+
+          ---override the generic sorter
+          override_generic_sorter = true,
+
+          ---override the file sorter
+          override_file_sorter = true,
+
+          ---or "ignore_case" or "respect_case", the default case_mode is "smart_case"
+          case_mode = "smart_case",
         },
       },
     }
-
-    telescope.setup(opts)
-    telescope.load_extension "fzf"
   end,
 }
