@@ -1,11 +1,3 @@
-local function transparency()
-  if vim.g.neovide then
-    return false
-  else
-    return true
-  end
-end
-
 return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
   "rebelot/kanagawa.nvim",
@@ -16,8 +8,9 @@ return {
   init = function() vim.cmd.colorscheme "kanagawa-wave" end,
   opts = {
     compile = true, -- enable compiling the colorscheme
-    -- transparent = transparency(), -- do not set background color
+    undercurls = true,
     transparent = false,
+    keywordStyle = { italic = true, bold = true },
     overrides = function(colors)
       local theme = colors.theme
       return {
