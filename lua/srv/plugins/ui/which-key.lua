@@ -40,6 +40,7 @@ return {
       ["<leader>t"] = { name = "+toggle" },
       ["<leader>d"] = { name = "+debug" },
       ["<leader>da"] = { name = "+adapters" },
+      ["<leader>O"] = { name = "+ditto" },
     },
   },
   config = function(_, opts)
