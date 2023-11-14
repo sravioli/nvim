@@ -98,7 +98,7 @@ return {
     },
     { ---🙊 Stop repeating yourself
       "dbmrq/vim-ditto",
-      ft = "markdown",
+      ft = { "markdown", "text" },
       keys = {
         { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
         { "<leader>Oa", "<cmd>Ditto<CR>", desc = "🙊 Activate ditto" },
