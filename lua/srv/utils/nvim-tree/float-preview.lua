@@ -515,14 +515,46 @@ end
 
 ---Attaches a FloatPreview instance to a buffer and returns the attached instance.
 ---
----This function should be used inside the `on_attach` nvim-tree table.
+---After attaching to the buffer, it will subscribe to some `nvim-tree` events to
+---automatically close the floating window.
+---example usage:
+---
+---```lua
+---require("nvim-tree").setup({
+---  on_attach = function (bufnr)
+---    require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
+---
+---    ---set mappings, etc
+---    require("nvim-tree.api").mappings.default_on_attach(bufnr)
+---  end
+---})
+---```
 ---
 ---@param bufnr number The buffer number to attach the FloatPreview instance to.
----@return FloatPreview float_preview The attached FloatPreview instance.
+---@return FloatPreview FloatPreview The attached FloatPreview instance.
 M.on_attach = function(bufnr)
-  local float_preview = M:new()
-  float_preview:attach(bufnr)
-  return float_preview
+  ---@class FloatPreview
+  local FloatPreview = M:new()
+  FloatPreview:attach(bufnr)
+
+  local Event = api.events.Event
+  local close_float_on_events = {
+    Event.TreeClose,
+    Event.WillCreateFile,
+    Event.FileCreated,
+    Event.FolderCreated,
+    Event.WillRemoveFile,
+    Event.FileRemoved,
+    Event.FolderRemoved,
+    Event.WillRenameNode,
+    Event.NodeRenamed,
+  }
+
+  for _, event in ipairs(close_float_on_events) do
+    api.events.subscribe(event, function() vim.schedule(utils.window.close_all) end)
+  end
+
+  return FloatPreview
 end
 
 return M
