@@ -13,56 +13,12 @@ return {
     return {
       ---to set nvim-tree specific mappings
       on_attach = function(bufnr)
+        require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
+
         local api = require "nvim-tree.api"
-        local flprv = require "srv.utils.nvim-tree.float-preview"
-
-        flprv.on_attach(bufnr)
-        local float_close_wrap = flprv.close_wrap
-
-        local function opts(desc)
-          return {
-            desc = "nvim-tree: " .. desc,
-            buffer = bufnr,
-            noremap = true,
-            silent = true,
-            nowait = true,
-          }
-        end
-
-        --- There are keymaps must to wrap for correct work
-        -- ...
-        vim.keymap.set(
-          "n",
-          "<C-t>",
-          float_close_wrap(api.node.open.tab),
-          opts "Open: New Tab"
-        )
-        vim.keymap.set(
-          "n",
-          "<C-v>",
-          float_close_wrap(api.node.open.vertical),
-          opts "Open: Vertical Split"
-        )
-        vim.keymap.set(
-          "n",
-          "<C-s>",
-          float_close_wrap(api.node.open.horizontal),
-          opts "Open: Horizontal Split"
-        )
-        vim.keymap.set("n", "<CR>", float_close_wrap(api.node.open.edit), opts "Open")
-        vim.keymap.set("n", "<Tab>", float_close_wrap(api.node.open.preview), opts "Open")
-        vim.keymap.set("n", "o", float_close_wrap(api.node.open.edit), opts "Open")
-        vim.keymap.set(
-          "n",
-          "O",
-          float_close_wrap(api.node.open.no_window_picker),
-          opts "Open: No Window Picker"
-        )
-        vim.keymap.set("n", "q", float_close_wrap(api.tree.close), opts "Close")
-        vim.keymap.set("n", "a", float_close_wrap(api.fs.create), opts "Create")
-        vim.keymap.set("n", "d", float_close_wrap(api.fs.remove), opts "Delete")
-        vim.keymap.set("n", "r", float_close_wrap(api.fs.rename), opts "Rename")
+        api.config.mappings.default_on_attach(bufnr)
       end,
+
       hijack_cursor = true, ---keep cursor on first letter of filename
       disable_netrw = true, ---completely disable netrw
       hijack_unnamed_buffer_when_opening = true, ---open in empty unnamed buffers
@@ -157,6 +113,8 @@ return {
           },
         },
       },
+
+      trash = { cmd = "trash" },
     }
   end,
 }
