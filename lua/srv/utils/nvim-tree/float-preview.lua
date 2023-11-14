@@ -239,25 +239,11 @@ M.helpers = {
   },
 }
 
+local api = require "nvim-tree.api"
+
 ---@class FloatPreview.Helpers
 local utils = M.helpers
 local augroup = vim.api.nvim_create_augroup("FloatPreview", { clear = true })
-
----Closes all active float windows and then executes a provided callback.
----
----This function returns a new function that, when called, closes all float windows
----using `helpers.window.close_all()` and then invokes the original callback with the
----provided arguments.
----
----@param callback function The callback function to execute after closing float windows.
----@return function callback The wrapped function that closes float windows before invoking the original callback.
----@see FloatPreview.helpers.Window.close_all
-M.close_wrap = function(callback)
-  return function(...)
-    M.helpers.window.close_all()
-    return callback(...)
-  end
-end
 
 ---@private
 ---
@@ -277,25 +263,6 @@ function M:new()
     max_line = 999999,
     disabled = false,
     config = M.config,
-
-    ---@private
-    ---
-    ---Wraps an action callback to ensure the float window is closed before the action
-    ---is performed.
-    ---
-    ---This function returns a new function that, when called, closes the float window
-    ---using `self.FloatPreview:close()` and then invokes the original action callback
-    ---with the provided arguments.
-    ---
-    ---@param callback function The action callback to execute after closing the float window.
-    ---@return function callaback The wrapped function that closes the float window before invoking the original callback.
-    ---@see FloatPreview.close
-    action_wrap = function(callback)
-      return function(...)
-        self.FloatPreview:close()
-        return callback(...)
-      end
-    end,
   }
 
   self = setmetatable(self.FloatPreview, { __index = M })
