@@ -59,6 +59,7 @@ M.config = {
       return size < 5 and fs.is_text_file(path)
     end,
 
+    ---@diagnostic disable-next-line: unused-local
     post_open = function(bufnr) return true end,
   },
 }
