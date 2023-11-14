@@ -37,15 +37,9 @@ return {
     end,
     float_opts = {
       border = require("srv.preferences").border,
-      width = function()
-        return math.floor(
-          vim.api.nvim_win_get_width(vim.api.nvim_get_current_win()) * 0.85
-        )
-      end,
+      width = function() return math.floor(vim.opt.columns:get() * 0.85) end,
       height = function()
-        return math.floor(
-          vim.api.nvim_win_get_height(vim.api.nvim_get_current_win()) * 0.85
-        )
+        return math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.85)
       end,
     },
     highlights = {
