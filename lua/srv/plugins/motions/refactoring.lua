@@ -53,7 +53,7 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "nvim-treesitter/nvim-treesitter" },
   },
-  init = function() require("telescope").load_extension "refactoring" end,
+  -- init = function() require("telescope").load_extension "refactoring" end,
   opts = {
     -- prompt for return type
     prompt_func_return_type = {
@@ -72,4 +72,12 @@ return {
     printf_statements = {},
     print_var_statements = {},
   },
+  config = function(_, opts)
+    require("refactoring").setup(opts)
+
+    require("srv.utils.fun.lazy").on_load(
+      "telescope.nvim",
+      function() require("telescope").load_extension "refactoring" end
+    )
+  end,
 }
