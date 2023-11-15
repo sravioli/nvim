@@ -1,8 +1,11 @@
-local notify_installed, notify = pcall(require, "notify")
-if notify_installed then vim.notify = notify end
-
 ---@class FloatPreview
 local M = {}
+
+---@class NvimTreeExtensionsHelpers
+local utils = require "srv.utils.nvim-tree.helpers"
+local api = require "nvim-tree.api"
+
+local augroup = vim.api.nvim_create_augroup("FloatPreview", { clear = true })
 
 ---@private
 ---
@@ -51,7 +54,7 @@ M.config = {
   -- hooks if return false preview doesn't shown
   hooks = {
     pre_open = function(path)
-      local fs = M.helpers.fs
+      local fs = utils.fs
 
       ---don't preview if file sisze is bigger than 5MB OR file isn't a text file (binary)
       local size = fs.get_file_size(path)
@@ -63,187 +66,6 @@ M.config = {
     post_open = function(bufnr) return true end,
   },
 }
-
----@private
----
----Helper functions for the FloatPreview class
----
----@class FloatPreview.Helpers
-M.helpers = {
-  ---@class FloatPreview.Helpers.Log
-  log = {
-    ---Logs an error message.
-    ---
-    ---@param msg string The error message.
-    ---@param ... any Additional values to be formatted into the message.
-    err = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.ERROR) end,
-
-    ---Logs a warning message.
-    ---
-    ---@param msg string The warning message.
-    ---@param ... any Additional values to be formatted into the message.
-    warn = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.WARN) end,
-
-    ---Logs an informational message.
-    ---
-    ---@param msg string The informational message.
-    ---@param ... any Additional values to be formatted into the message.
-    info = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.INFO) end,
-
-    ---Logs a debug message.
-    ---
-    ---@param msg string The debug message.
-    ---@param ... any Additional values to be formatted into the message.
-    debug = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.DEBUG) end,
-
-    ---Logs a trace message.
-    ---
-    ---@param msg string The trace message.
-    ---@param ... any Additional values to be formatted into the message.
-    trace = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.TRACE) end,
-  },
-
-  ---@class FloatPreview.Helpers.FileSystem
-  fs = {
-    ---Gets the size of a file in megabytes.
-    ---
-    ---@param file_path string The path to the file.
-    ---@return number|nil size The file size in megabytes, or nil if there was an error.
-    get_file_size = function(file_path)
-      local success, file_stats = pcall(function() return vim.loop.fs_stat(file_path) end)
-      if not (success and file_stats) then return end
-
-      return math.floor(0.5 + (file_stats.size / (1024 * 1024)))
-    end,
-
-    ---Determines if a file is likely to be a text file.
-    ---
-    ---This method is not 100% proof but is good enough for common use cases.
-    ---Source: <https://github.com/sharkdp/content_inspector>
-    ---
-    ---@param file_path string The path to the file.
-    ---@return boolean|nil is_file True if the file is likely a text file, false if it contains binary data, or nil if there was an error.
-    is_text_file = function(file_path)
-      local file_descriptor = vim.loop.fs_open(file_path, "r", 1)
-      if not file_descriptor then
-        M.helpers.log.err("Could not open file '%s' for reading", file_path)
-        return
-      end
-
-      local is_text = not vim.loop.fs_read(file_descriptor, 1024):find "\0"
-      vim.loop.fs_close(file_descriptor)
-      return is_text
-    end,
-
-    ---Asynchronously reads the contents of a file and invokes a callback with the data.
-    ---
-    ---@param filepath string The path of the file to read.
-    ---@param callback fun(data: string) The callback function to be invoked with the file data.
-    read_file_async = function(filepath, callback)
-      vim.loop.fs_open(filepath, "r", 438, function(err_open, fd)
-        if err_open or not fd then
-          -- Schedule to avoid E5560 error: nvim_exec must not be called in a lua loop callback
-          vim.schedule(
-            function()
-              M.helpers.log.warn(
-                "Unable to open file '%s', error: %s",
-                filepath,
-                err_open
-              )
-            end
-          )
-          return
-        end
-
-        vim.loop.fs_fstat(fd, function(err_fstat, stat)
-          if not stat then return end
-          assert(not err_fstat, err_fstat)
-          if stat.type ~= "file" then return callback "" end
-
-          vim.loop.fs_read(fd, stat.size, 0, function(err_read, data)
-            assert(not err_read, err_read)
-
-            vim.loop.fs_close(fd, function(err_close)
-              assert(not err_close, err_close)
-              return callback(data or "")
-            end)
-          end)
-        end)
-      end)
-    end,
-  },
-
-  ---Detaches LSP clients from a buffer.
-  ---
-  ---Currently not working as expected.
-  ---
-  ---@param bufnr number The buffer number. If not provided, the current buffer is used.
-  detach_lsp_clients = function(bufnr)
-    bufnr = bufnr or vim.api.nvim_get_current_buf()
-    local active_clients = vim.lsp.get_active_clients { bufnr = bufnr }
-
-    -- Temporarily disable notifications from buf_detach_client
-    vim.lsp.set_log_level(vim.log.levels.OFF)
-    for client_id, _ in pairs(active_clients) do
-      vim.lsp.buf_detach_client(bufnr, client_id)
-    end
-    vim.lsp.set_log_level(vim.log.levels.INFO)
-  end,
-
-  ---@class FloatPreview.helpers.Window
-  window = {
-    ---Checks if a window is currently displaying a file with the given path.
-    ---
-    ---@param file_path string: The path of the file to check.
-    ---@return boolean is_shown True if the file is currently shown in any window, false otherwise.
-    is_shown = function(file_path)
-      for _, window_number in
-        ipairs(vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage()))
-      do
-        local buffer = vim.api.nvim_win_get_buf(window_number)
-        local current_path = vim.api.nvim_buf_get_name(buffer)
-        if current_path == file_path then return true end
-      end
-      return false
-    end,
-
-    ---Checks if a buffer or file path has an associated float.
-    ---
-    ---If `path` is provided, checks if there is an associated float for the file at the given path.
-    ---If `bufnr` is provided, checks if there is an associated float for the buffer with the given number.
-    ---If neither `path` nor `bufnr` is provided, checks the current buffer.
-    ---
-    ---@param bufnr? number The buffer number to check.
-    ---@param path? string The file path to check.
-    ---@return boolean is_float True if there is an associated float, false otherwise.
-    is_float = function(bufnr, path)
-      if path then return M.state[path] ~= nil end
-      if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
-
-      return M.state[bufnr] ~= nil
-    end,
-
-    ---Opens previews for all active floats.
-    open_all = function()
-      for _, float in pairs(M.floats) do
-        float:preview_under_cursor()
-      end
-    end,
-
-    ---Closes all active floats.
-    close_all = function()
-      for _, float in pairs(M.floats) do
-        float:close()
-      end
-    end,
-  },
-}
-
-local api = require "nvim-tree.api"
-
----@class FloatPreview.Helpers
-local utils = M.helpers
-local augroup = vim.api.nvim_create_augroup("FloatPreview", { clear = true })
 
 ---@private
 ---
@@ -280,9 +102,9 @@ function M:toggle()
   M.disabled = not M.disabled
 
   if M.disabled then
-    utils.window.close_all()
+    utils.window.close_all(M.floats)
   else
-    utils.window.open_all()
+    utils.window.open_all(M.floats)
   end
 end
 
@@ -296,21 +118,25 @@ end
 ---@see FloatPreview.Helpers.Log
 ---@see vim.log.levels
 function M:close(reason)
-  if self.path ~= nil and self.buf ~= nil then
-    if reason then utils.log.trace("close reason %s", reason) end
-
-    --- Attempt to close the float window and delete the buffer.
-    pcall(vim.api.nvim_win_close, self.win, { force = true })
-    pcall(vim.api.nvim_buf_delete, self.buf, { force = true })
-
-    self.win = nil
-    M.state[self.buf] = nil
-    M.state[self.path] = nil
-    self.buf = nil ---@private
-    self.path = nil ---@private
-    self.current_line = 1 ---@private
-    self.max_line = 999999 ---@private
+  ---nothing to close
+  if not self.path and not self.buf then
+    utils.log.trace "no buffer to close"
+    return
   end
+
+  if reason then utils.log.trace("close reason %s", reason) end
+
+  --- Attempt to close the float window and delete the buffer.
+  pcall(vim.api.nvim_win_close, self.win, { force = true })
+  pcall(vim.api.nvim_buf_delete, self.buf, { force = true })
+
+  self.win = nil
+  M.state[self.buf] = nil
+  M.state[self.path] = nil
+  self.buf = nil ---@private
+  self.path = nil ---@private
+  self.current_line = 1 ---@private
+  self.max_line = 999999 ---@private
 end
 
 ---@private
@@ -551,7 +377,9 @@ M.on_attach = function(bufnr)
   }
 
   for _, event in ipairs(close_float_on_events) do
-    api.events.subscribe(event, function() vim.schedule(utils.window.close_all) end)
+    api.events.subscribe(event, function()
+      vim.schedule(function() utils.window.close_all(M.floats) end)
+    end)
   end
 
   return FloatPreview
