@@ -117,6 +117,10 @@ return {
         CmpItemKindColor = { fg = theme.ui.bg, bg = theme.syn.type },
         CmpItemKindTypeParameter = { fg = theme.ui.bg, bg = theme.syn.parameter },
 
+        ---nvim-tree
+        NvimTreeNormalFloat = { link = "NormalDark" },
+        NvimTreeNormal = { link = "NormalDark" },
+
         ---Telescope
         TelescopeBorder = { link = "FloatBorder" },
 
