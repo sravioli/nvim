@@ -57,11 +57,20 @@ return {
 
         diagnostics.cpplint,
         formatting.clang_format.with {
-          extra_args = {
-            "--style",
-            "{SpacesBeforeTrailingComments: 2, "
-              .. "AlignTrailingComments: {Kind: Always, OverEmptyLines: 2}}",
-          },
+          extra_args = function()
+            local style, file = "--style=file:", ".clang-format"
+            local dir = vim.fn.expand "%:p:h"
+
+            ---search for a .clang-format file in file directory
+            if vim.fn.findfile(file, dir) ~= "" then
+              return { style .. vim.fn.resolve(dir .. file) }
+            end
+
+            ---fallback to default
+            return {
+              style .. vim.fn.resolve(vim.fn.stdpath "config" .. [[\skel\]] .. file),
+            }
+          end,
         },
 
         formatting.latexindent,
