@@ -81,6 +81,9 @@ return {
       function() require("srv.utils.duck"):cook() end,
       "🍳  cook a duck",
     },
+
+    ---select just pasted text
+    ["<leader>p"] = { "`[v`]", "󰒅  Select pasted text" },
   },
 
   i = {
