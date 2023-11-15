@@ -14,21 +14,14 @@ local au = vim.api.nvim_create_autocmd
 ---@type table User defined augroups
 local aug = require "srv.config.augroups"
 
--- au("VimEnter", {
---   desc = "recompile kanagawa at runtime inside neovide",
---   pattern = "*",
---   callback = function()
---     if vim.g.neovide then vim.cmd "KanagawaCompile" end
---   end,
--- })
---
--- au("VimLeave", {
---   desc = "recompile kanagawa for neovim when exiting neovide",
---   pattern = "*",
---   callback = function()
---     if vim.g.neovide then vim.cmd "!nvim --headless +KanagawaCompile +q" end
---   end,
--- })
+au("UiEnter", {
+  desc = "Load notify after startup",
+  pattern = "*",
+  callback = function()
+    local notify_installed, notify = pcall(require, "notify")
+    if notify_installed then vim.notify = notify end
+  end,
+})
 
 ---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
@@ -44,6 +37,18 @@ au("TextYankPost", {
   group = aug.yank_highlight,
   pattern = "*",
   callback = function() vim.highlight.on_yank { higroup = "Search", timeout = 200 } end,
+})
+
+au("FileType", {
+  desc = "remap some keys for the help page",
+  pattern = "help",
+  group = aug.vimhelp,
+  callback = function()
+    vim.keymap.set("n", "<CR>", "<C-]>", { buffer = true, desc = "Jump to tag" })
+    vim.keymap.set("n", "<BS>", "<C-o>", { buffer = true, desc = "Return to prev tag" })
+    vim.opt_local.conceallevel = 3
+    vim.opt_local.concealcursor = "nvc"
+  end,
 })
 
 ---Quit from some windows by only pressing q
