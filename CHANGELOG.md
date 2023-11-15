@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+
 ## [0.14.0](https://github.com/sRavioli/nvim/compare/0.13.0..0.14.0) - 2023-11-15
+
 #### Bug Fixes
+
 - **(colorschemes:kanagawa)** disable transparency, update add `keywordStyle` - ([ceb6162](https://github.com/sRavioli/nvim/commit/ceb6162040d8d8ed49fcf84ffc1ff6fc2730844b)) - [@sRavioli](https://github.com/sRavioli)
 - **(config:neovide)** add fallback font, reduce linespace - ([e256f92](https://github.com/sRavioli/nvim/commit/e256f92afb67037d0bf3682a87828038ad0d4805)) - [@sRavioli](https://github.com/sRavioli)
 - **(gitignore)** track `lazy-lock.json` - ([ed3351f](https://github.com/sRavioli/nvim/commit/ed3351f650c0ac98f1ce8ac938bf5c37a55837c9)) - [@sRavioli](https://github.com/sRavioli)
@@ -23,10 +26,14 @@ guidelines.
 - **(syntax)** typo - ([192fdab](https://github.com/sRavioli/nvim/commit/192fdab17549886225ebce116fa5bb942a544868)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:nvim-tree)** remove unused functions - ([f547a96](https://github.com/sRavioli/nvim/commit/f547a96735024f43fed13e79f3b8204f178e24e6)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:nvim-tree)** disable linter warnings - ([49231fb](https://github.com/sRavioli/nvim/commit/49231fbda4b01064cc06091d9b10a79c7c0983c1)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Documentation
+
 - **(plugins:ui)** adjust comments for neo-tree - ([a4daf1f](https://github.com/sRavioli/nvim/commit/a4daf1f7090bb24d19ddc9e131ee70869f7c8fcf)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:duck)** add documentation to `duck` - ([bea18b9](https://github.com/sRavioli/nvim/commit/bea18b9a47f0aaaf35aac8f49fb824d76827e3ec)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Features
+
 - **(colorschemes:kanagawa)** link `nvim-tree` highlights - ([565fa28](https://github.com/sRavioli/nvim/commit/565fa2862fbf5cf00bb6155d651326710b5951af)) - [@sRavioli](https://github.com/sRavioli)
 - **(config:augroups)** add autogroup for vimhelp files - ([f94edae](https://github.com/sRavioli/nvim/commit/f94edaefb5bb2e54197ad5aa46c426a5fa73dc78)) - [@sRavioli](https://github.com/sRavioli)
 - **(config:autocommands)** load `nvim-notify` on UiEnter, remap keys in vimhelp - ([2e7cdb4](https://github.com/sRavioli/nvim/commit/2e7cdb4fc665a794d5654112210f5b6ef1c6618e)) - [@sRavioli](https://github.com/sRavioli)
@@ -47,7 +54,9 @@ guidelines.
 - **(utils:nvim-tree)** modify `on_attach()` to auto-close float window on events - ([ac23f8b](https://github.com/sRavioli/nvim/commit/ac23f8b7e07d0c7cca10d2ce4e4765deec1daf8d)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:nvim-tree)** embed and refactor "[JMarkin/nvim-tree.lua-float-preview](https://github.com/JMarkin/nvim-tree.lua-float-preview)" - ([3e1dc0e](https://github.com/sRavioli/nvim/commit/3e1dc0eda7528a53a799d246af8cf9ace2958dde)) - [@sRavioli](https://github.com/sRavioli)
 - **(utils:nvim-tree)** embed and refactor ["JMarkin/nvim-tree.lua-float-preview"](https://github.com/JMarkin/nvim-tree.lua-float-preview) - ([ecc2e77](https://github.com/sRavioli/nvim/commit/ecc2e77d6000b107818b1c314ab48c49ac190ce4)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Miscellaneous Chores
+
 - **(lazy)** update \lazy.nvim\ lockfile - ([33dd699](https://github.com/sRavioli/nvim/commit/33dd699c2d645278cfa7d89e280bc68e8bbeb9d9)) - [@sRavioli](https://github.com/sRavioli)
 - **(lazy)** update `lazy.nvim` lockfile - ([2e09e67](https://github.com/sRavioli/nvim/commit/2e09e67dc9d9314b4c9fcaefafd5e192a6134561)) - [@sRavioli](https://github.com/sRavioli)
 - **(lazy)** update `lazy.nvim` lockfile - ([0b7b91e](https://github.com/sRavioli/nvim/commit/0b7b91e991c27afffe0cefc331ab0e57e947b790)) - [@sRavioli](https://github.com/sRavioli)
@@ -56,13 +65,16 @@ guidelines.
 - **(lazy)** update `lazy.nvim` lockfile - ([2d9451c](https://github.com/sRavioli/nvim/commit/2d9451c5cc59d2a2bc58593e980ed9238956f779)) - [@sRavioli](https://github.com/sRavioli)
 - **(mappings)** adapt `duck` function calls - ([7274536](https://github.com/sRavioli/nvim/commit/7274536a481efaff8a2aebe9824419e3195b75c3)) - [@sRavioli](https://github.com/sRavioli)
 - format changelog - ([ae91a22](https://github.com/sRavioli/nvim/commit/ae91a22463ddf9556edcbd36d21383b3485a5aa6)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Refactoring
+
 - **(utils:nvim-tree)** move helpers to different file - ([af5925e](https://github.com/sRavioli/nvim/commit/af5925ea14bb258facecfb83c6dedb7ad86a8614)) - [@sRavioli](https://github.com/sRavioli)
+
 #### Style
+
 - **(preferences)** change class name - ([7035625](https://github.com/sRavioli/nvim/commit/7035625d16b1ac6f3acd093bbbfea5fbc923800f)) - [@sRavioli](https://github.com/sRavioli)
 
 - - -
-
 
 ## [0.13.0](https://github.com/sRavioli/nvim/compare/0.12.0..0.13.0) - 2023-11-10
 
