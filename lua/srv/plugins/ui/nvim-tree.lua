@@ -4,6 +4,29 @@ return {
   lazy = false,
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
+    {
+      ---Neovim plugin to improve the default vim.ui interfaces
+      "stevearc/dressing.nvim",
+      opts = {
+        select = {
+          -- backend = { "nui" },
+
+          nui = {
+            relative = "win",
+            min_width = 40,
+            min_height = 2,
+          },
+        },
+      },
+    },
+  },
+  keys = {
+    { "<C-n>", "<cmd>NvimTreeToggle<CR>", desc = "  Toggle file explorer" },
+    {
+      "<leader>e",
+      "<cmd>NvimTreeFindFileToggle<CR>",
+      desc = "  Focus current file in explorer",
+    },
   },
   opts = function()
     ---@class Icons
@@ -13,10 +36,10 @@ return {
     return {
       ---to set nvim-tree specific mappings
       on_attach = function(bufnr)
-        require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
-
         local api = require "nvim-tree.api"
         api.config.mappings.default_on_attach(bufnr)
+
+        require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
       end,
 
       hijack_cursor = true, ---keep cursor on first letter of filename
@@ -29,19 +52,18 @@ return {
       view = {
         cursorline = true,
         side = "right",
-        -- number = true,
-        -- relativenumber = true,
         signcolumn = "auto",
 
         width = { padding = 2 },
 
         float = {
           enable = true,
+          quit_on_focus_loss = true,
           open_win_config = {
             relative = "editor",
             border = border,
             width = math.floor(vim.opt.columns:get() * 0.25),
-            height = 30,
+            height = math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.90),
             row = 1,
             col = 1,
           },
