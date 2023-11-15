@@ -71,7 +71,7 @@ end
 
 ---Loads the keymaps for the corresponding plugin
 ---
----@param plugin? string The name of the mappings file. If none is given, it will load all mappings.
+---@param plugin? nil|string|table The name of the mappings file. If none is given, it will load all mappings. Can optionally load a raw table of mappings
 ---@param options? MappingSpecOpts A table of options that will be passed to `vim.keymap.set`
 M.load = function(plugin, options)
   vim.schedule(function()
@@ -92,6 +92,11 @@ M.load = function(plugin, options)
 
       mappings.autoload = true
       M.__set_keymap(mappings, options)
+    elseif ptype == "table" then
+      M.__set_keymap(plugin)
+      -- for _, pmappings in pairs(plugin) do
+      --   M.__set_keymap(pmappings, options)
+      -- end
     else
       notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
     end
