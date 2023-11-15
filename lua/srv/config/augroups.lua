@@ -14,6 +14,7 @@ local aug = vim.api.nvim_create_augroup
 ---@class Autogroups
 local autogroups = {
   cursor = aug("CursorGroup", {}),
+  vimhelp = aug("VimHelpGroup", {}),
   exit_views = aug("ExitViews", {}),
   yank_highlight = aug("YankHighlight", {}),
   barbecue = aug("Barbecue", {}),
