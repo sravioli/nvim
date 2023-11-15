@@ -4,12 +4,19 @@ return {
     "ellisonleao/glow.nvim",
     ft = "markdown",
     keys = {
-      { "<leader>fg", "<cmd>Glow<CR>", desc = "  Preview file with Glow" },
+      {
+        "<leader>fg",
+        "<cmd>Glow<CR><cmd>DittoOff<CR>",
+        desc = "  Preview file with Glow",
+      },
     },
     cmd = "Glow",
     opts = {
       border = require("srv.preferences").border,
-      width = 85,
+      width_ratio = 0.9,
+      height_ratio = 0.82,
+      width = math.floor(vim.opt.columns:get() * 0.9),
+      height = math.floor(vim.opt.lines:get() * 0.82),
       style = "dark",
     },
   },
