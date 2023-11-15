@@ -1,9 +1,11 @@
 # A list of glob patterns describing branches on which semver bump are allowed
 branch_whitelist = ["main"]
 ignore_merge_commits = true
-pre_bump_hooks = []
-post_bump_hooks = [
+pre_bump_hooks = [
   """markdownlint-cli2 --fix "$(git rev-parse --show-toplevel)/CHANGELOG.md" || echo 0""",
+]
+post_bump_hooks = [
+  """git add "$(git rev-parse --show-toplevel)/CHANGELOG.md" && git commit --message "chore(changelog): format changelog"""",
   "git push",
   "git push origin {{version}}",
 ]
