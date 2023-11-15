@@ -4,31 +4,23 @@
 # Possible values:
 #
 # - `LK_None` (in configuration: `None`) Do not use.
-#
 # - `LK_Cpp` (in configuration: `Cpp`) Should be used for C, C++.
-#
 # - `LK_CSharp` (in configuration: `CSharp`) Should be used for C#.
-#
 # - `LK_Java` (in configuration: `Java`) Should be used for Java.
-#
 # - `LK_JavaScript` (in configuration: `JavaScript`) Should be used for
 #   JavaScript.
-#
 # - `LK_Json` (in configuration: `Json`) Should be used for JSON.
-#
 # - `LK_ObjC` (in configuration: `ObjC`) Should be used for Objective-C,
 #   Objective-C++.
-#
 # - `LK_Proto` (in configuration: `Proto`) Should be used for Protocol Buffers.
-#
 # - `LK_TableGen` (in configuration: `TableGen`) Should be used for TableGen
 #   code.
-#
 # - `LK_TextProto` (in configuration: `TextProto`) Should be used for Protocol
 #   Buffer messages in text format.
-#
 # - `LK_Verilog` (in configuration: `Verilog`) Should be used for Verilog and
 #   SystemVerilog.
+#
+# (LanguageKind)
 Language: Cpp
 
 # The style used for all options not specifically set in the configuration.
@@ -39,27 +31,20 @@ Language: Cpp
 # Possible values:
 #
 # - `LLVM` A style complying with the LLVM coding standards
-#
 # - `Google` A style complying with Google’s C++ style guide
-#
 # - `Chromium` A style complying with Chromium’s style guide
-#
 # - `Mozilla` A style complying with Mozilla’s style guide
-#
 # - `WebKit` A style complying with WebKit’s style guide
-#
 # - `Microsoft` A style complying with Microsoft’s style guide
-#
 # - `GNU` A style complying with the GNU coding standards
-#
 # - `InheritParentConfig` Not a real style, but allows to use the
 #   `.clang-format` file from the parent directory (or its parent if there is
 #   none). If there is no parent file found it falls back to the `fallback`
 #   style, and applies the changes to that.
 #
-#     With this option you can overwrite some parts of your main style for your
-#     subdirectories. This is also possible through the command line, e.g.:
-#     `--style={BasedOnStyle: InheritParentConfig, ColumnLimit: 20}`
+#   With this option you can overwrite some parts of your main style for your
+#   subdirectories. This is also possible through the command line, e.g.:
+#   `--style={BasedOnStyle: InheritParentConfig, ColumnLimit: 20}`
 #
 # (string)
 # BasedOnStyle: Google
@@ -78,13 +63,10 @@ AccessModifierOffset: -1
 #
 # - `BAS_Align` (in configuration: `Align`) Align parameters on the open
 #   bracket.
-#
 # - `BAS_DontAlign` (in configuration: `DontAlign`) Don’t align, instead use
 #   `ContinuationIndentWidth`.
-#
 # - `BAS_AlwaysBreak` (in configuration: `AlwaysBreak`) Always break after an
 #   open bracket, if the parameters don’t fit on a single line.
-#
 # - `BAS_BlockIndent` (in configuration: `BlockIndent`) Always break after an
 #   open bracket, if the parameters don’t fit on a single line. Closing brackets
 #   will be placed on a new line.
@@ -106,10 +88,8 @@ AlignAfterOpenBracket: Align
 #
 # - `AIAS_Left` (in configuration: `Left`) Align array column and left justify
 #   the columns.
-#
 # - `AIAS_Right` (in configuration: `Right`) Align array column and right
 #   justify the columns.
-#
 # - `AIAS_None` (in configuration: `None`) Don’t align array initializer
 #   columns.
 #
@@ -148,7 +128,6 @@ AlignArrayOfStructures: Right
 #   Enabled: true
 #   AcrossEmptyLines: true
 #   AcrossComments: false
-#
 # ```
 #
 # (AlignConsecutiveStyle)
@@ -317,11 +296,11 @@ AlignConsecutiveDeclarations:
 # `Consecutive` will result in formatting like:
 #
 # ```cpp
-#  # define SHORT_NAME       42
-#  # define LONGER_NAME      0x007f
-#  # define EVEN_LONGER_NAME (2)
-#  # define foo(x)           (x - x)
-#  # define bar(y, z)        (y + z)
+# #define SHORT_NAME       42
+# #define LONGER_NAME      0x007f
+# #define EVEN_LONGER_NAME (2)
+# #define foo(x)           (x - x)
+# #define bar(y, z)        (y + z)
 # ```
 #
 # Nested configuration flags:
@@ -388,12 +367,7 @@ AlignConsecutiveMacros:
 #   AcrossEmptyLines: true
 #   AcrossComments: true
 #   AlignCaseColons: false
-#
 # ```
-#
-# Nested configuration flags:
-#
-# Alignment options.
 #
 # (AlignConsecutiveStyle)
 AlignConsecutiveShortCaseStatements:
@@ -424,10 +398,8 @@ AlignConsecutiveShortCaseStatements:
 #
 # - `ENAS_DontAlign` (in configuration: `DontAlign`) Don’t align escaped
 #   newlines.
-#
 # - `ENAS_Left` (in configuration: `Left`) Align escaped newlines as far left as
 #   possible.
-#
 # - `ENAS_Right` (in configuration: `Right`) Align escaped newlines in the
 #   right-most column.
 #
@@ -441,37 +413,20 @@ AlignEscapedNewlines: Left
 # - `OAS_DontAlign` (in configuration: `DontAlign`) Do not align operands of
 #   binary and ternary expressions. The wrapped lines are indented
 #   `ContinuationIndentWidth` spaces from the start of the line.
-#
 # - `OAS_Align` (in configuration: `Align`) Horizontally align operands of
 #   binary and ternary expressions.
 #
 #   Specifically, this aligns operands of a single expression that needs to be
-#   split over multiple lines, e.g.:
-#
-#   ```
-#   int aaa = bbbbbbbbbbbbbbb +
-#             ccccccccccccccc;
-#   ```
+#   split over multiple lines.
 #
 #   When `BreakBeforeBinaryOperators` is set, the wrapped operator is aligned
 #   with the operand on the first line.
-#
-#   ```
-#   int aaa = bbbbbbbbbbbbbbb
-#             + ccccccccccccccc;
-#   ```
-#
 # - `OAS_AlignAfterOperator` (in configuration: `AlignAfterOperator`)
-# Horizontally align operands of binary and ternary expressions.
+#   Horizontally align operands of binary and ternary expressions.
 #
 #   This is similar to `AO_Align`, except when `BreakBeforeBinaryOperators` is
 #   set, the operator is un-indented so that the wrapped operand is aligned with
 #   the operand on the first line.
-#
-#   ```
-#   int aaa = bbbbbbbbbbbbbbb
-#           + ccccccccccccccc;
-#   ```
 #
 # (OperandAlignmentStyle)
 AlignOperands: Align
@@ -481,87 +436,49 @@ AlignOperands: Align
 # The alignment stops at closing braces after a line break, and only followed by
 # other closing braces, a (`do-`) `while`, a lambda call, or a semicolon.
 #
-# Note
-#
-# As of clang-format 16 this option is not a boolean but can be set to the
-# options. Conventional boolean options still can be parsed as before.
-#
-# ```yaml
-# # Example of usage:
-# AlignTrailingComments:
-#   Kind: Always
-#   OverEmptyLines: 2
-# ```
-#
-# Nested configuration flags:
-#
-# Alignment options
-#
-# - `TrailingCommentsAlignmentKinds Kind` Specifies the way to align trailing
-#   comments.
-#
-#   Possible values:
-#
-#   + `TCAS_Leave` (in configuration: `Leave`) Leave trailing comments as they
-#     are.
-#
-#     ```cpp
-#     int a;    // comment
-#     int ab;       // comment
-#
-#     int abc;  // comment
-#     int abcd;     // comment
-#     ```
-#
-#   + `TCAS_Always` (in configuration: `Always`) Align trailing comments.
-#
-#     ```cpp
-#     int a;  // comment
-#     int ab; // comment
-#
-#     int abc;  // comment
-#     int abcd; // comment
-#     ```
-#
-#   + `TCAS_Never` (in configuration: `Never`) Don’t align trailing comments but
-#     other formatter applies.
-#
-#     ```cpp
-#     int a; // comment
-#     int ab; // comment
-#
-#     int abc; // comment
-#     int abcd; // comment
-#     ```
-#
-# - `unsigned OverEmptyLines` How many empty lines to apply alignment. When both
-#   `MaxEmptyLinesToKeep` and `OverEmptyLines` are set to 2, it formats like
-#   below.
-#
-#   ```cpp
-#   int a;      // all these
-#
-#   int ab;     // comments are
-#
-#
-#   int abcdef; // aligned
-#   ```
-#
-#   When `MaxEmptyLinesToKeep` is set to 2 and `OverEmptyLines` is set to 1, it
-#   formats like below.
-#
-#   ```cpp
-#   int a;  // these are
-#
-#   int ab; // aligned
-#
-#
-#   int abcdef; // but this isn't
-#   ```
+# NOTE: As of clang-format 16 this option is not a boolean but can be set to the
+#       options. Conventional boolean options still can be parsed as before.
 #
 # (TrailingCommentsAlignmentStyle)
 AlignTrailingComments:
+  # Specifies the way to align trailing comments.
+  #
+  # Possible values:
+  #
+  # - `TCAS_Leave` (in configuration: `Leave`) Leave trailing comments as they
+  #   are.
+  # - `TCAS_Always` (in configuration: `Always`) Align trailing comments.
+  # - `TCAS_Never` (in configuration: `Never`) Don’t align trailing comments but
+  #   other formatter applies.
+  #
+  # (TrailingCommentsAlignmentKinds )
   Kind: Always
+
+  # How many empty lines to apply alignment. When both `MaxEmptyLinesToKeep` and
+  # `OverEmptyLines` are set to 2, it formats like below.
+  #
+  # ```cpp
+  #  int a;      // all these
+  #
+  #  int ab;     // comments are
+  #
+  #
+  #  int abcdef; // aligned
+  #  ```
+  #
+  # When `MaxEmptyLinesToKeep` is set to 2 and `OverEmptyLines` is set to 1, it
+  # formats like below.
+  #
+  # ```cpp
+  # int a;  // these are
+  #
+  # int ab; // aligned
+  #
+  #
+  # int abcdef; // but this isn't
+  # ```
+  #
+  # (unsigned)
   OverEmptyLines: 0
 
 # If a function call or braced initializer list doesn’t fit on a line, allow
@@ -584,9 +501,7 @@ AllowAllParametersOfDeclarationOnNextLine: true
 #
 # - `SBS_Never` (in configuration: `Never`) Never merge blocks into a single
 #   line.
-#
 # - `SBS_Empty` (in configuration: `Empty`) Only merge empty blocks.
-#
 # - `SBS_Always` (in configuration: `Always`) Always merge short blocks into a
 #   single line.
 #
@@ -609,16 +524,12 @@ AllowShortEnumsOnASingleLine: true
 #
 # - `SFS_None` (in configuration: `None`) Never merge functions into a single
 #   line.
-#
 # - `SFS_InlineOnly` (in configuration: `InlineOnly`) Only merge functions
 #   defined inside a class. Same as “inline”, except it does not implies
 #   "empty": i.e. top level empty functions are not merged either.
-#
 # - `SFS_Empty` (in configuration: `Empty`) Only merge empty functions.
-#
 # - `SFS_Inline` (in configuration: `Inline`) Only merge functions defined
 #   inside a class. Implies “empty”.
-#
 # - `SFS_All` (in configuration: `All`) Merge all functions fitting on a single
 #   line.
 #
@@ -631,13 +542,10 @@ AllowShortFunctionsOnASingleLine: All
 #
 # - `SIS_Never` (in configuration: `Never`) Never put short ifs on the same
 #   line.
-#
 # - `SIS_WithoutElse` (in configuration: `WithoutElse`) Put short ifs on the
 #   same line only if there is no else statement.
-#
 # - `SIS_OnlyFirstIf` (in configuration: `OnlyFirstIf`) Put short ifs, but not
 #   else ifs nor else statements, on the same line.
-#
 # - `SIS_AllIfsAndElse` (in configuration: `AllIfsAndElse`) Always put short
 #   ifs, else ifs and else statements on the same line.
 #
@@ -651,12 +559,9 @@ AllowShortIfStatementsOnASingleLine: WithoutElse
 #
 # - `SLS_None` (in configuration: `None`) Never merge lambdas into a single
 #   line.
-#
 # - `SLS_Empty` (in configuration: `Empty`) Only merge empty lambdas.
-#
 # - `SLS_Inline` (in configuration: `Inline`) Merge lambda into a single line if
 #   the lambda is argument of a function.
-#
 # - `SLS_All` (in configuration: `All`) Merge all lambdas fitting on a single
 #   line.
 #
@@ -675,9 +580,7 @@ AllowShortLoopsOnASingleLine: true
 #
 # - `DRTBS_None` (in configuration: `None`) Break after return type
 #   automatically. `PenaltyReturnTypeOnItsOwnLine` is taken into account.
-#
 # - `DRTBS_All` (in configuration: `All`) Always break after the return type.
-#
 # - `DRTBS_TopLevel` (in configuration: `TopLevel`) Always break after the
 #   return types of top-level functions.
 #
@@ -690,15 +593,11 @@ AlwaysBreakAfterDefinitionReturnType: None
 #
 # - `RTBS_None` (in configuration: `None`) Break after return type
 #   automatically. `PenaltyReturnTypeOnItsOwnLine` is taken into account.
-#
 # - `RTBS_All` (in configuration: `All`) Always break after the return type.
-#
 # - `RTBS_TopLevel` (in configuration: `TopLevel`) Always break after the return
 #   types of top-level functions.
-#
 # - `RTBS_AllDefinitions` (in configuration: `AllDefinitions`) Always break
 #   after the return type of function definitions.
-#
 # - `RTBS_TopLevelDefinitions` (in configuration: `TopLevelDefinitions`) Always
 #   break after the return type of top-level definitions.
 #
@@ -721,10 +620,8 @@ AlwaysBreakBeforeMultilineStrings: true
 #
 # - `BTDS_No` (in configuration: `No`) Do not force break before declaration.
 #   `PenaltyBreakTemplateDeclaration` is taken into account.
-#
 # - `BTDS_MultiLine` (in configuration: `MultiLine`) Force break after template
 #   declaration only when the following declaration spans multiple lines.
-#
 # - `BTDS_Yes` (in configuration: `Yes`) Always break after template
 #   declaration.
 #
@@ -755,12 +652,9 @@ BinPackParameters: true
 # Possible values:
 #
 # - `BFCS_Both` (in configuration: `Both`) Add one space on each side of the `:`
-#
 # - `BFCS_None` (in configuration: `None`) Add no space around the `:` (except
 #   when needed for `AlignConsecutiveBitFields`).
-#
 # - `BFCS_Before` (in configuration: `Before`) Add space before the `:` only
-#
 # - `BFCS_After` (in configuration: `After`) Add space after the `:` only (space
 #   may be added before if needed for `AlignConsecutiveBitFields`).
 #
@@ -771,26 +665,6 @@ BitFieldColonSpacing: Both
 #
 # If `BreakBeforeBraces` is set to `BS_Custom`, use this to specify how each
 # individual brace case should be handled. Otherwise, this is ignored.
-#
-# ```yaml
-# # Example of usage:
-# BreakBeforeBraces: Custom
-# BraceWrapping:
-#   AfterEnum: true
-#   AfterStruct: false
-#   SplitEmptyFunction: false
-# ```
-#
-# Nested configuration flags:
-#
-# Precise control over the wrapping of braces.
-#
-# ```yaml
-# # Should be declared this way:
-# BreakBeforeBraces: Custom
-# BraceWrapping:
-#     AfterClass: true
-# ```
 #
 # (BraceWrappingFlags)
 BraceWrapping:
@@ -810,10 +684,8 @@ BraceWrapping:
   #
   # - `BWACS_Never` (in configuration: `Never`) Never wrap braces after a
   #   control statement.
-  #
   # - `BWACS_MultiLine` (in configuration: `MultiLine`) Only wrap braces after
   #   a multi-line control statement.
-  #
   # - `BWACS_Always` (in configuration: `Always`) Always wrap braces after a
   #   control statement.
   #
@@ -913,10 +785,8 @@ BraceWrapping:
 # Possible values:
 #
 # - `ABS_Always` (in configuration: `Always`) Always break after attributes.
-#
 # - `ABS_Leave` (in configuration: `Leave`) Leave the line breaking after
 #   attributes as is.
-#
 # - `ABS_Never` (in configuration: `Never`) Never break after attributes.
 #
 # (AttributeBreakingStyle)
@@ -941,10 +811,8 @@ BreakArrays: true
 # Possible values:
 #
 # - `BOS_None` (in configuration: `None`) Break after operators.
-#
 # - `BOS_NonAssignment` (in configuration: `NonAssignment`) Break before
 #   operators that aren’t assignments.
-#
 # - `BOS_All` (in configuration: `All`) Break before operators.
 #
 # (BinaryOperatorStyle)
@@ -956,11 +824,9 @@ BreakBeforeBinaryOperators: None
 #
 # - `BBCDS_Never` (in configuration: `Never`) Keep the template declaration line
 #   together with `concept`.
-#
 # - `BBCDS_Allowed` (in configuration: `Allowed`) Breaking between template
 #   declaration and `concept` is allowed. The actual behavior depends on the
 #   content and line breaking rules and penalties.
-#
 # - `BBCDS_Always` (in configuration: `Always`) Always break before `concept`,
 #   putting it in the line after the template declaration.
 #
@@ -973,28 +839,20 @@ BreakBeforeConceptDeclarations: Always
 #
 # - `BS_Attach` (in configuration: `Attach`) Always attach braces to surrounding
 #   context.
-#
-# *`BS_Linux` (in configuration: `Linux`) Like `Attach`, but break before braces
-#   on function, namespace and class definitions.
-#
+# - `BS_Linux` (in configuration: `Linux`) Like `Attach`, but break before
+#   braces on function, namespace and class definitions.
 # - `BS_Mozilla` (in configuration: `Mozilla`) Like `Attach`, but break before
 #   braces on enum, function, and record definitions.
-#
 # - `BS_Stroustrup` (in configuration: `Stroustrup`) Like `Attach`, but break
 #   before function definitions, `catch`, and `else`.
-#
 # - `BS_Allman` (in configuration: `Allman`) Always break before braces.
-#
 # - `BS_Whitesmiths` (in configuration: `Whitesmiths`) Like `Allman` but always
 #   indent braces and line up code with braces.
-#
 # - `BS_GNU` (in configuration: `GNU`) Always break before braces and add an
 #   extra level of indentation to braces of control statements, not to those of
 #   class, function or other definitions.
-#
 # - `BS_WebKit` (in configuration: `WebKit`) Like `Attach`, but break before
 #   functions.
-#
 # - `BS_Custom` (in configuration: `Custom`) Configure each individual brace in
 #   `BraceWrapping`.
 #
@@ -1006,10 +864,8 @@ BreakBeforeBraces: Attach
 # Possible values:
 #
 # - `BBIAS_Never` (in configuration: `Never`) No break before inline ASM colon.
-#
 # - `BBIAS_OnlyMultiline` (in configuration: `OnlyMultiline`) Break before
 #   inline ASM colon if the line length is longer than column limit.
-#
 # - `BBIAS_Always` (in configuration: `Always`) Always break before inline ASM
 #   colon.
 #
@@ -1027,11 +883,9 @@ BreakBeforeTernaryOperators: true
 #
 # - `BCIS_BeforeColon` (in configuration: `BeforeColon`) Break constructor
 #   initializers before the colon and after the commas.
-#
 # - `BCIS_BeforeComma` (in configuration: `BeforeComma`) Break constructor
 #   initializers before the colon and commas, and align the commas with the
 #   colon.
-#
 # - `BCIS_AfterColon` (in configuration: `AfterColon`) Break constructor
 #   initializers after the colon and commas.
 #
@@ -1044,13 +898,10 @@ BreakConstructorInitializers: BeforeColon
 #
 # - `BILS_BeforeColon` (in configuration: `BeforeColon`) Break inheritance list
 #   before the colon and after the commas.
-#
 # - `BILS_BeforeComma` (in configuration: `BeforeComma`) Break inheritance list
 #   before the colon and commas, and align the commas with the colon.
-#
 # - `BILS_AfterColon` (in configuration: `AfterColon`) Break inheritance list
 #   after the colon and commas.
-#
 # - `BILS_AfterComma` (in configuration: `AfterComma`) Break inheritance list
 #   only after the commas.
 #
@@ -1132,13 +983,11 @@ DisableFormat: false
 #
 # Possible values:
 #
-# *`ELAAMS_Never` (in configuration: `Never`) Remove all empty lines after
-# access modifiers.
-#
-# *`ELAAMS_Leave` (in configuration: `Leave`) Keep existing empty lines after
+# - `ELAAMS_Never` (in configuration: `Never`) Remove all empty lines after
+#   access modifiers.
+# - `ELAAMS_Leave` (in configuration: `Leave`) Keep existing empty lines after
 #   access modifiers. MaxEmptyLinesToKeep is applied instead.
-#
-# *`ELAAMS_Always` (in configuration: `Always`) Always add empty line after
+# - `ELAAMS_Always` (in configuration: `Always`) Always add empty line after
 #   access modifiers if there are none. MaxEmptyLinesToKeep is applied also.
 #
 # (EmptyLineAfterAccessModifierStyle)
@@ -1150,18 +999,14 @@ EmptyLineAfterAccessModifier: Never
 #
 # - `ELBAMS_Never` (in configuration: `Never`) Remove all empty lines before
 #   access modifiers.
-#
 # - `ELBAMS_Leave` (in configuration: `Leave`) Keep existing empty lines before
 #   access modifiers.
-#
 # - `ELBAMS_LogicalBlock` (in configuration: `LogicalBlock`) Add empty line only
 #   when access modifier starts a new logical block. Logical block is a group of
 #   one or more member fields or functions.
-#
 # - `ELBAMS_Always` (in configuration: `Always`) Always add empty line before
 #   access modifiers unless access modifier is at the start of struct or class
 #   definition.
-#
 #
 # (EmptyLineBeforeAccessModifierStyle)
 EmptyLineBeforeAccessModifier: LogicalBlock
@@ -1190,8 +1035,6 @@ FixNamespaceComments: true
 # A vector of macros that should be interpreted as foreach loops instead of as
 # function calls.
 #
-# These are expected to be macros of the form:
-#
 # (list of strings)
 ForEachMacros: [foreach, Q_FOREACH, BOOST_FOREACH]
 
@@ -1208,10 +1051,8 @@ IfMacros: [KJ_IF_MAYBE]
 #
 # - `IBS_Preserve` (in configuration: `Preserve`) Sort each `#include` block
 #   separately.
-#
 # - `IBS_Merge` (in configuration: `Merge`) Merge multiple `#include` blocks
 #   together and sort as one.
-#
 # - `IBS_Regroup` (in configuration: `Regroup`) Merge multiple `#include` blocks
 #   together and sort as one. Then split into groups based on category priority.
 #   See `IncludeCategories`.
@@ -1340,10 +1181,8 @@ IndentCaseLabels: true
 #
 # - `IEBS_AfterExternBlock` (in configuration: `AfterExternBlock`) Backwards
 #   compatible with AfterExternBlock’s indenting.
-#
 # - `IEBS_NoIndent` (in configuration: `NoIndent`) Does not indent extern
 #   blocks.
-#
 # - `IEBS_Indent` (in configuration: `Indent`) Indents extern blocks.
 #
 # (IndentExternBlockStyle)
@@ -1361,10 +1200,8 @@ IndentGotoLabels: true
 # Possible values:
 #
 # - `PPDIS_None` (in configuration: `None`) Does not indent any directives.
-#
 # - `PPDIS_AfterHash` (in configuration: `AfterHash`) Indents directives after
 #   the hash.
-#
 # - `PPDIS_BeforeHash` (in configuration: `BeforeHash`) Indents directives
 #   before the hash.
 #
@@ -1416,12 +1253,11 @@ InsertNewlineAtEOF: false
 # Possible values:
 #
 # - `TCS_None` (in configuration: `None`) Do not insert trailing commas.
-#
 # - `TCS_Wrapped` (in configuration: `Wrapped`) Insert trailing commas in
-# container literals that were wrapped over multiple lines. Note that this is
-# conceptually incompatible with bin-packing, because the trailing comma is used
-# as an indicator that a container should be formatted one-per-line (i.e. not
-# bin-packed). So inserting a trailing comma counteracts bin-packing.
+#   container literals that were wrapped over multiple lines. Note that this is
+#   conceptually incompatible with bin-packing, because the trailing comma is
+#   used as an indicator that a container should be formatted one-per-line (i.e.
+#   not bin-packed). So inserting a trailing comma counteracts bin-packing.
 #
 # (TrailingCommaStyle)
 InsertTrailingCommas: None
@@ -1439,13 +1275,6 @@ InsertTrailingCommas: None
 # For example, the config below will leave separators in binary literals alone,
 # insert separators in decimal literals to separate the digits into groups of 3,
 # and remove separators in hexadecimal literals.
-#
-# ```yaml
-# IntegerLiteralSeparator:
-#   Binary: 0
-#   Decimal: 3
-#   Hex: -1
-# ```
 #
 # You can also specify a minimum number of digits (`BinaryMinDigits`,
 # `DecimalMinDigits`, and `HexMinDigits`) the integer literal must have in order
@@ -1502,7 +1331,6 @@ KeepEmptyLinesAtEOF: false
 #
 # - `LBI_Signature` (in configuration: `Signature`) Align lambda body relative
 #   to the lambda signature. This is the default.
-#
 # - `LBI_OuterScope` (in configuration: `OuterScope`) For statements within
 #   block scope, align lambda body relative to the indentation level of the
 #   outer scope the lambda signature resides in.
@@ -1515,12 +1343,9 @@ LambdaBodyIndentation: Signature
 # Possible values:
 #
 # - `LE_LF` (in configuration: `LF`) Use `\n`.
-#
 # - `LE_CRLF` (in configuration: `CRLF`) Use `\r\n`.
-#
 # - `LE_DeriveLF` (in configuration: `DeriveLF`) Use `\n` unless the input has
 #   more lines ending in `\r\n`.
-#
 # - `LE_DeriveCRLF` (in configuration: `DeriveCRLF`) Use `\r\n` unless the input
 #   has more lines ending in `\n`.
 #
@@ -1547,10 +1372,8 @@ MaxEmptyLinesToKeep: 1
 # Possible values:
 #
 # - `NI_None` (in configuration: `None`) Don’t indent in namespaces.
-#
 # - `NI_Inner` (in configuration: `Inner`) Indent only in inner namespaces
-#  nested in other namespaces).
-#
+#   nested in other namespaces).
 # - `NI_All` (in configuration: `All`) Indent in all namespaces.
 #
 # (NamespaceIndentationKind)
@@ -1562,22 +1385,17 @@ NamespaceIndentation: None
 #
 # - `PCIS_Never` (in configuration: `Never`) Always put each constructor
 #   initializer on its own line.
-#
 # - `PCIS_BinPack` (in configuration: `BinPack`) Bin-pack constructor
 #   initializers.
-#
 # - `PCIS_CurrentLine` (in configuration: `CurrentLine`) Put all constructor
 #   initializers on the current line if they fit. Otherwise, put each one on
-#     its own line.
-#
-#
+#   its own line.
 # - `PCIS_NextLine` (in configuration: `NextLine`) Same as `PCIS_CurrentLine`
 #   except that if all constructor initializers do not fit on the current line,
-#     try to fit them on the next line.
-#
+#   try to fit them on the next line.
 # - `PCIS_NextLineOnly` (in configuration: `NextLineOnly`) Put all constructor
 #   initializers on the next line if they fit. Otherwise, put each one on its
-#     own line.
+#   own line.
 #
 # (PackConstructorInitializersStyle)
 PackConstructorInitializers: NextLine
@@ -1638,9 +1456,7 @@ PenaltyReturnTypeOnItsOwnLine: 200
 # Possible values:
 #
 # - `PAS_Left` (in configuration: `Left`) Align pointer to the left.
-#
 # - `PAS_Right` (in configuration: `Right`) Align pointer to the right.
-#
 # - `PAS_Middle` (in configuration: `Middle`) Align pointer in the middle.
 #
 # (PointerAlignmentStyle)
@@ -1664,13 +1480,10 @@ PPIndentWidth: -1
 #
 # - `QAS_Leave` (in configuration: `Leave`) Don’t change specifiers/qualifiers
 #   to either Left or Right alignment (default).
-#
 # - `QAS_Left` (in configuration: `Left`) Change specifiers/qualifiers to be
 #   left-aligned.
-#
 # - `QAS_Right` (in configuration: `Right`) Change specifiers/qualifiers to be
 #   right-aligned.
-#
 # - `QAS_Custom` (in configuration: `Custom`) Change specifiers/qualifiers to be
 #   aligned based on `QualifierOrder`. With:
 #
@@ -1721,11 +1534,8 @@ RawStringFormats:
 #
 # - `RAS_Pointer` (in configuration: `Pointer`) Align reference like
 #   `PointerAlignment`.
-#
 # - `RAS_Left` (in configuration: `Left`) Align reference to the left.
-#
 # - `RAS_Right` (in configuration: `Right`) Align reference to the right.
-#
 # - `RAS_Middle` (in configuration: `Middle`) Align reference in the middle.
 #
 # (ReferenceAlignmentStyle)
@@ -1761,10 +1571,8 @@ RemoveBracesLLVM: false
 # Possible values:
 #
 # - `RPS_Leave` (in configuration: `Leave`) Do not remove parentheses.
-#
 # - `RPS_MultipleParentheses` (in configuration: `MultipleParentheses`) Replace
 #   multiple parentheses with single parentheses.
-#
 # - `RPS_ReturnStatement` (in configuration: `ReturnStatement`) Also remove
 #   parentheses enclosing the expression in a `return`/`co_return` statement.
 #
@@ -1787,16 +1595,13 @@ RemoveSemicolon: false
 #
 # - `RCPS_OwnLine` (in configuration: `OwnLine`) Always put the `requires`
 #   clause on its own line.
-#
 # - `RCPS_WithPreceding` (in configuration: `WithPreceding`) Try to put the
 #   clause together with the preceding part of a declaration. For class
 #   templates: stick to the template declaration. For function templates: stick
 #   to the template declaration. For function declaration followed by a requires
 #   clause: stick to the parameter list.
-#
 # - `RCPS_WithFollowing` (in configuration: `WithFollowing`) Try to put the
 #   `requires` clause together with the class or function declaration.
-#
 # - `RCPS_SingleLine` (in configuration: `SingleLine`) Try to put everything in
 #   the same line if possible. Otherwise normal line breaking rules take over.
 #
@@ -1810,7 +1615,6 @@ RequiresClausePosition: OwnLine
 # - `REI_OuterScope` (in configuration: `OuterScope`) Align requires expression
 #   body relative to the indentation level of the outer scope the requires
 #   expression resides in. This is the default.
-#
 # - `REI_Keyword` (in configuration: `Keyword`) Align requires expression body
 #   relative to the `requires` keyword.
 #
@@ -1823,10 +1627,8 @@ RequiresExpressionIndentation: OuterScope
 # Possible values:
 #
 # - `SDS_Leave` (in configuration: `Leave`) Leave definition blocks as they are.
-#
 # - `SDS_Always` (in configuration: `Always`) Insert an empty line between
 #   definition blocks.
-#
 # - `SDS_Never` (in configuration: `Never`) Remove any empty line between
 #   definition blocks.
 #
@@ -1848,10 +1650,8 @@ ShortNamespaceLines: 1
 # Possible values:
 #
 # - `SI_Never` (in configuration: `Never`) Includes are never sorted.
-#
 # - `SI_CaseSensitive` (in configuration: `CaseSensitive`) Includes are sorted
 #   in an ASCIIbetical or case sensitive fashion.
-#
 # - `SI_CaseInsensitive` (in configuration: `CaseInsensitive`) Includes are
 #   sorted in an alphabetical or case insensitive fashion.
 #
@@ -1863,19 +1663,19 @@ SortIncludes: CaseSensitive
 # Possible values:
 #
 # - `SUD_Never` (in configuration: `Never`) Using declarations are never sorted.
-#
 # - `SUD_Lexicographic` (in configuration: `Lexicographic`) Using declarations
-# are sorted in the order defined as follows: Split the strings by "::" and
-# discard any initial empty strings. Sort the lists of names lexicographically,
-# and within those groups, names are in case-insensitive lexicographic order.
+#   are sorted in the order defined as follows: Split the strings by "::" and
+#   discard any initial empty strings. Sort the lists of names
+#   lexicographically, and within those groups, names are in case-insensitive
+#   lexicographic order.
 #
 # - `SUD_LexicographicNumeric` (in configuration: `LexicographicNumeric`) Using
-# declarations are sorted in the order defined as follows: Split the strings by
-# "::" and discard any initial empty strings. The last element of each list is a
-# non-namespace name; all others are namespace names. Sort the lists of names
-# lexicographically, where the sort order of individual names is that all
-# non-namespace names come before all namespace names, and within those groups,
-# names are in case-insensitive lexicographic order.
+#   declarations are sorted in the order defined as follows: Split the strings
+#   by "::" and discard any initial empty strings. The last element of each list
+#   is a non-namespace name; all others are namespace names. Sort the lists of
+#   names lexicographically, where the sort order of individual names is that
+#   all non-namespace names come before all namespace names, and within those
+#   groups, names are in case-insensitive lexicographic order.
 #
 # (SortUsingDeclarationsOptions)
 SortUsingDeclarations: LexicographicNumeric
@@ -1901,7 +1701,6 @@ SpaceAfterTemplateKeyword: true
 #
 # - `SAPQ_Default` (in configuration: `Default`) Don’t ensure spaces around
 #   pointer qualifiers and use PointerAlignment instead.
-#
 # - `SAPQ_Before` (in configuration: `Before`) Ensure that there is a space
 #   before pointer qualifiers.
 #
@@ -1953,27 +1752,22 @@ SpaceBeforeJsonColon: false
 #
 # - `SBPO_Never` (in configuration: `Never`) Never put a space before opening
 #   parentheses.
-#
 # - `SBPO_ControlStatements` (in configuration: `ControlStatements`) Put a space
 #   before opening parentheses only after control statement keywords
 #   (`for/if/while...`).
-#
 # - `SBPO_ControlStatementsExceptControlMacros` (in configuration:
 #   `ControlStatementsExceptControlMacros`) Same as `SBPO_ControlStatements`
 #   except this option doesn’t apply to ForEach and If macros. This is useful in
 #   projects where ForEach/If macros are treated as function calls instead of
 #   control statements. `SBPO_ControlStatementsExceptForEachMacros` remains an
 #   alias for backward compatibility.
-#
 # - `SBPO_NonEmptyParentheses` (in configuration: `NonEmptyParentheses`) Put a
 #   space before opening parentheses only if the parentheses are not empty i.e.
 #   '()'
-#
 # - `SBPO_Always` (in configuration: `Always`) Always put a space before opening
 #   parentheses, except when it’s prohibited by the syntax rules (in
 #   function-like macro definitions) or when determined by other style rules
 #   (after unary operators, opening parentheses, etc.)
-#
 # - `SBPO_Custom` (in configuration: `Custom`) Configure each individual space
 #   before parentheses in `SpaceBeforeParensOptions`.
 #
@@ -1986,26 +1780,6 @@ SpaceBeforeParens: ControlStatements
 # individual space before parentheses case should be handled. Otherwise, this is
 # ignored.
 #
-# ```yaml
-# # Example of usage:
-# SpaceBeforeParens: Custom
-# SpaceBeforeParensOptions:
-#   AfterControlStatements: true
-#   AfterFunctionDefinitionName: true
-#
-# ```
-#
-# Nested configuration flags:
-#
-# Precise control over the spacing before parentheses.
-#
-# ```yaml
-# # Should be declared this way:
-# SpaceBeforeParens: Custom
-# SpaceBeforeParensOptions:
-#   AfterControlStatements: true
-#   AfterFunctionDefinitionName: true
-# ```
 #
 # (SpaceBeforeParensCustom)
 SpaceBeforeParensOptions:
@@ -2092,10 +1866,8 @@ SpacesBeforeTrailingComments: 2
 #
 # - `SIAS_Never` (in configuration: `Never`) Remove spaces after `<` and before
 #   `>`.
-#
 # - `SIAS_Always` (in configuration: `Always`) Add spaces after `<` and before
 #   `>`.
-#
 # - `SIAS_Leave` (in configuration: `Leave`) Keep a single space after `<` and
 #   before `>` if any spaces were present. Option `Standard: Cpp03` takes
 #   precedence.
@@ -2119,17 +1891,17 @@ SpacesInContainerLiterals: true
 #
 # This option has only effect if `ReflowComments` is set to `true`.
 #
-# Nested configuration flags:
-#
-# Control of spaces within a single line comment.
-#
-# - `unsigned Minimum` The minimum number of spaces at the start of the comment.
-#
-# - `unsigned Maximum` The maximum number of spaces at the start of the comment.
 #
 # (SpacesInLineComment)
 SpacesInLineCommentPrefix:
+  # The minimum number of spaces at the start of the comment.
+  #
+  # (unsigned)
   Minimum: 1
+
+  # The maximum number of spaces at the start of the comment.
+  #
+  # (unsigned)
   Maximum: -1
 
 # Defines in which cases spaces will be inserted after `(` and before `)`.
@@ -2137,7 +1909,6 @@ SpacesInLineCommentPrefix:
 # Possible values:
 #
 # - `SIPO_Never` (in configuration: `Never`) Never put a space in parentheses.
-#
 # - `SIPO_Custom` (in configuration: `Custom`) Configure each individual space
 #   in parentheses in SpacesInParensOptions.
 #
@@ -2150,21 +1921,8 @@ SpacesInParens: Never
 # individual space in parentheses case should be handled. Otherwise, this is
 # ignored.
 #
-# ```yaml
-# # Example of usage:
-# SpacesInParens: Custom
-# SpacesInParensOptions:
-#   InConditionalStatements: true
-#   InEmptyParentheses: true
-# ```
-#
-# Nested configuration flags:
-#
-# Precise control over the spacing in parentheses.
-#
 # (SpacesInParensCustom)
 SpacesInParensOptions:
-
   # Put a space in C style casts.
   #
   # (boolean)
@@ -2198,18 +1956,12 @@ SpacesInSquareBrackets: false
 #
 # - `LS_Cpp03` (in configuration: `c++03`) Parse and format as C++03. `Cpp03` is
 #   a deprecated alias for `c++03`
-#
 # - `LS_Cpp11` (in configuration: `c++11`) Parse and format as C++11.
-#
 # - `LS_Cpp14` (in configuration: `c++14`) Parse and format as C++14.
-#
 # - `LS_Cpp17` (in configuration: `c++17`) Parse and format as C++17.
-#
 # - `LS_Cpp20` (in configuration: `c++20`) Parse and format as C++20.
-#
 # - `LS_Latest` (in configuration: `Latest`) Parse and format using the latest
 #   supported language version. `Cpp11` is a deprecated alias for `Latest`
-#
 # - `LS_Auto` (in configuration: `Auto`) Automatic detection based on the input.
 #
 # (LanguageStandard)
@@ -2243,18 +1995,14 @@ TabWidth: 8
 # Possible values:
 #
 # - `UT_Never` (in configuration: `Never`) Never use tab.
-#
 # - `UT_ForIndentation` (in configuration: `ForIndentation`) Use tabs only for
 #   indentation.
-#
 # - `UT_ForContinuationAndIndentation` (in configuration:
 #   `ForContinuationAndIndentation`) Fill all leading whitespace with tabs, and
 #   use spaces for alignment that appears within a line (e.g. consecutive
 #   assignments and declarations).
-#
 # - `UT_AlignWithSpaces` (in configuration: `AlignWithSpaces`) Use tabs for line
 #   continuation and indentation, and spaces for alignment.
-#
 # - `UT_Always` (in configuration: `Always`) Use tabs whenever we need to fill
 #   whitespace that spans at least from one tab stop to the next one.
 #
@@ -2268,11 +2016,6 @@ VerilogBreakBetweenInstancePorts: true
 
 # A vector of macros which are whitespace-sensitive and should not be touched.
 #
-# These are expected to be macros of the form:
-#
-# ```
-# STRINGIZE(...)
-# ```
 #
 # (list of strings)
 WhitespaceSensitiveMacros:
