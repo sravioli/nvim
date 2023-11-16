@@ -1333,7 +1333,7 @@
   // a set of similar content.
   "MD043": {
     // List of headings
-    "headings": [],
+    "headings": ["*"],
     // Match case of headings
     "match_case": false
   },
