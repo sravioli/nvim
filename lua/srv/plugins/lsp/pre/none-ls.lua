@@ -4,23 +4,45 @@ return {
   "nvimtools/none-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufWinEnter",
-  config = function()
+  opts = function()
     local present, null_ls = pcall(require, "null-ls")
     if not present then return end
 
+    local function search_config_file(filename)
+      for _, dir in pairs {
+        require("null-ls.utils").get_root(),
+        vim.fn.expand "%:p:h",
+        vim.fn.resolve(vim.fn.stdpath "config" .. [[\skel]]),
+      } do
+        vim.notify(("[null-ls] searching '%s'"):format(filename), vim.log.levels.DEBUG)
+        local file = vim.fn.findfile(vim.fn.resolve(dir .. "/" .. filename))
+        if file ~= "" then
+          vim.notify(("[null-ls] found '%s'"):format(file), vim.log.levels.DEBUG)
+          return file
+        end
+      end
+      return ""
+    end
+
     ---@type table Shorthand for `null_ls.builtins.diagnostics`
     local diagnostics = null_ls.builtins.diagnostics
+
     ---@type table Shorthand for `null_ls.builtins.formatting`
     local formatting = null_ls.builtins.formatting
 
-    local opts = {
+    ---@type table Shorthand for `null_ls.builtins.code_actions`
+    -- local code_actions = null_ls.builtins.code_actions
+
+    return {
       border = require("srv.preferences").border,
       diagnostics_format = "[#{c}] #{m} (#{s})",
       update_in_insert = false,
       on_attach = require("srv.utils.fn").lsp.autoformat,
+
       sources = {
-        -- null_ls.builtins.diagnostics.cspell,
-        -- null_ls.builtins.code_actions.cspell.with {
+        ---slows down editor a bit
+        -- diagnostics.cspell,
+        -- code_actions.cspell.with {
         --   config = {
         --     on_success = function(cspell_config_file, params)
         --       -- format the cspell config file
@@ -31,53 +53,65 @@ return {
         --   },
         -- },
 
+        ---general spelling
         diagnostics.codespell,
 
-        diagnostics.markdownlint,
+        ---markdown
+        diagnostics.markdownlint.with {
+          extra_args = function()
+            local file = search_config_file ".markdownlint.jsonc"
+            if file ~= "" then return { "--config", file } end
+            return {}
+          end,
+        },
         formatting.markdownlint,
         formatting.cbfmt,
 
-        formatting.stylua,
-        formatting.taplo,
+        ---lua
+        formatting.stylua.with {
+          extra_args = function()
+            local file = search_config_file ".stylua.toml"
+            if file ~= "" then return { "--config-path", file } end
+            return {}
+          end,
+        },
 
+        ---toml
+        formatting.taplo.with {
+          extra_args = function()
+            local file = search_config_file ".taplo.toml"
+            if file ~= "" then return { "--config", file } end
+            return {}
+          end,
+        },
+
+        ---yaml
         diagnostics.yamllint,
         formatting.yamlfix.with {
           extra_args = function()
-            local file = vim.fn.findfile ".yamlfix.toml"
-            if file then
-              return { "--config-file", file }
-            else
-              return {}
-            end
+            local file = search_config_file ".yamlfix.toml"
+            if file ~= "" then return { "--config-file", file } end
+            return {}
           end,
         },
-        -- diagnostics.actionlint,
 
+        ---json
         formatting.fixjson,
 
+        ---C/C++
         diagnostics.cpplint,
         formatting.clang_format.with {
           extra_args = function()
-            local style, file = "--style=file:", ".clang-format"
-            local dir = vim.fn.expand "%:p:h"
-
-            ---search for a .clang-format file in file directory
-            if vim.fn.findfile(file, dir) ~= "" then
-              return { style .. vim.fn.resolve(dir .. file) }
-            end
-
-            ---fallback to default
-            return {
-              style .. vim.fn.resolve(vim.fn.stdpath "config" .. [[\skel\]] .. file),
-            }
+            local file = search_config_file ".clang-format"
+            if file ~= "" then return { "--style=file:" .. file } end
+            return {}
           end,
         },
 
+        ---latex
         formatting.latexindent,
         diagnostics.chktex,
       },
     }
-
-    null_ls.setup(opts)
   end,
 }
