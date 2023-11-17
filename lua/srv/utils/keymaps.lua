@@ -94,9 +94,6 @@ M.load = function(plugin, options)
       M.__set_keymap(mappings, options)
     elseif ptype == "table" then
       M.__set_keymap(plugin)
-      -- for _, pmappings in pairs(plugin) do
-      --   M.__set_keymap(pmappings, options)
-      -- end
     else
       notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
     end
