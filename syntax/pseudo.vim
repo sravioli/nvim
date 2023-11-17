@@ -1,4 +1,4 @@
-" Vim syntaxtax file
+" Vim syntax file
 " Language: pseudocode
 " Maintainer: Simone Fidanza
 " Latest Revision: 2023-07-03 15:33
