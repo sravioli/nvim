@@ -44,7 +44,7 @@ return {
 
       hijack_cursor = true, ---keep cursor on first letter of filename
       disable_netrw = true, ---completely disable netrw
-      hijack_unnamed_buffer_when_opening = true, ---open in empty unnamed buffers
+      hijack_unnamed_buffer_when_opening = false, ---open in empty unnamed buffers
       sync_root_with_cwd = true, ---change cwd on `DirChanged`
       reload_on_bufenter = true, ---update on `BufEnter`
       select_prompts = true, ---`vim.ui.select` prompts
