@@ -3,19 +3,13 @@
 ---@author sRavioli
 ---@license GPL-3.0
 
----@type function Shorthand for `vim.api.nvim_create_autocmd`.
----Add {cmd} to the list of commands that Vim will execute automatically on
----{event} for a file matching {aupat} |autocmd-pattern|.  Note: A quote
----character is seen as argument to the :autocmd and won't start a comment. Nvim
----always adds {cmd} after existing autocommands so they execute in the order in
----which they were defined.  See |autocmd-nested| for [++nested].
 local au = vim.api.nvim_create_autocmd
 
----@type table User defined augroups
 local aug = require "srv.config.augroups"
 
 au("UiEnter", {
   desc = "Load notify after startup",
+  group = aug.OnUiEnter,
   pattern = "*",
   callback = function()
     local notify_installed, notify = pcall(require, "notify")
@@ -25,27 +19,29 @@ au("UiEnter", {
 
 ---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
-  desc = "Restore WindowsTerminal cursor shape upon exit",
+  desc = "Restore WindowsTerminal cursor shape upon exit (WindowsTerminal)",
+  group = aug.CursorGroup,
   pattern = "*",
-  command = "set guicursor=a:hor20-blinkon1",
-  group = aug.cursor,
+  callback = function() vim.opt.guicursor:append "a:hor20-blinkon1" end,
 })
 
 ---Highlight text on yank
 au("TextYankPost", {
   desc = "Highlight selection on yank",
-  group = aug.yank_highlight,
   pattern = "*",
+  group = aug.CursorGroup,
   callback = function() vim.highlight.on_yank { higroup = "Search", timeout = 200 } end,
 })
 
 au("FileType", {
   desc = "remap some keys for the help page",
   pattern = "help",
-  group = aug.vimhelp,
+  group = aug.VimHelp,
   callback = function()
-    vim.keymap.set("n", "<CR>", "<C-]>", { buffer = true, desc = "Jump to tag" })
-    vim.keymap.set("n", "<BS>", "<C-o>", { buffer = true, desc = "Return to prev tag" })
+    local opts = function(desc) return { buffer = true, silent = true, desc = desc } end
+    vim.keymap.set("n", "<CR>", "<C-]>", opts "Jump to tag")
+    vim.keymap.set("n", "<BS>", "<C-o>", opts "Return to prev tag")
+    vim.keymap.set("n", "q", ":quit<CR>", opts "exit help buffer")
     vim.opt_local.conceallevel = 3
     vim.opt_local.concealcursor = "nvc"
   end,
@@ -55,7 +51,6 @@ au("FileType", {
 au("FileType", {
   desc = "Exit some views with 'q'",
   pattern = {
-    "help",
     "startuptime",
     "qf",
     "fugitive",
@@ -63,12 +58,13 @@ au("FileType", {
     "dap-float",
   },
   command = [[nnoremap <buffer><silent> q :quit<CR>]],
-  group = aug.exit_views,
+  group = aug.OneKeyExit,
 })
+
 au("FileType", {
   pattern = "man",
   command = [[nnoremap <buffer><silent> q :quit<CR>]],
-  group = aug.exit_views,
+  group = aug.OneKeyExit,
 })
 
 ---When having multiple buffers, show cursor only in the active one
@@ -76,13 +72,13 @@ au({ "InsertLeave", "WinEnter" }, {
   desc = "Show cursor in current buffer",
   pattern = "*",
   command = "set cursorline",
-  group = aug.cursor,
+  group = aug.CursorGroup,
 })
 au({ "InsertEnter", "WinLeave" }, {
   desc = "Hide cursor in non active buffer",
   pattern = "*",
   command = "set nocursorline",
-  group = aug.cursor,
+  group = aug.CursorGroup,
 })
 
 ---@type table Doxygen highlight groups and what group to link to.
@@ -114,32 +110,8 @@ au({ "BufNewFile", "BufRead" }, {
   desc = "Set custom filetype for `.pseudo` files",
   pattern = "*.pseudo",
   command = "set filetype=pseudo | set syntax=pseudo",
-  group = aug.buf_detect,
+  group = aug.BufDetect,
 })
-
----Enable markdown auto-align table
--- au("FileType", {
---   desc = "Align markdown tables as you type",
---   pattern = "markdown",
---   callback = function()
---     vim.keymap.set(
---       "i",
---       "<Bar>",
---       "<Bar> <C-o>:lua require('srv.utils.fn').align_table()<CR>"
---     )
---   end,
---   group = aug.lua_functions,
--- })
-
----activate typewriter scroll in markdown files
--- au("FileType", {
---   desc = "Activate typewriter scrolling",
---   pattern = "markdown",
---   callback = function()
---     require("srv.utils.fn").typewriter_toggle()
---   end,
---   group = aug.lua_functions,
--- })
 
 au("FileType", {
   desc = "Change tabstop and shitfwidth",
@@ -148,7 +120,7 @@ au("FileType", {
     vim.opt.tabstop = 2
     vim.opt.shiftwidth = 2
   end,
-  group = aug.buf_detect,
+  group = aug.BufDetect,
 })
 
 ---Refresh lualine on lsp update
@@ -162,18 +134,8 @@ au("User", {
 au("FileType", {
   pattern = "lua",
   desc = "Change the colorcolumn for lua files",
-  group = aug.buf_detect,
-  callback = function() vim.opt_local.colorcolumn = "85" end,
-})
-
-au("FileType", {
-  pattern = "norg",
-  desc = "activate conceal",
-  group = aug.buf_detect,
-  callback = function()
-    vim.opt_local.conceallevel = 3
-    vim.opt_local.concealcursor = "n"
-  end,
+  group = aug.BufDetect,
+  callback = function() vim.opt_local.colorcolumn = "90" end,
 })
 
 au("BufWritePre", {
