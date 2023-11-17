@@ -1,8 +1,7 @@
 return {
-  ---Use Neovim as a language server to inject LSP diagnostics, code actions,
-  ---and more via Lua.
+  ---Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
   "nvimtools/none-ls.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = { { "nvim-lua/plenary.nvim" } },
   event = "BufWinEnter",
   opts = function()
     local present, null_ls = pcall(require, "null-ls")
@@ -96,7 +95,9 @@ return {
         },
 
         ---json
-        formatting.fixjson,
+        formatting.fixjson.with {
+          args = { "--indent", vim.opt.tabstop:get() },
+        },
 
         ---C/C++
         diagnostics.cpplint,
