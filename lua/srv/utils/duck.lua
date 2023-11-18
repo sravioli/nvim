@@ -80,7 +80,7 @@ M.waddle = function(duck)
 end
 
 ---Creates a new duck and starts its animation.
-function M:hatch()
+function M.hatch()
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(buf, 0, 1, true, { M.config.character })
 
@@ -100,7 +100,7 @@ function M:hatch()
 end
 
 ---Cooks the last hatched duck.
-function M:cook()
+function M.cook()
   local last_duck = M.ducks[#M.ducks]
 
   if not last_duck then

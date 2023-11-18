@@ -77,6 +77,7 @@ return {
             color = { fg = "#ff9e64" },
           },
           {
+
             function()
               return require("lsp-progress").progress {
                 format = function(messages)
@@ -107,11 +108,6 @@ return {
           {
             "fileformat",
             icons_enabled = true,
-            -- symbols = {
-            --   unix = "LF",
-            --   dos = "CRLF",
-            --   mac = "CR",
-            -- },
             symbols = {
               unix = "", -- e712
               dos = "", -- e70f

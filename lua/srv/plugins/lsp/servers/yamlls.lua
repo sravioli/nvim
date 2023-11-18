@@ -16,6 +16,7 @@ return {
   hover = true,
   completion = true,
 
+  -- luacheck: push ignore 631
   schemas = {
     kubernetes = "*.yaml",
     ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
@@ -32,6 +33,7 @@ return {
     ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
     ["https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"] = "*.omp.yaml",
   },
+  -- luacheck: pop
 
   schemaStore = {
     enable = true,

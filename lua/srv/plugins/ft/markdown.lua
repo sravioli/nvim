@@ -142,7 +142,7 @@ return {
     dependencies = {
       { "nvim-lua/plenary.nvim" }, ---Required.
       { "hrsh7th/nvim-cmp" }, ---Optional, for completion.
-      { "nvim-telescope/telescope.nvim" }, ---Optional, for search and quick-switch functionality.
+      { "nvim-telescope/telescope.nvim" }, ---For search and quick-switch functionality.
 
       ---Optional, alternative to nvim-treesitter for syntax highlighting.
       { "godlygeek/tabular" },
@@ -154,8 +154,9 @@ return {
       ---Optional, if you keep notes in a specific subdirectory of your vault.
       notes_subdir = "notes",
 
-      ---Optional, set the log level for Obsidian. This is an integer corresponding to one of the log
-      ---levels defined by "vim.log.levels.*" or nil, which is equivalent to DEBUG (1).
+      ---Optional, set the log level for Obsidian. This is an integer corresponding to
+      ---one of the log levels defined by "vim.log.levels.*" or nil, which is equivalent
+      ---to DEBUG (1).
       log_level = vim.log.levels.DEBUG,
 
       daily_notes = {

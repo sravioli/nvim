@@ -71,7 +71,7 @@ end
 
 ---Loads the keymaps for the corresponding plugin
 ---
----@param plugin? nil|string|table The name of the mappings file. If none is given, it will load all mappings. Can optionally load a raw table of mappings
+---@param plugin? nil|string|table Name of the mappings or a table of mappings.
 ---@param options? MappingSpecOpts A table of options that will be passed to `vim.keymap.set`
 M.load = function(plugin, options)
   vim.schedule(function()

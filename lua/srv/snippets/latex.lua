@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- luacheck: ignore 113
 
 local snip = require("srv.utils.fn").snippets.snip
 
@@ -8,6 +9,8 @@ local snip = require("srv.utils.fn").snippets.snip
 ---@field binomial table Contains functions to expand or evaluate binomial coefficients
 local format = { greek = {}, factorial = {}, binomial = {} }
 
+-- luacheck: push ignore 631
+
 ---Expands a Greek letter to LaTeX format.
 ---This function takes a table of LuaSnip captures, an optional ending string and an
 ---optional uppercase letter. It will return the corresponding LaTeX command for the
@@ -15,7 +18,7 @@ local format = { greek = {}, factorial = {}, binomial = {} }
 ---The input should be as follows: `<optional-variant-flag><univocal-two-letter-code>`,
 ---so, for example: `al` is `\alpha`, `vep` is `\varepsilon` (while `ep` is `\epsilon`).
 ---
----@param captures table<string, string>|table<string> A table of captures that can have either one or two strings. In the first case: `captures[1]` is the variant flag (`v`) that tells the function that it should return the variant letter, `captures[2]` is the univocal two letter code that identifies the Greek letter. Defaults to an empty string.
+---@param captures table[] A table of captures that can have either one or two strings. In the first case: `captures[1]` is the variant flag (`v`) that tells the function that it should return the variant letter, `captures[2]` is the univocal two letter code that identifies the Greek letter. Defaults to an empty string.
 ---@param ending? string An optional ending string to append to the result of the expansion.
 ---@param upper? string The uppercase style of the identified Greek letter. Useful for letters whose uppercase version does not have a LaTeX command representation (eg. `\alpha -> A`). Defaults to an empty string.
 ---@return string command The correspondent LaTeX command based on @{captures}.
@@ -35,6 +38,7 @@ format.greek.expand = function(captures, ending, upper)
       ending or "" ---append the ending string if given
     )
 end
+-- luacheck: pop
 
 ---Expands a factorial expression to LaTeX commands.
 ---@param n number Any positive integer number.
@@ -79,13 +83,13 @@ end
 ---@return string result The LaTeX formatted binomial coefficient.
 format.binomial.expand_full = function(capture)
   local n, k = capture:match "^C?%((%d+)[,;]%s(%d+)%)$"
-  n, k = tonumber(n), tonumber(k)
+  n, k = tonumber(n) or n, tonumber(k) or k
 
   ---Check if the expanded factorial should be surrounded by parentheses.
-  ---@param n number Any positive integer.
+  ---@param m number Any positive integer.
   ---@return string result The expansion of `n!` surrounded by parentheses or not.
-  local check_expand = function(n)
-    return (n < 3 and tostring(n) or string.format("(%s)", format.factorial.expand(n)))
+  local check_expand = function(m)
+    return (m < 3 and tostring(m) or string.format("(%s)", format.factorial.expand(m)))
   end
 
   return string.format(

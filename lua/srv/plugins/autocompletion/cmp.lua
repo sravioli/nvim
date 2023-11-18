@@ -13,7 +13,8 @@ return {
       },
       { ---LSP
         { "hrsh7th/cmp-nvim-lsp" }, ---nvim-cmp source for neovim builtin LSP client
-        { "hrsh7th/cmp-nvim-lsp-document-symbol" }, ---nvim-cmp source for textDocument/documentSymbol via nvim-lsp.
+        ---nvim-cmp source for textDocument/documentSymbol via nvim-lsp.
+        { "hrsh7th/cmp-nvim-lsp-document-symbol" },
         { "hrsh7th/cmp-nvim-lsp-signature-help" }, ---cmp-nvim-lsp-signature-help
         { "hrsh7th/cmp-nvim-lua" }, ---nvim-cmp source for nvim lua
       },
@@ -25,7 +26,8 @@ return {
       },
       { ---Command line
         { "hrsh7th/cmp-cmdline" }, ---nvim-cmp source for vim's cmdline
-        { "dmitmel/cmp-cmdline-history" }, ---Source for nvim-cmp which reads results from command-line or search histories
+        ---Source for nvim-cmp which reads results from command-line or search histories
+        { "dmitmel/cmp-cmdline-history" },
       },
       { ---Fuzzy finding
         { "lukas-reineke/cmp-rg" }, ---ripgrep source for nvim-cmp
@@ -80,7 +82,8 @@ return {
       },
     })
 
-    ---Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    ---Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work
+    ---anymore).
     ---`:` cmdline setup.
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),

@@ -20,11 +20,12 @@ return {
       ---Enable/disable current/total tabpages indicator (top right corner)
       tabpages = true,
 
-      ---A buffer to this direction will be focused (if it exists) when closing the current buffer.
-      ---Valid options are 'left' (the default), 'previous', and 'right'
-      focus_on_close = "previous",
+      ---A buffer to this direction will be focused (if it exists) when closing the current
+      ---buffer. Valid options are 'left' (the default), 'previous', and 'right'
+      focus_on_close = "left",
 
-      ---Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
+      ---Hide inactive buffers and file extensions. Other options are `alternate`,
+      ---`current`, and `visible`.
       hide = { extensions = true, inactive = false },
 
       ---Enable highlighting visible buffers
@@ -32,7 +33,8 @@ return {
 
       icons = {
         ---Configure the base icons on the bufferline.
-        ---Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
+        ---Valid options to display the buffer index and -number are `true`, 'superscript'
+        ---and 'subscript'
         buffer_index = false,
         buffer_number = false,
         button = "×",

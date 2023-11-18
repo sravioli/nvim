@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- luacheck: ignore 113
 
 local function array_format(str, elem)
   local array, pos = str:match "^([%a_]+)%[([%w_]+)%]$"

@@ -99,7 +99,8 @@ au("FileType", {
   callback = function()
     for _, doxygen in ipairs(doxygen_patterns) do
       local pattern, highlight = doxygen.pattern, doxygen.highlight
-      vim.cmd(string.format("highlight link %s %s", pattern, highlight)) ---Define highlighting attributes
+      ---Define highlighting attributes
+      vim.cmd(string.format("highlight link %s %s", pattern, highlight))
     end
   end,
   group = aug.custom_highlights,

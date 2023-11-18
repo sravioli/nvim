@@ -22,7 +22,7 @@ M.cmp = require("cmp").config.sources({
     option = {
       keyword_length = 4,
       ---A function that specifies the buffer numbers to complete.
-      ---@return table bufs A list of visible buffers OR an empty list if the filesize is too large
+      ---@return table bufs List of visible buffers OR empty list if filesize is too large
       get_bufnrs = function()
         if
           vim.api.nvim_buf_get_offset(
@@ -56,7 +56,7 @@ M.search = {
     option = {
       keyword_length = 5,
       ---A function that specifies the buffer numbers to complete.
-      ---@return table bufs A list of visible buffers OR an empty list if the filesize is too large
+      ---@return table bufs List of visible buffers OR empty list if filesize is too large
       get_bufnrs = function()
         if
           vim.api.nvim_buf_get_offset(

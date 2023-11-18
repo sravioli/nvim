@@ -63,7 +63,7 @@ M.config = {
     end,
 
     ---@diagnostic disable-next-line: unused-local
-    post_open = function(bufnr) return true end,
+    post_open = function(_bufnr) return true end,
   },
 }
 
@@ -98,7 +98,7 @@ end
 ---
 ---If float windows are currently disabled, this function opens all of them.
 ---If float windows are currently enabled, this function closes all of them.
-function M:toggle()
+function M.toggle()
   M.disabled = not M.disabled
 
   if M.disabled then
@@ -114,7 +114,7 @@ end
 ---
 ---This function is responsible for closing the float window and cleaning up associated data.
 ---
----@param reason string|nil: An optional reason for closing the float window, logged with vim TRACE level.
+---@param reason string|nil: Optional reason for closing the float window, logged as TRACE
 ---@see FloatPreview.Helpers.Log
 ---@see vim.log.levels
 function M:close(reason)
@@ -301,7 +301,7 @@ function M:attach(bufnr)
   end
 
   for _, key in ipairs(self.config.mapping.toggle) do
-    vim.keymap.set("n", key, function() M:toggle() end, { buffer = bufnr })
+    vim.keymap.set("n", key, function() M.toggle() end, { buffer = bufnr })
   end
 
   ---create autocmds to handle cursor hold events and buffer wipeout events.

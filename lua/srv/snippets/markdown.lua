@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- luacheck: ignore 113
 return {
   s({ trig = "mi", dscr = "Inline math" }, fmt([[${}$]], i(1))),
   s(

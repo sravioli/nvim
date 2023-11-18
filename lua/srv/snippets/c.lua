@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- luacheck: ignore 113
 return {
   postfix({
     trig = "++",

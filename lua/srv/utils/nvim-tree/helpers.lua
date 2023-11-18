@@ -53,7 +53,7 @@ M.fs = {
   ---Source: <https://github.com/sharkdp/content_inspector>
   ---
   ---@param file_path string The path to the file.
-  ---@return boolean|nil is_file True if the file is likely a text file, false if it contains binary data, or nil if there was an error.
+  ---@return boolean|nil is_file True if file is text, false otherwise and nil for error
   is_text_file = function(file_path)
     local file_descriptor = vim.loop.fs_open(file_path, "r", 1)
     if not file_descriptor then
@@ -121,7 +121,7 @@ M.window = {
   ---Checks if a window is currently displaying a file with the given path.
   ---
   ---@param file_path string: The path of the file to check.
-  ---@return boolean is_shown True if the file is currently shown in any window, false otherwise.
+  ---@return boolean is_shown True if file is currently shown in any window, false otherwise.
   is_shown = function(file_path)
     for _, window_number in
       ipairs(vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage()))

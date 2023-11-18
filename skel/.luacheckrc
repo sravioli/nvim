@@ -246,7 +246,7 @@ max_comment_line_length = 95
 -- Set maximum cyclomatic complexity for functions.
 --
 -- (number|false default: false)
-max_cyclomatic_complexity = 5
+max_cyclomatic_complexity = 10
 
 -- CLI options `--ignore`, `--enable` and `--only` and corresponding config options allow
 -- filtering warnings using pattern matching on warning codes, variable names or both. If

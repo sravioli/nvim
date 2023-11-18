@@ -31,12 +31,14 @@ return {
     {
       description = "OpenApi config",
       fileMatch = { "*api*.json" },
-      url = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+      url = "https://raw.githubusercontent.com/"
+        .. "OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
     },
     {
       description = "oh-my-posh config",
       fileMatch = { "*omp.json" },
-      url = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+      url = "https://raw.githubusercontent.com/"
+        .. "JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
     },
     {
       description = "cspell config",
@@ -53,7 +55,8 @@ return {
         "cspell.yaml",
         "cspell.yml",
       },
-      url = "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+      url = "https://raw.githubusercontent.com/"
+        .. "streetsidesoftware/cspell/main/cspell.schema.json",
     },
   },
 }
