@@ -1,5 +1,5 @@
-// This document contains a description of all rules, what they are checking for, 
-// as well as examples of documents that break the rule and corrected versions 
+// This document contains a description of all rules, what they are checking for,
+// as well as examples of documents that break the rule and corrected versions
 // of the examples.
 {
   "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json",
@@ -35,25 +35,25 @@
   //
   // Parameters:
   //
-  // - `style`: Heading style (`string`, default `consistent`, values `atx` / 
+  // - `style`: Heading style (`string`, default `consistent`, values `atx` /
   //   `atx_closed` / `consistent` / `setext` / `setext_with_atx` / `setext_with_atx_closed`)
   //
   // This rule is triggered when different heading styles are used in the same document
   //
   // To fix the issue, use consistent heading styles throughout the document.
   //
-  // The `setext_with_atx` and `setext_with_atx_closed` settings allow ATX-style 
-  // headings of level 3 or more in documents with setext-style headings (which only 
+  // The `setext_with_atx` and `setext_with_atx_closed` settings allow ATX-style
+  // headings of level 3 or more in documents with setext-style headings (which only
   // support level 1 and 2 headings):
   //
-  // NOTE: The configured heading style can be a specific style to require (`atx`, 
-  //       `atx_closed`, `setext`, `setext_with_atx`, `setext_with_atx_closed`), or 
-  //       may just require that usage is consistent within the document via 
+  // NOTE: The configured heading style can be a specific style to require (`atx`,
+  //       `atx_closed`, `setext`, `setext_with_atx`, `setext_with_atx_closed`), or
+  //       may just require that usage is consistent within the document via
   //       `consistent`.
   //
-  // NOTE: The placement of a horizontal rule directly below a line of text can 
+  // NOTE: The placement of a horizontal rule directly below a line of text can
   //       trigger this rule by turning that text into a level 2 setext-style heading:
-  //   
+  //
   //       ```md
   //       A line of text followed by a horizontal rule becomes a heading
   //       ---
@@ -74,23 +74,23 @@
   //
   // Parameters:
   //
-  // - `style`: List style (`string`, default `consistent`, values `asterisk` / 
+  // - `style`: List style (`string`, default `consistent`, values `asterisk` /
   // `consistent` / `dash` / `plus` / `sublist`)
   //
   // Fixable: Some violations can be fixed by tooling
   //
-  // This rule is triggered when the symbols used in the document for unordered 
+  // This rule is triggered when the symbols used in the document for unordered
   // list items do not match the configured unordered list style.
   //
-  // To fix this issue, use the configured style for list items throughout the 
+  // To fix this issue, use the configured style for list items throughout the
   // document:
   //
-  // The configured list style can be a specific symbol to use (asterisk, plus, dash), 
-  // to ensure that all list styling is consistent, or to ensure that each sublist 
+  // The configured list style can be a specific symbol to use (asterisk, plus, dash),
+  // to ensure that all list styling is consistent, or to ensure that each sublist
   // has a consistent symbol that differs from its parent list.
   //
-  // For example, the following is valid for the `sublist` style because the outer-most 
-  // indent uses asterisk, the middle indent uses plus, and the inner-most indent 
+  // For example, the following is valid for the `sublist` style because the outer-most
+  // indent uses asterisk, the middle indent uses plus, and the inner-most indent
   // uses dash:
   //
   // ```md
@@ -117,13 +117,13 @@
   //
   // Fixable: Some violations can be fixed by tooling
   //
-  // This rule is triggered when list items are parsed as being at the same level, 
+  // This rule is triggered when list items are parsed as being at the same level,
   // but don't have the same indentation.
   //
-  // Usually, this rule will be triggered because of a typo. Correct the indentation 
+  // Usually, this rule will be triggered because of a typo. Correct the indentation
   // for the list to fix it.
   //
-  // Sequentially-ordered list markers are usually left-aligned such that all items 
+  // Sequentially-ordered list markers are usually left-aligned such that all items
   // have the same starting column.
   //
   // This rule also supports right-alignment of list markers such that all items
@@ -141,8 +141,8 @@
   // Parameters:
   //
   // - `indent`: Spaces for indent (`integer`, default `2`)
-  // - `start_indent`: Spaces for first level indent (when start_indented is set) 
-  //   (`integer`, default `2`) 
+  // - `start_indent`: Spaces for first level indent (when start_indented is set)
+  //   (`integer`, default `2`)
   // - `start_indented`: Whether to indent the first level of the list (`boolean`,
   //   default `false`)
   //
@@ -152,7 +152,7 @@
   // number of spaces (default: 2).
   //
   // NOTE: This rule applies to a sublist only if its parent lists are all also
-  //       unordered (otherwise, extra indentation of ordered lists interferes with 
+  //       unordered (otherwise, extra indentation of ordered lists interferes with
   //       the rule).
   //
   // The `start_indented` parameter allows the first level of lists to be indented
@@ -185,7 +185,7 @@
   // Parameters:
   //
   // - `br_spaces`: Spaces for line break (`integer`, default `2`)
-  // - `list_item_empty_lines`: Allow spaces for empty lines in list items (`boolean`, 
+  // - `list_item_empty_lines`: Allow spaces for empty lines in list items (`boolean`,
   //   default `false`)
   // - `strict`: Include unnecessary breaks (`boolean`, default `false`)
   //
@@ -194,7 +194,7 @@
   // This rule is triggered on any lines that end with unexpected whitespace. To fix
   // this, remove the trailing space from the end of the line.
   //
-  // NOTE: Trailing space is allowed in indented and fenced code blocks because 
+  // NOTE: Trailing space is allowed in indented and fenced code blocks because
   //       some languages require it.
   //
   // The `br_spaces` parameter allows an exception to this rule for a specific
@@ -209,7 +209,7 @@
   // used, even when it doesn't create a hard break (for example, at the end of
   // a paragraph). To report such instances as well, set the `strict` parameter to
   // `true`.
-  // 
+  //
   // Using spaces to indent blank lines inside a list item is usually not necessary,
   // but some parsers require it. Set the `list_item_empty_lines` parameter to
   // `true` to allow this (even when `strict` is `true`):
@@ -302,7 +302,7 @@
   // To fix this, swap the `[]` and `()` around.
   //
   // NOTE: Markdown Extra-style footnotes do not trigger this rule:
-  //       
+  //
   //       ```md
   //       For (example)[^1]
   //       ```
@@ -335,7 +335,7 @@
   //       consecutive blank lines.
   //
   // Rationale: Except in a code block, blank lines serve no purpose and do not
-  // affect the rendering of content. 
+  // affect the rendering of content.
   "MD012": {
     // Consecutive blank lines
     "maximum": 1
@@ -377,7 +377,7 @@
   // ```md
   // IF THIS LINE IS THE MAXIMUM LENGTH
   // This line is okay because there are-no-spaces-beyond-that-length
-  // And this line is a violation because there are 
+  // And this line is a violation because there are
   // This-line-is-also-okay-because-there-are-no-spaces
   // ```
   //
@@ -547,7 +547,7 @@
   //
   // NOTE: If `lines_above` or `lines_below` are configured to require more than
   //       one blank line, MD012/no-multiple-blanks should also be customized. This
-  //       rule checks for _at least_ as many blank lines as specified; any extra 
+  //       rule checks for _at least_ as many blank lines as specified; any extra
   //       blank lines are ignored.
   //
   // Rationale: Aside from aesthetic reasons, some parsers, including `kramdown`,
@@ -708,7 +708,7 @@
   // Note: The trailing semicolon of HTML entity references like `&copy;`, `&#169;`,
   // and `&#x000A9;` is ignored by this rule.
   //
-  // Rationale: Headings are not meant to be full sentences. 
+  // Rationale: Headings are not meant to be full sentences.
   "MD026": {
     // Punctuation characters
     "punctuation": ".,;:!。，；：！"
@@ -761,7 +761,7 @@
   //
   // Parameters:
   //
-  // - `style`: List style (`string`, default `one_or_ordered`, values `one` / 
+  // - `style`: List style (`string`, default `one_or_ordered`, values `one` /
   //   `one_or_ordered` / `ordered` / `zero`)
   //
   // This rule is triggered for ordered lists that do not either start with '1.' or
@@ -820,10 +820,10 @@
   // ```
   //
   // NOTE: This rule will report violations for cases like the following where an
-  //       improperly-indented code block (or similar) appears between two list items 
+  //       improperly-indented code block (or similar) appears between two list items
   //       and "breaks" the list in two.
-  //       
-  //       The fix is to indent the code block so it becomes part of the preceding 
+  //
+  //       The fix is to indent the code block so it becomes part of the preceding
   //       list item as intended.
   //
   // Rationale: Consistent formatting makes it easier to understand a document.
@@ -928,7 +928,7 @@
   // document).
   //
   // NOTE: the following case is **not** a violation of this rule:
-  //       
+  //
   //       ```md
   //       1. List item
   //          More item 1
@@ -984,14 +984,14 @@
   //
   // NOTE: To include a bare URL or email without it being converted into a link,
   //       wrap it in a code span:
-  //       
+  //
   //       ```md
   //       Not a clickable link: `https://www.example.com`
   //       ```
   //
   // NOTE: The following scenario does not trigger this rule because it could be
   //       a shortcut link:
-  //       
+  //
   //       ```md
   //       [https://www.example.com]
   //       ```
@@ -999,13 +999,13 @@
   //
   // NOTE: The following syntax triggers this rule because the nested link could be
   //       a shortcut link (which takes precedence):
-  //       
+  //
   //       ```md
   //       [text [shortcut] text](https://example.com)
   //       ```
-  //       
+  //
   //       To avoid this, escape both inner brackets:
-  //       
+  //
   //       ```md
   //       [link \[text\] link](https://example.com)
   //       ```
@@ -1025,7 +1025,7 @@
   //
   // - `style`: Horizontal rule style (`string`, default `consistent`)
   //
-  // This rule is triggered when inconsistent styles of horizontal rules are used 
+  // This rule is triggered when inconsistent styles of horizontal rules are used
   // in the document.
   //
   // To fix this, ensure any horizontal rules used in the document are consistent,
@@ -1033,9 +1033,9 @@
   //
   // NOTE: by default, this rule is configured to just require that all horizontal
   //       rules in the document are the same and will trigger if any of the horizontal
-  //       rules are different than the first one encountered in the document. If 
-  //       you want to configure the rule to match a specific style, the parameter 
-  //       given to the 'style' option is a string containing the exact horizontal 
+  //       rules are different than the first one encountered in the document. If
+  //       you want to configure the rule to match a specific style, the parameter
+  //       given to the 'style' option is a string containing the exact horizontal
   //       rule text that is allowed.
   //
   // Rationale: Consistent formatting makes it easier to understand a document.
@@ -1062,9 +1062,9 @@
   // sections.
   //
   // NOTE: This rule looks for single-line paragraphs that consist entirely of
-  //       emphasized text. It won't fire on emphasis used within regular text, 
-  //       multi-line emphasized paragraphs, or paragraphs ending in punctuation 
-  //       (normal or full-width). Similarly to rule MD026, you can configure what 
+  //       emphasized text. It won't fire on emphasis used within regular text,
+  //       multi-line emphasized paragraphs, or paragraphs ending in punctuation
+  //       (normal or full-width). Similarly to rule MD026, you can configure what
   //       characters are recognized as punctuation.
   //
   // Rationale: Using emphasis instead of a heading prevents tools from inferring
@@ -1111,14 +1111,14 @@
   //
   // NOTE: A single leading and trailing space is allowed by the specification and
   //       automatically trimmed (in order to allow for code spans that embed backticks).
-  //        
+  //
   //       ```md
   //       `` `backticks` ``
   //       ```
   //
   // NOTE: A single leading or trailing space is allowed if used to separate code
   //       span markers from an embedded backtick (though the space is not trimmed).
-  //        
+  //
   //       ```md
   //       `` ` embedded backtick``
   //       ```
@@ -1198,7 +1198,7 @@
   //
   // Parameters:
   //
-  // - `front_matter_title`: RegExp for matching title in front matter (`string`, 
+  // - `front_matter_title`: RegExp for matching title in front matter (`string`,
   //   default `^\s*title\s*[:=]`)
   // - `level`: Heading level (`integer`, default `1`)
   //
@@ -1425,7 +1425,7 @@
   //
   // Parameters:
   //
-  // - `style`: Block style (`string`, default `consistent`, values `consistent` / 
+  // - `style`: Block style (`string`, default `consistent`, values `consistent` /
   //   `fenced` / `indented`)
   //
   // This rule is triggered when unwanted or different code block styles are used in
@@ -1501,7 +1501,7 @@
   //
   // Parameters:
   //
-  // - `style`: Code fence style (`string`, default `consistent`, values `backtick` / 
+  // - `style`: Code fence style (`string`, default `consistent`, values `backtick` /
   //   `consistent` / `tilde`)
   //
   // This rule is triggered when the symbols used in the document for fenced code
@@ -1527,7 +1527,7 @@
   //
   // Parameters:
   //
-  // - `style`: Emphasis style (`string`, default `consistent`, values `asterisk` / 
+  // - `style`: Emphasis style (`string`, default `consistent`, values `asterisk` /
   //   `consistent` / `underscore`)
   //
   // Fixable: Some violations can be fixed by tooling
@@ -1565,7 +1565,7 @@
   //
   // Parameters:
   //
-  // - `style`: Strong style (`string`, default `consistent`, values `asterisk` / 
+  // - `style`: Strong style (`string`, default `consistent`, values `asterisk` /
   //   `consistent` / `underscore`)
   //
   // Fixable: Some violations can be fixed by tooling
@@ -1618,7 +1618,7 @@
   // [Link](#bookmark)
   // ```
   //
-  // An `a` tag can be useful in scenarios where a heading is not appropriate or 
+  // An `a` tag can be useful in scenarios where a heading is not appropriate or
   // for control over the text of the fragment identifier.
   //
   // Rationale: GitHub section links are created automatically for every heading
@@ -1629,7 +1629,7 @@
   //
   // Section links are **not** part of the CommonMark specification. This rule
   // enforces the GitHub heading algorithm which is: convert heading to lowercase,
-  // remove punctuation, convert spaces to dashes, append an incrementing integer 
+  // remove punctuation, convert spaces to dashes, append an incrementing integer
   // as needed for uniqueness.
   "MD051": true,
 

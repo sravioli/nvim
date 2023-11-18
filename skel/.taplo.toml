@@ -1,19 +1,19 @@
-# The `include` property is an array of glob path strings that are relative to 
-# the working directory (or root of the workspace), the matched files are included 
-# in the operations by the tools unless explicitly overwritten. The pattern supports 
+# The `include` property is an array of glob path strings that are relative to
+# the working directory (or root of the workspace), the matched files are included
+# in the operations by the tools unless explicitly overwritten. The pattern supports
 # globstars (`**`) for recursive search.
 #
-# If this property is omitted, `TOML` files will be searched in the entire child 
+# If this property is omitted, `TOML` files will be searched in the entire child
 # directory tree from the root.
 #
 # WARNING: If `include` is present but empty, **no files will be included**.
 #
 # include = ["Cargo.toml", "some_directory/**/*.toml"]
 
-# The `exclude` property has the same semantics as `include` and takes precedence 
+# The `exclude` property has the same semantics as `include` and takes precedence
 # over it.
 #
-# The following will exclude `Cargo.toml` from the includes written above, so 
+# The following will exclude `Cargo.toml` from the includes written above, so
 # files matching `some_directory/**/*.toml` will be included only.
 #
 #
@@ -23,104 +23,104 @@
 
 # The `formatting` table contains optional formatting options for the formatter.
 [formatting]
-# Align entries vertically.
-# Entries that have table headers, comments, or blank lines between them are not 
-# aligned.
-#
-# (default: `false`)
-align_entries = true
+  # Align entries vertically.
+  # Entries that have table headers, comments, or blank lines between them are not
+  # aligned.
+  #
+  # (default: `false`)
+  align_entries = true
 
-# Align consecutive comments after entries and items vertically. This applies 
-# to comments that are after entries or array items.
-#
-# (default: `true`)
-align_comments = true
+  # Align consecutive comments after entries and items vertically. This applies
+  # to comments that are after entries or array items.
+  #
+  # (default: `true`)
+  align_comments = true
 
-# Put trailing commas for multiline arrays.
-#
-# (default: `true`)
-array_trailing_comma = true
+  # Put trailing commas for multiline arrays.
+  #
+  # (default: `true`)
+  array_trailing_comma = true
 
-# Automatically expand arrays to multiple lines.
-#
-# (default: `true`)
-array_auto_expand = true
+  # Automatically expand arrays to multiple lines.
+  #
+  # (default: `true`)
+  array_auto_expand = true
 
-# Automatically collapse arrays if they fit in one line.
-#
-# (default: `true`)
-array_auto_collapse = true
+  # Automatically collapse arrays if they fit in one line.
+  #
+  # (default: `true`)
+  array_auto_collapse = true
 
-# Omit whitespace padding inside single-line arrays.
-#
-# (default: `false`)
-compact_arrays = false
+  # Omit whitespace padding inside single-line arrays.
+  #
+  # (default: `false`)
+  compact_arrays = false
 
-# Omit whitespace padding inside inline tables.
-#
-# (default: `false`)
-compact_inline_tables = false
+  # Omit whitespace padding inside inline tables.
+  #
+  # (default: `false`)
+  compact_inline_tables = false
 
-# Expand values (e.g. arrays) inside inline tables.
-#
-# (default: `true`)
-inline_table_expand = true
+  # Expand values (e.g. arrays) inside inline tables.
+  #
+  # (default: `true`)
+  inline_table_expand = true
 
-# Omit whitespace around `=`.
-#
-# (default: `false`)
-compact_entries = false
+  # Omit whitespace around `=`.
+  #
+  # (default: `false`)
+  compact_entries = false
 
-# Target maximum column width after which arrays are expanded into new lines.
-#
-# (default: `80`)
-column_width = 80
+  # Target maximum column width after which arrays are expanded into new lines.
+  #
+  # (default: `80`)
+  column_width = 80
 
-# Indent subtables if they come in order.
-#
-# (default: `false`)
-indent_tables = true
+  # Indent subtables if they come in order.
+  #
+  # (default: `false`)
+  indent_tables = true
 
-# Indent entries under tables.
-#
-# (default: `false`)
-indent_entries = true
+  # Indent entries under tables.
+  #
+  # (default: `false`)
+  indent_entries = true
 
-# Indentation to use, should be tabs or spaces but technically could be anything.
-#
-# (default: `2 spaces (" ")`)
-indent_string = "  "
+  # Indentation to use, should be tabs or spaces but technically could be anything.
+  #
+  # (default: `2 spaces (" ")`)
+  indent_string = "  "
 
-# Add trailing newline to the source.
-#
-# (default: `true`)
-trailing_newline = true
+  # Add trailing newline to the source.
+  #
+  # (default: `true`)
+  trailing_newline = true
 
-# Alphabetically reorder keys that are not separated by blank lines.
-#
-# (default: `false`)
-reorder_keys = true
+  # Alphabetically reorder keys that are not separated by blank lines.
+  #
+  # (default: `false`)
+  reorder_keys = true
 
-# Alphabetically reorder array values that are not separated by blank lines.
-#
-# (default: `false`)
-reorder_arrays = true
+  # Alphabetically reorder array values that are not separated by blank lines.
+  #
+  # (default: `false`)
+  reorder_arrays = true
 
-# The maximum amount of consecutive blank lines allowed.
-#
-# (default: `2`)
-allowed_blank_lines = 2
+  # The maximum amount of consecutive blank lines allowed.
+  #
+  # (default: `2`)
+  allowed_blank_lines = 2
 
-# Use CRLF line endings.
-#
-# (default: `false`)
-crlf = false
+  # Use CRLF line endings.
+  #
+  # (default: `false`)
+  crlf = false
 
 
 # The `schema` table consists of only two keys:
 #
-# - `path`: the path of the schema, this can be either path to a local file or 
-#   an URL with the schemes `taplo`, `http` or `https`. (`file` scheme is also 
+# - `path`: the path of the schema, this can be either path to a local file or
+#   an URL with the schemes `taplo`, `http` or `https`. (`file` scheme is also
 #   accepted, it is the same as specifying a local path)
 # - `enabled`: whether to enable the schema or not (`true` if omitted).
 #
@@ -146,31 +146,31 @@ crlf = false
 # path = "https://example.com/my_schema.json"
 # ```
 [schema]
-enabled = true
-path = "taplo://taplo.toml"
+  enabled = false
+  path    = "taplo://taplo.toml"
 
-# The `rule` array of tables consist of rules that overwrite the above 
-# configuration based on some conditions. Thus it has the same `formatting` and 
-# `schema` settings, and the `include` and `exclude` with the same semantics as 
-# their global variants, however this time they are used to determine whether 
-# the rule applies.
-#
-# Additionally, `keys` of a rule is an array of dotted keys that scope the rule 
-# to a specific part within a single document. The keys also support glob patterns.
-#
-# TIP: In case of overlapping rules, the last defined rule always takes precedence.
-#
-# Let's say we want to sort our `Cargo` dependencies, but nothing else, here is 
-# how we would do that:
-#
-# ```toml
-# [formatting]
-# reorder_keys = false
-#
-# [[rule]]
-# include = ["**/Cargo.toml"]
-# keys = ["dependencies"]
-#
-# [rule.formatting]
-# reorder_keys = true
-# ```
+  # The `rule` array of tables consist of rules that overwrite the above
+  # configuration based on some conditions. Thus it has the same `formatting` and
+  # `schema` settings, and the `include` and `exclude` with the same semantics as
+  # their global variants, however this time they are used to determine whether
+  # the rule applies.
+  #
+  # Additionally, `keys` of a rule is an array of dotted keys that scope the rule
+  # to a specific part within a single document. The keys also support glob patterns.
+  #
+  # TIP: In case of overlapping rules, the last defined rule always takes precedence.
+  #
+  # Let's say we want to sort our `Cargo` dependencies, but nothing else, here is
+  # how we would do that:
+  #
+  # ```toml
+  # [formatting]
+  # reorder_keys = false
+  #
+  # [[rule]]
+  # include = ["**/Cargo.toml"]
+  # keys = ["dependencies"]
+  #
+  # [rule.formatting]
+  # reorder_keys = true
+  # ```
