@@ -58,12 +58,16 @@ M.config = {
 
       ---don't preview if file sisze is bigger than 5MB OR file isn't a text file (binary)
       local size = fs.get_file_size(path)
-      if type(size) ~= "number" then return false end
+      if type(size) ~= "number" then
+        return false
+      end
       return size < 5 and fs.is_text_file(path)
     end,
 
     ---@diagnostic disable-next-line: unused-local
-    post_open = function(_bufnr) return true end,
+    post_open = function(_bufnr)
+      return true
+    end,
   },
 }
 
@@ -124,7 +128,9 @@ function M:close(reason)
     return
   end
 
-  if reason then utils.log.trace("close reason %s", reason) end
+  if reason then
+    utils.log.trace("close reason %s", reason)
+  end
 
   --- Attempt to close the float window and delete the buffer.
   pcall(vim.api.nvim_win_close, self.win, { force = true })
@@ -148,10 +154,14 @@ end
 ---
 ---@param path string The path of the file to preview.
 function M:preview(path)
-  if M.disabled then return end
+  if M.disabled then
+    return
+  end
 
   ---execute the pre-open hook, and if it returns false, abort the preview.
-  if not self.config.hooks.pre_open(path) then return end
+  if not self.config.hooks.pre_open(path) then
+    return
+  end
 
   ---set the path and create a new buffer for the preview.
   self.path = path
@@ -218,7 +228,9 @@ function M:preview(path)
   )
 
   ---execute the post-open hook, and if it returns false, close the preview.
-  if not self.config.hooks.post_open(self.buf) then self:close "post open" end
+  if not self.config.hooks.post_open(self.buf) then
+    self:close "post open"
+  end
 end
 
 ---@private
@@ -229,14 +241,20 @@ end
 function M:preview_under_cursor()
   ---attempt to get the node under the cursor from nvim-tree.
   local _, node = pcall(require("nvim-tree.api").tree.get_node_under_cursor)
-  if not node then return end
+  if not node then
+    return
+  end
 
   ---close the preview if the node represents the current file.
-  if node.absolute_path == self.path then return end
+  if node.absolute_path == self.path then
+    return
+  end
 
   ---close the current preview and open a new one if the node represents a regular file.
   self:close "change file"
-  if node.type ~= "file" then return end
+  if node.type ~= "file" then
+    return
+  end
 
   ---don't invert order! otherwise cursor is put is the preview window
   local win = vim.api.nvim_get_current_win()
@@ -244,7 +262,9 @@ function M:preview_under_cursor()
 
   ---restore focus to the original window.
   local ok, _ = pcall(vim.api.nvim_set_current_win, win)
-  if not ok then self:close "can't set win" end
+  if not ok then
+    self:close "can't set win"
+  end
 end
 
 ---@private
@@ -255,7 +275,9 @@ end
 function M:scroll(line)
   if self.win then
     local ok, _ = pcall(vim.api.nvim_win_set_cursor, self.win, { line, 0 })
-    if ok then self.current_line = line end
+    if ok then
+      self.current_line = line
+    end
   end
 end
 
@@ -293,15 +315,21 @@ end
 function M:attach(bufnr)
   ---set up key mappings for scrolling and toggling the preview window.
   for _, key in ipairs(self.config.mapping.up) do
-    vim.keymap.set("n", key, function() self:scroll_up() end, { buffer = bufnr })
+    vim.keymap.set("n", key, function()
+      self:scroll_up()
+    end, { buffer = bufnr })
   end
 
   for _, key in ipairs(self.config.mapping.down) do
-    vim.keymap.set("n", key, function() self:scroll_down() end, { buffer = bufnr })
+    vim.keymap.set("n", key, function()
+      self:scroll_down()
+    end, { buffer = bufnr })
   end
 
   for _, key in ipairs(self.config.mapping.toggle) do
-    vim.keymap.set("n", key, function() M.toggle() end, { buffer = bufnr })
+    vim.keymap.set("n", key, function()
+      M.toggle()
+    end, { buffer = bufnr })
   end
 
   ---create autocmds to handle cursor hold events and buffer wipeout events.
@@ -378,7 +406,9 @@ M.on_attach = function(bufnr)
 
   for _, event in ipairs(close_float_on_events) do
     api.events.subscribe(event, function()
-      vim.schedule(function() utils.window.close_all(M.floats) end)
+      vim.schedule(function()
+        utils.window.close_all(M.floats)
+      end)
     end)
   end
 

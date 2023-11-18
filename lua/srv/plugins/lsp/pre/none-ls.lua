@@ -5,7 +5,9 @@ return {
   event = "BufWinEnter",
   opts = function()
     local present, null_ls = pcall(require, "null-ls")
-    if not present then return end
+    if not present then
+      return
+    end
 
     local function search_config_file(filename)
       for _, dir in pairs {
@@ -63,7 +65,9 @@ return {
         diagnostics.markdownlint.with {
           extra_args = function()
             local file = search_config_file ".markdownlint.jsonc"
-            if file ~= "" then return { "--config", file } end
+            if file ~= "" then
+              return { "--config", file }
+            end
             return {}
           end,
         },
@@ -74,14 +78,19 @@ return {
         diagnostics.luacheck.with {
           extra_args = function()
             local file = search_config_file ".luacheckrc"
-            if file ~= "" then return { "--config", file } end
+            if file ~= "" then
+              return { "--config", file }
+            end
             return {}
           end,
         },
+        diagnostics.selene,
         formatting.stylua.with {
           extra_args = function()
             local file = search_config_file ".stylua.toml"
-            if file ~= "" then return { "--config-path", file } end
+            if file ~= "" then
+              return { "--config-path", file }
+            end
             return {}
           end,
         },
@@ -90,7 +99,9 @@ return {
         formatting.taplo.with {
           extra_args = function()
             local file = search_config_file ".taplo.toml"
-            if file ~= "" then return { "--config", file } end
+            if file ~= "" then
+              return { "--config", file }
+            end
             return {}
           end,
         },
@@ -100,7 +111,9 @@ return {
         formatting.yamlfix.with {
           extra_args = function()
             local file = search_config_file ".yamlfix.toml"
-            if file ~= "" then return { "--config-file", file } end
+            if file ~= "" then
+              return { "--config-file", file }
+            end
             return {}
           end,
         },
@@ -115,7 +128,9 @@ return {
         formatting.clang_format.with {
           extra_args = function()
             local file = search_config_file ".clang-format"
-            if file ~= "" then return { "--style=file:" .. file } end
+            if file ~= "" then
+              return { "--style=file:" .. file }
+            end
             return {}
           end,
         },

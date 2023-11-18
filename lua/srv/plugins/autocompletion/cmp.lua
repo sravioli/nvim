@@ -64,7 +64,9 @@ return {
 
       sorting = {
         comparators = {
-          function(...) return require("cmp_buffer"):compare_locality(...) end,
+          function(...)
+            return require("cmp_buffer"):compare_locality(...)
+          end,
         },
       },
       view = {

@@ -7,7 +7,9 @@ return {
     { "rebelot/kanagawa.nvim" },
   },
   event = "BufAdd",
-  init = function() vim.g.barbar_auto_setup = false end,
+  init = function()
+    vim.g.barbar_auto_setup = false
+  end,
   opts = function()
     local signs = require("srv.preferences").icons.diagnostics
     return {

@@ -8,7 +8,9 @@ local M = {}
 
 ---safe require `nvim-notify`
 local notify_installed, notify = pcall(require, "notify")
-if notify_installed then vim.notify = notify end
+if notify_installed then
+  vim.notify = notify
+end
 
 ---@private
 ---
@@ -65,10 +67,18 @@ M.waddle = function(duck)
         local sin = math.sin(angle)
         local cos = math.cos(angle)
 
-        if row < 0 and sin < 0 then row = vim.o.lines end
-        if row > vim.o.lines and sin > 0 then row = 0 end
-        if col < 0 and cos < 0 then col = vim.o.columns end
-        if col > vim.o.columns and cos > 0 then col = 0 end
+        if row < 0 and sin < 0 then
+          row = vim.o.lines
+        end
+        if row > vim.o.lines and sin > 0 then
+          row = 0
+        end
+        if col < 0 and cos < 0 then
+          col = vim.o.columns
+        end
+        if col > vim.o.columns and cos > 0 then
+          col = 0
+        end
 
         config["row"] = row + 0.5 * sin
         config["col"] = col + 1 * cos

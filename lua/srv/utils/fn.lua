@@ -48,7 +48,9 @@ end
 Functions.update_timestamp = function()
   -- file not modifiable
   local bufnr = vim.api.nvim_get_current_buf()
-  if not vim.api.nvim_buf_get_option(bufnr, "modifiable") then return end
+  if not vim.api.nvim_buf_get_option(bufnr, "modifiable") then
+    return
+  end
 
   local MAX_LINES = 30
   local buflines = vim.api.nvim_buf_line_count(bufnr)
@@ -93,7 +95,9 @@ Functions.mappings.load = function(section, options)
     local tbl_merge = vim.tbl_deep_extend
 
     local function set_section_map(section_values)
-      if section_values.plugin then return end
+      if section_values.plugin then
+        return
+      end
 
       section_values.plugin = nil
 
@@ -140,7 +144,9 @@ Functions.mappings.unload = function(section, options)
     end
 
     for _, sect in pairs(mappings) do
-      if sect.plugin then return end
+      if sect.plugin then
+        return
+      end
       sect.plugin = nil
 
       for mode, mode_values in pairs(sect) do
@@ -168,7 +174,9 @@ end
 ---see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
 ---see `:h diagnostic-handlers`
 Functions.lsp.filter_diagnostics = function(diagnostics)
-  if not diagnostics then return {} end
+  if not diagnostics then
+    return {}
+  end
 
   ---find the "worst" diagnostic per line
   local most_severe = {}
@@ -176,7 +184,9 @@ Functions.lsp.filter_diagnostics = function(diagnostics)
     local max = most_severe[cur.lnum]
 
     ---higher severity has lower value (`:h diagnostic-severity`)
-    if not max or cur.severity < max.severity then most_severe[cur.lnum] = cur end
+    if not max or cur.severity < max.severity then
+      most_severe[cur.lnum] = cur
+    end
   end
 
   ---return list of diagnostics
@@ -213,7 +223,9 @@ Functions.lsp.async_formatting = function(bufnr)
           bufnr,
           client and client.offset_encoding or "utf-16"
         )
-        vim.api.nvim_buf_call(bufnr, function() vim.cmd "silent noautocmd update" end)
+        vim.api.nvim_buf_call(bufnr, function()
+          vim.cmd "silent noautocmd update"
+        end)
       end
     end
   )
@@ -299,9 +311,9 @@ Functions.telescope.buffer_previewer = function(filepath, bufnr, opts)
         previewers.buffer_previewer_maker(filepath, bufnr, opts)
       else
         ---maybe we want to write something to the buffer here
-        vim.schedule(
-          function() vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" }) end
-        )
+        vim.schedule(function()
+          vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
+        end)
       end
     end,
   }):sync()

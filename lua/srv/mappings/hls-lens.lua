@@ -14,7 +14,9 @@ return {
     ["<leader>L"] = {
       function()
         vim.schedule(function()
-          if require("hlslens").exportLastSearchToQuickfix() then vim.cmd "cwindow" end
+          if require("hlslens").exportLastSearchToQuickfix() then
+            vim.cmd "cwindow"
+          end
         end)
         return ":nohlsearch<CR>"
       end,
@@ -27,7 +29,9 @@ return {
     ["<leader>L"] = {
       function()
         vim.schedule(function()
-          if require("hlslens").exportLastSearchToQuickfix() then vim.cmd "cwindow" end
+          if require("hlslens").exportLastSearchToQuickfix() then
+            vim.cmd "cwindow"
+          end
         end)
         return ":nohlsearch<CR>"
       end,

@@ -37,7 +37,9 @@ return {
     end,
     float_opts = {
       border = require("srv.preferences").border,
-      width = function() return math.floor(vim.opt.columns:get() * 0.85) end,
+      width = function()
+        return math.floor(vim.opt.columns:get() * 0.85)
+      end,
       height = function()
         return math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.85)
       end,

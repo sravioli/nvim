@@ -13,7 +13,9 @@ au("UiEnter", {
   pattern = "*",
   callback = function()
     local notify_installed, notify = pcall(require, "notify")
-    if notify_installed then vim.notify = notify end
+    if notify_installed then
+      vim.notify = notify
+    end
   end,
 })
 
@@ -22,7 +24,9 @@ au("VimLeave", {
   desc = "Restore WindowsTerminal cursor shape upon exit (WindowsTerminal)",
   group = aug.CursorGroup,
   pattern = "*",
-  callback = function() vim.opt.guicursor:append "a:hor20-blinkon1" end,
+  callback = function()
+    vim.opt.guicursor:append "a:hor20-blinkon1"
+  end,
 })
 
 ---Highlight text on yank
@@ -30,7 +34,9 @@ au("TextYankPost", {
   desc = "Highlight selection on yank",
   pattern = "*",
   group = aug.CursorGroup,
-  callback = function() vim.highlight.on_yank { higroup = "Search", timeout = 200 } end,
+  callback = function()
+    vim.highlight.on_yank { higroup = "Search", timeout = 200 }
+  end,
 })
 
 au("FileType", {
@@ -38,7 +44,9 @@ au("FileType", {
   pattern = "help",
   group = aug.VimHelp,
   callback = function()
-    local opts = function(desc) return { buffer = true, silent = true, desc = desc } end
+    local opts = function(desc)
+      return { buffer = true, silent = true, desc = desc }
+    end
     vim.keymap.set("n", "<CR>", "<C-]>", opts "Jump to tag")
     vim.keymap.set("n", "<BS>", "<C-o>", opts "Return to prev tag")
     vim.keymap.set("n", "q", ":quit<CR>", opts "exit help buffer")
@@ -136,12 +144,16 @@ au("FileType", {
   pattern = "lua",
   desc = "Change the colorcolumn for lua files",
   group = aug.BufDetect,
-  callback = function() vim.opt_local.colorcolumn = "90" end,
+  callback = function()
+    vim.opt_local.colorcolumn = "90"
+  end,
 })
 
 au("BufWritePre", {
   pattern = "*",
   desc = "update last modified flag",
   group = aug.lua_functions,
-  callback = function() require("srv.utils.fn").update_timestamp() end,
+  callback = function()
+    require("srv.utils.fn").update_timestamp()
+  end,
 })

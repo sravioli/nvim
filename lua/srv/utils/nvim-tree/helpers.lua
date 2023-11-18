@@ -7,31 +7,41 @@ M.log = {
   ---
   ---@param msg string The error message.
   ---@param ... any Additional values to be formatted into the message.
-  err = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.ERROR) end,
+  err = function(msg, ...)
+    vim.notify((msg):format(...), vim.log.levels.ERROR)
+  end,
 
   ---Logs a warning message.
   ---
   ---@param msg string The warning message.
   ---@param ... any Additional values to be formatted into the message.
-  warn = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.WARN) end,
+  warn = function(msg, ...)
+    vim.notify((msg):format(...), vim.log.levels.WARN)
+  end,
 
   ---Logs an informational message.
   ---
   ---@param msg string The informational message.
   ---@param ... any Additional values to be formatted into the message.
-  info = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.INFO) end,
+  info = function(msg, ...)
+    vim.notify((msg):format(...), vim.log.levels.INFO)
+  end,
 
   ---Logs a debug message.
   ---
   ---@param msg string The debug message.
   ---@param ... any Additional values to be formatted into the message.
-  debug = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.DEBUG) end,
+  debug = function(msg, ...)
+    vim.notify((msg):format(...), vim.log.levels.DEBUG)
+  end,
 
   ---Logs a trace message.
   ---
   ---@param msg string The trace message.
   ---@param ... any Additional values to be formatted into the message.
-  trace = function(msg, ...) vim.notify((msg):format(...), vim.log.levels.TRACE) end,
+  trace = function(msg, ...)
+    vim.notify((msg):format(...), vim.log.levels.TRACE)
+  end,
 }
 
 ---@class NvimTreeExtensionsHelpers.FileSystem
@@ -41,8 +51,12 @@ M.fs = {
   ---@param file_path string The path to the file.
   ---@return number|nil size The file size in megabytes, or nil if there was an error.
   get_file_size = function(file_path)
-    local success, file_stats = pcall(function() return vim.loop.fs_stat(file_path) end)
-    if not (success and file_stats) then return end
+    local success, file_stats = pcall(function()
+      return vim.loop.fs_stat(file_path)
+    end)
+    if not (success and file_stats) then
+      return
+    end
 
     return math.floor(0.5 + (file_stats.size / (1024 * 1024)))
   end,
@@ -74,16 +88,20 @@ M.fs = {
     vim.loop.fs_open(filepath, "r", 438, function(err_open, fd)
       if err_open or not fd then
         -- Schedule to avoid E5560 error: nvim_exec must not be called in a lua loop callback
-        vim.schedule(
-          function() M.log.warn("Unable to open file '%s', error: %s", filepath, err_open) end
-        )
+        vim.schedule(function()
+          M.log.warn("Unable to open file '%s', error: %s", filepath, err_open)
+        end)
         return
       end
 
       vim.loop.fs_fstat(fd, function(err_fstat, stat)
-        if not stat then return end
+        if not stat then
+          return
+        end
         assert(not err_fstat, err_fstat)
-        if stat.type ~= "file" then return callback "" end
+        if stat.type ~= "file" then
+          return callback ""
+        end
 
         vim.loop.fs_read(fd, stat.size, 0, function(err_read, data)
           assert(not err_read, err_read)
@@ -128,7 +146,9 @@ M.window = {
     do
       local buffer = vim.api.nvim_win_get_buf(window_number)
       local current_path = vim.api.nvim_buf_get_name(buffer)
-      if current_path == file_path then return true end
+      if current_path == file_path then
+        return true
+      end
     end
     return false
   end,

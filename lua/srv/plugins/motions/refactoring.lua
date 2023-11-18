@@ -4,7 +4,9 @@ return {
   keys = {
     {
       "<leader>rr",
-      function() require("telescope").extensions.refactoring.refactors() end,
+      function()
+        require("telescope").extensions.refactoring.refactors()
+      end,
       desc = "  Code refactor",
       mode = { "n", "x" },
     },
@@ -75,9 +77,8 @@ return {
   config = function(_, opts)
     require("refactoring").setup(opts)
 
-    require("srv.utils.fun.lazy").on_load(
-      "telescope.nvim",
-      function() require("telescope").load_extension "refactoring" end
-    )
+    require("srv.utils.fun.lazy").on_load("telescope.nvim", function()
+      require("telescope").load_extension "refactoring"
+    end)
   end,
 }

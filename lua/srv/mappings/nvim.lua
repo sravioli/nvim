@@ -70,16 +70,22 @@ return {
 
     ---Toggle typewriter mode
     ["<leader>tT"] = {
-      function() require("srv.utils.fn").typewriter_toggle() end,
+      function()
+        require("srv.utils.fn").typewriter_toggle()
+      end,
       "󰔡  Toggle typewriter scrolling",
     },
 
     ["<M-d>"] = {
-      function() require("srv.utils.duck").hatch() end,
+      function()
+        require("srv.utils.duck").hatch()
+      end,
       "🦆  hatch a duck",
     },
     ["<M-c>"] = {
-      function() require("srv.utils.duck").cook() end,
+      function()
+        require("srv.utils.duck").cook()
+      end,
       "🍳  cook a duck",
     },
 

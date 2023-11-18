@@ -8,7 +8,9 @@ local M = {}
 
 ---Expands the given luasnip snippet
 ---@param args any The text to expand
-function M.expand(args) require("luasnip").lsp_expand(args.body) end
+function M.expand(args)
+  require("luasnip").lsp_expand(args.body)
+end
 
 ---Checks if words are present before text to start completing
 ---@return boolean has_words_before Whether words are present

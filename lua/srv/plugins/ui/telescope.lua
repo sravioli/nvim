@@ -10,10 +10,9 @@ return {
       build = "make",
       enabled = vim.fn.executable "make" == 1,
       config = function()
-        require("srv.utils.fun.lazy").on_load(
-          "telescope.nvim",
-          function() require("telescope").load_extension "fzf" end
-        )
+        require("srv.utils.fun.lazy").on_load("telescope.nvim", function()
+          require("telescope").load_extension "fzf"
+        end)
       end,
     },
   },
@@ -51,7 +50,9 @@ return {
 
   opts = function()
     local present, _ = pcall(require, "telescope")
-    if not present then return end
+    if not present then
+      return
+    end
 
     return {
       defaults = {

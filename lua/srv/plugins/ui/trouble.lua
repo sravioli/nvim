@@ -32,7 +32,9 @@ return {
           require("trouble").previous { skip_groups = true, jump = true }
         else
           local ok, err = pcall(vim.cmd.cprevious)
-          if not ok then vim.notify(err or "error", vim.log.levels.ERROR) end
+          if not ok then
+            vim.notify(err or "error", vim.log.levels.ERROR)
+          end
         end
       end,
       desc = "󰼨  Previous trouble/quickfix item",
@@ -44,7 +46,9 @@ return {
           require("trouble").next { skip_groups = true, jump = true }
         else
           local ok, err = pcall(vim.cmd.cnext)
-          if not ok then vim.notify(err or "error", vim.log.levels.ERROR) end
+          if not ok then
+            vim.notify(err or "error", vim.log.levels.ERROR)
+          end
         end
       end,
       desc = "󰼧  Next trouble/quickfix item",

@@ -6,7 +6,9 @@ return {
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
-  init = function() vim.cmd.colorscheme "kanagawa-wave" end,
+  init = function()
+    vim.cmd.colorscheme "kanagawa-wave"
+  end,
   opts = {
     compile = true, -- enable compiling the colorscheme
     undercurls = true,

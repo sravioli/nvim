@@ -3,7 +3,9 @@
 
 local function array_format(str, elem)
   local array, pos = str:match "^([%a_]+)%[([%w_]+)%]$"
-  if not (array and pos) then return str end
+  if not (array and pos) then
+    return str
+  end
 
   return string.format("%s in pos. %s di %s", elem, pos, array)
 end
@@ -83,24 +85,18 @@ return {
     dscr = 'turn array[idx] to "elemento in posizione idx di array"',
     match_pattern = "[%a_]+%[[%w_]+%]$",
   }, {
-    f(
-      function(_, parent)
-        return array_format(parent.snippet.env.POSTFIX_MATCH, "elemento")
-      end,
-      {}
-    ),
+    f(function(_, parent)
+      return array_format(parent.snippet.env.POSTFIX_MATCH, "elemento")
+    end, {}),
   }),
   postfix({
     trig = ".ch",
     dscr = 'turn string[idx] to "carattere in posizione idx di string"',
     match_pattern = "[%a_]+%[[%w_]+%]$",
   }, {
-    f(
-      function(_, parent)
-        return array_format(parent.snippet.env.POSTFIX_MATCH, "carattere")
-      end,
-      {}
-    ),
+    f(function(_, parent)
+      return array_format(parent.snippet.env.POSTFIX_MATCH, "carattere")
+    end, {}),
   }),
   postfix({
     trig = ".=",

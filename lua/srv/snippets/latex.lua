@@ -236,9 +236,9 @@ return {
       match_pattern = "%d+$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent) return format.factorial.expand(parent.snippet.env.POSTFIX_MATCH) end
-    )
+    f(function(_, parent)
+      return format.factorial.expand(parent.snippet.env.POSTFIX_MATCH)
+    end)
   ),
   postfix(
     {
@@ -247,11 +247,9 @@ return {
       match_pattern = "%d+$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent)
-        return tostring(format.factorial.evaluate(parent.snippet.env.POSTFIX_MATCH))
-      end
-    )
+    f(function(_, parent)
+      return tostring(format.factorial.evaluate(parent.snippet.env.POSTFIX_MATCH))
+    end)
   ),
 
   ---Automatically expand the binomial coefficient
@@ -262,11 +260,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent)
-        return format.binomial.expand_simple(parent.snippet.env.POSTFIX_MATCH)
-      end
-    )
+    f(function(_, parent)
+      return format.binomial.expand_simple(parent.snippet.env.POSTFIX_MATCH)
+    end)
   ),
 
   postfix(
@@ -276,9 +272,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent) return format.binomial.expand(parent.snippet.env.POSTFIX_MATCH) end
-    )
+    f(function(_, parent)
+      return format.binomial.expand(parent.snippet.env.POSTFIX_MATCH)
+    end)
   ),
   postfix(
     {
@@ -287,11 +283,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent)
-        return format.binomial.expand_full(parent.snippet.env.POSTFIX_MATCH)
-      end
-    )
+    f(function(_, parent)
+      return format.binomial.expand_full(parent.snippet.env.POSTFIX_MATCH)
+    end)
   ),
   postfix(
     {
@@ -300,9 +294,9 @@ return {
       match_pattern = "C?%(%d+[,;]%s+%d+%)$",
       snippetType = "snippet",
     },
-    f(
-      function(_, parent) return format.binomial.solve(parent.snippet.env.POSTFIX_MATCH) end
-    )
+    f(function(_, parent)
+      return format.binomial.solve(parent.snippet.env.POSTFIX_MATCH)
+    end)
   ),
 
   postfix(
@@ -331,99 +325,147 @@ return {
   ---Greek letters
   s( ---ALPHA
     snip("@([Aa]l)", "alpha", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "pha", "A") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "pha", "A")
+    end)
   ),
   s( ---BETA
     snip("@([Bb]e)", "beta", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "ta", "B") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "ta", "B")
+    end)
   ),
   s( ---GAMMA
     snip("@([Gg]a)", "gamma", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "mma") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "mma")
+    end)
   ),
   s( ---DELTA
     snip("@([Dd]e)", "delta", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "lta") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "lta")
+    end)
   ),
   s( ---EPSILON
     snip("@(v?)([Ee]p)", "epsilon", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "silon", "E") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "silon", "E")
+    end)
   ),
   s( ---ZETA
     snip("@([Zz]e)", "zeta", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "ta", "Z") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "ta", "Z")
+    end)
   ),
   s( ---ETA
     snip("@([Ee]t)", "eta", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "a", "H") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "a", "H")
+    end)
   ),
   s( ---THETA
     snip("@(v?)([Tt]h)", "theta", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "eta") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "eta")
+    end)
   ),
   s( ---IOTA
     snip("@([Ii]o)", "iota", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "ta", "I") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "ta", "I")
+    end)
   ),
   s( ---KAPPA
     snip("@([Kk]a)", "kappa", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "ppa", "K") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "ppa", "K")
+    end)
   ),
   s( ---LAMBDA
     snip("@([Ll]a)", "lambda", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "mbda") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "mbda")
+    end)
   ),
   s( ---MU
     snip("@([Mm]u)", "mu", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "", "M") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "", "M")
+    end)
   ),
   s( ---NU
     snip("@([Nn]u)", "nu", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "", "N") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "", "N")
+    end)
   ),
   s( ---XI
     snip("@([Xx]i)", "xi", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures) end)
+    f(function(_, s)
+      return format.greek.expand(s.captures)
+    end)
   ),
   s( ---OMICRON
     snip("@([Oo]M)", "omicron", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return s.captures[1]:gsub(".$", "") end)
+    f(function(_, s)
+      return s.captures[1]:gsub(".$", "")
+    end)
   ),
   s( ---PI
     snip("@([Pp]i)", "pi", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures) end)
+    f(function(_, s)
+      return format.greek.expand(s.captures)
+    end)
   ),
   s( ---RHO
     snip("@(v?)([Rr]h)", "rho", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "o", "P") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "o", "P")
+    end)
   ),
   s( ---SIGMA
     snip("@([Ss]i)", "sigma", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "gma") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "gma")
+    end)
   ),
   s( ---TAU
     snip("@([Tt]a)", "tau", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "u", "T") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "u", "T")
+    end)
   ),
   s( ---UPSILON
     snip("@([Uu]p)", "upsilon", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "silon") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "silon")
+    end)
   ),
   s( ---PHI
     snip("@(v?)([Pp]h)", "phi", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "i") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "i")
+    end)
   ),
   s( ---CHI
     snip("@([Cc]h)", "chi", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "i", "X") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "i", "X")
+    end)
   ),
   s( ---PSI
     snip("@([Pp]s)", "psi", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "i") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "i")
+    end)
   ),
   s( ---OMEGA
     snip("@([Oo]m)", "omega", "", "autosnippet", false, "pattern"),
-    f(function(_, s) return format.greek.expand(s.captures, "ega") end)
+    f(function(_, s)
+      return format.greek.expand(s.captures, "ega")
+    end)
   ),
 
   ---Fonts
@@ -599,9 +641,13 @@ return {
       wordTrig = false,
     },
     fmt([[\left{}{}\right{}]], {
-      f(function(_, s) return parentheses[s.captures[1]][1] end),
+      f(function(_, s)
+        return parentheses[s.captures[1]][1]
+      end),
       i(1),
-      f(function(_, s) return parentheses[s.captures[1]][2] end),
+      f(function(_, s)
+        return parentheses[s.captures[1]][2]
+      end),
     })
   ),
 

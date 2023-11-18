@@ -82,7 +82,9 @@ return {
               return require("lsp-progress").progress {
                 format = function(messages)
                   local icon = "  "
-                  if #messages > 0 then return table.concat(messages, " ") .. icon end
+                  if #messages > 0 then
+                    return table.concat(messages, " ") .. icon
+                  end
 
                   local clients = vim.lsp.get_active_clients()
                   if #clients <= 0 then
@@ -92,7 +94,9 @@ return {
                     for _, client in ipairs(clients) do
                       if client and client.name ~= "" then
                         local name = "[" .. client.name .. "]"
-                        if client.name == "null-ls" then name = "(󰟢)" end
+                        if client.name == "null-ls" then
+                          name = "(󰟢)"
+                        end
 
                         table.insert(client_names, name)
                       end

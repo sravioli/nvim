@@ -4,7 +4,9 @@ return {
   keys = {
     {
       "<leader>i",
-      function() require("nvim-toggler").toggle() end,
+      function()
+        require("nvim-toggler").toggle()
+      end,
       desc = "󰨙  Toggle word",
     },
   },

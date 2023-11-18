@@ -13,11 +13,15 @@ M["<C-Space>"] = cmp.mapping.complete()
 M["<C-e>"] = cmp.mapping.abort()
 
 M["<M-p>"] = cmp.mapping(function()
-  if ls.choice_active() then ls.change_choice(-1) end
+  if ls.choice_active() then
+    ls.change_choice(-1)
+  end
 end, { "i", "s" })
 
 M["<M-n>"] = cmp.mapping(function()
-  if ls.choice_active() then ls.change_choice(1) end
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
 end, { "i", "s" })
 
 M["<S-Tab>"] = cmp.mapping(function(fallback)

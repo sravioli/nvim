@@ -62,7 +62,9 @@ return {
     "jghauser/follow-md-links.nvim",
     enabled = false,
     ft = "markdown",
-    init = function() vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true }) end,
+    init = function()
+      vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
+    end,
   },
   {
     ---Catalyze your Fenced Markdown Code-block editing!
@@ -71,7 +73,9 @@ return {
     keys = {
       {
         "<leader>ce",
-        function() require("femaco.edit").edit_code_block() end,
+        function()
+          require("femaco.edit").edit_code_block()
+        end,
         desc = "󱚌  Edit code block with FeMaco",
       },
     },
@@ -90,7 +94,9 @@ return {
       -- @param base_filetype: The filetype which FeMaco is called from, not the
       -- filetype of the injected language (this is the current buffer so you can
       -- get it from vim.bo.filetyp).
-      ensure_newline = function(_) return true end,
+      ensure_newline = function(_)
+        return true
+      end,
     },
   },
   { ---take your scientific notes ✏️ in Neovim
@@ -99,7 +105,9 @@ return {
     keys = {
       {
         "<leader>cp",
-        function() require("nabla").popup { border = require("srv.preferences").border } end,
+        function()
+          require("nabla").popup { border = require("srv.preferences").border }
+        end,
         desc = "∇  Open Nabla popup",
       },
     },
