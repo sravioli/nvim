@@ -1,7 +1,9 @@
 ---Source neovim settings
 require "srv.config.settings"
 
-if vim.g.neovide then require "srv.config.neovide" end
+if vim.g.neovide then
+  require "srv.config.neovide"
+end
 
 ---Load plugins
 require "srv.plugins"
