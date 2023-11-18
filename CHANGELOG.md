@@ -5,6 +5,52 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [0.15.0](https://github.com/sRavioli/nvim/compare/0.14.0..0.15.0) - 2023-11-18
+
+#### Bug Fixes
+
+- **(config)** change some augroups name, remove autocmds - ([859110d](https://github.com/sRavioli/nvim/commit/859110d27a285d1c3f15602682d73234eb27a2b9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** remove nvchad types from lua stdpath - ([6444755](https://github.com/sRavioli/nvim/commit/6444755891707903c0f74af7249cc488e57bf38f)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** use `vim.notify` instead of `print` - ([2699da6](https://github.com/sRavioli/nvim/commit/2699da6b736c184b540cc41a1173b8f6a39b0e16)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** add fixjson intent width - ([943473d](https://github.com/sRavioli/nvim/commit/943473d6ed8682c539e01b4eb6899078e643c6bc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** don't let `nvim-tree` hijack unnamed buffers - ([53236d9](https://github.com/sRavioli/nvim/commit/53236d96e26ecd694200e17d3a0e739bc073ae2f)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel:markdownlint)** allow any heading - ([2b51b07](https://github.com/sRavioli/nvim/commit/2b51b0777b27fe2e2941352b67067547ad96ac21)) - [@sRavioli](https://github.com/sRavioli)
+- **(syntax)** typo - ([7f0db29](https://github.com/sRavioli/nvim/commit/7f0db29cac9d3dd800b74aa28db69003b25a3100)) - [@sRavioli](https://github.com/sRavioli)
+- use `./skel/.stylua.toml` instead - ([66784a5](https://github.com/sRavioli/nvim/commit/66784a55f3af5570b057f1a69a07ff979f2f3422)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Documentation
+
+- **(skel:clang-format)** reduce comments size - ([4d27038](https://github.com/sRavioli/nvim/commit/4d270380a7e8b2292277a1a8b97e57257c7d45d4)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(cog)** track changelog after format - ([3c5a099](https://github.com/sRavioli/nvim/commit/3c5a099209316ffb7df5059fb88ddeb0e25f66ee)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings:nvim)** add mapping to select last pasted text - ([ea7a893](https://github.com/sRavioli/nvim/commit/ea7a893f7fc205934affec67a0544fb975a9933d)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** customize `lsp-lens` icons - ([e6b62af](https://github.com/sRavioli/nvim/commit/e6b62af4051b3c5b82b2ce6745b38da03d95eeaa)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** add none-ls luacheck diagnostics - ([ef9df0e](https://github.com/sRavioli/nvim/commit/ef9df0e0ee695b9a214c12bce51008f8ede88ad9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** configure null-ls sources to use fallback `./skel/` files - ([d18b073](https://github.com/sRavioli/nvim/commit/d18b073566da41f4607dd6852f6fa2d61ea35b94)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel)** add template `.luacheckrc` - ([7b30a8f](https://github.com/sRavioli/nvim/commit/7b30a8f7debdd281bbab9630135184614673c629)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel)** add template `.yamlfix.toml` - ([4bf824e](https://github.com/sRavioli/nvim/commit/4bf824e5ea16989de9f99f517ee225affd7c9271)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel:markdownlint)** add skeleton markdownlint config - ([e96aa00](https://github.com/sRavioli/nvim/commit/e96aa002176bdf25b607a58aca31b3274f075178)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel:stylua)** add stylua skeleton config - ([6a1dd42](https://github.com/sRavioli/nvim/commit/6a1dd4210a7bfc0bb7d7c08697da7f28af2bc4b0)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel:taplo)** add skeleton taplo config - ([1c2ac27](https://github.com/sRavioli/nvim/commit/1c2ac27fb0867798b226c09aa2b0b5a85c34952b)) - [@sRavioli](https://github.com/sRavioli)
+- add selene config - ([6fe3061](https://github.com/sRavioli/nvim/commit/6fe3061ecba6c893ea7900b9a76c3f2652a015a0)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(changelog)** format changelog - ([ec247f8](https://github.com/sRavioli/nvim/commit/ec247f8090147c0f3871071097dc1658621356a3)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update `lazy.nvim` lockfile - ([fda122d](https://github.com/sRavioli/nvim/commit/fda122d1440cc92678b9af80cb83f6fa702cbad9)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Style
+
+- **(skel)** fix formatting - ([dca5e07](https://github.com/sRavioli/nvim/commit/dca5e07ac465177b1b0ed4ca7cd9178a60ede40b)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:keymaps)** remove commented out code - ([00c036f](https://github.com/sRavioli/nvim/commit/00c036f8ace856fcd2920e00d6646f4671846865)) - [@sRavioli](https://github.com/sRavioli)
+- format with stylua - ([a820491](https://github.com/sRavioli/nvim/commit/a8204919130f20c554d428945061318c9c53aca2)) - [@sRavioli](https://github.com/sRavioli)
+- format with stylua - ([0bbe630](https://github.com/sRavioli/nvim/commit/0bbe6307c00da9c68770583d216f2c7a5867b4ff)) - [@sRavioli](https://github.com/sRavioli)
+- fix linter warnings - ([7a27d8d](https://github.com/sRavioli/nvim/commit/7a27d8d0a2853a077685ef8077c3a932ca95fb71)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.14.0](https://github.com/sRavioli/nvim/compare/0.13.0..0.14.0) - 2023-11-15
 
 #### Bug Fixes
