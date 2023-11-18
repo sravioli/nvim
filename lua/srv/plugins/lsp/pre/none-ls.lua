@@ -46,7 +46,11 @@ return {
         --     on_success = function(cspell_config_file, params)
         --       -- format the cspell config file
         --       os.execute(
-        --         string.format("cat %s | jq -S '.words |= sort' | tee %s > /dev/null", cspell_config_file, cspell_config_file)
+        --         string.format(
+        --           "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+        --           cspell_config_file,
+        --           cspell_config_file
+        --         )
         --       )
         --     end,
         --   },
@@ -67,6 +71,13 @@ return {
         formatting.cbfmt,
 
         ---lua
+        diagnostics.luacheck.with {
+          extra_args = function()
+            local file = search_config_file ".luacheckrc"
+            if file ~= "" then return { "--config", file } end
+            return {}
+          end,
+        },
         formatting.stylua.with {
           extra_args = function()
             local file = search_config_file ".stylua.toml"
