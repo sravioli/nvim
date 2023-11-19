@@ -61,16 +61,10 @@ vim.env.PATH = vim.fn.stdpath "data"
 ---The path where luasnip will look for snippets
 let.lua_snippets_path = vim.fs.normalize(vim.fn.stdpath "config" .. "/lua/srv/snippets")
 
----Neovim providers
----@class Providers
----@field node    table Paths to the nodejs provider executable
----@field ruby    table Paths to the ruby provider executable
----@field perl    table Paths to the perl provider executable
----@field python3 table Paths to the python3 provider executable
 local providers = {
   node = {
     lnx = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host",
-    win = "C:/Users/fsimo/AppData/Roaming/npm/node_modules/neovim/bin/cli.js",
+    win = os.getenv "APPDATA" .. "/npm/node_modules/neovim/bin/cli.js",
   },
 
   ruby = {
@@ -85,7 +79,7 @@ local providers = {
 
   python3 = {
     lnx = "/home/sravioli/.py-nvim/bin/python3",
-    win = "C:/Users/fsimo/.py-nvim/Scripts/python.exe",
+    win = os.getenv "USERPROFILE" .. "/.py-nvim/Scripts/python.exe",
   },
 }
 
@@ -93,7 +87,7 @@ local providers = {
 ---@param paths table                The paths to the provider
 for prov, paths in pairs(providers) do
   let["loaded_" .. prov .. "_provider"] = nil
-  let[prov .. "_host_prog"] = paths[fn.get_os()]
+  let[prov .. "_host_prog"] = vim.fn.resolve(paths[fn.get_os()])
 end
 
 ---Load the diagnostic signs
