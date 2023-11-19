@@ -7,7 +7,7 @@ local M = {}
 M.border = "rounded"
 
 ---Various icons for kinds, diagnostics, etc.
----@class Icons table<table>
+---@class Icons
 M.icons = {}
 
 ---@enum kinds Icons for the various kinds
@@ -86,6 +86,19 @@ M.icons.git = {
   Unstaged = "󱋭",
   Staged = "",
   Conflict = "",
+}
+
+M.spinners = {}
+
+M.spinners.FiraCode = { "", "", "", "", "", "" }
+
+M.spinners.dots = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+
+M.progress_bar = {}
+
+M.progress_bar.FiraCode = {
+  empty = { "", "", "" },
+  full = { "", "", "" },
 }
 
 return M
