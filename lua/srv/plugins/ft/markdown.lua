@@ -237,7 +237,7 @@ return {
   {
     ---Rethinking Vim as a tool for writing
     "preservim/vim-pencil",
-    ft = { "markdown" },
+    -- ft = { "markdown" },
     cmd = { "Pencil", "PencilOff", "PencilToggle", "PencilSoft", "PencilHard" },
     init = function()
       vim.cmd "let g:pencil#wrapModeDefault = 'hard'"
