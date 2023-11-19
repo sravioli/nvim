@@ -1,6 +1,7 @@
 local M = {}
 
 local __border = require("srv.preferences").border
+local lsp_notify = require "srv.utils.fun.lsp-notify"
 
 M.on_attach = function(client, bufnr)
   ---prefer null-ls
@@ -75,6 +76,11 @@ M.capabilities = function()
       },
     },
   }
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+
   return capabilities
 end
 
@@ -85,6 +91,9 @@ M.handlers = {
     vim.lsp.handlers.signature_help,
     { border = __border, focusable = false, relative = "cursor" }
   ),
+
+  ---BUG: the progress gets displayed 2 times and the message keeps blinking.
+  ["$/progress"] = lsp_notify["$/progress"],
 }
 
 return M
