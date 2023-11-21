@@ -1,7 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
-  lazy = false,
+  lazy = true,
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
     {
@@ -40,6 +40,10 @@ return {
         api.config.mappings.default_on_attach(bufnr)
 
         require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
+
+        api.events.subscribe(api.events.Event.FileCreated, function(file)
+          vim.cmd("edit " .. file.fname)
+        end)
       end,
 
       hijack_cursor = true, ---keep cursor on first letter of filename
