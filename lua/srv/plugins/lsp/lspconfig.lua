@@ -6,17 +6,35 @@ local servers_config = require "srv.plugins.lsp.servers"
 return {
   ---Quickstart configs for Nvim LSP
   "neovim/nvim-lspconfig",
-  event = { "BufWinEnter", "BufRead", "BufNewFile" },
-  config = function()
-    require "srv.plugins.lsp.servers"
-  end,
   event = require("srv.utils.event").events.LazyFile,
   dependencies = {
+    {
+      ---Extensible UI for Neovim notifications and LSP progress messages.
+      "j-hui/fidget.nvim",
+      event = "LspAttach",
+      opts = {},
+    },
+    {
+      ---LSP diagnostics in virtual text at the top right of your screen
+      "dgagn/diagflow.nvim",
+      event = "LspAttach",
+      opts = {
+        scope = "line",
+        padding_right = 2,
+        gap_size = 2,
+
+        format = lsp_utils.diagnostic.format,
+
+        -- basically don't update diagnostics when in insert mode.
+        toggle_event = { "InsertEnter" },
+        render_event = { "CursorMoved" },
+        update_event = { "DiagnosticChanged", "BufReadPost" },
+      },
+    },
     {
       ---💻 Neovim setup for init.lua and plugin development with full signature help, docs
       ---and completion for the nvim lua API.
       "folke/neodev.nvim",
-      enabled = true,
       ft = "lua",
       opts = {
         library = {
