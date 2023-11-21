@@ -10,9 +10,22 @@ return {
       build = "make",
       enabled = vim.fn.executable "make" == 1,
       config = function()
-        require("srv.utils.fun.lazy").on_load("telescope.nvim", function()
+        require("srv.utils.event").on_load("telescope.nvim", function()
           require("telescope").load_extension "fzf"
         end)
+
+        ---since nvim-0.10.0, :Telescope find_files opens file in insert mode, this fixes it
+        vim.api.nvim_create_autocmd("WinLeave", {
+          callback = function()
+            if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
+              vim.api.nvim_feedkeys(
+                vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+                "i",
+                false
+              )
+            end
+          end,
+        })
       end,
     },
   },
