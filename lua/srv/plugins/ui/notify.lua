@@ -1,8 +1,7 @@
 return {
   ---A fancy, configurable, notification manager for NeoVim.
   "rcarriga/nvim-notify",
-  -- enabled = false,
-  event = "VeryLazy",
+  event = "UiEnter",
   opts = function()
     local icons = require("srv.preferences").icons.diagnostics
     return {
@@ -22,5 +21,10 @@ return {
       timeout = 2000,
       top_down = true,
     }
+  end,
+
+  config = function(_, opts)
+    require("notify").setup(opts)
+    vim.notify = require "notify"
   end,
 }
