@@ -5,7 +5,7 @@ return {
     {
       ---repeat.vim: enable repeating supported plugin maps with "."
       "tpope/vim-repeat",
-      event = "VeryLazy",
+      keys = { { "." } },
     },
     {
       ---Enhanced f/t motions for Leap
