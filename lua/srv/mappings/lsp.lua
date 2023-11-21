@@ -26,6 +26,16 @@ return {
       "LSP implementation",
     },
 
+    ["<leader>th"] = {
+      function()
+        local should_enable = true
+        if vim.lsp.inlay_hint.is_enabled(nil) then
+          should_enable = false
+        end
+        vim.lsp.inlay_hint.enable(nil, should_enable)
+      end,
+    },
+
     ["<leader>ls"] = {
       function()
         vim.lsp.buf.signature_help()
