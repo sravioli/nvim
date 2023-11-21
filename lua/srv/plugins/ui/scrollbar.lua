@@ -4,7 +4,7 @@ return {
   dependencies = {
     { "kevinhwang91/nvim-hlslens" },
   },
-  event = "BufWinEnter",
+  event = require("srv.utils.event").events.LazyFile,
   opts = function()
     local theme = require("kanagawa.colors").setup().theme
     return {

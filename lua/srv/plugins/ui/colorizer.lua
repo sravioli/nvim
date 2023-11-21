@@ -1,7 +1,7 @@
 return {
   ---Maintained fork of the fastest Neovim colorizer
   "NvChad/nvim-colorizer.lua",
-  event = "VeryLazy",
+  event = require("srv.utils.event").events.LazyFile,
   opts = {
     filetypes = { "*" },
     user_default_options = {
