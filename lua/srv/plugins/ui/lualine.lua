@@ -3,9 +3,8 @@ return {
   ---pure lua.
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    { "nvim-tree/nvim-web-devicons" },
     { "rebelot/kanagawa.nvim" },
-    { "linrongbin16/lsp-progress.nvim" },
+    { "nvim-tree/nvim-web-devicons" },
   },
   event = "UIEnter",
   opts = function()
@@ -75,38 +74,6 @@ return {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             color = { fg = "#ff9e64" },
-          },
-          {
-
-            function()
-              return require("lsp-progress").progress {
-                format = function(messages)
-                  local icon = "  "
-                  if #messages > 0 then
-                    return table.concat(messages, " ") .. icon
-                  end
-
-                  local clients = vim.lsp.get_active_clients()
-                  if #clients <= 0 then
-                    return icon
-                  else
-                    local client_names = {}
-                    for _, client in ipairs(clients) do
-                      if client and client.name ~= "" then
-                        local name = "[" .. client.name .. "]"
-                        if client.name == "null-ls" then
-                          name = "(󰟢)"
-                        end
-
-                        table.insert(client_names, name)
-                      end
-                    end
-                    return table.concat(client_names, " ") .. icon
-                  end
-                end,
-              }
-            end,
-            color = { fg = theme.syn.comment },
           },
           { "encoding" },
           {
