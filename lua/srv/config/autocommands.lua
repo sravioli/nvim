@@ -4,25 +4,35 @@
 ---@license GPL-3.0
 
 local au = vim.api.nvim_create_autocmd
+local events = require("srv.utils.event").events
 
-local aug = require "srv.config.augroups"
+local _aug = function(name, opts)
+  return vim.api.nvim_create_augroup(name .. "Group", opts or {})
+end
 
-au("UiEnter", {
-  desc = "Load notify after startup",
-  group = aug.OnUiEnter,
-  pattern = "*",
-  callback = function()
-    local notify_installed, notify = pcall(require, "notify")
-    if notify_installed then
-      vim.notify = notify
-    end
-  end,
+---@class Autogroups
+---@field Cursor             number to use for cursor related autocommands.
+---@field CheckOutsideChange number to use when checking for outside changes to file.
+---@field OnLazyFile         number to use when entering a file.
+---@field OnVimHelpEnter     number when entering vim help files.
+local aug = {
+  Cursor = _aug "Cursor",
+  CheckOutsideChange = _aug "CheckOutsideChange",
+  FocusChanged = _aug "FocusChanged",
+  OnLazyFile = _aug "OnLazyFile",
+  OnVimHelpEnter = _aug "OnVimHelpEnter",
+  OneKeyExit = _aug "OneKeyExit",
+}
+
+au(events.FocusGained, {
+  group = aug.FocusChanged,
+  command = "checktime",
 })
 
 ---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
   desc = "Restore WindowsTerminal cursor shape upon exit (WindowsTerminal)",
-  group = aug.CursorGroup,
+  group = aug.Cursor,
   pattern = "*",
   callback = function()
     vim.opt.guicursor:append "a:hor20-blinkon1"
@@ -33,7 +43,7 @@ au("VimLeave", {
 au("TextYankPost", {
   desc = "Highlight selection on yank",
   pattern = "*",
-  group = aug.CursorGroup,
+  group = aug.Cursor,
   callback = function()
     vim.highlight.on_yank { higroup = "Search", timeout = 200 }
   end,
@@ -42,7 +52,7 @@ au("TextYankPost", {
 au("FileType", {
   desc = "remap some keys for the help page",
   pattern = "help",
-  group = aug.VimHelp,
+  group = aug.OnVimHelpEnter,
   callback = function()
     local opts = function(desc)
       return { buffer = true, silent = true, desc = desc }
@@ -80,13 +90,13 @@ au({ "InsertLeave", "WinEnter" }, {
   desc = "Show cursor in current buffer",
   pattern = "*",
   command = "set cursorline",
-  group = aug.CursorGroup,
+  group = aug.Cursor,
 })
 au({ "InsertEnter", "WinLeave" }, {
   desc = "Hide cursor in non active buffer",
   pattern = "*",
   command = "set nocursorline",
-  group = aug.CursorGroup,
+  group = aug.Cursor,
 })
 
 ---@type table Doxygen highlight groups and what group to link to.
@@ -111,7 +121,7 @@ au("FileType", {
       vim.cmd(string.format("highlight link %s %s", pattern, highlight))
     end
   end,
-  group = aug.custom_highlights,
+  -- group = aug.custom_highlights,
 })
 
 ---Set filetype to "pseudo"
@@ -119,7 +129,7 @@ au({ "BufNewFile", "BufRead" }, {
   desc = "Set custom filetype for `.pseudo` files",
   pattern = "*.pseudo",
   command = "set filetype=pseudo | set syntax=pseudo",
-  group = aug.BufDetect,
+  group = aug.OnLazyFile,
 })
 
 au("FileType", {
@@ -129,21 +139,13 @@ au("FileType", {
     vim.opt.tabstop = 2
     vim.opt.shiftwidth = 2
   end,
-  group = aug.BufDetect,
-})
-
----Refresh lualine on lsp update
-au("User", {
-  pattern = "LspProgressStatusUpdated",
-  desc = "Refresh lualine on LSP updates",
-  group = aug.lualine,
-  callback = require("lualine").refresh,
+  group = aug.OnLazyFile,
 })
 
 au("FileType", {
   pattern = "lua",
   desc = "Change the colorcolumn for lua files",
-  group = aug.BufDetect,
+  group = aug.OnLazyFile,
   callback = function()
     vim.opt_local.colorcolumn = "90"
   end,
@@ -152,7 +154,6 @@ au("FileType", {
 au("BufWritePre", {
   pattern = "*",
   desc = "update last modified flag",
-  group = aug.lua_functions,
   callback = function()
     require("srv.utils.fn").update_timestamp()
   end,
