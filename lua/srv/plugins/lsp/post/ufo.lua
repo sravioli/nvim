@@ -1,14 +1,15 @@
 return {
   ---Not UFO in the sky, but an ultra fold in Neovim.
-  [1] = "kevinhwang91/nvim-ufo",
+  "kevinhwang91/nvim-ufo",
+  enabled = false,
   dependencies = {
     { "kevinhwang91/promise-async" },
     {
       ---Status column plugin that provides a configurable 'statuscolumn' and click handlers.
-      [1] = "luukvbaal/statuscol.nvim",
-      config = function()
+      "luukvbaal/statuscol.nvim",
+      opts = function()
         local builtin = require "statuscol.builtin"
-        require("statuscol").setup {
+        return {
           relculright = true,
           segments = {
             { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
@@ -19,7 +20,7 @@ return {
       end,
     },
   },
-  event = "BufRead",
+  event = require("srv.utils.event").events.LazyFile,
   cmd = {
     "UfoEnable",
     "UfoDisable",
@@ -30,12 +31,38 @@ return {
     "UfoDisableFold",
   },
   init = function()
-    vim.opt.foldcolumn = "auto" -- '0' is not bad
+    vim.opt.foldcolumn = "1" -- '0' is not bad
     vim.opt.foldlevel = 99 -- Using ufo provider need a large value
     vim.opt.foldlevelstart = 99
     vim.opt.foldenable = true
   end,
   opts = {
+    close_fold_kinds = { "comment", "imports" },
+
+    provider_selector = function(bufnr, filetype, _)
+      local fmap = { lua = { "lsp", "treesitter" } }
+
+      return fmap[filetype]
+        or function()
+          local function handle_fallback_exception(err, providerName)
+            if type(err) == "string" and err:match "UfoFallbackException" then
+              return require("ufo").getFolds(bufnr, providerName)
+            else
+              return require("promise").reject(err)
+            end
+          end
+
+          return require("ufo")
+            .getFolds(bufnr, "lsp")
+            :catch(function(err)
+              return handle_fallback_exception(err, "treesitter")
+            end)
+            :catch(function(err)
+              return handle_fallback_exception(err, "indent")
+            end)
+        end
+    end,
+
     preview = {
       win_config = {
         winhighlight = "Normal:NormalDark",
@@ -43,6 +70,7 @@ return {
       },
     },
 
+    enable_get_fold_virt_text = true,
     fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
       local new_virt_text = {}
 
