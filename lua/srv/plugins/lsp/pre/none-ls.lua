@@ -2,7 +2,7 @@ return {
   ---Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
   "nvimtools/none-ls.nvim",
   dependencies = { { "nvim-lua/plenary.nvim" } },
-  event = "BufWinEnter",
+  event = require("srv.utils.event").events.LazyFile,
   opts = function()
     local present, null_ls = pcall(require, "null-ls")
     if not present then
