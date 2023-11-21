@@ -2,14 +2,14 @@ return {
   ---improve neovim lsp experience
   "glepnir/lspsaga.nvim",
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "nvim-treesitter/nvim-treesitter",
+    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-treesitter/nvim-treesitter" },
   },
   branch = "main",
   event = "LspAttach",
   opts = {
     symbol_in_winbar = {
-      enable = true,
+      enable = false,
       separator = " > ",
     },
 
