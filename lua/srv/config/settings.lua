@@ -6,9 +6,19 @@ local let = vim.g
 
 set.clipboard = "unnamedplus"
 
+set.confirm = true
+
 set.cursorline = true
 
-set.fillchars = { eob = "~", fold = "~", foldopen = "󰅀", foldclose = "󰅂" }
+set.foldmethod = "marker"
+set.fillchars = {
+  foldopen = "󰅀",
+  foldclose = "󰅂",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = "~",
+}
 
 set.ignorecase = true
 set.smartcase = true
@@ -39,8 +49,13 @@ set.termguicolors = true
 set.timeoutlen = 400
 
 set.undofile = true
+set.undolevels = 10000
+
+set.virtualedit = "block"
 
 set.updatetime = 250
+
+set.smoothscroll = true
 
 ---go to previous/next line with h,l,left arrow and right arrow
 ---when cursor reaches end/beginning of line
