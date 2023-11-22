@@ -1,24 +1,8 @@
+--# selene: allow(mixed_table)
 return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
-  lazy = true,
-  dependencies = {
-    { "nvim-tree/nvim-web-devicons" },
-    {
-      ---Neovim plugin to improve the default vim.ui interfaces
-      "stevearc/dressing.nvim",
-      opts = {
-        select = {
-          -- backend = { "nui" },
-
-          nui = {
-            relative = "win",
-            min_width = 40,
-            min_height = 2,
-          },
-        },
-      },
-    },
+  dependencies = { { "nvim-tree/nvim-web-devicons" } },
   cmd = {
     "NvimTreeOpen",
     "NvimTreeClose",
