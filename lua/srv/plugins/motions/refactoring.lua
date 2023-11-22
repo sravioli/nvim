@@ -77,7 +77,7 @@ return {
   config = function(_, opts)
     require("refactoring").setup(opts)
 
-    require("srv.utils.fun.lazy").on_load("telescope.nvim", function()
+    require("srv.utils.event").on_load("telescope.nvim", function()
       require("telescope").load_extension "refactoring"
     end)
   end,
