@@ -1,3 +1,4 @@
+--# selene: allow(mixed_table)
 return {
   {
     ---A markdown preview directly in your neovim.
@@ -55,15 +56,6 @@ return {
       ---Most VimTeX mappings rely on localleader and this can be changed with the
       ---following line. The default is usually fine and is the symbol "\".
       -- let maplocalleader = ","
-    end,
-  },
-  {
-    ---Easily follow markdown links with this neovim plugin
-    "jghauser/follow-md-links.nvim",
-    enabled = false,
-    ft = "markdown",
-    init = function()
-      vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
     end,
   },
   {
@@ -237,14 +229,13 @@ return {
   {
     ---Rethinking Vim as a tool for writing
     "preservim/vim-pencil",
-    -- ft = { "markdown" },
+    ft = { "markdown" },
     cmd = { "Pencil", "PencilOff", "PencilToggle", "PencilSoft", "PencilHard" },
-    init = function()
+    config = function()
       vim.cmd "let g:pencil#wrapModeDefault = 'hard'"
       vim.cmd "let g:pencil#autoformat = 1"
       vim.cmd(
-        "let g:pencil#textwidth = "
-          .. vim.api.nvim_get_option_value("colorcolumn", { scope = "local" })
+        "let g:pencil#textwidth = " .. tonumber(vim.opt_local.colorcolumn["_value"] or 0)
       )
     end,
   },
