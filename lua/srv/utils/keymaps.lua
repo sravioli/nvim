@@ -76,7 +76,6 @@ end
 M.load = function(plugin, options)
   vim.schedule(function()
     local ptype = type(plugin)
-    local notify = require "notify"
 
     if ptype == "nil" then
       local keymaps = require "srv.mappings" ---@class Keymaps
@@ -86,7 +85,7 @@ M.load = function(plugin, options)
     elseif ptype == "string" then
       local exists_mappings, mappings = pcall(require, ("srv.mappings.%s"):format(plugin))
       if not exists_mappings then
-        notify(("No keymaps found for plugin '%s'! check your config"):format(plugin))
+        vim.notify(("No keymaps found for plugin '%s'! check your config"):format(plugin))
         return
       end
 
@@ -95,7 +94,7 @@ M.load = function(plugin, options)
     elseif ptype == "table" then
       M.__set_keymap(plugin)
     else
-      notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
+      vim.notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
     end
   end)
 end
