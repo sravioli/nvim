@@ -6,7 +6,7 @@ return {
     { "rebelot/kanagawa.nvim" },
     { "nvim-tree/nvim-web-devicons" },
   },
-  event = "UIEnter",
+  event = "VeryLazy",
   opts = function()
     local icons = require("srv.preferences").icons
     local theme = require("kanagawa.colors").setup({ theme = "dragon" }).theme
