@@ -6,12 +6,6 @@
 ---@class Duck
 local M = {}
 
----safe require `nvim-notify`
-local notify_installed, notify = pcall(require, "notify")
-if notify_installed then
-  vim.notify = notify
-end
-
 ---@private
 ---
 ---list of active ducks
@@ -45,7 +39,7 @@ M.config = {
 M.waddle = function(duck)
   local timer = vim.loop.new_timer()
   if not timer then
-    notify("duck: could not create timer!", "error")
+    vim.notify("duck: could not create timer!", vim.log.levels.ERROR)
     return
   end
 
