@@ -21,6 +21,17 @@ function M.on_load(name, fn)
   end
 end
 
+---Executes a function on the VeryLazy event
+---@param fn function: fun()
+function M.on_very_lazy(fn)
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+      fn()
+    end,
+  })
+end
+
 ---@class Events
 ---@field LazyFile    string[] equivalent to `{ "BufReadPost", "BufNewFile", "BufWritePre" }`
 ---@field FocusGained string[] equivalent to `{ "FocusGained", "TermClose", "TermLeave" }`
