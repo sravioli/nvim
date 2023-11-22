@@ -19,6 +19,18 @@ return {
         },
       },
     },
+  cmd = {
+    "NvimTreeOpen",
+    "NvimTreeClose",
+    "NvimTreeToggle",
+    "NvimTreeFocus",
+    "NvimTreeRefresh",
+    "NvimTreeFindFile",
+    "NvimTreeFindFileToggle",
+    "NvimTreeClipboard",
+    "NvimTreeResize",
+    "NvimTreeCollapse",
+    "NvimTreeCollapseKeepBuffers",
   },
   keys = {
     { "<C-n>", "<cmd>NvimTreeToggle<CR>", desc = "  Toggle file explorer" },
