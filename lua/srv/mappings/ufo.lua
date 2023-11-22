@@ -3,10 +3,30 @@ return {
   autoload = false,
 
   n = {
-    ["zR"] = { require("ufo").openAllFolds, "󱃄  Open all folds" },
-    ["zM"] = { require("ufo").closeAllFolds, "󱃄  Close all folds" },
-    ["zr"] = { require("ufo").openFoldsExceptKinds, "󱃄  Open all folds except kinds" },
-    ["zm"] = { require("ufo").closeFoldsWith, "󱃄  Close all folds with" },
+    ["zR"] = {
+      function()
+        require("ufo").openAllFolds()
+      end,
+      "󱃄  Open all folds",
+    },
+    ["zM"] = {
+      function()
+        require("ufo").closeAllFolds()
+      end,
+      "󱃄  Close all folds",
+    },
+    ["zr"] = {
+      function()
+        require("ufo").openFoldsExceptKinds()
+      end,
+      "󱃄  Open all folds except kinds",
+    },
+    ["zm"] = {
+      function()
+        require("ufo").closeFoldsWith()
+      end,
+      "󱃄  Close all folds with",
+    },
     ["zk"] = {
       function()
         if not require("ufo").peekFoldedLinesUnderCursor() then
