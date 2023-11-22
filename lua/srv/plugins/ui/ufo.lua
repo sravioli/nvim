@@ -1,7 +1,9 @@
+--# selene: allow(mixed_table)
+
 return {
   ---Not UFO in the sky, but an ultra fold in Neovim.
   "kevinhwang91/nvim-ufo",
-  enabled = false,
+  enabled = true,
   dependencies = {
     { "kevinhwang91/promise-async" },
     {
@@ -72,41 +74,51 @@ return {
 
     enable_get_fold_virt_text = true,
     fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
-      local new_virt_text = {}
+      local fold_indicator = {}
 
-      local folded_lines = endLnum - lnum
-      local suffix = (" ↙️ %d %d%%"):format(
-        folded_lines,
-        folded_lines / vim.api.nvim_buf_line_count(0) * 100
-      )
-      local suf_width = vim.fn.strdisplaywidth(suffix)
-      local target_width = width - suf_width
-      local cur_width = 0
-      for _, chunk in ipairs(virtText) do
-        local chunk_text = chunk[1]
-        local chunk_width = vim.fn.strdisplaywidth(chunk_text)
-        if target_width > cur_width + chunk_width then
-          table.insert(new_virt_text, chunk)
+      local n_lines = endLnum - lnum
+      local plural = n_lines == 1 and "" or "s"
+      local percentage = n_lines / vim.api.nvim_buf_line_count(0) * 100
+      local msg = (" ↙️ %d line%s (%d%%)"):format(n_lines, plural, percentage)
+      local msg_width = vim.fn.strdisplaywidth(msg)
+
+      local target_width, current_width = width - vim.fn.strdisplaywidth(msg), 0
+      for _, text_chunk in ipairs(virtText) do
+        local text, hl = unpack(text_chunk)
+        local text_width = vim.fn.strdisplaywidth(text)
+
+        if target_width > current_width + text_width then
+          table.insert(fold_indicator, text_chunk)
         else
-          chunk_text = truncate(chunk_text, target_width - cur_width)
-          local hl_group = chunk[2]
-          table.insert(new_virt_text, { chunk_text, hl_group })
-          chunk_width = vim.fn.strdisplaywidth(chunk_text)
-          -- str width returned from truncate() may less than 2nd argument, need padding
-          if cur_width + chunk_width < target_width then
-            suffix = suffix .. (" "):rep(target_width - cur_width - chunk_width)
+          text = truncate(text, target_width - current_width)
+          table.insert(fold_indicator, { text, hl })
+
+          text_width = vim.fn.strdisplaywidth(text)
+
+          ---string from `truncate()` can be less than 2nd arg => pad it
+          if current_width + text_width < target_width then
+            msg = msg .. (" "):rep(target_width - current_width - text_width)
           end
+
           break
         end
-        cur_width = cur_width + chunk_width
+
+        current_width = current_width + text_width
       end
-      local r_align_appndx = math.max(
-        math.min(vim.opt.textwidth["_value"], width - 1) - cur_width - suf_width,
-        0
-      )
-      suffix = (" "):rep(r_align_appndx) .. suffix
-      table.insert(new_virt_text, { suffix, "MoreMsg" })
-      return new_virt_text
+
+      ---place fold indicator at the colorcolumn/textwidth. if they go off-screen place
+      ---the indicator to the closest possible
+
+      local rightmost_col =
+        math.max(vim.opt_local.colorcolumn["_value"], vim.opt_local.textwidth["_value"])
+      local closest_col = math.min(rightmost_col, width - 1)
+      local left_padding = math.max(closest_col - current_width - msg_width, 0)
+      local right_padding = 2
+
+      msg = (" "):rep(left_padding - right_padding) .. msg
+      table.insert(fold_indicator, { msg, "MoreMsg" })
+
+      return fold_indicator
     end,
   },
 
