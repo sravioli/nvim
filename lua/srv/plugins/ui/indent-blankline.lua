@@ -2,7 +2,7 @@ return {
   ---Indent guides for Neovim
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
-  event = "BufReadPost",
+  event = require("srv.utils.event").events.LazyFile,
   opts = {
     scope = {
       enabled = true,
