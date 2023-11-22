@@ -1,8 +1,9 @@
+--# selene: allow(mixed_table)
+
 return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika
   ---Hokusai.
   "rebelot/kanagawa.nvim",
-  enabled = true,
   lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
@@ -16,14 +17,15 @@ return {
     keywordStyle = { italic = true, bold = true },
     overrides = function(colors)
       local theme = colors.theme
+
       return {
         NormalFloat = { bg = "NONE" },
         FloatBorder = { bg = "NONE" },
         FloatTitle = { bg = "NONE" },
 
-        ---Save an hlgroup with dark background and dimmed foreground
-        ---so that you can use it where your still want darker windows.
-        ---E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+        ---Save an hlgroup with dark background and dimmed foreground so that you can use
+        ---it where your still want darker windows. E.g.:
+        ---autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
         NormalDark = {
           fg = theme.ui.fg_dim,
           bg = theme.ui.bg_m1,
@@ -62,13 +64,6 @@ return {
           bg = theme.ui.bg_m2,
           bold = true,
         },
-
-        ---Neotree
-        NeoTreeTabInactive = { link = "BufferInactive" },
-        NeoTreeTabActive = { link = "BufferCurrent" },
-        NeoTreeTabBackground = { fg = theme.ui.bg, bg = theme.ui.bg },
-        NeoTreeTabSeparatorInactive = { fg = theme.ui.bg_p1, bg = theme.ui.bg },
-        NeoTreeTabSeparatorActive = { fg = theme.ui.bg_m2, bg = theme.ui.bg },
 
         ---More uniform colors for the popup menu.
         ---add `blend = vim.o.pumblend` to enable transparency
@@ -127,9 +122,31 @@ return {
         ---Telescope
         TelescopeBorder = { link = "FloatBorder" },
 
-        ---Nerd icons
-        NerdIconNormal = { link = "NormalFloat" },
-        NerdIconBorder = { link = "FloatBorder" },
+        ---DropBari/WinBar
+        WinBar = { fg = theme.ui.fg, bg = theme.ui.bg_p1, force = true },
+        WinBarNC = { fg = theme.ui.fg, bg = theme.ui.bg_p1, force = true },
+
+        DropBarMenuNormalFloat = { bg = theme.ui.bg_m1 },
+        DropBarIconKindClass = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindConstructor = { fg = theme.syn.special1, bg = theme.ui.bg_p1 },
+        DropBarIconKindDeclaration = { fg = theme.syn.special2, bg = theme.ui.bg_p1 },
+        DropBarIconKindEnum = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindEnumMember = { fg = theme.syn.constant, bg = theme.ui.bg_p1 },
+        DropBarIconKindEvent = { fg = theme.syn.identifier, bg = theme.ui.bg_p1 },
+        DropBarIconKindField = { fg = theme.syn.identifier, bg = theme.ui.bg_p1 },
+        DropBarIconKindIdentifier = { fg = theme.syn.parameter, bg = theme.ui.bg_p1 },
+        DropBarIconKindInterface = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindMethod = { fg = theme.syn.fun, bg = theme.ui.bg_p1 },
+        DropBarIconKindModule = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindPackage = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindProperty = { fg = theme.syn.identifier, bg = theme.ui.bg_p1 },
+        DropBarIconKindReference = { fg = theme.syn.identifier, bg = theme.ui.bg_p1 },
+        DropBarIconKindStruct = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindType = { fg = theme.syn.type, bg = theme.ui.bg_p1 },
+        DropBarIconKindTypeParameter = { fg = theme.syn.parameter, bg = theme.ui.bg_p1 },
+        DropBarIconKindUnit = { fg = theme.syn.special2, bg = theme.ui.bg_p1 },
+        DropBarIconKindVariable = { fg = theme.syn.parameter, bg = theme.ui.bg_p1 },
+        DropBarIconUiSeparator = { fg = theme.syn.special1, bg = theme.ui.bg_p1 },
       }
     end,
     colors = { theme = { all = { ui = { bg_gutter = "NONE" } } } },
