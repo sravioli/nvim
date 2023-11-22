@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local spec = {
-  { import = "srv.plugins.colorschemes" },
   { import = "srv.plugins.ui" },
   { import = "srv.plugins.ft" },
   { import = "srv.plugins.dap" },
