@@ -5,6 +5,88 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [1.0.0](https://github.com/sRavioli/nvim/compare/0.15.0..1.0.0) - 2023-11-22
+
+#### Bug Fixes
+
+- **(colorscheme)** disable DroBar ovverides - ([13a5f5d](https://github.com/sRavioli/nvim/commit/13a5f5d2744f65cfb3169a5646ec8a5cbb958f58)) - [@sRavioli](https://github.com/sRavioli)
+- **(colorschemes)** remove `tokyo-night` (not gonna use) - ([54379f8](https://github.com/sRavioli/nvim/commit/54379f853e57486d2b8410fce69e8d7a5f122d9d)) - [@sRavioli](https://github.com/sRavioli)
+- **(colorschemes:kanagawa)** move kanagawa to ui folder - ([4189b6b](https://github.com/sRavioli/nvim/commit/4189b6b3399611b858644b4c10d6627a3e189922)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:autocommands)** move augroups in autocommands, remove unused autocommands - ([a34187c](https://github.com/sRavioli/nvim/commit/a34187c6fc7bcee2eabacd2e7330e6db84dffce8)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:settings)** remove foldmethod - ([3929970](https://github.com/sRavioli/nvim/commit/3929970323d6daa9ef3ddcf8c52ab4c893f01616)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:settings)** use `os.getenv` for paths - ([e40049d](https://github.com/sRavioli/nvim/commit/e40049d11455a909e388ccf27bd35b8eb03bbc0f)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:settings)** remove comments from settings - ([a9e37bb](https://github.com/sRavioli/nvim/commit/a9e37bbbaf018e72b7d6334c2139ec129f2ee74a)) - [@sRavioli](https://github.com/sRavioli)
+- **(init.lua)** only load `nvim` keymaps on enter to improve performance - ([24f13db](https://github.com/sRavioli/nvim/commit/24f13db31424a557595d6c2be98162c54b0f8018)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** move general config to `lspconfig` - ([c1a2403](https://github.com/sRavioli/nvim/commit/c1a2403bca56da57a16af74c912e3dadbe96eb36)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** move lspconfig to its file - ([01437b8](https://github.com/sRavioli/nvim/commit/01437b843955618d9cfcfff5a962ac57d6f897b1)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:lspconfig)** move `lspconfig` to a single file - ([0c159ed](https://github.com/sRavioli/nvim/commit/0c159ed8c98de13623fcc281ba6661a212715ca0)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:post)** disable `ufo`, chenge provider selector - ([626a7f8](https://github.com/sRavioli/nvim/commit/626a7f86fa548f7da4c790bb2ddc60e5e9bc358c)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:post)** disable `lspsaga` winbar - ([8cd5bd9](https://github.com/sRavioli/nvim/commit/8cd5bd921b337cc70c97312517327285a9d90248)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:post)** uninstall `lsp-progress` - ([c82ddab](https://github.com/sRavioli/nvim/commit/c82ddab6e8a814f5e9f69b4536c22f9800eed48d)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:pre)** change lazy event handler for `none-ls` - ([c687ff3](https://github.com/sRavioli/nvim/commit/c687ff3dab52da74b0d8c29f11fb898537dff200)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** put ufo mappings in a closure - ([03fa3ef](https://github.com/sRavioli/nvim/commit/03fa3ef8943481a80432a9ca62305c1d3224e25b)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugin:ui)** remove `lsp-progress` from lualine - ([daa1c79](https://github.com/sRavioli/nvim/commit/daa1c79a0d6ff6088d1186aa58210765541b0edc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** uninstall `follow-md-links`, change `pencil` config - ([4178149](https://github.com/sRavioli/nvim/commit/4178149795c6c68025083f966444b92b1359c8b6)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** do not automatically load `vim-pencil` - ([eb0cf9c](https://github.com/sRavioli/nvim/commit/eb0cf9c938d26d927a1b47bf1d06b6e02380fa96)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:init.lua)** remove plugin spec - ([e0bfa87](https://github.com/sRavioli/nvim/commit/e0bfa87e04fef04e07c690e2390c1f6365b5a9d3)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** require `on_load` from correct file - ([eb747f5](https://github.com/sRavioli/nvim/commit/eb747f50d0da425018e343e2abfc9767ccb6d7bc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** lazy load `comment.nvim` on LazyFile event - ([a176022](https://github.com/sRavioli/nvim/commit/a176022a90854070ad58ada88c116832aa591693)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** lazy load `vim-repeat` on keymap - ([b5ee05f](https://github.com/sRavioli/nvim/commit/b5ee05f958df06ab001b3ce507c9eea1d5ce9ad0)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:treesitter)** change load event for treesitter - ([ab49d5f](https://github.com/sRavioli/nvim/commit/ab49d5f29751e0887faaab7ad6ade108a49e9efc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** lazy load `notify` on VeryLazy, delay notifications - ([649cb74](https://github.com/sRavioli/nvim/commit/649cb7428f416996689ea720d9f6e3d5ef851805)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** improve startup by loading `lualine` on VeryLazy - ([de66701](https://github.com/sRavioli/nvim/commit/de66701f162be1492fbda3486567e7eb6ae42fe4)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** lazy load plugins on LazyFile - ([0a2b113](https://github.com/sRavioli/nvim/commit/0a2b11368936d9f5ee41f6499aa539a37ad7d422)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** temporary fix for telescope `find_files` - ([d2a865f](https://github.com/sRavioli/nvim/commit/d2a865f88726bf6ba3fcaeaa885aed64547b1c95)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** change lazy event handler - ([d282c0a](https://github.com/sRavioli/nvim/commit/d282c0a2bd4c2f4a047966244f30130b6732be7a)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:duck)** don't safe require `nvim-notify` use the builtin one - ([4fe591b](https://github.com/sRavioli/nvim/commit/4fe591b4f85d37dc3aed27b82e3a76c57ed146f2)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** change null-ls augroup - ([d45d7aa](https://github.com/sRavioli/nvim/commit/d45d7aafbba7a0e560cebe4d9572cca6d748f392)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fun)** remove `lsp-notify` - ([08f7aed](https://github.com/sRavioli/nvim/commit/08f7aedc38e2d191b0576a6f53ef1262ea118760)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:keymaps)** use builtin `vim.notify` - ([22bc93b](https://github.com/sRavioli/nvim/commit/22bc93bddbc1c4da157794525ae2fccd74edb9ce)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:nvim-tree)** remove empty file - ([8bf88db](https://github.com/sRavioli/nvim/commit/8bf88db2a3b99fffdb301ea8e6b0f357c4999512)) - [@sRavioli](https://github.com/sRavioli)
+- move `nvim-ufo` to ui folder - ([e79768a](https://github.com/sRavioli/nvim/commit/e79768abc5b76338a8dd68c0109025b6ba2fd85f)) - [@sRavioli](https://github.com/sRavioli)
+- move code-action-menu mapping to lazy key handler - ([f1241e6](https://github.com/sRavioli/nvim/commit/f1241e63d71342662e27865ab43804cce8d0d039)) - [@sRavioli](https://github.com/sRavioli)
+- correctly lazy load gitsigns - ([09afcf0](https://github.com/sRavioli/nvim/commit/09afcf01bd6fec7bc70c58796408085d4812ca5f)) - [@sRavioli](https://github.com/sRavioli)
+- override `vim.notify` on UiEnter - ([8938878](https://github.com/sRavioli/nvim/commit/8938878f23ccdd47811e712461ff8ad3397f8af2)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:settings)** update settings - ([5432e03](https://github.com/sRavioli/nvim/commit/5432e0324de3dce525aefa8966756be268a27801)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp)** configure the lua language server - ([07aeedc](https://github.com/sRavioli/nvim/commit/07aeedc6a9359c89d3a3ce3a4fccc6b8b16cf41c)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:lspconfig)** install `fidget.nvim` and `diagflow.nvim` - ([0964afa](https://github.com/sRavioli/nvim/commit/0964afa3671f00e399b6d3b7b6f76da716415488)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** add mapping to open lazy - ([cd69bf8](https://github.com/sRavioli/nvim/commit/cd69bf89947ca78fa89ab6510c485556006529b3)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** add `nvim-ufo` mappings - ([df3c373](https://github.com/sRavioli/nvim/commit/df3c373069e8783b72c28aaf4854593ebc251bee)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings:lsp)** add keymap to toggle inlay hints - ([a27d857](https://github.com/sRavioli/nvim/commit/a27d8572883220d7dcf241d805e215c97c85ddd9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** use notify as a progress handler - ([45e90f1](https://github.com/sRavioli/nvim/commit/45e90f1ceb9cf37f5e385ab8b26a479240117be9)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** lazy load `nvim-surround` on keymap, uninstall ui - ([ae1b975](https://github.com/sRavioli/nvim/commit/ae1b9758edfa82696c47885a1375f24cc22f382e)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** better lazy loading for `vim-abolish` - ([68f5c92](https://github.com/sRavioli/nvim/commit/68f5c926fa99c381b883823275e4d20a843b5aa8)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** install `heirline` - ([9d0067d](https://github.com/sRavioli/nvim/commit/9d0067d2c4e64b0367633135ce6e1062c8c0d65a)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** move `dressing` config to separate file - ([52a7470](https://github.com/sRavioli/nvim/commit/52a7470ffc60ea1a40b67e2423013e2e2c6f49b8)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** add `nvim-tree` lazy cmd handlers - ([ab04d26](https://github.com/sRavioli/nvim/commit/ab04d26199a18b2bbee18758b6e9f0e655038e74)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** configure `dropbar` - ([7a48399](https://github.com/sRavioli/nvim/commit/7a48399a23f4d4697626f7cca90cf2c60a121023)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** lazy load `nvim-tree`, open file on creation - ([e41e213](https://github.com/sRavioli/nvim/commit/e41e2134684e8d40597d19ea1910988b47e56250)) - [@sRavioli](https://github.com/sRavioli)
+- **(preferences)** add a bunch of new icon kinds - ([3922e00](https://github.com/sRavioli/nvim/commit/3922e00b4c3f35abff375bc77cd2578ca6af1918)) - [@sRavioli](https://github.com/sRavioli)
+- **(preferences)** add fira code spinner and progress bar - ([d4b0b3c](https://github.com/sRavioli/nvim/commit/d4b0b3ca81cac33abff198baa40842fc8248913d)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add notify lsp progress tracker - ([0d9b0fc](https://github.com/sRavioli/nvim/commit/0d9b0fce0ca053f7ecc2dca9d412bd909513c717)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:event)** implement `on_very_lazy` function - ([1f0c528](https://github.com/sRavioli/nvim/commit/1f0c5283765490da76a364001db4ee2630f69eef)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:event)** add event related function, add event groups - ([da58352](https://github.com/sRavioli/nvim/commit/da58352961997a569a9e0acc340b4940cd13f348)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** add function to delay notifications - ([17d3baa](https://github.com/sRavioli/nvim/commit/17d3baa9beb2c3bb4b85f04f304da4601370fb1a)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fun)** remove `fun` folder - ([ee53a1e](https://github.com/sRavioli/nvim/commit/ee53a1e48aedf2b0ca9ffb954c24db3e10501985)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:lsp)** add some lsp utilities - ([4df6b11](https://github.com/sRavioli/nvim/commit/4df6b113c23597af38e0807970a43a33e211064c)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update`lazy-lock.json` - ([1df92c2](https://github.com/sRavioli/nvim/commit/1df92c20cabee6987515c9e298cb1221a958827f)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([fb4cb6d](https://github.com/sRavioli/nvim/commit/fb4cb6dc5f7b31d1e800d131fa3795505bdeeee7)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([c049550](https://github.com/sRavioli/nvim/commit/c049550c7ce57ad22242714e31ca1c402303d482)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Style
+
+- **(lsp:post)** remove commented out lines - ([a5a1ae3](https://github.com/sRavioli/nvim/commit/a5a1ae35e51e43111b843903d8d3d3df88eb2403)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** remove linter warnings - ([6654377](https://github.com/sRavioli/nvim/commit/66543778f71846cf8c33883db5132bbb537d7b01)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** inline table for `hls-lens` config - ([8492187](https://github.com/sRavioli/nvim/commit/84921875562607f9f3deb9151c5b67d8241a3f18)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [0.15.0](https://github.com/sRavioli/nvim/compare/0.14.0..0.15.0) - 2023-11-18
 
 #### Bug Fixes
