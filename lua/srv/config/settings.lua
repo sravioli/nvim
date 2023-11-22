@@ -10,7 +10,6 @@ set.confirm = true
 
 set.cursorline = true
 
-set.foldmethod = "marker"
 set.fillchars = {
   foldopen = "󰅀",
   foldclose = "󰅂",
