@@ -1,6 +1,32 @@
 return {
   ---Nvim Treesitter configurations and abstraction layer
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    {
+      ---Syntax aware text-objects, select, move, swap, and peek support.
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      init = function()
+        require("srv.utils.event").on_load("nvim-treesitter", function()
+          local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+
+          -- Repeat movement with ; and ,
+          -- ensure ; goes forward and , goes backward regardless of the last direction
+          vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+          vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+          -- vim way: ; goes to the direction you were moving.
+          -- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+          -- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+          -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+          vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+          vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+          vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+          vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+        end)
+      end,
+    },
+  },
   event = "BufReadPre",
   build = function()
     require("nvim-treesitter.install").update { with_sync = true }
@@ -166,13 +192,7 @@ return {
   },
 
   config = function(_, opts)
-    local present, tsc = pcall(require, "nvim-treesitter.configs")
-    if not present then
-      return
-    end
-    tsc.setup(opts)
-
+    require("nvim-treesitter.configs").setup(opts)
     require("nvim-treesitter.install").compilers = { "clang" }
-    require("srv.utils.keymaps").load "tree-sitter"
   end,
 }
