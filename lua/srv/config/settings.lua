@@ -9,7 +9,9 @@ set.clipboard = "unnamedplus"
 set.confirm = true
 
 set.cursorline = true
+set.laststatus = 3
 
+set.foldmethod = "marker"
 set.fillchars = {
   foldopen = "󰅀",
   foldclose = "󰅂",
