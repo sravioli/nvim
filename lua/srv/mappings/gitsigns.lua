@@ -1,5 +1,3 @@
-local gs = require "gitsigns"
-
 ---@class Mappings
 return {
   autoload = false,
@@ -35,44 +33,86 @@ return {
     },
 
     ---Actions
-    ["<leader>hs"] = { gs.stage_hunk, "󰊢  Stage hunk" },
-    ["<leader>hr"] = { gs.reset_hunk, "󰊢  Reset hunk" },
+    ["<leader>hs"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      "󰊢  Stage hunk",
+    },
+    ["<leader>hr"] = {
+      function()
+        require("gitsigns").reset_hunk()
+      end,
+      "󰊢  Reset hunk",
+    },
 
-    ["<leader>hS"] = { gs.stage_buffer, "󰊢  Stage buffer" },
-    ["<leader>hu"] = { gs.undo_stage_hunk, "󰊢  Undo stage hunk" },
-    ["<leader>hR"] = { gs.reset_buffer, "󰊢  Reset buffer" },
-    ["<leader>hp"] = { gs.preview_hunk, "󰊢  Preview hunk" },
+    ["<leader>hS"] = {
+      function()
+        require("gitsigns").stage_buffer()
+      end,
+      "󰊢  Stage buffer",
+    },
+    ["<leader>hu"] = {
+      function()
+        require("gitsigns").undo_stage_hunk()
+      end,
+      "󰊢  Undo stage hunk",
+    },
+    ["<leader>hR"] = {
+      function()
+        require("gitsigns").reset_buffer()
+      end,
+      "󰊢  Reset buffer",
+    },
+    ["<leader>hp"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      "󰊢  Preview hunk",
+    },
     ["<leader>hb"] = {
       function()
-        gs.blame_line { full = true }
+        require("gitsigns").blame_line { full = true }
       end,
       "󰊢  Enable line blame",
     },
     ["<leader>tb"] = {
-      gs.toggle_current_line_blame,
+      function()
+        require("gitsigns").toggle_current_line_blame()
+      end,
       "󰊢  Toggle current line blame",
     },
-    ["<leader>hd"] = { gs.diffthis, "󰊢  Diff this" },
-    ["<leader>hD"] = {
+    ["<leader>hd"] = {
       function()
-        gs.diffthis "~"
+        require("gitsigns").diffthis()
       end,
       "󰊢  Diff this",
     },
-    ["<leader>td"] = { gs.toggle_deleted, "󰊢  Toggle deleted" },
+    ["<leader>hD"] = {
+      function()
+        require("gitsigns").diffthis "~"
+      end,
+      "󰊢  Diff this",
+    },
+    ["<leader>td"] = {
+      function()
+        require("gitsigns").toggle_deleted()
+      end,
+      "󰊢  Toggle deleted",
+    },
   },
 
   v = {
     ["<leader>hs"] = {
       function()
-        gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+        require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
       end,
       "󰊢  Stage hunk",
     },
 
     ["<leader>hr"] = {
       function()
-        gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+        require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
       end,
       "󰊢  Reset hunk",
     },
