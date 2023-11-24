@@ -4,11 +4,10 @@ return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika
   ---Hokusai.
   "rebelot/kanagawa.nvim",
-  lazy = false,
   priority = 1000,
   build = ":KanagawaCompile",
   init = function()
-    vim.cmd.colorscheme "kanagawa-wave"
+    require("kanagawa").load "wave"
   end,
   opts = {
     compile = true, -- enable compiling the colorscheme
