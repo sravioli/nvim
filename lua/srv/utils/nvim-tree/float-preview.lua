@@ -20,7 +20,7 @@ M.floats = {}
 ---@private
 ---
 ---Whether the preview should be disabled or not
-M.disabled = false
+M.disabled = true
 
 ---@private
 ---
