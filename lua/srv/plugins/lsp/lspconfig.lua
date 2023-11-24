@@ -36,11 +36,7 @@ return {
       ---and completion for the nvim lua API.
       "folke/neodev.nvim",
       ft = "lua",
-      opts = {
-        library = {
-          plugins = { "nvim-dap-ui" },
-        },
-      },
+      opts = {},
     },
   },
   config = function(_, _)
