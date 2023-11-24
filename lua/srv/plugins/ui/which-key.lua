@@ -1,9 +1,17 @@
+--# selene: allow(mixed_table)
 return {
   ---💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5
   ---that displays a popup with possible keybindings of the command you started
   ---typing.
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  keys = {
+    { "g", mode = { "n", "v" } },
+    { "]", mode = { "n", "v" } },
+    { "[", mode = { "n", "v" } },
+    { "<leader>", mode = { "n", "v" } },
+    { "z" },
+  },
   init = function()
     vim.opt.timeout = true
     vim.opt.timeoutlen = 300
