@@ -229,6 +229,7 @@ return {
   {
     ---Rethinking Vim as a tool for writing
     "preservim/vim-pencil",
+    enabled = false,
     ft = { "markdown" },
     cmd = { "Pencil", "PencilOff", "PencilToggle", "PencilSoft", "PencilHard" },
     config = function()
