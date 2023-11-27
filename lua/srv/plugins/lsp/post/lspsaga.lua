@@ -8,15 +8,9 @@ return {
   branch = "main",
   event = "LspAttach",
   opts = {
-    symbol_in_winbar = {
-      enable = false,
-      separator = " > ",
-    },
-
+    symbol_in_winbar = { enable = false },
     callhierarchy = {},
-
     code_action = { enable = false },
-
     diagnostic = { enable = false },
 
     finder = {
