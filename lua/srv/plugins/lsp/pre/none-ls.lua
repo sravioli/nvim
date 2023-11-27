@@ -15,10 +15,10 @@ return {
         vim.fn.expand "%:p:h",
         vim.fn.resolve(vim.fn.stdpath "config" .. [[\skel]]),
       } do
-        vim.notify(("[null-ls] searching '%s'"):format(filename), vim.log.levels.DEBUG)
+        vim.notify(("[null-ls] searching '%s'"):format(filename), vim.log.levels.TRACE)
         local file = vim.fn.findfile(vim.fn.resolve(dir .. "/" .. filename))
         if file ~= "" then
-          vim.notify(("[null-ls] found '%s'"):format(file), vim.log.levels.DEBUG)
+          vim.notify(("[null-ls] found '%s'"):format(file), vim.log.levels.TRACE)
           return file
         end
       end
