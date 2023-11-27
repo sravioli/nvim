@@ -1,3 +1,4 @@
+---@class EventUtils
 local M = {}
 
 ---Executes a function when a plugin is loaded.
