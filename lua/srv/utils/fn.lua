@@ -169,10 +169,10 @@ end
 ---Filters diagnostigs leaving only the most severe per line.
 ---@param diagnostics table[]
 ---@return table[]
----see https://www.reddit.com/r/neovim/comments/mvhfw7/can_built_in_lsp_diagnostics_be_limited_to_show_a/gvd8rb9/
----see https://github.com/neovim/neovim/issues/15770
----see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
----see `:h diagnostic-handlers`
+---@see https://www.reddit.com/r/neovim/comments/mvhfw7/can_built_in_lsp_diagnostics_be_limited_to_show_a/gvd8rb9/
+---@see https://github.com/neovim/neovim/issues/15770
+---@see https://github.com/akinsho/dotfiles/blob/d3526289627b72e4b6a3ddcbfe0411b5217a4a88/.config/nvim/plugin/lsp.lua#L83-L132
+---@see `:h diagnostic-handlers`
 Functions.lsp.filter_diagnostics = function(diagnostics)
   if not diagnostics then
     return {}
