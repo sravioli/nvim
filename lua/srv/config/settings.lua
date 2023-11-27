@@ -4,6 +4,8 @@ local fn = require "srv.utils.fn"
 local set = vim.opt
 local let = vim.g
 
+vim.cmd.language "messages en"
+
 set.clipboard = "unnamedplus"
 
 set.confirm = true
