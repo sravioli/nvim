@@ -21,8 +21,9 @@ return {
     end
 
     vim.o.laststatus = vim.g.heirline_lastatus
+    local heirline_lines = require "srv.utils.heirline"
     return {
-      statusline = require "srv.utils.heirline.statusline",
+      statusline = heirline_lines.statusline,
     }
   end,
 }
