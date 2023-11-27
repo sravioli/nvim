@@ -570,7 +570,7 @@ blocks.FilePositionBlock = heirline.insert({
     self.bg = self:mode_bg()
     self.fg = theme.ui.bg_m1
   end,
-}, blocks.Ruler, blocks.Scrollbar)
+}, blocks.Ruler --[[ blocks.Scrollbar ]])
 --~ }}}
 
 --~ {{{2 Diagnostics
@@ -650,7 +650,7 @@ blocks.Diagnostics = {
 }
 --~ }}}
 
---~ Lsp {{{2
+--~ {{{2 Lsp
 
 blocks.Lsp = {
   condition = conditions.lsp_attached,
@@ -686,7 +686,7 @@ blocks.Lsp = {
 }
 --~ }}}
 
---~ TerminalName {{{2
+--~ {{{2 TerminalName
 
 blocks.TerminalName = {
   provider = function()
@@ -860,12 +860,13 @@ D.Rightline = {
       return { fg = self:mode_bg(), bg = theme.ui.bg_p1 }
     end,
   }),
-  heirline.insert(blocks.FilePositionBlock, {
-    provider = " ",
-    hl = function(self)
-      return { bg = self:mode_bg(), fg = self.fg }
-    end,
-  }),
+  blocks.FilePositionBlock,
+  -- heirline.insert(blocks.FilePositionBlock, {
+  --   provider = " ",
+  --   hl = function(self)
+  --     return { bg = self:mode_bg(), fg = self.fg }
+  --   end,
+  -- }),
 }
 --~ }}}
 
