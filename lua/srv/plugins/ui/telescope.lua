@@ -35,7 +35,9 @@ return {
     ---find
     {
       "<C-p>",
-      "<cmd>lua require('srv.utils.fn').telescope.fd()<CR>",
+      function()
+        require("srv.utils.telescope").fd()
+      end,
       desc = "  Find files",
     },
     {
@@ -72,12 +74,8 @@ return {
         layout_strategy = "flex", ---swaps between `horizontal` and `vertical`
 
         layout_config = {
-          horizontal = {
-            preview_width = 0.55,
-          },
-          vertical = {
-            mirror = false,
-          },
+          horizontal = { preview_width = 0.55 },
+          vertical = { mirror = false },
           width = 0.87,
           height = 0.80,
           preview_cutoff = 120,
@@ -87,7 +85,7 @@ return {
         prompt_prefix = "   ",
         selection_caret = "󰁔 ",
 
-        path_display = { "truncate", shorten = { len = 1, exclude = { 1, -1 } } },
+        -- path_display = { shorten = { len = 2, exclude = { 1, -1 } } },
 
         mappings = {
           i = {
@@ -115,9 +113,7 @@ return {
           },
         },
 
-        preview = {
-          check_mime_type = true,
-        },
+        preview = { check_mime_type = true },
 
         vimgrep_arguments = {
           "rg",
