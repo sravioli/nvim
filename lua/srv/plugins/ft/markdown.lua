@@ -1,4 +1,3 @@
---# selene: allow(mixed_table)
 return {
   {
     ---A markdown preview directly in your neovim.
