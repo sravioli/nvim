@@ -4,23 +4,31 @@ return {
   keys = {
     {
       "<leader>sr",
-      ":lua require('spectre').open()<CR>",
+      function()
+        require("spectre").open()
+      end,
       desc = "󰊠  Open Spectre",
     },
     {
       "<leader>sW",
-      ":lua require('spectre').open_visual({select_word=true})<CR>",
+      function()
+        require("spectre").open_visual { select_word = true }
+      end,
       desc = "󰊠  Search current word",
     },
     {
       "<leader>sW",
-      '<esc>:lua require("spectre").open_visual()<CR>',
+      function()
+        require("spectre").open_visual()
+      end,
       desc = "󰊠  Search current word",
       mode = "v",
     },
     {
       "<leader>sp",
-      ':lua require("spectre").open_file_search({select_word=true})<CR>',
+      function()
+        require("spectre").open_file_search { select_word = true }
+      end,
       desc = "󰊠  Search on current file",
     },
   },
