@@ -12,4 +12,4 @@ require "srv.plugins"
 require "srv.config.autocommands"
 
 ---Load non-plugin keymaps
-require("srv.utils.keymaps").load "nvim"
+require("srv.utils.keymaps").load()
