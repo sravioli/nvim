@@ -1,9 +1,7 @@
---# selene: allow(mixed_table)
-
 return {
   ---Not UFO in the sky, but an ultra fold in Neovim.
   "kevinhwang91/nvim-ufo",
-  enabled = true,
+  enabled = false,
   dependencies = {
     { "kevinhwang91/promise-async" },
     {
@@ -22,7 +20,6 @@ return {
       end,
     },
   },
-  event = require("srv.utils.event").events.LazyFile,
   cmd = {
     "UfoEnable",
     "UfoDisable",
@@ -37,6 +34,7 @@ return {
     vim.opt.foldlevel = 99 -- Using ufo provider need a large value
     vim.opt.foldlevelstart = 99
     vim.opt.foldenable = true
+    vim.opt.foldmethod = "expr"
   end,
   opts = {
     close_fold_kinds = { "comment", "imports" },
