@@ -1,4 +1,3 @@
---# selene: allow(mixed_table)
 return {
   ---A fancy, configurable, notification manager for NeoVim.
   "rcarriga/nvim-notify",

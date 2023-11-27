@@ -1,4 +1,3 @@
---# selene: allow(mixed_table)
 return {
   ---IDE-like breadcrumbs, out of the box
   "Bekaboo/dropbar.nvim",

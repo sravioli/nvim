@@ -1,5 +1,3 @@
---# selene: allow(mixed_table)
-
 return {
   ---NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika
   ---Hokusai.

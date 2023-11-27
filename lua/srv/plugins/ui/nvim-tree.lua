@@ -1,4 +1,3 @@
---# selene: allow(mixed_table)
 return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
