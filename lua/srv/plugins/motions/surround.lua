@@ -1,4 +1,3 @@
---# selene: allow(mixed_table)
 return {
   ---Add/change/delete surrounding delimiter pairs with ease. Written with ❤️ in Lua.
   "kylechui/nvim-surround",

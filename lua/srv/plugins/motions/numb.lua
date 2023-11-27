@@ -1,5 +1,3 @@
---# selene: allow(mixed_table)
-
 return {
   ---Peek lines just when you intend
   "nacro90/numb.nvim",
