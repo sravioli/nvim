@@ -3,13 +3,13 @@ return {
   autoload = false,
 
   n = {
-    ["n"] = { "nzz<cmd>lua require('hlslens').start()<CR>" },
-    ["N"] = { "Nzz<cmd>lua require('hlslens').start()<CR>" },
+    ["n"] = { "nzzzv<cmd>lua require('hlslens').start()<CR>" },
+    ["N"] = { "Nzzzv<cmd>lua require('hlslens').start()<CR>" },
 
-    ["*"] = { "*zz<cmd>lua require('hlslens').start()<CR>" },
-    ["#"] = { "#zz<cmd>lua require('hlslens').start()<CR>" },
-    ["g*"] = { "g*zz<cmd>lua require('hlslens').start()<CR>" },
-    ["g#"] = { "g#zz<cmd>lua require('hlslens').start()<CR>" },
+    ["*"] = { "*zzzv<cmd>lua require('hlslens').start()<CR>" },
+    ["#"] = { "#zzzv<cmd>lua require('hlslens').start()<CR>" },
+    ["g*"] = { "g*zzzv<cmd>lua require('hlslens').start()<CR>" },
+    ["g#"] = { "g#zzzv<cmd>lua require('hlslens').start()<CR>" },
 
     ["<leader>L"] = {
       function()
@@ -20,7 +20,7 @@ return {
         end)
         return ":nohlsearch<CR>"
       end,
-      "  export search results to quickfix",
+      "󰈇  export search results to quickfix",
       opts = { expr = true },
     },
   },
@@ -35,7 +35,7 @@ return {
         end)
         return ":nohlsearch<CR>"
       end,
-      "  export search results to quickfix",
+      "󰈇  export search results to quickfix",
       opts = { expr = true },
     },
   },
