@@ -5,6 +5,47 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [1.1.0](https://github.com/sRavioli/nvim/compare/1.0.0..1.1.0) - 2023-11-27
+
+#### Bug Fixes
+
+- **(config:settings)** set global statusline and foldmethod - ([77ae5aa](https://github.com/sRavioli/nvim/commit/77ae5aa0dcee0126b49cc483114a4b330732e57b)) - [@sRavioli](https://github.com/sRavioli)
+- **(init.lua)** use plain load() - ([e57720b](https://github.com/sRavioli/nvim/commit/e57720bb46bda3bf3ed1a16c1f31b5deda10f51e)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:post)** collapse lspsaga winbar config table - ([a120566](https://github.com/sRavioli/nvim/commit/a12056648263c062389500ef8b0467ae7edbdeb7)) - [@sRavioli](https://github.com/sRavioli)
+- **(lspconfig)** move server config import near when is used - ([4354d8d](https://github.com/sRavioli/nvim/commit/4354d8d0e4e49edf63d10dbb7b08862fdc3775aa)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** enclose mappings in functions - ([9ef949f](https://github.com/sRavioli/nvim/commit/9ef949fc81a83e962c4e7b542267bb08179c86a0)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugin:ui)** use closures for spectre keymaps - ([11c3000](https://github.com/sRavioli/nvim/commit/11c3000bdbecc34571fd695b28d0a77f33ef9037)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** remove selene ignore - ([7d2961d](https://github.com/sRavioli/nvim/commit/7d2961db6c4c943ee4c624ae57afd894d4a79859)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** disable `vim-pencil` - ([2dce711](https://github.com/sRavioli/nvim/commit/2dce7114dc16bf51bb5243344b2468216cafd0a0)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** use default options for `neodev.nvim` - ([1a9a046](https://github.com/sRavioli/nvim/commit/1a9a0461fc6233aae790b0386e1511c7c9191158)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** remove selene ignore - ([5b5aec3](https://github.com/sRavioli/nvim/commit/5b5aec324f1dbf56b2569106810441ac303e1e60)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** uninstall `lualine` - ([01dbdbc](https://github.com/sRavioli/nvim/commit/01dbdbcf10bad8a6493d09883d4c29274c678013)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** disable `nvim-ufo` - ([c5ebbcc](https://github.com/sRavioli/nvim/commit/c5ebbcce8b74627d0388c1801a04f33136b4c279)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** remove selene ignore - ([764496c](https://github.com/sRavioli/nvim/commit/764496c77f336377f417ca5e2d8e5d0f4813a72f)) - [@sRavioli](https://github.com/sRavioli)
+- **(treesitter)** merge treesitter and treesitter-textobj config - ([37541cf](https://github.com/sRavioli/nvim/commit/37541cfc4be9f42bd289fea18e7103b6711365ae)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:heirline)** remove scrollbar - ([cbbf9ce](https://github.com/sRavioli/nvim/commit/cbbf9ce18309487a77efe340fb35089fbfbbd381)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:nvim-tree)** disable float-preview by default - ([1b45932](https://github.com/sRavioli/nvim/commit/1b459326187c8f4f2b6dc248c2bd38fd74be1d13)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Documentation
+
+- **(utils:fn)** use lua-ls syntax for comments - ([b422f6f](https://github.com/sRavioli/nvim/commit/b422f6fd9b6de2cf659ba03fd2e86f84b11a4a7e)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(mappings)** open folds when searching with hls-lens - ([15b9a30](https://github.com/sRavioli/nvim/commit/15b9a3049e7e8cef068a960cd9dbb79a46579685)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** add heirline config, hide statusline until load - ([17b5b9f](https://github.com/sRavioli/nvim/commit/17b5b9fac3477956920d8c6ce3e2ace75883e4c8)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** lazy load `which-key` on keymaps - ([3df48f5](https://github.com/sRavioli/nvim/commit/3df48f595c7583155bc3daf1e6975b30fe4427e8)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** load kanagawa with lua - ([18b1592](https://github.com/sRavioli/nvim/commit/18b15921d89353c48a63a15f903305194d59f572)) - [@sRavioli](https://github.com/sRavioli)
+- **(selene)** allow `mixed_table` - ([6627c11](https://github.com/sRavioli/nvim/commit/6627c119dda924afd2c8fc1b0fc6c9c2ab165692)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:heirline)** add heirline configuration - ([4529734](https://github.com/sRavioli/nvim/commit/4529734c264da52a6f217ca31b0d0e86b8445615)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(cog)** format with taplo - ([9043e47](https://github.com/sRavioli/nvim/commit/9043e47d6171e97093e046f329ad0b9e05f8c779)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([045f3bb](https://github.com/sRavioli/nvim/commit/045f3bb8bd57f73dbec16933ceb3349ae5ea1a79)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [1.0.0](https://github.com/sRavioli/nvim/compare/0.15.0..1.0.0) - 2023-11-22
 
 #### Bug Fixes
