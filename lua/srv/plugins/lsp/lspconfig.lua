@@ -1,7 +1,4 @@
---# selene: allow(mixed_table)
-
 local lsp_utils = require "srv.utils.lsp"
-local servers_config = require "srv.plugins.lsp.servers"
 
 return {
   ---Quickstart configs for Nvim LSP
@@ -137,6 +134,7 @@ return {
       -- "powershell_es",
     }
 
+    local servers_config = require "srv.plugins.lsp.servers"
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_attach = on_attach,
