@@ -826,21 +826,25 @@ D.Middleline = { blocks.Break, blocks.SearchResults, blocks.Break }
 D.Rightline = {
   heirline.insert(blocks.Diagnostics, {
     {
-      condition = function()
-        return conditions.lsp_attached() or require("lazy.status").has_updates()
-      end,
-      provider = h.Separators.soft_divider.r,
-      hl = { fg = theme.syn.comment },
-    },
-  }),
-  heirline.insert(blocks.LazyUpdate, {
-    {
       condition = conditions.lsp_attached,
       provider = h.Separators.soft_divider.r,
       hl = { fg = theme.syn.comment },
     },
   }),
-  blocks.Lsp,
+  heirline.insert(blocks.Lsp, {
+    {
+      condition = require("lazy.status").has_updates,
+      provider = " " .. h.Separators.soft_divider.r,
+      hl = { fg = theme.syn.comment },
+    },
+  }),
+  blocks.LazyUpdate,
+  -- heirline.insert(blocks.LazyUpdate, {
+  --   {
+  --     provider = h.Separators.soft_divider.r,
+  --     hl = { fg = theme.syn.comment },
+  --   },
+  -- }),
   heirline.insert(
     {
       {
