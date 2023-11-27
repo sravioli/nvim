@@ -34,6 +34,7 @@ return {
         end
         vim.lsp.inlay_hint.enable(nil, should_enable)
       end,
+      "󰔡  Toggle inlay hints",
     },
 
     ["<leader>ls"] = {
