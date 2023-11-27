@@ -33,7 +33,7 @@ jobs:
 
       - name: SemVer release
         uses: cocogitto/cocogitto-action@v3.5
-        id: relase
+        id: release
 
       - name: Generate changelog
         run: >-
