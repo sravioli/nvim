@@ -5,6 +5,37 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [1.2.0](https://github.com/sRavioli/nvim/compare/1.1.0..1.2.0) - 2023-11-27
+
+#### Bug Fixes
+
+- **(github)** typo on workflow - ([3f2b2d0](https://github.com/sRavioli/nvim/commit/3f2b2d08abbb79b9ec5f15d201e7c69541d8403b)) - [@sRavioli](https://github.com/sRavioli)
+- **(heirline:statusline)** move lazy update notification before lsp info - ([cd2f432](https://github.com/sRavioli/nvim/commit/cd2f4329e1c33734b43b9f68916dca5fca4a8bc0)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:pre)** log file search as trace - ([93ddf77](https://github.com/sRavioli/nvim/commit/93ddf77523fbf4c90d13196b6d5e98a995418435)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:settings)** change messages language to en - ([d8d43ca](https://github.com/sRavioli/nvim/commit/d8d43ca4108c35c5c9924f8a6f061ee82d917a36)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:pre)** install `conform.nvim` - ([ae0278d](https://github.com/sRavioli/nvim/commit/ae0278d193a1ec24d8427b799cdd46d4c7d4c50e)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:servers)** enable all type hints for `lua_ls` - ([6f6a7d1](https://github.com/sRavioli/nvim/commit/6f6a7d1b93af228cbb5c890e153197446fd84c2e)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings)** add lsp keymap description - ([7031c39](https://github.com/sRavioli/nvim/commit/7031c39c332af08108a2277da0f478a7c83d0fcc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** change heirline utils require call - ([9fd9bd2](https://github.com/sRavioli/nvim/commit/9fd9bd2321edca7f248e00b3b8df6797086ab625)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils)** add init to utils - ([3e432c2](https://github.com/sRavioli/nvim/commit/3e432c23482802bbc02026dd15eb3eb5f6d00ea7)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:event)** add class comment - ([d443911](https://github.com/sRavioli/nvim/commit/d443911c03fdc6aaa082494ff41c5c3002e33588)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:heirline)** add heirline init - ([2673ebe](https://github.com/sRavioli/nvim/commit/2673ebe5acfe7a736e4aab7ca7c56ae8f3ad276a)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:telescope)** add telescope utils - ([f3dc097](https://github.com/sRavioli/nvim/commit/f3dc097b459c3e233c7a065feb51462000b85003)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update`lazy-lock.json` - ([da4e2f0](https://github.com/sRavioli/nvim/commit/da4e2f01c1a5a52df4a35d1229336c9574763957)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([d05eb96](https://github.com/sRavioli/nvim/commit/d05eb962f32b902751f7480449b19968014a4cbb)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Style
+
+- **(plugins:ui)** reformat telescope config - ([d79cdda](https://github.com/sRavioli/nvim/commit/d79cdda1bc8542c70757613826d016e3f3ae3703)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [1.1.0](https://github.com/sRavioli/nvim/compare/1.0.0..1.1.0) - 2023-11-27
 
 #### Bug Fixes
