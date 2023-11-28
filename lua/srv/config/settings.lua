@@ -4,7 +4,19 @@ local fn = require "srv.utils.fn"
 local set = vim.opt
 local let = vim.g
 
-vim.cmd.language "messages en"
+local uv = vim.loop
+if vim.fn.has "nvim-0.10.0" == 1 then
+  uv = vim.uv
+  set.smoothscroll = true
+end
+
+local function _os()
+  return uv.os_uname().sysname:lower(), uv.os_uname().machine:lower()
+end
+
+if uv.os_uname().sysname == "Windows_NT" then
+  vim.cmd.language "messages en"
+end
 
 set.clipboard = "unnamedplus"
 
@@ -58,8 +70,6 @@ set.virtualedit = "block"
 
 set.updatetime = 250
 
-set.smoothscroll = true
-
 ---go to previous/next line with h,l,left arrow and right arrow
 ---when cursor reaches end/beginning of line
 set.whichwrap:append "<>[]hl"
@@ -69,7 +79,7 @@ set.colorcolumn = "81"
 let.mapleader = " "
 
 ---add binaries installed by mason.nvim to path
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local is_windows = uv.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath "data"
   .. "/mason/bin"
   .. (is_windows and ";" or ":")
@@ -79,34 +89,64 @@ vim.env.PATH = vim.fn.stdpath "data"
 ---The path where luasnip will look for snippets
 let.lua_snippets_path = vim.fs.normalize(vim.fn.stdpath "config" .. "/lua/srv/snippets")
 
-local providers = {
-  node = {
-    lnx = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host",
-    win = os.getenv "APPDATA" .. "/npm/node_modules/neovim/bin/cli.js",
-  },
+-- local _ = {
+--   node = {
+--     windows_nt = os.getenv "APPDATA" .. "/npm/node_modules/neovim/bin/cli.js",
+--     linux = { x86_64 = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host", aarch64 = 0 },
+--   },
+--
+--   ruby = {
+--     windows_nt = "C:/tools/ruby31/bin/ruby.exe",
+--     linux = { x86_64 = "/home/linuxbrew/.linuxbrew/bin/ruby", aarch64 = 0 },
+--   },
+--
+--   perl = {
+--     windows_nt = "C:/Strawberry/perl/bin/perl.exe",
+--     linux = {
+--       x86_64 = "/home/linuxbrew/.linuxbrew/bin/perl",
+--       aarch64 = 0,
+--     },
+--   },
+--
+--   python3 = {
+--     windows_nt = os.getenv "USERPROFILE" .. "/.py-nvim/Scripts/python.exe",
+--     linux = {
+--       x86_64 = "/home/sravioli/.py-nvim/bin/python3",
+--       aarch64 = 0,
+--     },
+--   },
+-- }
+--
+-- local providers = {
+--   node = {
+--     lnx = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host",
+--     win = os.getenv "APPDATA" .. "/npm/node_modules/neovim/bin/cli.js",
+--   },
+--
+--   ruby = {
+--     lnx = "/home/linuxbrew/.linuxbrew/bin/ruby",
+--     win = "C:/tools/ruby31/bin/ruby.exe",
+--   },
+--
+--   perl = {
+--     lnx = "/usr/bin/perl",
+--     win = "C:/Strawberry/perl/bin/perl.exe",
+--   },
+--
+--   python3 = {
+--     lnx = "/home/sravioli/.py-nvim/bin/python3",
+--     win = os.getenv "USERPROFILE" .. "/.py-nvim/Scripts/python.exe",
+--   },
+-- }
+--
+-- ---@param prov  string|table<string> Current provider
+-- ---@param paths table                The paths to the provider
+-- for prov, paths in pairs(providers) do
+--   let["loaded_" .. prov .. "_provider"] = nil
+--   let[prov .. "_host_prog"] = vim.fn.resolve(paths[fn.get_os()])
+-- end
 
-  ruby = {
-    lnx = "/home/linuxbrew/.linuxbrew/bin/ruby",
-    win = "C:/tools/ruby31/bin/ruby.exe",
-  },
-
-  perl = {
-    lnx = "/usr/bin/perl",
-    win = "C:/Strawberry/perl/bin/perl.exe",
-  },
-
-  python3 = {
-    lnx = "/home/sravioli/.py-nvim/bin/python3",
-    win = os.getenv "USERPROFILE" .. "/.py-nvim/Scripts/python.exe",
-  },
-}
-
----@param prov  string|table<string> Current provider
----@param paths table                The paths to the provider
-for prov, paths in pairs(providers) do
-  let["loaded_" .. prov .. "_provider"] = nil
-  let[prov .. "_host_prog"] = vim.fn.resolve(paths[fn.get_os()])
-end
+require("srv.utils.fun").providers.enable()
 
 ---Load the diagnostic signs
 local signs = require("srv.preferences").icons.diagnostics
