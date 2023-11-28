@@ -49,8 +49,8 @@ M.providers.enable = function()
   for provider, paths in pairs(providers) do
     vim.g[provider .. "_host_prog"] = nil
 
-    local path = vim.fs.normalize(paths[M.os_name()][uv.os_uname().machine]) or 0
-    vim.g[provider .. "_host_prog"] = path
+    local path = paths[M.os_name()][uv.os_uname().machine]
+    vim.g[provider .. "_host_prog"] = path ~= 0 and vim.fs.normalize(path) or path
   end
 end
 
