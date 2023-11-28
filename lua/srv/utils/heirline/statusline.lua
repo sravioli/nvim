@@ -691,7 +691,7 @@ blocks.Lsp = {
 blocks.TerminalName = {
   provider = function()
     local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
-    return " " .. tname
+    return h.pad(" " .. tname)
   end,
   hl = { bg = theme.ui.bg_m3, fg = theme.syn.identifier, bold = true },
 }
@@ -903,9 +903,9 @@ T.Statusline = heirline.insert({
       return { bg = theme.ui.bg_m3, fg = theme.ui.bg_p1 }
     end,
   }),
-  blocks.Space,
   blocks.TerminalName,
   blocks.Align,
+  blocks.SearchResults,
 })
 -- }}}
 
