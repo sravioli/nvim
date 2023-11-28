@@ -19,7 +19,7 @@ M.providers.get = function()
   return {
     node = {
       windows_nt = {
-        x86_64 = os.getenv "APPDATA" .. "/npm/node_modules/neovim/bin/cli.js",
+        x86_64 = (os.getenv "APPDATA" or "") .. "/npm/node_modules/neovim/bin/cli.js",
       },
       linux = { x86_64 = "/home/linuxbrew/.linuxbrew/bin/neovim-node-host", aarch64 = 0 },
     },
@@ -35,7 +35,9 @@ M.providers.get = function()
     },
 
     python3 = {
-      windows_nt = { x86_64 = os.getenv "USERPROFILE" .. "/.py-nvim/Scripts/python.exe" },
+      windows_nt = {
+        x86_64 = (os.getenv "USERPROFILE" or "") .. "/.py-nvim/Scripts/python.exe",
+      },
       linux = { x86_64 = "/home/sravioli/.py-nvim/bin/python3", aarch64 = 0 },
     },
   }
