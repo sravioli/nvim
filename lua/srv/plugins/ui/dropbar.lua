@@ -1,6 +1,7 @@
 return {
   ---IDE-like breadcrumbs, out of the box
   "Bekaboo/dropbar.nvim",
+  enabled = vim.fn.has "nvim-0.10.0" == 1 and true or false,
   dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
   event = require("srv.utils.event").events.LazyFile,
   opts = {
