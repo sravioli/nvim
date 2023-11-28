@@ -544,10 +544,10 @@ blocks.Ruler = {
 --~~ {{{3 Scrollbar
 
 blocks.Scrollbar = {
-  static = { sbar = { "█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", " " } },
+  static = { sbar = { "▔", "🭶", "🭷", "🭸", "🭹", "🭺", "🭻", "▁" } },
 
   hl = function(self)
-    return { bg = theme.ui.pmenu.bg_sbar, fg = self:mode_bg() }
+    return { fg = theme.ui.pmenu.bg_sbar, bg = self:mode_bg() }
   end,
 
   {
@@ -557,7 +557,7 @@ blocks.Scrollbar = {
         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
         local lines = vim.api.nvim_buf_line_count(0)
         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-        return string.rep(self.sbar[i], 2)
+        return self.sbar[i]
       end,
     },
     { provider = "" },
@@ -570,7 +570,7 @@ blocks.FilePositionBlock = heirline.insert({
     self.bg = self:mode_bg()
     self.fg = theme.ui.bg_m1
   end,
-}, blocks.Ruler --[[ blocks.Scrollbar ]])
+}, blocks.Ruler, blocks.Scrollbar)
 --~ }}}
 
 --~ {{{2 Diagnostics
