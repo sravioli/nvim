@@ -104,7 +104,7 @@ return {
     },
     { ---🙊 Stop repeating yourself
       "dbmrq/vim-ditto",
-      ft = { "markdown", "text" },
+      -- ft = { "markdown", "text" },
       keys = {
         { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
         { "<leader>Oa", "<cmd>Ditto<CR>", desc = "🙊 Activate ditto" },
@@ -128,7 +128,6 @@ return {
         }
         vim.g.ditto_dir = vim.fn.stdpath "config"
         vim.g.ditto_file = ".ditto.txt"
-        vim.cmd "au FileType markdown,text,tex DittoOn"
       end,
     },
   },
