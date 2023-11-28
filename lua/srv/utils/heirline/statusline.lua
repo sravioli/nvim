@@ -442,7 +442,7 @@ blocks.FileType = {
 blocks.FileFormat = {
   static = {
     map = {
-      unix = { icon = "", fg = "#1e0f00" },
+      unix = { icon = "", fg = "#ffd246" },
       dos = { icon = "", fg = "#0078d4" },
       mac = { icon = "", fg = "#A3AAAE" },
     },
@@ -672,7 +672,11 @@ blocks.Lsp = {
       hl = { italic = true },
       provider = function()
         local names = {}
-        for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
+        local clients = vim.lsp.get_active_clients { bufnr = 0 }
+        if vim.fn.has "nvim-0.10.0" then
+          clients = vim.lsp.get_clients { bufnr = 0 }
+        end
+        for _, server in pairs(clients) do
           table.insert(names, server.name)
         end
 
