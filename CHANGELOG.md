@@ -5,6 +5,39 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [1.2.1](https://github.com/sRavioli/nvim/compare/1.2.0..1.2.1) - 2023-11-29
+
+#### Bug Fixes
+
+- **(config:settings)** clean up commented out code - ([635c640](https://github.com/sRavioli/nvim/commit/635c6400529f77f54e969531d4bd473d8bb0ff1b)) - [@sRavioli](https://github.com/sRavioli)
+- **(fun:providers)** check path before normalizing - ([44dd0a7](https://github.com/sRavioli/nvim/commit/44dd0a7621bf0f895d9b89ab34a02a64ff3345ba)) - [@sRavioli](https://github.com/sRavioli)
+- **(fun:providers)** add nil check for provider paths - ([c1fde56](https://github.com/sRavioli/nvim/commit/c1fde560d4cdc01aa8c32b2cf2e96a86b5dcab16)) - [@sRavioli](https://github.com/sRavioli)
+- **(heirline:statusline)** change unix icon color, account for nvim-0.10 only func - ([105b4d9](https://github.com/sRavioli/nvim/commit/105b4d98183ea8f9c880e9e561973e36c2436ba0)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:pre)** disable conform.nvim - ([92c860a](https://github.com/sRavioli/nvim/commit/92c860a92aa2134006281b2b371e86bf157d5e34)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** load `vim-ditto` only on cmd - ([f38d8a3](https://github.com/sRavioli/nvim/commit/f38d8a30b1d055578a36fbc81f450c06070241cc)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:treesitter)** change treesitter hover border - ([d59e0c5](https://github.com/sRavioli/nvim/commit/d59e0c5b34f0b3cfae2b5561b7d3dc3a5e544ba7)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** load dropbar only if vim version is >= 0.10.0 - ([df88df2](https://github.com/sRavioli/nvim/commit/df88df27d7247a3800ab7f43b2f63a7c28919f15)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:settings)** set localleader key - ([375e777](https://github.com/sRavioli/nvim/commit/375e7775bb3f12748041ed2c7b33a2c3c8686104)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:settings)** use fun.providers.enable() - ([d71e1b1](https://github.com/sRavioli/nvim/commit/d71e1b1e8b7a5c8bee37fbfbd29902b7be9e790a)) - [@sRavioli](https://github.com/sRavioli)
+- **(heirline:statusline)** update heirline statusline - ([6e1b985](https://github.com/sRavioli/nvim/commit/6e1b98538a561f19a8f9e91dfeb0b126958ac296)) - [@sRavioli](https://github.com/sRavioli)
+- **(heirline:statusline)** add search result in terminal statusbar - ([858269d](https://github.com/sRavioli/nvim/commit/858269d03be689f7926d2447b14ff59e64362eed)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fun)** create new file for functions, add providers utils - ([892a309](https://github.com/sRavioli/nvim/commit/892a30933fdc256772d29326c6f7967e875a2e43)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Hotfixes
+
+- **(heirline)** correctly obtain lsp server list - ([fc4a5cb](https://github.com/sRavioli/nvim/commit/fc4a5cbd92078bebb3a6f709c98b4c4e5dd4e82e)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update`lazy-lock.json` - ([626172f](https://github.com/sRavioli/nvim/commit/626172f7fd26547228f9584de8289743c1a98265)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([9f74121](https://github.com/sRavioli/nvim/commit/9f74121e678d6fe9ac81983f922f56ba64528385)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([2615fee](https://github.com/sRavioli/nvim/commit/2615fee6af3daeb4303d094c55bcfc110362988a)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [1.2.0](https://github.com/sRavioli/nvim/compare/1.1.0..1.2.0) - 2023-11-27
 
 #### Bug Fixes
