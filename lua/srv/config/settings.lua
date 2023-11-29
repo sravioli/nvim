@@ -77,6 +77,7 @@ set.whichwrap:append "<>[]hl"
 set.colorcolumn = "81"
 
 let.mapleader = " "
+let.maplocalleader = ","
 
 ---add binaries installed by mason.nvim to path
 local is_windows = uv.os_uname().sysname == "Windows_NT"
