@@ -23,6 +23,7 @@ return {
   },
   version = "*",
   opts = {
+    shade_terminals = false,
     size = function(term)
       if term.direction == "horizontal" then
         return 15
