@@ -1,6 +1,58 @@
-local theme = require("kanagawa.colors").setup({ theme = "wave" }).theme
+local theme = require("kanagawa.colors").setup().theme
 local conditions, heirline = require "heirline.conditions", require "heirline.utils"
 local icons = require("srv.preferences").icons
+
+-- {{{1 colors
+
+local function setup_colors()
+  return {
+    fg = heirline.get_highlight("Normal").fg,
+    fg_dim = heirline.get_highlight("NormalDark").fg,
+    fg_reverse = heirline.get_highlight("IncSearch").fg,
+
+    bg = heirline.get_highlight("Normal").bg,
+    bg_dark = heirline.get_highlight("NormalDark").bg,
+    bg_darker = theme.ui.bg_dim,
+    bg_darkest = heirline.get_highlight("StatusLine").bg,
+    bg_light = heirline.get_highlight("ColorColumn").bg,
+    bg_lighter = heirline.get_highlight("ColorColumn").bg,
+
+    red = heirline.get_highlight("PreProc").fg,
+    green = heirline.get_highlight("String").fg,
+    yellow = heirline.get_highlight("Operator").fg,
+    orange = heirline.get_highlight("Constant").fg,
+    blue = heirline.get_highlight("Function").fg,
+    magenta = heirline.get_highlight("Statement").fg,
+    cyan = heirline.get_highlight("Type").fg,
+    gray = heirline.get_highlight("Comment").fg,
+    delimiter = heirline.get_highlight("Delimiter").fg,
+    special = heirline.get_highlight("Folded").fg,
+    parameter = heirline.get_highlight("@parameter").fg,
+    identifier = heirline.get_highlight("Identifier").fg,
+
+    diag_ok = heirline.get_highlight("DiagnosticOk").fg,
+    diag_warn = heirline.get_highlight("DiagnosticWarn").fg,
+    diag_error = heirline.get_highlight("DiagnosticError").fg,
+    diag_hint = heirline.get_highlight("DiagnosticHint").fg,
+    diag_info = heirline.get_highlight("DiagnosticInfo").fg,
+
+    git_del = heirline.get_highlight("diffDeleted").fg,
+    git_add = heirline.get_highlight("diffAdded").fg,
+    git_change = heirline.get_highlight("diffChanged").fg,
+  }
+end
+
+require("heirline").load_colors(setup_colors)
+
+vim.api.nvim_create_augroup("Heirline", { clear = true })
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    heirline.on_colorscheme(setup_colors)
+  end,
+  group = "Heirline",
+})
+
+-- }}}
 
 -- {{{1 utils/helpers
 
@@ -42,26 +94,26 @@ local M = {
   -- {{{1 Static variables
   static = {
     mode_colors_map = {
-      n = theme.syn.fun,
-      i = theme.diag.ok,
-      v = theme.syn.keyword,
-      V = theme.syn.keyword,
-      ["\22"] = theme.syn.keyword,
-      c = theme.syn.operator,
-      s = theme.syn.preproc,
-      S = theme.syn.preproc,
-      ["\19"] = theme.syn.preproc,
-      R = theme.syn.constant,
-      r = theme.syn.constant,
-      ["!"] = theme.syn.comment,
-      t = theme.syn.punct,
+      n = "blue",
+      i = "green",
+      v = "magenta",
+      V = "magenta",
+      ["\22"] = "magenta",
+      c = "yellow",
+      s = "red",
+      S = "red",
+      ["\19"] = "red",
+      R = "orange",
+      r = "orange",
+      ["!"] = "grey",
+      t = "delimiter",
     },
 
     mode_bg = function(self)
       local mode = conditions.is_active() and vim.fn.mode() or "n"
       return self.mode_colors_map[mode]
     end,
-    mode_fg = theme.ui.bg_m2,
+    mode_fg = "bg_darker",
   },
   -- }}}
 
@@ -187,7 +239,7 @@ blocks.WorkingDir = {
     self.cwd = vim.fn.fnamemodify(vim.fn.getcwd(0), ":~"):gsub("\\", "/")
 
     self.fg = heirline.get_highlight("Directory").fg
-    self.bg = theme.ui.bg_m1
+    self.bg = "bg_dark"
   end,
 
   hl = function(self)
@@ -278,7 +330,7 @@ blocks.FilenameFlags = {
     end,
     provider = "[+] ",
     hl = function(self)
-      return { fg = theme.vcs.added, bg = self.bg }
+      return { fg = "git_add", bg = self.bg }
     end,
   },
   {
@@ -287,7 +339,7 @@ blocks.FilenameFlags = {
     end,
     provider = " ",
     hl = function(self)
-      return { fg = theme.diag.warning, bg = self.bg }
+      return { fg = "diag_warn", bg = self.bg }
     end,
   },
 }
@@ -297,7 +349,7 @@ blocks.FilenameBlock = heirline.insert({
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
     self.dir_fg = heirline.get_highlight("Directory").fg
-    self.bg = theme.ui.bg_p1
+    self.bg = "bg_light"
   end,
 }, heirline.insert(blocks.FilenameIcon, blocks.FilenameName, blocks.FilenameFlags))
 
@@ -316,8 +368,8 @@ blocks.GitStatus = {
     self.added_sym, self.changed_sym, self.removed_sym = " +", " ~", " -"
   end,
   hl = function(self)
-    self.git_fg = theme.ui.special
-    return { fg = self.git_fg, bg = theme.ui.bg_m2 }
+    self.git_fg = "special"
+    return { fg = self.git_fg, bg = "bg_darker" }
   end,
   on_click = {
     callback = function()
@@ -357,7 +409,7 @@ blocks.GitStatus = {
           return self.added > 0
         end,
         flexible = 1,
-        hl = { fg = theme.vcs.added },
+        hl = { fg = "git_add" },
         {
           provider = function(self)
             return self.added_sym .. self.added
@@ -380,7 +432,7 @@ blocks.GitStatus = {
           return self.changed > 0
         end,
         flexible = 1,
-        hl = { fg = theme.vcs.changed },
+        hl = { fg = "git_change" },
         {
           provider = function(self)
             return self.changed_sym .. self.changed
@@ -403,7 +455,7 @@ blocks.GitStatus = {
           return self.removed > 0
         end,
         flexible = 1,
-        hl = { fg = theme.vcs.removed },
+        hl = { fg = "git_del" },
         {
           provider = function(self)
             return self.removed_sym .. self.removed
@@ -429,7 +481,7 @@ blocks.GitStatus = {
 
 --~~ {{{3 FileType
 blocks.FileType = {
-  hl = { fg = theme.syn.type, bg = theme.ui.bg_p1, bold = true },
+  hl = { fg = "cyan", bg = "bg_light", bold = true },
   provider = function()
     local ft = vim.bo.filetype:upper()
     return ft == "" and " " or h.pad(ft)
@@ -449,7 +501,7 @@ blocks.FileFormat = {
   },
 
   hl = function(self)
-    return { fg = self.map[vim.bo.fileformat]["fg"], bg = theme.ui.bg_p1 }
+    return { fg = self.map[vim.bo.fileformat]["fg"], bg = "bg_light" }
   end,
   provider = function(self)
     return self.map[vim.bo.fileformat]["icon"]
@@ -463,7 +515,7 @@ blocks.FileEncoding = {
   provider = function()
     return (vim.bo.fenc ~= "" and h.pad(vim.bo.fenc)) or h.pad(vim.o.enc) -- :h 'enc'
   end,
-  hl = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1 },
+  hl = { fg = "fg_dim", bg = "bg_light" },
 }
 --~~}}}
 
@@ -471,8 +523,8 @@ blocks.FileEncoding = {
 
 blocks.FileSize = {
   hl = function(self)
-    self.size_fg = theme.syn.parameter
-    self.size_bg = theme.ui.bg_p2
+    self.size_fg = "parameter"
+    self.size_bg = "bg_lighter"
     return { fg = self.size_fg, bg = self.size_bg }
   end,
 
@@ -568,7 +620,7 @@ blocks.Scrollbar = {
 blocks.FilePositionBlock = heirline.insert({
   init = function(self)
     self.bg = self:mode_bg()
-    self.fg = theme.ui.bg_m1
+    self.fg = "bg_dark"
   end,
 }, blocks.Ruler, blocks.Scrollbar)
 --~ }}}
@@ -584,7 +636,7 @@ blocks.Diagnostics = {
     self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
   end,
   update = { "DiagnosticChanged", "BufEnter", "WinResized", "VimResized" },
-  hl = { bg = theme.ui.bg_m3 },
+  hl = { bg = "bg_darkest" },
 
   on_click = {
     callback = function()
@@ -596,7 +648,7 @@ blocks.Diagnostics = {
   { ---diagnostic group (flexible)
     { ---diagnostic error (flexible)
       flexible = 1,
-      hl = { fg = theme.diag.error },
+      hl = { fg = "diag_error" },
       condition = function(self)
         return self.errors > 0
       end,
@@ -609,7 +661,7 @@ blocks.Diagnostics = {
     },
     { ---diagnostic warning (flexible)
       flexible = 1,
-      hl = { fg = theme.diag.warning },
+      hl = { fg = "diag_warn" },
       condition = function(self)
         return self.warnings > 0
       end,
@@ -622,7 +674,7 @@ blocks.Diagnostics = {
     },
     { ---diagnostic info (flexible)
       flexible = 1,
-      hl = { fg = theme.diag.info },
+      hl = { fg = "diag_info" },
       condition = function(self)
         return self.info > 0
       end,
@@ -635,7 +687,7 @@ blocks.Diagnostics = {
     },
     { ---diagnostic hint (flexible)
       flexible = 1,
-      hl = { fg = theme.diag.hint },
+      hl = { fg = "hint" },
       condition = function(self)
         return self.hints > 0
       end,
@@ -655,7 +707,7 @@ blocks.Diagnostics = {
 blocks.Lsp = {
   condition = conditions.lsp_attached,
   update = { "LspAttach", "LspDetach", "WinResized", "VimResized" },
-  hl = { fg = theme.syn.string, bg = theme.ui.bg_m3, bold = true },
+  hl = { fg = "green", bg = "bg_darkest", bold = true },
 
   on_click = {
     callback = function()
@@ -697,7 +749,7 @@ blocks.TerminalName = {
     local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
     return h.pad(" " .. tname)
   end,
-  hl = { bg = theme.ui.bg_m3, fg = theme.syn.identifier, bold = true },
+  hl = { bg = "bg_darkest", fg = "identifier", bold = true },
 }
 -- }}}
 
@@ -711,7 +763,7 @@ blocks.HelpfileName = {
     local filename = vim.api.nvim_buf_get_name(0)
     return h.pad(vim.fn.fnamemodify(filename, ":t") or "")
   end,
-  hl = { fg = theme.diag.ok, bg = theme.ui.bg_p2 },
+  hl = { fg = "diag_ok", bg = "bg_lighter" },
 }
 --~ }}}
 
@@ -729,7 +781,7 @@ blocks.LazyUpdate = {
     end,
     name = "update_plugins",
   },
-  hl = { fg = theme.syn.constant, bg = theme.ui.bg_m3 },
+  hl = { fg = "orange", bg = "bg_darkest" },
 }
 --~ }}}
 
@@ -807,13 +859,13 @@ D.Leftline = {
   heirline.insert(blocks.WorkingDir, { ---separator
     provider = h.Separators.hard_divider.l,
     hl = function(self)
-      return { bg = theme.ui.bg_p1, fg = self.bg, bold = true }
+      return { bg = "bg_light", fg = self.bg, bold = true }
     end,
   }),
   heirline.insert(blocks.FilenameBlock, { ---separator
     provider = h.Separators.hard_divider.l,
     hl = function(self)
-      return { fg = self.bg, bg = theme.ui.bg_m2 }
+      return { fg = self.bg, bg = "bg_darker" }
     end,
   }),
   blocks.GitStatus,
@@ -832,40 +884,40 @@ D.Rightline = {
     {
       condition = conditions.lsp_attached,
       provider = h.Separators.soft_divider.r,
-      hl = { fg = theme.syn.comment },
+      hl = { fg = "grey" },
     },
   }),
   heirline.insert(blocks.Lsp, {
     {
       condition = require("lazy.status").has_updates,
       provider = " " .. h.Separators.soft_divider.r,
-      hl = { fg = theme.syn.comment },
+      hl = { fg = "grey" },
     },
   }),
   blocks.LazyUpdate,
   -- heirline.insert(blocks.LazyUpdate, {
   --   {
   --     provider = h.Separators.soft_divider.r,
-  --     hl = { fg = theme.syn.comment },
+  --     hl = { fg = "grey" },
   --   },
   -- }),
   heirline.insert(
     {
       {
         provider = h.Separators.hard_divider.r,
-        hl = { bg = theme.ui.bg_m3, fg = theme.ui.bg_p2 },
+        hl = { bg = "bg_darkest", fg = "bg_lighter" },
       },
     },
     blocks.FileSize,
     {
       provider = h.Separators.hard_divider.r,
-      hl = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p2 },
+      hl = { fg = "bg_light", bg = "bg_lighter" },
     }
   ),
   heirline.insert(blocks.FileinfoBlock, {
     provider = h.Separators.hard_divider.r,
     hl = function(self)
-      return { fg = self:mode_bg(), bg = theme.ui.bg_p1 }
+      return { fg = self:mode_bg(), bg = "bg_light" }
     end,
   }),
   blocks.FilePositionBlock,
@@ -897,14 +949,14 @@ T.Statusline = heirline.insert({
     heirline.insert(blocks.ViMode, { ---separator (static)
       provider = h.Separators.hard_divider.l,
       hl = function(self)
-        return { fg = self:mode_bg(), bg = theme.ui.bg_p1 }
+        return { fg = self:mode_bg(), bg = "bg_light" }
       end,
     }),
   },
   heirline.insert(blocks.FileType, {
     provider = h.Separators.hard_divider.l,
     hl = function()
-      return { bg = theme.ui.bg_m3, fg = theme.ui.bg_p1 }
+      return { bg = "bg_darkest", fg = "bg_light" }
     end,
   }),
   blocks.TerminalName,
@@ -928,9 +980,9 @@ S.Leftline = {
         provider = h.Separators.hard_divider.l,
         hl = function()
           if vim.bo.filetype == "help" then
-            return { fg = theme.ui.bg_p1, bg = theme.ui.bg_p2 }
+            return { fg = "bg_light", bg = "bg_lighter" }
           else
-            return { fg = theme.ui.bg_p1, bg = theme.ui.bg_m2 }
+            return { fg = "bg_light", bg = "bg_darker" }
           end
         end,
       },
@@ -941,7 +993,7 @@ S.Leftline = {
         return vim.bo.filetype == "help"
       end,
       provider = h.Separators.hard_divider.l,
-      hl = { fg = theme.ui.bg_p2, bg = theme.ui.bg_m3 },
+      hl = { fg = "bg_lighter", bg = "bg_darkest" },
     }
   ),
 }
@@ -957,12 +1009,12 @@ S.Middleline = { blocks.Break, blocks.SearchResults, blocks.Break }
 S.Rightline = {
   {
     provider = h.Separators.hard_divider.r,
-    hl = { bg = theme.ui.bg_m3, fg = theme.ui.bg_p2 },
+    hl = { bg = "bg_darkest", fg = "bg_lighter" },
   },
   heirline.insert(blocks.FileSize, {
     provider = h.Separators.hard_divider.r,
     hl = function(self)
-      return { fg = self:mode_bg(), bg = theme.ui.bg_p2 }
+      return { fg = self:mode_bg(), bg = "bg_lighter" }
     end,
   }),
   heirline.insert(blocks.FilePositionBlock, {
