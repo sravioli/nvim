@@ -32,10 +32,6 @@ return {
       end
     end,
     direction = "float",
-    shell = function()
-      local shell = { win = "pwsh.exe", lnx = "bash" }
-      return shell[require("srv.utils.fn").get_os()]
-    end,
     float_opts = {
       border = require("srv.preferences").border,
       width = function()
