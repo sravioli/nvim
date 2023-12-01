@@ -687,7 +687,7 @@ blocks.Diagnostics = {
     },
     { ---diagnostic hint (flexible)
       flexible = 1,
-      hl = { fg = "hint" },
+      hl = { fg = "diag_hint" },
       condition = function(self)
         return self.hints > 0
       end,
