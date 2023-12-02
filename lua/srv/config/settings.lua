@@ -1,6 +1,3 @@
----@module "srv.utils.fn"
-local fn = require "srv.utils.fn"
-
 local set = vim.opt
 local let = vim.g
 
@@ -8,10 +5,6 @@ local uv = vim.loop
 if vim.fn.has "nvim-0.10.0" == 1 then
   uv = vim.uv
   set.smoothscroll = true
-end
-
-local function _os()
-  return uv.os_uname().sysname:lower(), uv.os_uname().machine:lower()
 end
 
 if uv.os_uname().sysname == "Windows_NT" then
@@ -69,6 +62,14 @@ set.undolevels = 10000
 set.virtualedit = "block"
 
 set.updatetime = 250
+
+set.shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell"
+set.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command "
+  .. "[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+set.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+set.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+set.shellxquote = ""
+set.shellquote = ""
 
 ---go to previous/next line with h,l,left arrow and right arrow
 ---when cursor reaches end/beginning of line
