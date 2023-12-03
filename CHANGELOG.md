@@ -5,6 +5,34 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [1.2.2](https://github.com/sRavioli/nvim/compare/1.2.1..1.2.2) - 2023-12-03
+
+#### Bug Fixes
+
+- **(heirline:statusline)** use correct color name - ([2c665b8](https://github.com/sRavioli/nvim/commit/2c665b84d8dc259136c94f3e0ecc887d2ebb29c5)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** apply custom glow style - ([1bedca8](https://github.com/sRavioli/nvim/commit/1bedca8eadd18fb266de45252ab122203962fd3d)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** load `vim-pencil` only on command - ([95c9854](https://github.com/sRavioli/nvim/commit/95c9854564c90ad27c0c7da33e83b024c5910427)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** set shell outside toggleterm - ([1c4de88](https://github.com/sRavioli/nvim/commit/1c4de88c0e8420bf4a2df6aa7ff234fd6c50557c)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ui)** disable terminal shading - ([74e5c51](https://github.com/sRavioli/nvim/commit/74e5c51db30bd64972ae2fc6be4ec769a949c25e)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** remove mapping related functions - ([d45799a](https://github.com/sRavioli/nvim/commit/d45799ada9dcef1945e6d80609bc402d89c51a1b)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:autocommands)** use new update_timestamp function - ([3fcd375](https://github.com/sRavioli/nvim/commit/3fcd375bcb02c443c7c72feb6ced50a889162c34)) - [@sRavioli](https://github.com/sRavioli)
+- **(config:settings)** change shell to pwsh - ([25131e6](https://github.com/sRavioli/nvim/commit/25131e64008b1ba5151843844e67984c6d11eea9)) - [@sRavioli](https://github.com/sRavioli)
+- **(heirline:statusline)** use load_colors() for heirline - ([c819312](https://github.com/sRavioli/nvim/commit/c819312e1b0c773df80bd27c2aa440aa63f28212)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fun)** add more utility functions - ([d65bc0a](https://github.com/sRavioli/nvim/commit/d65bc0a39bd03f7f02c1732612145ad997456a25)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update`lazy-lock.json` - ([00d4991](https://github.com/sRavioli/nvim/commit/00d4991e472668711a8da1268e63772d16d307ad)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Style
+
+- **(heirline:statusline)** add spacing - ([4a738a3](https://github.com/sRavioli/nvim/commit/4a738a39a845850bccb953a98ee3d44718ef54a2)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [1.2.1](https://github.com/sRavioli/nvim/compare/1.2.0..1.2.1) - 2023-11-29
 
 #### Bug Fixes
