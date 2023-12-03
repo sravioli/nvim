@@ -58,6 +58,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 ---@class utils
 local h = {}
+
 ---Strips whitespace, punctuation and control chars from string
 ---@param s string input string
 ---@param pat? string pattern to use to strip chars
