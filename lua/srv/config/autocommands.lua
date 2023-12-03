@@ -158,3 +158,10 @@ au("BufWritePre", {
     require("srv.utils.fun").fmt.update_timestamp()
   end,
 })
+
+au({ "BufNewFile", "BufRead" }, {
+  pattern = "*.xaml",
+  callback = function()
+    vim.opt_local.filetype = "xml"
+  end,
+})
