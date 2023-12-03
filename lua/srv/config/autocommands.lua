@@ -155,6 +155,6 @@ au("BufWritePre", {
   pattern = "*",
   desc = "update last modified flag",
   callback = function()
-    require("srv.utils.fn").update_timestamp()
+    require("srv.utils.fun").fmt.update_timestamp()
   end,
 })
