@@ -1,6 +1,23 @@
+--# selene: allow (undefined_variable)
 ---@diagnostic disable: undefined-global
 -- luacheck: ignore 113
 return {
+  s({ trig = "b", dscr = "bold", priority = 9999 }, fmt([[**{}**]], i(1))),
+  s({ trig = "i", dscr = "italic", priority = 9999 }, fmt([[_{}_]], i(1))),
+  s({ trig = "bi", dscr = "bold italic", priority = 9999 }, fmt([[**_{}_**]], i(1))),
+  s({ trig = "ib", dscr = "italic bold", priority = 9999 }, fmt([[_**{}**_]], i(1))),
+  s({ trig = "ci", dscr = "inline code", priority = 9999 }, fmt([[`{}`]], i(1))),
+  s(
+    { trig = "cb", dscr = "code block", priority = 9999 },
+    fmt(
+      [[
+        ~~~{}
+        {}
+        ~~~
+      ]],
+      { i(1, "lang"), i(2) }
+    )
+  ),
   s({ trig = "mi", dscr = "Inline math" }, fmt([[${}$]], i(1))),
   s(
     { trig = "mb", dscr = "Math block" },
@@ -288,6 +305,119 @@ return {
       **Svolgimento**: {}
     ]],
       { i(1), i(0) }
+    )
+  ),
+
+  s(
+    { trig = "clibtemplate", dscr = "template per file di libreria C" },
+    fmt(
+      [[
+        # {fun}()
+
+        ## Descrizione
+
+        {descr}
+
+        ## Sintassi
+
+        ~~~c
+        {type} {pointer}{fun}({params});
+        ~~~
+
+        ### Parametri
+
+        {params_list}
+
+        ### Valore restituito
+
+        {return_value}
+
+        ## Esempio
+
+        {example}
+      ]],
+      {
+        fun = i(1, "main"),
+        descr = i(2),
+        type = i(3, "void"),
+        pointer = c(4, { t "", t "*" }),
+        params = i(5),
+        params_list = d(6, function(args)
+          vim.print(args)
+          local params = vim.split(args[1][1], ", ")
+
+          local tmp = {}
+          for index, param in ipairs(params) do
+            local txt
+            local suffix = ""
+            if string.find(param, "%a+%s?%*") then
+              suffix = "puntatore a "
+            end
+
+            local tbl = { i(index) }
+            txt = param:gsub("^.-(%*?%a+)$", "%1")
+            if txt ~= "" then
+              txt = ("- `%s`: %s"):format(txt, suffix)
+              tbl = { t { txt }, i(index), t { "", "" } }
+            end
+
+            vim.list_extend(tmp, tbl)
+          end
+
+          return sn(nil, tmp)
+        end, { 5 }),
+        return_value = i(7),
+        example = i(8),
+      },
+      {
+        repeat_duplicates = true,
+      }
+    )
+  ),
+
+  s(
+    { trig = "csintax", dscr = "Dichiarazione funzione in C" },
+    fmt(
+      [[
+        ## Sintassi
+
+        ~~~c
+        {code}
+        ~~~
+
+        ### Parametri
+
+        {params}
+
+        ### Valore restituito
+
+        {ret}
+      ]],
+      {
+        code = i(1),
+        params = d(2, function(args)
+          local params =
+            vim.split(string.gsub(args[1][1], "^%a+%s*%*?%a+%((.-)%);$", "%1"), ", ")
+          vim.print(params)
+
+          local tmp = {}
+          for index, param in ipairs(params) do
+            local txt
+            local suffix = ""
+            if string.find(param, "%a+%s?%*") then
+              suffix = "puntatore a "
+            end
+
+            txt = param:gsub("^.-(%*?%a+)$", "%1")
+            txt = ("- `%s`: %s"):format(txt, suffix)
+
+            vim.list_extend(tmp, { t { txt }, i(index), t { "", "" } })
+          end
+
+          return sn(nil, tmp)
+        end, { 1 }),
+        ret = i(0),
+      }
     )
   ),
 }
