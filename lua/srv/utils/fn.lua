@@ -112,14 +112,12 @@ Functions.lsp.filter_diagnostics = function(diagnostics)
   return vim.tbl_values(most_severe)
 end
 
-Functions.lsp.async_formatting = function(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-
+Functions.lsp.async_formatting = function(client, bufnr)
   vim.lsp.buf_request(
     bufnr,
     "textDocument/formatting",
     vim.lsp.util.make_formatting_params {},
-    function(err, res, ctx)
+    function(err, res, _)
       if err then
         local err_msg = type(err) == "string" and err or err.message
         ---you can modify the log message / level (or ignore it completely)
@@ -136,7 +134,6 @@ Functions.lsp.async_formatting = function(bufnr)
       end
 
       if res then
-        local client = vim.lsp.get_client_by_id(ctx.client_id)
         vim.lsp.util.apply_text_edits(
           res,
           bufnr,
