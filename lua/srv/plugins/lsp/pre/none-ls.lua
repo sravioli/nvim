@@ -62,7 +62,7 @@ return {
         diagnostics.codespell,
 
         ---markdown
-        diagnostics.markdownlint.with {
+        diagnostics.markdownlint_cli2.with {
           extra_args = function()
             local file = search_config_file ".markdownlint.jsonc"
             if file ~= "" then
@@ -71,7 +71,17 @@ return {
             return {}
           end,
         },
-        formatting.markdownlint,
+        formatting.markdownlint.with {
+          command = "markdownlint-cli2.cmd ",
+          args = { "--fix", "$FILENAME" },
+          extra_args = function()
+            local file = search_config_file ".markdownlint.jsonc"
+            if file ~= "" then
+              return { "--config", file }
+            end
+            return {}
+          end,
+        },
         formatting.cbfmt,
 
         ---lua
