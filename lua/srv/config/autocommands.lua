@@ -4,7 +4,7 @@
 ---@license GPL-3.0
 
 local au = vim.api.nvim_create_autocmd
-local events = require("srv.utils.event").events
+local events = require "srv.utils.events"
 
 local _aug = function(name, opts)
   return vim.api.nvim_create_augroup(name .. "Group", opts or {})
@@ -74,6 +74,8 @@ au("FileType", {
     "fugitive",
     "null-ls-info",
     "dap-float",
+    "sagarename",
+    "nvimtree",
   },
   command = [[nnoremap <buffer><silent> q :quit<CR>]],
   group = aug.OneKeyExit,
@@ -151,7 +153,7 @@ au("FileType", {
   end,
 })
 
-au("BufWritePre", {
+au("BufWritePost", {
   pattern = "*",
   desc = "update last modified flag",
   callback = function()
@@ -165,3 +167,4 @@ au({ "BufNewFile", "BufRead" }, {
     vim.opt_local.filetype = "xml"
   end,
 })
+
