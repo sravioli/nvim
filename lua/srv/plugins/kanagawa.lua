@@ -149,3 +149,4 @@ return {
     colors = { theme = { all = { ui = { bg_gutter = "NONE" } } } },
   },
 }
+

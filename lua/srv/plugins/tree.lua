@@ -1,7 +1,24 @@
 return {
+  ---file explorer tree for neovim written in lua
   "nvim-tree/nvim-tree.lua",
   version = "*",
-  dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  dependencies = {
+    { "nvim-tree/nvim-web-devicons" },
+    {
+      ---prompts the user to pick a window and returns the window id of the picked window
+      "s1n7ax/nvim-window-picker",
+      name = "window-picker",
+      version = "2.*",
+      opts = {
+        hint = "floating-big-letter",
+        show_prompt = false,
+        filter_rules = {
+          include_current_win = true,
+          bo = { filetype = { "NvimTree", "neo-tree", "notify", "fidget" } },
+        },
+      },
+    },
+  },
   cmd = {
     "NvimTreeOpen",
     "NvimTreeClose",
@@ -24,23 +41,12 @@ return {
     },
   },
   opts = function()
-    ---@class Icons
-    local icons = require("srv.preferences").icons
+    local fun = require "srv.utils.fun" ---@class Fun
+    local icons = require("srv.preferences").icons ---@class Icons
     local border = require("srv.preferences").border
 
     return {
-      ---to set nvim-tree specific mappings
-      on_attach = function(bufnr)
-        local api = require "nvim-tree.api"
-        api.config.mappings.default_on_attach(bufnr)
-
-        require("srv.utils.nvim-tree.float-preview").on_attach(bufnr)
-
-        api.events.subscribe(api.events.Event.FileCreated, function(file)
-          vim.cmd("edit " .. file.fname)
-        end)
-      end,
-
+      on_attach = fun.tree.on_attach,
       hijack_cursor = true, ---keep cursor on first letter of filename
       disable_netrw = true, ---completely disable netrw
       hijack_unnamed_buffer_when_opening = false, ---open in empty unnamed buffers
@@ -48,15 +54,20 @@ return {
       reload_on_bufenter = true, ---update on `BufEnter`
       select_prompts = true, ---`vim.ui.select` prompts
 
+      live_filter = {
+        prefix = "[FILTER]: ",
+        always_show_folders = false, -- Turn into false from true by default
+      },
+
       view = {
         cursorline = true,
-        side = "right",
+        side = "left",
         signcolumn = "auto",
 
         width = { padding = 2 },
 
         float = {
-          enable = true,
+          enable = false,
           quit_on_focus_loss = true,
           open_win_config = {
             relative = "editor",
@@ -127,10 +138,11 @@ return {
 
       actions = {
         file_popup = {
-          open_win_config = {
-            border = border,
-            col = 1,
-            row = 1,
+          open_win_config = { border = border },
+        },
+        open_file = {
+          window_picker = {
+            picker = require("window-picker").pick_window,
           },
         },
       },
@@ -139,3 +151,4 @@ return {
     }
   end,
 }
+

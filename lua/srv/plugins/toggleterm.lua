@@ -1,5 +1,5 @@
 return {
-  ---A neovim lua plugin to help easily manage multiple terminal windows
+  ---neovim lua plugin to help easily manage multiple terminal windows
   "akinsho/toggleterm.nvim",
   keys = {
     {
@@ -47,3 +47,4 @@ return {
     },
   },
 }
+

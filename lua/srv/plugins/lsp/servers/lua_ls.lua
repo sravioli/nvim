@@ -1,20 +1,7 @@
 return {
-  format = {
-    enable = false, ---use null-ls
-  },
-
-  -- completion = {
-  --   enable = true,
-  --   callSnippet = "Replace",
-  --   keywordSnippet = "Replace",
-  --   displayContext = 1,
-  -- },
-
+  format = { enable = false },
   filetypes = { "lua" },
-
-  runtime = {
-    version = "LuaJIT",
-  },
+  runtime = { version = "LuaJIT" },
 
   diagnostics = {
     enable = true,
@@ -40,3 +27,4 @@ return {
     preloadFileSize = 1000,
   },
 }
+
