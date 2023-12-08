@@ -126,3 +126,4 @@ return {
     ["ih"] = { ":<C-U>Gitsigns select_hunk<CR>", "󰊢  Select hunk" },
   },
 }
+

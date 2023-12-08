@@ -62,3 +62,4 @@ return {
     ---:BarbarDisable - very bad command, should never be used
   },
 }
+

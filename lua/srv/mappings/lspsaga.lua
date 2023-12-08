@@ -1,3 +1,4 @@
+---@class Mappings
 return {
   autoload = false,
 
@@ -34,3 +35,4 @@ return {
     ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "󱐋  Lspsaga code actions" },
   },
 }
+
