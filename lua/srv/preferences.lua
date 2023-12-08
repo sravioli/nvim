@@ -137,3 +137,4 @@ M.progress_bar.FiraCode = {
 }
 
 return M
+
