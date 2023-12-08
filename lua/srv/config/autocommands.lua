@@ -11,9 +11,9 @@ local _aug = function(name, opts)
 end
 
 ---@class Autogroups
----@field Cursor             number to use for cursor related autocommands.
----@field CheckOutsideChange number to use when checking for outside changes to file.
----@field OnLazyFile         number to use when entering a file.
+---@field Cursor             number for cursor related autocommands.
+---@field CheckOutsideChange number when checking for outside changes to file.
+---@field OnLazyFile         number when entering a file.
 ---@field OnVimHelpEnter     number when entering vim help files.
 local aug = {
   Cursor = _aug "Cursor",
