@@ -5,6 +5,43 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [2.0.0](https://github.com/sRavioli/nvim/compare/1.2.2..2.0.0) - 2023-12-08
+
+#### Bug Fixes
+
+- **(heirline:statusline)** add support for Alacritty - ([3c222af](https://github.com/sRavioli/nvim/commit/3c222af7151ec48c876f1a8213be05c2af530dd5)) - [@sRavioli](https://github.com/sRavioli)
+- **(lsp:none-ls)** use markdownlint-cli2 - ([62bdc37](https://github.com/sRavioli/nvim/commit/62bdc3775a870a34d2901fbfd70c678ec7fa8719)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** update plugins folder to use files instead of folders - ([fef9e5f](https://github.com/sRavioli/nvim/commit/fef9e5f0679a8a087b11265833cda62bcde65fad)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:autocompletion)** load lua snippet first - ([c407e67](https://github.com/sRavioli/nvim/commit/c407e67ad9ca9292d6ba36858c732ffdcfebdb21)) - [@sRavioli](https://github.com/sRavioli)
+- **(selene)** lower undefined_variable to warn - ([7492078](https://github.com/sRavioli/nvim/commit/7492078f9522b0e30b800d73a400afd90aa373ec)) - [@sRavioli](https://github.com/sRavioli)
+- **(skel)** update .markdownlint.jsonc - ([d83c962](https://github.com/sRavioli/nvim/commit/d83c962834564442ac6d246277c0b40c5b0ed38e)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:events)** rename to events, move functions - ([096dde8](https://github.com/sRavioli/nvim/commit/096dde8134d426353f261b562aa5332270230ed5)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fn)** update async format function - ([94dc76b](https://github.com/sRavioli/nvim/commit/94dc76b6894d8017d89b4150411e5d314c0ae44f)) - [@sRavioli](https://github.com/sRavioli)
+- move to `./fun/` folder - ([5cd2c48](https://github.com/sRavioli/nvim/commit/5cd2c48f38cf06a9ac9146a3695d328a13aacbc2)) - [@sRavioli](https://github.com/sRavioli)
+- remove table.unpack - ([b0d68a4](https://github.com/sRavioli/nvim/commit/b0d68a4caf3d31e668510f1946c5b61426f96168)) - [@sRavioli](https://github.com/sRavioli)
+- require new plugin file, use correct keymaps loading func - ([ab392be](https://github.com/sRavioli/nvim/commit/ab392be02099573e2b3c0973b697e7288868fcd3)) - [@sRavioli](https://github.com/sRavioli)
+- update events require, add filetypes for q close - ([74bdb0a](https://github.com/sRavioli/nvim/commit/74bdb0a5fabcce7c500e7114b3940e4d1cf271fa)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:autocommands)** set xml filetype for xaml - ([39ff87b](https://github.com/sRavioli/nvim/commit/39ff87bc9ec2567ab7341330e7101a3251834fe2)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins)** move lazy configuration - ([7f6b326](https://github.com/sRavioli/nvim/commit/7f6b32669b1416438edce0360ae1da03bbd3d894)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets)** add more markdown snippets - ([8dcf715](https://github.com/sRavioli/nvim/commit/8dcf715a75e5e92525a6b59646eb12fc9968cfa0)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:fun)** change, filename && move functions to separate file - ([aab19c8](https://github.com/sRavioli/nvim/commit/aab19c88f74c8445083dbd6319f75d835dc7e7ca)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update `lazy-lock.json` - ([3a80174](https://github.com/sRavioli/nvim/commit/3a80174c0801022c1e06fa64d2ee101b6f08fd35)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update`lazy-lock.json` - ([6a245de](https://github.com/sRavioli/nvim/commit/6a245de93bcacc3f7c8d1a2fc46c2f712a748e3c)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Style
+
+- add blank line to end of gile - ([7bf0351](https://github.com/sRavioli/nvim/commit/7bf03511ad756495a013e3939be0ff5940badc32)) - [@sRavioli](https://github.com/sRavioli)
+- add blank line to end of gile - ([442886e](https://github.com/sRavioli/nvim/commit/442886ef5b699c632bdaba7601fee9d446d34e26)) - [@sRavioli](https://github.com/sRavioli)
+- add blank line to end of file - ([b363a9a](https://github.com/sRavioli/nvim/commit/b363a9a978f5bd5a37de83b6cd7a9bff941db26a)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [1.2.2](https://github.com/sRavioli/nvim/compare/1.2.1..1.2.2) - 2023-12-03
 
 #### Bug Fixes
