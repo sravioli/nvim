@@ -6,10 +6,11 @@ if vim.g.neovide then
 end
 
 ---Load plugins
-require "srv.plugins"
+require "srv.lazy"
 
 ---Load user autocommands
 require "srv.config.autocommands"
 
 ---Load non-plugin keymaps
-require("srv.utils.keymaps").load()
+require("srv.utils.fun").keymaps.load()
+
