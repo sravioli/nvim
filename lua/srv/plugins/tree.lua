@@ -84,7 +84,9 @@ return {
         group_empty = true,
         full_name = true,
         root_folder_label = function(root_cwd)
-          return root_cwd:gsub(os.getenv "USERPROFILE", "~"):gsub("\\", "/") .. "/"
+          return root_cwd
+            :gsub(os.getenv "USERPROFILE" or os.getenv "HOME", "~")
+            :gsub("\\", "/") .. "/"
         end,
 
         highlight_git = true,
