@@ -15,7 +15,7 @@ end
 ---Checks if words are present before text to start completing
 ---@return boolean has_words_before Whether words are present
 function M.has_words_before()
-  local unpack = unpack or table.unpack
+  local unpack = unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s"
@@ -57,3 +57,4 @@ function M.format(entry, vim_item)
 end
 
 return M
+
