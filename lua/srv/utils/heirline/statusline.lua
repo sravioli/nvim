@@ -597,7 +597,10 @@ blocks.Ruler = {
 --~~ {{{3 Scrollbar
 
 blocks.Scrollbar = {
-  static = { sbar = { "▔", "🭶", "🭷", "🭸", "🭹", "🭺", "🭻", "▁" } },
+  static = {
+    sbar = { "▔", "🭶", "🭷", "🭸", "🭹", "🭺", "🭻", "▁" },
+    alacritty_sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" },
+  },
 
   hl = function(self)
     return { fg = theme.ui.pmenu.bg_sbar, bg = self:mode_bg() }
@@ -607,6 +610,9 @@ blocks.Scrollbar = {
     flexible = 1,
     {
       provider = function(self)
+        if vim.env.TERM == "alacritty" then
+          self.sbar = self.alacritty_sbar
+        end
         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
         local lines = vim.api.nvim_buf_line_count(0)
         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
@@ -1040,3 +1046,4 @@ S.Statusline = heirline.insert({
 return heirline.insert(M, S.Statusline, T.Statusline, D.Statusline)
 
 -- vim: fdm=marker
+
