@@ -89,16 +89,22 @@ au("FileType", {
 
 ---When having multiple buffers, show cursor only in the active one
 au({ "InsertLeave", "WinEnter" }, {
-  desc = "Show cursor in current buffer",
-  pattern = "*",
-  command = "set cursorline",
-  group = aug.Cursor,
+  callback = function()
+    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+    if ok and cl then
+      vim.wo.cursorline = true
+      vim.api.nvim_win_del_var(0, "auto-cursorline")
+    end
+  end,
 })
 au({ "InsertEnter", "WinLeave" }, {
-  desc = "Hide cursor in non active buffer",
-  pattern = "*",
-  command = "set nocursorline",
-  group = aug.Cursor,
+  callback = function()
+    local cl = vim.wo.cursorline
+    if cl then
+      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+      vim.wo.cursorline = false
+    end
+  end,
 })
 
 ---@type table Doxygen highlight groups and what group to link to.
