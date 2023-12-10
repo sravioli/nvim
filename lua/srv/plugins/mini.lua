@@ -42,7 +42,10 @@ return {
   {
     "echasnovski/mini.align",
     version = "*",
-    keys = { { "ga" }, { "gA" } },
+    keys = {
+      { "ga", desc = "align with mini.align" },
+      { "gA", desc = "align with mini.align" },
+    },
     config = true,
   }, -- }}}
 }
