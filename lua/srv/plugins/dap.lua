@@ -4,7 +4,6 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
       { "williamboman/mason.nvim" },
-      { "mfussenegger/nvim-dap" },
     },
     cmd = { "DapInstall", "DapUninstall" },
     opts = {
@@ -62,6 +61,7 @@ return {
   -- {{{1 nvim-dap: Debug Adapter Protocol client implementation for Neovim
   {
     "mfussenegger/nvim-dap",
+    dependencies = { "jay-babu/mason-nvim-dap.nvim" },
     keys = {
       {
         "<leader>dB",
