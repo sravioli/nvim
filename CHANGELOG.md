@@ -5,6 +5,40 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [2.0.1](https://github.com/sRavioli/nvim/compare/2.0.0..2.0.1) - 2023-12-15
+
+#### Bug Fixes
+
+- **(config:neovide)** change neovide font - ([b549e77](https://github.com/sRavioli/nvim/commit/b549e77dd5e9457df2d9f1474a7b43a92865ed43)) - [@sRavioli](https://github.com/sRavioli)
+- **(mappings:nvim)** remove code-action-preview mapping - ([e80d735](https://github.com/sRavioli/nvim/commit/e80d735ef235269ac75f71ab94d156aa84e6dbca)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:dap)** load mason-dap on nvim-dap load - ([2159d45](https://github.com/sRavioli/nvim/commit/2159d4588a0c61cfb9ad03c8c91335a74bc1b812)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:lsp)** uninstall hoverhints, lsp-timeout, install actions-preview - ([2349b3d](https://github.com/sRavioli/nvim/commit/2349b3dc278a94567646603e13e5f8d9125e3785)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:mini)** add mini keymaps descriptions - ([972587b](https://github.com/sRavioli/nvim/commit/972587b11fddf255f076ea158c5c402b3ffc4eaf)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:motions)** uninstall nvim-spider, remove icons from dial.nvim mappings - ([b1566f7](https://github.com/sRavioli/nvim/commit/b1566f7b28eb0089f03c350408648dc2141af313)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:telescope)** use nerdy.nvim instead of icon-picker - ([bdd2506](https://github.com/sRavioli/nvim/commit/bdd25065c6e0f50ffb56e8d64d3cb19a19c8a02b)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:tree)** get $HOME env var for linux - ([3ab0cae](https://github.com/sRavioli/nvim/commit/3ab0cae71759f1b05c6f03e8c8225150edf9a1a0)) - [@sRavioli](https://github.com/sRavioli)
+- **(snippets:markdown)** remove logging in snippet - ([ad1d3b2](https://github.com/sRavioli/nvim/commit/ad1d3b2d01208d5764d7d8dbaa6139887b30cc72)) - [@sRavioli](https://github.com/sRavioli)
+- **(utils:tree)** remove nvim-tree conflicting keymap - ([140f6cb](https://github.com/sRavioli/nvim/commit/140f6cbcb6c2fb387a78d23050d8f8c6502851fd)) - [@sRavioli](https://github.com/sRavioli)
+- update `which-key.nvim` groups - ([7594e6b](https://github.com/sRavioli/nvim/commit/7594e6b397ba60e98109b44220670f88af136b59)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Documentation
+
+- **(config:autocmd)** remove unnecessary comments - ([8dab4ca](https://github.com/sRavioli/nvim/commit/8dab4ca79f0da02d942238c8f6825e4a7a2fc9ac)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Features
+
+- **(config:autocommands)** improve single cursor autocmd - ([1be0ccf](https://github.com/sRavioli/nvim/commit/1be0ccf60c51755e80d5ca7d282c09d2a11ce460)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** enable caching for `lazy.nvim` - ([caf4743](https://github.com/sRavioli/nvim/commit/caf47433361cc932d450dc658c1189377309fa67)) - [@sRavioli](https://github.com/sRavioli)
+- **(plugins:ft)** install markdown previewer - ([44211d6](https://github.com/sRavioli/nvim/commit/44211d64acf823a6507040c4f615a2821db1a84e)) - [@sRavioli](https://github.com/sRavioli)
+
+#### Miscellaneous Chores
+
+- **(lazy)** update `lazy-lock.json` - ([fda76c5](https://github.com/sRavioli/nvim/commit/fda76c51f0117d747876f48f121e446e69151779)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update `lazy-lock.json` - ([c68c6c0](https://github.com/sRavioli/nvim/commit/c68c6c09fefcad7f161f549a29c82b44a347aa86)) - [@sRavioli](https://github.com/sRavioli)
+- **(lazy)** update `lazy-lock.json` - ([c5e1d9a](https://github.com/sRavioli/nvim/commit/c5e1d9a86563ebeefc7c75b7d6aa09e3dc0dcd34)) - [@sRavioli](https://github.com/sRavioli)
+
+- - -
+
 ## [2.0.0](https://github.com/sRavioli/nvim/compare/1.2.2..2.0.0) - 2023-12-08
 
 #### Bug Fixes
