@@ -207,7 +207,7 @@ return {
         function()
           require("dial.map").manipulate("increment", "normal")
         end,
-        desc = "󰏲  Increment with dial",
+        desc = "Increment",
         mode = "n",
       },
       {
@@ -215,7 +215,7 @@ return {
         function()
           require("dial.map").manipulate("decrement", "normal")
         end,
-        desc = "󰏲  Decrement with dial",
+        desc = "Decrement",
         mode = "n",
       },
       {
@@ -223,7 +223,7 @@ return {
         function()
           require("dial.map").manipulate("increment", "gnormal")
         end,
-        desc = "󰏲  Increment with dial",
+        desc = "Increment",
         mode = "n",
       },
       {
@@ -231,7 +231,7 @@ return {
         function()
           require("dial.map").manipulate("decrement", "gnormal")
         end,
-        desc = "󰏲  Decrement with dial",
+        desc = "Decrement",
         mode = "n",
       },
       {
@@ -239,7 +239,7 @@ return {
         function()
           require("dial.map").manipulate("increment", "visual")
         end,
-        desc = "󰏲  Increment with dial",
+        desc = "Increment",
         mode = "v",
       },
       {
@@ -247,7 +247,7 @@ return {
         function()
           require("dial.map").manipulate("decrement", "visual")
         end,
-        desc = "󰏲  Decrement with dial",
+        desc = "Decrement",
         mode = "v",
       },
       {
@@ -255,7 +255,7 @@ return {
         function()
           require("dial.map").manipulate("increment", "gvisual")
         end,
-        desc = "󰏲  Increment with dial",
+        desc = "Increment",
         mode = "v",
       },
       {
@@ -263,11 +263,11 @@ return {
         function()
           require("dial.map").manipulate("decrement", "gvisual")
         end,
-        desc = "󰏲  Decrement with dial",
+        desc = "Decrement",
         mode = "v",
       },
     }, --~ }}}
-    init = function()
+    config = function()
       local augend = require "dial.augend"
       local defaults = {
         { "yes", "no" },
@@ -323,6 +323,15 @@ return {
           augend.constant.new { elements = elements, word = true, cyclic = true }
       end
 
+      -- require("dial.config").augends:register_group {
+      --   default = {
+      --     augend.integer.alias.decimal,
+      --     augend.integer.alias.hex,
+      --     augend.date.alias["%Y/%m/%d"],
+      --     augend.constant.alias.bool,
+      --     augend.semver.alias.semver,
+      --   },
+      -- }
       require("dial.config").augends:register_group { default = defaults }
     end,
   }, -- }}}
@@ -362,38 +371,6 @@ return {
       },
     },
     config = true,
-  }, -- }}}
-
-  -- {{{1 nvim-spider: w, e, b motions. Move by subwords and skip insignificant punctuation.
-  {
-    "chrisgrieser/nvim-spider",
-    lazy = false,
-    config = function()
-      vim.keymap.set(
-        { "n", "o", "x" },
-        "w",
-        "<cmd>lua require('spider').motion('w')<CR>",
-        { desc = "Spider-w" }
-      )
-      vim.keymap.set(
-        { "n", "o", "x" },
-        "e",
-        "<cmd>lua require('spider').motion('e')<CR>",
-        { desc = "Spider-e" }
-      )
-      vim.keymap.set(
-        { "n", "o", "x" },
-        "b",
-        "<cmd>lua require('spider').motion('b')<CR>",
-        { desc = "Spider-b" }
-      )
-      vim.keymap.set(
-        { "n", "o", "x" },
-        "ge",
-        "<cmd>lua require('spider').motion('ge')<CR>",
-        { desc = "Spider-ge" }
-      )
-    end,
   }, -- }}}
 }
 
