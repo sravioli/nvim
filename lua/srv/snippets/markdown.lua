@@ -343,7 +343,6 @@ return {
         pointer = c(4, { t "", t "*" }),
         params = i(5),
         params_list = d(6, function(args)
-          vim.print(args)
           local params = vim.split(args[1][1], ", ")
 
           local tmp = {}
@@ -398,7 +397,6 @@ return {
         params = d(2, function(args)
           local params =
             vim.split(string.gsub(args[1][1], "^%a+%s*%*?%a+%((.-)%);$", "%1"), ", ")
-          vim.print(params)
 
           local tmp = {}
           for index, param in ipairs(params) do
