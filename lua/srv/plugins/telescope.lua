@@ -169,27 +169,18 @@ return {
     end,
   }, -- }}}
 
-  -- {{{1 icon-picker.nvim: helps you pick Nerd Font Icons, Symbols & Emojis
+  -- {{{1 nerdy.nvim: Find Nerd Glyphs Easily 🤓🔭
   {
-    "ziontee113/icon-picker.nvim",
+    "2kabhishek/nerdy.nvim",
     dependencies = {
       { "stevearc/dressing.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim" },
+      { "nvim-telescope/telescope.nvim" },
     },
+    cmd = "Nerdy",
     keys = {
-      {
-        "<leader>si",
-        "<cmd>IconPickerYank alt_font emoji html_colors nerd_font_v3 symbols<CR>",
-        desc = "󱩯  Search icons and more",
-      },
-      {
-        "<M-i>",
-        "<cmd>IconPickerInsert alt_font emoji html_colors nerd_font_v3 symbols<CR>",
-        desc = "󱩯  Search icons and more",
-        mode = "i",
-      },
+      { "<leader>si", "<cmd>Nerdy<CR>", desc = "󰟇  Search nerd icons" },
+      { "<M-i>", "<cmd>Nerdy<CR>", desc = "󰟇  Search nerd icons", mode = "i" },
     },
-    opts = { disable_legacy_commands = true },
   }, -- }}}
 }
 
