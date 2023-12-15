@@ -2,13 +2,6 @@
 local fun = require "srv.utils.fun"
 
 return {
-  -- {{{1 lsp-timeout.nvim: start/stop LSP servers upon demand; keeps RAM usage low
-  {
-    "hinell/lsp-timeout.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-    event = require("srv.utils.events").LazyFile,
-  }, -- }}}
-
   -- {{{1 neodev.nvim: Neovim setup for init.lua and plugin development
   {
     "folke/neodev.nvim",
@@ -40,33 +33,16 @@ return {
     },
   }, -- }}}
 
-  -- {{{1 hoverhints.nvim: show lsp diagnostics based on mouse position
-  {
-    "soulis-1256/hoverhints.nvim",
-    enabled = false,
-    init = function()
-      vim.opt.mousemoveevent = true
-    end,
-    opts = {
-      error_color = fun.hl.get_fg "DiagnosticError",
-      warning_color = fun.hl.get_fg "DiagnosticWarn",
-      info_color = fun.hl.get_fg "DiagnosticInfo",
-      hint_color = fun.hl.get_fg "DiagnosticHint",
-      generic_color = fun.hl.get_fg "FloatBorder",
-    },
-  }, -- }}}
-
   -- {{{1 nvim-lspconfig: Quickstart configs for Nvim LSP
   {
     "neovim/nvim-lspconfig",
     event = require("srv.utils.events").LazyFile,
     dependencies = {
       { "j-hui/fidget.nvim" },
-      { "soulis-1256/hoverhints.nvim" },
       { "dgagn/diagflow.nvim" },
       { "folke/neodev.nvim" },
     },
-    config = function(_, _)
+    config = function()
       local present, lspconfig = pcall(require, "lspconfig")
       if not present then
         return
@@ -192,16 +168,35 @@ return {
 
   -- {{{1 POST LSPATTACH
   {
-    --~ {{{2 nvim-code-action-menu: pop-up menu for code actions
+    --~ {{{2 actions-preview.nvim: Fully customizable previewer for LSP code actions.
     {
-      "weilbith/nvim-code-action-menu",
-      cmd = "CodeActionMenu",
+      "aznhe21/actions-preview.nvim",
+      dependencies = { "nvim-telescope/telescope.nvim" },
       keys = {
-        { "<M-.>", "<cmd>CodeActionMenu<CR>", desc = "󱐋  Open code actions" },
+        {
+          "<M-.>",
+          function()
+            require("actions-preview").code_actions()
+          end,
+          desc = "󱐋  Code action",
+          mode = { "i", "n", "v" },
+        },
       },
-      init = function()
-        vim.g.code_action_menu_window_border = require("srv.preferences").border
-      end,
+      opts = {
+        telescope = {
+          sorting_strategy = "ascending",
+          layout_strategy = "vertical",
+          layout_config = {
+            width = 0.8,
+            height = 0.9,
+            prompt_position = "top",
+            preview_cutoff = 20,
+            preview_height = function(_, _, max_lines)
+              return max_lines - 15
+            end,
+          },
+        },
+      },
     }, --~}}}
 
     --~ {{{2 lsp-lens.nvim: display references & definition infos for functions
