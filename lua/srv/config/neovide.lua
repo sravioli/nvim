@@ -54,12 +54,7 @@
 ---```lua
 ---vim.o.guifont = "Source Code Pro:h14"
 ---```
-vim.opt.guifont = ""
-  .. "FiraCode_Nerd_Font,"
-  .. "NotoColorEmoji"
-  .. ":h10.3"
-  .. ":#h-normal"
-  .. ":#e-antialias"
+vim.opt.guifont = "" .. "FiraCode_Nerd_Font," .. "NotoColorEmoji" .. ":h10.3" .. ":#h-normal" .. ":#e-antialias"
 
 ---LINE SPACING
 ---Controls spacing between lines, may also be negative.
@@ -474,4 +469,3 @@ vim.g.neovide_cursor_vfx_particle_phase = 1.5
 ---vim.g.neovide_cursor_vfx_particle_curl = 1.0
 ---```
 vim.g.neovide_cursor_vfx_particle_curl = 1.0
-

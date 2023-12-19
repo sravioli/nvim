@@ -4,10 +4,10 @@
 ---@license GPL-3.0
 
 local au = vim.api.nvim_create_autocmd
-local events = require "srv.utils.events"
+local events = require("srv.utils.events")
 
 local _aug = function(name, opts)
-  return vim.api.nvim_create_augroup(name .. "Group", opts or {})
+	return vim.api.nvim_create_augroup(name .. "Group", opts or {})
 end
 
 ---@class Autogroups
@@ -16,161 +16,160 @@ end
 ---@field OnLazyFile         number when entering a file.
 ---@field OnVimHelpEnter     number when entering vim help files.
 local aug = {
-  Cursor = _aug "Cursor",
-  CheckOutsideChange = _aug "CheckOutsideChange",
-  FocusChanged = _aug "FocusChanged",
-  OnLazyFile = _aug "OnLazyFile",
-  OnVimHelpEnter = _aug "OnVimHelpEnter",
-  OneKeyExit = _aug "OneKeyExit",
+	Cursor = _aug("Cursor"),
+	CheckOutsideChange = _aug("CheckOutsideChange"),
+	FocusChanged = _aug("FocusChanged"),
+	OnLazyFile = _aug("OnLazyFile"),
+	OnVimHelpEnter = _aug("OnVimHelpEnter"),
+	OneKeyExit = _aug("OneKeyExit"),
 }
 
 au(events.FocusGained, {
-  group = aug.FocusChanged,
-  command = "checktime",
+	group = aug.FocusChanged,
+	command = "checktime",
 })
 
 ---Restore the >_ cursor when exiting nvim
 au("VimLeave", {
-  desc = "Restore WindowsTerminal cursor shape upon exit (WindowsTerminal)",
-  group = aug.Cursor,
-  pattern = "*",
-  callback = function()
-    vim.opt.guicursor:append "a:hor20-blinkon1"
-  end,
+	desc = "Restore WindowsTerminal cursor shape upon exit (WindowsTerminal)",
+	group = aug.Cursor,
+	pattern = "*",
+	callback = function()
+		vim.opt.guicursor:append("a:hor20-blinkon1")
+	end,
 })
 
 ---Highlight text on yank
 au("TextYankPost", {
-  desc = "Highlight selection on yank",
-  pattern = "*",
-  group = aug.Cursor,
-  callback = function()
-    vim.highlight.on_yank { higroup = "Search", timeout = 200 }
-  end,
+	desc = "Highlight selection on yank",
+	pattern = "*",
+	group = aug.Cursor,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Search", timeout = 200 })
+	end,
 })
 
 au("FileType", {
-  desc = "remap some keys for the help page",
-  pattern = "help",
-  group = aug.OnVimHelpEnter,
-  callback = function()
-    local opts = function(desc)
-      return { buffer = true, silent = true, desc = desc }
-    end
-    vim.keymap.set("n", "<CR>", "<C-]>", opts "Jump to tag")
-    vim.keymap.set("n", "<BS>", "<C-o>", opts "Return to prev tag")
-    vim.keymap.set("n", "q", ":quit<CR>", opts "exit help buffer")
-    vim.opt_local.conceallevel = 3
-    vim.opt_local.concealcursor = "nvc"
-  end,
+	desc = "remap some keys for the help page",
+	pattern = "help",
+	group = aug.OnVimHelpEnter,
+	callback = function()
+		local opts = function(desc)
+			return { buffer = true, silent = true, desc = desc }
+		end
+		vim.keymap.set("n", "<CR>", "<C-]>", opts("Jump to tag"))
+		vim.keymap.set("n", "<BS>", "<C-o>", opts("Return to prev tag"))
+		vim.keymap.set("n", "q", ":quit<CR>", opts("exit help buffer"))
+		vim.opt_local.conceallevel = 3
+		vim.opt_local.concealcursor = "nvc"
+	end,
 })
 
 ---Quit from some windows by only pressing q
 au("FileType", {
-  desc = "Exit some views with 'q'",
-  pattern = {
-    "startuptime",
-    "qf",
-    "fugitive",
-    "null-ls-info",
-    "dap-float",
-    "sagarename",
-    "nvimtree",
-  },
-  command = [[nnoremap <buffer><silent> q :quit<CR>]],
-  group = aug.OneKeyExit,
+	desc = "Exit some views with 'q'",
+	pattern = {
+		"startuptime",
+		"qf",
+		"fugitive",
+		"null-ls-info",
+		"dap-float",
+		"sagarename",
+		"nvimtree",
+	},
+	command = [[nnoremap <buffer><silent> q :quit<CR>]],
+	group = aug.OneKeyExit,
 })
 
 au("FileType", {
-  pattern = "man",
-  command = [[nnoremap <buffer><silent> q :quit<CR>]],
-  group = aug.OneKeyExit,
+	pattern = "man",
+	command = [[nnoremap <buffer><silent> q :quit<CR>]],
+	group = aug.OneKeyExit,
 })
 
 ---When having multiple buffers, show cursor only in the active one
 au({ "InsertLeave", "WinEnter" }, {
-  callback = function()
-    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
-    if ok and cl then
-      vim.wo.cursorline = true
-      vim.api.nvim_win_del_var(0, "auto-cursorline")
-    end
-  end,
+	callback = function()
+		local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+		if ok and cl then
+			vim.wo.cursorline = true
+			vim.api.nvim_win_del_var(0, "auto-cursorline")
+		end
+	end,
 })
 au({ "InsertEnter", "WinLeave" }, {
-  callback = function()
-    local cl = vim.wo.cursorline
-    if cl then
-      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
-      vim.wo.cursorline = false
-    end
-  end,
+	callback = function()
+		local cl = vim.wo.cursorline
+		if cl then
+			vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+			vim.wo.cursorline = false
+		end
+	end,
 })
 
 ---@type table Doxygen highlight groups and what group to link to.
 ---Redefine and improve doxygen highlights groups
 local doxygen_patterns = {
-  { pattern = "doxygenComment", highlight = "Comment" },
-  { pattern = "doxygenCommentWhite", highlight = "Comment" },
-  { pattern = "doxygenParam", highlight = "Conditional" },
-  { pattern = "doxygenSpecial", highlight = "Conditional" },
-  { pattern = "doxygenBriefLine", highlight = "Function" },
-  { pattern = "doxygenSpecialMultilineDesc", highlight = "Comment" },
-  { pattern = "doxygenCodeWord", highlight = "Float" },
-  { pattern = "doxygenBody", highlight = "String" },
+	{ pattern = "doxygenComment", highlight = "Comment" },
+	{ pattern = "doxygenCommentWhite", highlight = "Comment" },
+	{ pattern = "doxygenParam", highlight = "Conditional" },
+	{ pattern = "doxygenSpecial", highlight = "Conditional" },
+	{ pattern = "doxygenBriefLine", highlight = "Function" },
+	{ pattern = "doxygenSpecialMultilineDesc", highlight = "Comment" },
+	{ pattern = "doxygenCodeWord", highlight = "Float" },
+	{ pattern = "doxygenBody", highlight = "String" },
 }
 au("FileType", {
-  desc = "Apply new doxygen syntax",
-  pattern = { "c", "cpp", "doxygen" },
-  callback = function()
-    for _, doxygen in ipairs(doxygen_patterns) do
-      local pattern, highlight = doxygen.pattern, doxygen.highlight
-      ---Define highlighting attributes
-      vim.cmd(string.format("highlight link %s %s", pattern, highlight))
-    end
-  end,
-  -- group = aug.custom_highlights,
+	desc = "Apply new doxygen syntax",
+	pattern = { "c", "cpp", "doxygen" },
+	callback = function()
+		for _, doxygen in ipairs(doxygen_patterns) do
+			local pattern, highlight = doxygen.pattern, doxygen.highlight
+			---Define highlighting attributes
+			vim.cmd(string.format("highlight link %s %s", pattern, highlight))
+		end
+	end,
+	-- group = aug.custom_highlights,
 })
 
 ---Set filetype to "pseudo"
 au({ "BufNewFile", "BufRead" }, {
-  desc = "Set custom filetype for `.pseudo` files",
-  pattern = "*.pseudo",
-  command = "set filetype=pseudo | set syntax=pseudo",
-  group = aug.OnLazyFile,
+	desc = "Set custom filetype for `.pseudo` files",
+	pattern = "*.pseudo",
+	command = "set filetype=pseudo | set syntax=pseudo",
+	group = aug.OnLazyFile,
 })
 
 au("FileType", {
-  desc = "Change tabstop and shitfwidth",
-  pattern = "markdown",
-  callback = function()
-    vim.opt.tabstop = 2
-    vim.opt.shiftwidth = 2
-  end,
-  group = aug.OnLazyFile,
+	desc = "Change tabstop and shitfwidth",
+	pattern = "markdown",
+	callback = function()
+		vim.opt.tabstop = 2
+		vim.opt.shiftwidth = 2
+	end,
+	group = aug.OnLazyFile,
 })
 
 au("FileType", {
-  pattern = "lua",
-  desc = "Change the colorcolumn for lua files",
-  group = aug.OnLazyFile,
-  callback = function()
-    vim.opt_local.colorcolumn = "90"
-  end,
+	pattern = "lua",
+	desc = "Change the colorcolumn for lua files",
+	group = aug.OnLazyFile,
+	callback = function()
+		vim.opt_local.colorcolumn = "90"
+	end,
 })
 
 au("BufWritePost", {
-  pattern = "*",
-  desc = "update last modified flag",
-  callback = function()
-    require("srv.utils.fun").fmt.update_timestamp()
-  end,
+	pattern = "*",
+	desc = "update last modified flag",
+	callback = function()
+		require("srv.utils.fun").fmt.update_timestamp()
+	end,
 })
 
 au({ "BufNewFile", "BufRead" }, {
-  pattern = "*.xaml",
-  callback = function()
-    vim.opt_local.filetype = "xml"
-  end,
+	pattern = "*.xaml",
+	callback = function()
+		vim.opt_local.filetype = "xml"
+	end,
 })
-

@@ -12,17 +12,17 @@ local M = {}
 ---@see vim.tbl_deep_extend
 ---@see vim.deepcopy
 M.extend = function(linter, args, behavior)
-  if type(args) == "function" then
-    args = args()
-  elseif type(args) == "table" then
-    for key, value in pairs(args) do
-      if type(value) == "function" then
-        args[key] = value()
-      end
-    end
-  end
+	if type(args) == "function" then
+		args = args()
+	elseif type(args) == "table" then
+		for key, value in pairs(args) do
+			if type(value) == "function" then
+				args[key] = value()
+			end
+		end
+	end
 
-  return vim.tbl_deep_extend(behavior or "force", vim.deepcopy(linter), args)
+	return vim.tbl_deep_extend(behavior or "force", vim.deepcopy(linter), args)
 end
 
 ---Extends the given linter args.
@@ -33,11 +33,10 @@ end
 ---@see vim.list_extend
 ---@see vim.deepcopy
 M.extend_args = function(args, extra_args)
-  if type(extra_args) == "function" then
-    extra_args = extra_args()
-  end
-  return vim.list_extend(vim.deepcopy(args or {}), extra_args)
+	if type(extra_args) == "function" then
+		extra_args = extra_args()
+	end
+	return vim.list_extend(vim.deepcopy(args or {}), extra_args)
 end
 
 return M
-

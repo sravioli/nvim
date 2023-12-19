@@ -8,11 +8,10 @@
 ---@field nvim? Mappings
 ---@field tree-sitter? Mappings
 return {
-  nvim = require "srv.mappings.nvim",
-  lsp = require "srv.mappings.lsp",
-  barbar = require "srv.mappings.barbar",
-  gitsigns = require "srv.mappings.gitsigns",
-  lspsaga = require "srv.mappings.lspsaga",
-  ["hls-lens"] = require "srv.mappings.hls-lens",
+	nvim = require("srv.mappings.nvim"),
+	lsp = require("srv.mappings.lsp"),
+	barbar = require("srv.mappings.barbar"),
+	gitsigns = require("srv.mappings.gitsigns"),
+	lspsaga = require("srv.mappings.lspsaga"),
+	["hls-lens"] = require("srv.mappings.hls-lens"),
 }
-

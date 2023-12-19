@@ -6,4 +6,3 @@ M.FocusGained = { "FocusGained", "TermClose", "TermLeave" }
 M.TriggerLint = { "BufReadPost", "BufWritePost", "InsertLeave" }
 
 return M
-

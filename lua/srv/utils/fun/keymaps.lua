@@ -44,27 +44,27 @@ local M = {}
 ---@see Fun.keymaps.load for more information on how to load plugin keymaps.
 ---@see vim.keymap.set for more information on how to set keymaps.
 M.__set_keymap = function(values, options)
-  ---check if the keymaps have to be loaded automatically
-  if values.autoload == false then
-    return -- Skip setting keymaps if autoload is false
-  end
-  values.autoload = nil
+	---check if the keymaps have to be loaded automatically
+	if values.autoload == false then
+		return -- Skip setting keymaps if autoload is false
+	end
+	values.autoload = nil
 
-  ---@param mode string
-  ---@param mapping table<lhs, MappingSpec>
-  for mode, mapping in pairs(values) do
-    local default_options = vim.tbl_deep_extend("force", { mode = mode }, options or {})
+	---@param mode string
+	---@param mapping table<lhs, MappingSpec>
+	for mode, mapping in pairs(values) do
+		local default_options = vim.tbl_deep_extend("force", { mode = mode }, options or {})
 
-    for lhs, mappings_spec in pairs(mapping) do
-      ---merge global options with single keymap options
-      local opts = vim.tbl_deep_extend("force", default_options, mappings_spec.opts or {})
+		for lhs, mappings_spec in pairs(mapping) do
+			---merge global options with single keymap options
+			local opts = vim.tbl_deep_extend("force", default_options, mappings_spec.opts or {})
 
-      mappings_spec.opts, opts.mode = nil, nil
-      opts.desc = mappings_spec[2] ---set keymap description
+			mappings_spec.opts, opts.mode = nil, nil
+			opts.desc = mappings_spec[2] ---set keymap description
 
-      vim.keymap.set(mode, lhs, mappings_spec[1], opts)
-    end
-  end
+			vim.keymap.set(mode, lhs, mappings_spec[1], opts)
+		end
+	end
 end
 
 ---Loads the keymaps for the corresponding plugin
@@ -72,36 +72,36 @@ end
 ---@param plugin? nil|string|table Name of the mappings or a table of mappings.
 ---@param options? MappingSpecOpts A table of options that will be passed to `vim.keymap.set`
 M.load = function(plugin, options)
-  vim.schedule(function()
-    local ptype = type(plugin)
-    local __set_keymap = M.__set_keymap
+	vim.schedule(function()
+		local ptype = type(plugin)
+		local __set_keymap = M.__set_keymap
 
-    if ptype == "nil" then
-      local keymaps = require "srv.mappings" ---@class Keymaps
-      for _, pmappings in pairs(keymaps) do
-        __set_keymap(pmappings, options)
-      end
-    elseif ptype == "string" then
-      local exists_mappings, mappings = pcall(require, ("srv.mappings.%s"):format(plugin))
-      if not exists_mappings then
-        vim.notify(("No keymaps found for plugin '%s'! check your config"):format(plugin))
-        return
-      end
+		if ptype == "nil" then
+			local keymaps = require("srv.mappings") ---@class Keymaps
+			for _, pmappings in pairs(keymaps) do
+				__set_keymap(pmappings, options)
+			end
+		elseif ptype == "string" then
+			local exists_mappings, mappings = pcall(require, ("srv.mappings.%s"):format(plugin))
+			if not exists_mappings then
+				vim.notify(("No keymaps found for plugin '%s'! check your config"):format(plugin))
+				return
+			end
 
-      if type(mappings) == "function" then
-        mappings = mappings()
-      end
+			if type(mappings) == "function" then
+				mappings = mappings()
+			end
 
-      mappings.autoload = true
-      __set_keymap(mappings, options)
-    elseif ptype == "table" then
-      __set_keymap(plugin, options)
-    elseif ptype == "function" then
-      __set_keymap(plugin(), options)
-    else
-      vim.notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
-    end
-  end)
+			mappings.autoload = true
+			__set_keymap(mappings, options)
+		elseif ptype == "table" then
+			__set_keymap(plugin, options)
+		elseif ptype == "function" then
+			__set_keymap(plugin(), options)
+		else
+			vim.notify(("got unexpected value (%s) for plugin, expected one of"):format(ptype))
+		end
+	end)
 end
 
 --~ {{{1 MappingsSpec
@@ -301,4 +301,3 @@ end
 --~ }}}
 
 return M
-
