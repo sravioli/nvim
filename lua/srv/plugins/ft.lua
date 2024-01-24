@@ -103,7 +103,7 @@ return {
     --~ {{{2 obsidian.nvim: Neovim plugin for Obsidian, written in Lua
     {
       "epwalsh/obsidian.nvim",
-      enabled = true,
+      enabled = false,
       -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
       event = "BufReadPre " .. vim.fn.expand "~" .. [[/Documents/knowledge-base/**.md]],
       dependencies = {
@@ -112,8 +112,8 @@ return {
         { "nvim-telescope/telescope.nvim" }, ---For search and quick-switch functionality.
 
         ---Optional, alternative to nvim-treesitter for syntax highlighting.
-        { "godlygeek/tabular" },
-        { "preservim/vim-markdown" },
+        -- { "godlygeek/tabular" },
+        -- { "preservim/vim-markdown" },
       },
       opts = {
         dir = "~/Documents/knowledge-base/", ---no need to call 'vim.fn.expand' here
