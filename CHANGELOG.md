@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [2.0.2](https://github.com/sRavioli/nvim/compare/2.0.1..2.0.2) - 2024-01-24
+#### Bug Fixes
+- **(plugins:treesitter)** remove clang as compiler - ([5c5bdb9](https://github.com/sRavioli/nvim/commit/5c5bdb99d1bb1fca71c27fe05c68e62cfd520bbd)) - sravioli
+#### Features
+- **(config:settings)** add linux support - ([7e9bcca](https://github.com/sRavioli/nvim/commit/7e9bcca0bb01ff8d2c79d2fef7249d25ff39f798)) - sravioli
+#### Miscellaneous Chores
+- **(lazy)** update lockfile - ([7f801c8](https://github.com/sRavioli/nvim/commit/7f801c800a1a1cb3ae050a8140b5d389b5aeed3f)) - sravioli
+- **(lazy)** update `lazy-lock` - ([30a5553](https://github.com/sRavioli/nvim/commit/30a555336242d0f17d00ae95ac4e15416e23c79b)) - sravioli
+- **(lazy)** update `lazy-lock` - ([a1ac7c3](https://github.com/sRavioli/nvim/commit/a1ac7c3f0562b287f5e61ad07534047abb25afa0)) - sravioli
+- **(lazy)** update lazyfile - ([b59d74c](https://github.com/sRavioli/nvim/commit/b59d74cee25e710defb6dedef3ad23bdce607110)) - sravioli
+- **(lazy)** update `lazy-lock.json` - ([89a2738](https://github.com/sRavioli/nvim/commit/89a2738ece504cface7d8d0a3c1c40edd87182ed)) - [@sRavioli](https://github.com/sRavioli)
+- format with stylua - ([462fc07](https://github.com/sRavioli/nvim/commit/462fc0739444338e7e80443f50e73043eff456c5)) - sravioli
+#### Style
+- format with stylua - ([dced5ff](https://github.com/sRavioli/nvim/commit/dced5ff2b5120400187a9c35206c644aa5887a34)) - sravioli
+
+- - -
+
 
 ## [2.0.1](https://github.com/sRavioli/nvim/compare/2.0.0..2.0.1) - 2023-12-15
 
