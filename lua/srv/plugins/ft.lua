@@ -15,7 +15,6 @@ return {
         height_ratio = 0.82,
         width = math.floor(vim.opt.columns:get() * 0.9),
         height = math.floor(vim.opt.lines:get() * 0.82),
-        style = "C:/Users/fsimo/Documents/kanagawa/extras/glow/kanagawa-wave.json",
       },
     }, --~ }}}
 
