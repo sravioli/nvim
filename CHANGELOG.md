@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [2.0.3](https://github.com/sRavioli/nvim/compare/2.0.2..2.0.3) - 2024-01-26
+#### Bug Fixes
+- **(plugins:ft)** remove glow style path - ([a53cb1e](https://github.com/sRavioli/nvim/commit/a53cb1e75e5671a5c8f77db1f0d56320e37a747f)) - sravioli
+#### Features
+- **(plugins:lsp)** add bashls lsp - ([15c8b02](https://github.com/sRavioli/nvim/commit/15c8b025b43f0607ce8b9d1d8fb0304368453d8d)) - sravioli
+- **(snippets)** add markdown algorithm snippet - ([5f58766](https://github.com/sRavioli/nvim/commit/5f58766bb3befa474c7f034a6ac4af70afd6a0ed)) - sravioli
+#### Miscellaneous Chores
+- **(lazy)** update lockfile - ([6a466f8](https://github.com/sRavioli/nvim/commit/6a466f8c9922caba2113d2d727aca2ff2c8146f8)) - sravioli
+- format with stylua - ([fa3c0c3](https://github.com/sRavioli/nvim/commit/fa3c0c3778e9300af6c0efda93ad0d1a807ac507)) - sravioli
+- format with stylua - ([321995c](https://github.com/sRavioli/nvim/commit/321995c36c52d3fedf2927b5feadd732f1c5e879)) - sravioli
+
+- - -
+
 ## [2.0.2](https://github.com/sRavioli/nvim/compare/2.0.1..2.0.2) - 2024-01-24
 #### Bug Fixes
 - **(plugins:treesitter)** remove clang as compiler - ([5c5bdb9](https://github.com/sRavioli/nvim/commit/5c5bdb99d1bb1fca71c27fe05c68e62cfd520bbd)) - sravioli
