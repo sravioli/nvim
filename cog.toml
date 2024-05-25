@@ -11,8 +11,8 @@ pre_bump_hooks = [
   release = { changelog_title = "Releases" }
 
 [changelog]
-  authors    = [ { username = "sRavioli", signature = "Simone Fidanza" } ]
-  owner      = "sRavioli"
+  authors    = [ { username = "sravioli", signature = "Simone Fidanza" } ]
+  owner      = "sravioli"
   path       = "CHANGELOG.md"
   remote     = "github.com"
   repository = "nvim"
