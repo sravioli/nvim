@@ -38,26 +38,27 @@ return {
       },
       ["markdownlint-cli2"] = {
         prepend_args = function()
-          local file = fun.search_file(
+          local file = fun.search_file {
             ".markdownlint.jsonc",
             ".markdownlint.json",
             ".markdownlint.yaml",
             ".markdownlint.yml",
             ".markdownlint.cjs",
-            ".markdownlint.mjs"
-          )
+            ".markdownlint.mjs",
+          }
           return file and { "--config", file } or {}
         end,
       },
       taplo = {
+        command = "taplo format",
         prepend_args = function()
-          local file = fun.search_file(".taplo.toml", "taplo.toml")
+          local file = fun.search_file { ".taplo.toml", "taplo.toml" }
           return file and { "--config", file } or {}
         end,
       },
       yamlfix = {
         prepend_args = function()
-          local file = fun.search_file ".yamlfix.toml"
+          local file = fun.search_file { ".yamlfix.toml" }
           return file and { "--config-file", file } or {}
         end,
       },
@@ -66,7 +67,7 @@ return {
       },
       clang_format = {
         prepend_args = function()
-          local file = fun.search_file ".clang-format"
+          local file = fun.search_file { ".clang-format" }
           return file and { "--style=file:" .. file } or {}
         end,
       },
