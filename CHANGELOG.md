@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [2.0.3](https://github.com/sravioli/nvim/compare/15c8b025b43f0607ce8b9d1d8fb0304368453d8d..2.0.3) - 2024-05-25
+#### Bug Fixes
+- **(colorscheme)** remove temp kanagawa fix - ([6627e50](https://github.com/sravioli/nvim/commit/6627e50ca6a00b4ac234fc626ad813a4c968a958)) - sravioli
+- **(config)** formatting, remove unused variable - ([6d1e29c](https://github.com/sravioli/nvim/commit/6d1e29cda8e7dbbd73ae6aec94f786212e820bc2)) - sravioli
+- **(heirline)** update statusline to new treesitter syntax - ([cab4813](https://github.com/sravioli/nvim/commit/cab48132c74ffd0526813fc49dc10aaf46073d39)) - sravioli
+- **(mappings)** update to 0.10.0 api - ([6cdef8f](https://github.com/sravioli/nvim/commit/6cdef8f71cd85a22315168735693eaf49fcf59d2)) - sravioli
+- **(plugins)** formatting - ([a3f2d1f](https://github.com/sravioli/nvim/commit/a3f2d1ffc6eb72e109ad58c01589cf5826671949)) - sravioli
+- **(plugins)** do not pin treesitter version - ([f2ef709](https://github.com/sravioli/nvim/commit/f2ef70918340e9670e34605c0388f72bb79735da)) - sravioli
+- **(plugins:ft)** remove glow style path - ([a53cb1e](https://github.com/sravioli/nvim/commit/a53cb1e75e5671a5c8f77db1f0d56320e37a747f)) - sravioli
+- **(preferences)** formatting - ([96d35ab](https://github.com/sravioli/nvim/commit/96d35ab3e2d36676572ee27e3da3e852e38dc35b)) - sravioli
+- **(utils:cmp)** formatting - ([e2045ea](https://github.com/sravioli/nvim/commit/e2045ea56eb70553cb1adb39e71d5d1d67312a8f)) - sravioli
+- **(utils:duck)** formatting - ([e1c0758](https://github.com/sravioli/nvim/commit/e1c0758f3e2770a3fc539749487f874f1ab918fb)) - sravioli
+- **(utils:fn)** remove useless functions - ([79cd8ec](https://github.com/sravioli/nvim/commit/79cd8ec84cb63fb95842aeefc9182c659cd7e70f)) - sravioli
+- **(utils:fun)** formatting - ([f70fbee](https://github.com/sravioli/nvim/commit/f70fbee6bbf2adfc937bcbfaea69f3bb18347261)) - sravioli
+- **(utils:fun)** update to nvim 0.10.0 api - ([84ba907](https://github.com/sravioli/nvim/commit/84ba90782aea9f55de9540684bc6ed99c161d555)) - sravioli
+- **(utils:heirline)** update to 0.10.0 api - ([751fe96](https://github.com/sravioli/nvim/commit/751fe964d88a7c5e67522cba8b575c4a0fd8aad1)) - sravioli
+#### Features
+- **(plugins:lsp)** add bashls lsp - ([15c8b02](https://github.com/sravioli/nvim/commit/15c8b025b43f0607ce8b9d1d8fb0304368453d8d)) - sravioli
+- **(snippets)** add markdown algorithm snippet - ([5f58766](https://github.com/sravioli/nvim/commit/5f58766bb3befa474c7f034a6ac4af70afd6a0ed)) - sravioli
+#### Miscellaneous Chores
+- **(lazy)** update lazy lockfile - ([9351139](https://github.com/sravioli/nvim/commit/93511394833a5af4e8efbc06aadb3e8cfb395fd3)) - sravioli
+- **(lazy)** update lazy-lock - ([d76ef2a](https://github.com/sravioli/nvim/commit/d76ef2adb2e90b192e82d420cb0023ec77a8207b)) - sravioli
+- **(lazy)** update lockfile - ([6a466f8](https://github.com/sravioli/nvim/commit/6a466f8c9922caba2113d2d727aca2ff2c8146f8)) - sravioli
+- **(version)** 2.0.3 - ([f03f584](https://github.com/sravioli/nvim/commit/f03f584f33bfdbdd8a00a105ddf8044a90e59c0b)) - sravioli
+- update cocogitto config - ([24747e9](https://github.com/sravioli/nvim/commit/24747e9be11ea95db67fdd12f0dc31b42da2a937)) - sravioli
+- format with stylua - ([fa3c0c3](https://github.com/sravioli/nvim/commit/fa3c0c3778e9300af6c0efda93ad0d1a807ac507)) - sravioli
+- format with stylua - ([321995c](https://github.com/sravioli/nvim/commit/321995c36c52d3fedf2927b5feadd732f1c5e879)) - sravioli
+
+- - -
+
 ## [2.0.3](https://github.com/sRavioli/nvim/compare/2.0.2..2.0.3) - 2024-01-26
 #### Bug Fixes
 - **(plugins:ft)** remove glow style path - ([a53cb1e](https://github.com/sRavioli/nvim/commit/a53cb1e75e5671a5c8f77db1f0d56320e37a747f)) - sravioli
