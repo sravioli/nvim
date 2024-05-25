@@ -731,7 +731,7 @@ blocks.Lsp = {
       hl = { italic = true },
       provider = function()
         local names = {}
-        local clients = vim.lsp.get_active_clients { bufnr = 0 }
+        local clients = vim.lsp.get_clients { bufnr = 0 }
         if vim.fn.has "nvim-0.10.0" == 1 then
           clients = vim.lsp.get_clients { bufnr = 0 }
         end
