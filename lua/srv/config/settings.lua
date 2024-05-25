@@ -4,9 +4,7 @@ local let = vim.g
 local fun = require "srv.utils.fun" ---@class Fun
 local is_windows = fun.os_info()[1] == "windows_nt"
 
-local uv = vim.loop
 if fun.has "nvim-0.10.0" then
-  uv = vim.uv
   set.smoothscroll = true
 end
 
