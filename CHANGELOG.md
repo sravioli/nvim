@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [2.0.4](https://github.com/sravioli/nvim/compare/88457c8443cbdf3befda69ef162d7508bf3e52d3..2.0.4) - 2024-05-29
+#### Features
+- **(bob)** add bob version file - ([3817c41](https://github.com/sravioli/nvim/commit/3817c41ff7ebdbb73b80fe90bc139c44e66c0ff2)) - sravioli
+- **(plugins)** add nushell support - ([88457c8](https://github.com/sravioli/nvim/commit/88457c8443cbdf3befda69ef162d7508bf3e52d3)) - sravioli
+#### Miscellaneous Chores
+- update lazy-lock - ([e028678](https://github.com/sravioli/nvim/commit/e028678e25b0be5cf241b265d43eeeb695c8b0da)) - sravioli
+
+- - -
+
 ## [2.0.3](https://github.com/sravioli/nvim/compare/15c8b025b43f0607ce8b9d1d8fb0304368453d8d..2.0.3) - 2024-05-25
 #### Bug Fixes
 - **(colorscheme)** remove temp kanagawa fix - ([6627e50](https://github.com/sravioli/nvim/commit/6627e50ca6a00b4ac234fc626ad813a4c968a958)) - sravioli
