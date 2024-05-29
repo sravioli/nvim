@@ -218,6 +218,14 @@ return {
       ft = { "markdown" },
     }, --~ }}}
   }, -- }}}
+
+  -- {{{1 NU
+  --~ {{{2 nvim-nu: Basic editor support for the nushell language
+  {
+    "LhKipp/nvim-nu",
+    ft = "nu",
+  }, --~}}}
+  -- }}}
 }
 
 -- vim: fdm=marker fdl=1
