@@ -11,12 +11,12 @@ M.get = function()
       windows_nt = {
         x86_64 = (os.getenv "APPDATA" or "") .. "/npm/node_modules/neovim/bin/cli.js",
       },
-      linux = { x86_64 = 0, aarch64 = 0 },
+      linux = { x86_64 = "/usr/local/bin/neovim-node-host", aarch64 = 0 },
     },
 
     ruby = {
       windows_nt = { x86_64 = "C:/tools/ruby31/bin/ruby.exe" },
-      linux = { x86_64 = 0, aarch64 = 0 },
+      linux = { x86_64 = "/usr/bin/ruby", aarch64 = 0 },
     },
 
     perl = {
@@ -28,7 +28,10 @@ M.get = function()
       windows_nt = {
         x86_64 = (os.getenv "USERPROFILE" or "") .. "/.py-nvim/Scripts/python.exe",
       },
-      linux = { x86_64 = 0, aarch64 = 0 },
+      linux = {
+        x86_64 = (os.getenv "HOME" or "") .. "/.config/nvim/.py-nvim/bin/python",
+        aarch64 = 0,
+      },
     },
   }
 end
@@ -48,7 +51,7 @@ end
 ---Disables all vim host programs
 M.disable = function()
   for provider, _ in pairs(M.get()) do
-    vim.g["loaded_" .. provider .. "_provider"] = 0
+    vim.g["loaded_" .. provider .. "_provider"] = nil
   end
 end
 
