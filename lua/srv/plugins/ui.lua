@@ -271,56 +271,60 @@ return {
   -- {{{1 trouble.nvim: pretty diagnostics, references, telescope results, quickfix and loclist
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
+    cmd = { "Trouble" },
     keys = {
       {
         "<leader>xx",
-        "<cmd>TroubleToggle document_diagnostics<cr>",
+        "<cmd>Trouble diagnostics split toggle<cr>",
         desc = "󱪗  Document Diagnostics (Trouble)",
       },
       {
         "<leader>xX",
-        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
         desc = "  Workspace Diagnostics (Trouble)",
       },
       {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
         "<leader>xL",
-        "<cmd>TroubleToggle loclist<cr>",
+        "<cmd>Trouble loclist toggle<cr>",
         desc = "  Location List (Trouble)",
       },
       {
         "<leader>xQ",
-        "<cmd>TroubleToggle quickfix<cr>",
+        "<cmd>Trouble qflist toggle<cr>",
         desc = "󱖫  Quickfix List (Trouble)",
       },
-      {
-        "[q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").previous { skip_groups = true, jump = true }
-          else
-            local ok, err = pcall(vim.cmd.cprevious)
-            if not ok then
-              vim.notify(err or "error", vim.log.levels.ERROR)
+    },
+    opts = {
+      auto_close = true,
+      modes = {
+        split = {
+          mode = "diagnostics",
+          filter = function(items)
+            local severity = vim.diagnostic.severity.HINT
+            for _, item in ipairs(items) do
+              severity = math.min(severity, item.severity)
             end
-          end
-        end,
-        desc = "󰼨  Previous trouble/quickfix item",
-      },
-      {
-        "]q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").next { skip_groups = true, jump = true }
-          else
-            local ok, err = pcall(vim.cmd.cnext)
-            if not ok then
-              vim.notify(err or "error", vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = "󰼧  Next trouble/quickfix item",
+            return vim.tbl_filter(function(item)
+              return item.severity == severity
+            end, items)
+          end,
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "right",
+          },
+          size = 0.3,
+        },
       },
     },
   }, -- }}}
