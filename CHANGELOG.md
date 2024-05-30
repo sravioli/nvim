@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [2.0.5](https://github.com/sravioli/nvim/compare/86cf9d2f96b98bfaaea5df9064a0537ac4840da2..2.0.5) - 2024-05-30
+#### Bug Fixes
+- **(utils)** update providers paths - ([86cf9d2](https://github.com/sravioli/nvim/commit/86cf9d2f96b98bfaaea5df9064a0537ac4840da2)) - sravioli
+#### Features
+- **(plugins)** update trouble config to v3 - ([cc106c9](https://github.com/sravioli/nvim/commit/cc106c9af759fcde0ae55adfb4ea070e03e8b58d)) - sravioli
+#### Miscellaneous Chores
+- update lazy-lock - ([d57ba4f](https://github.com/sravioli/nvim/commit/d57ba4f89c407c0ca75acc2e591c18d1c2708bbf)) - sravioli
+
+- - -
+
 ## [2.0.4](https://github.com/sravioli/nvim/compare/88457c8443cbdf3befda69ef162d7508bf3e52d3..2.0.4) - 2024-05-29
 #### Features
 - **(bob)** add bob version file - ([3817c41](https://github.com/sravioli/nvim/commit/3817c41ff7ebdbb73b80fe90bc139c44e66c0ff2)) - sravioli
