@@ -95,7 +95,7 @@ return {
           "@type",
         }
         vim.g.ditto_dir = vim.fn.stdpath "config"
-        vim.g.ditto_file = ".ditto.txt"
+        vim.g.ditto_file = ".dittofile"
       end,
     }, --~ }}}
 
