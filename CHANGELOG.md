@@ -4,27 +4,55 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
-## [2.0.5](https://github.com/sravioli/nvim/compare/86cf9d2f96b98bfaaea5df9064a0537ac4840da2..2.0.5) - 2024-05-30
+
+## [2.0.6](https://github.com/sravioli/nvim/compare/a6e19826143988b38c59c9f9b8ebdace57677bb4..2.0.6) - 2024-05-31
+
 #### Bug Fixes
-- **(utils)** update providers paths - ([86cf9d2](https://github.com/sravioli/nvim/commit/86cf9d2f96b98bfaaea5df9064a0537ac4840da2)) - sravioli
-#### Features
-- **(plugins)** update trouble config to v3 - ([cc106c9](https://github.com/sravioli/nvim/commit/cc106c9af759fcde0ae55adfb4ea070e03e8b58d)) - sravioli
+
+- **(stylua)** enable lua require sorting - ([bf085ea](https://github.com/sravioli/nvim/commit/bf085ea122b8bbccd13de362ef6d9629fa336a60)) - sravioli
+- update ditto file name - ([76b825e](https://github.com/sravioli/nvim/commit/76b825e2cceff05c483a8893a0ff7051d8383e5c)) - sravioli
+- remove yamlfix file, use editor fallback - ([e967219](https://github.com/sravioli/nvim/commit/e9672195a0e8c66d07180ec4f5dd3111f5ef5dd7)) - sravioli
+- rename ditto file - ([5c25dca](https://github.com/sravioli/nvim/commit/5c25dcad0201be28dc0af5c9b67127cb5948f684)) - sravioli
+
 #### Miscellaneous Chores
+
+- update lazy-lock - ([a6e1982](https://github.com/sravioli/nvim/commit/a6e19826143988b38c59c9f9b8ebdace57677bb4)) - sravioli
+
+- - -
+
+## [2.0.5](https://github.com/sravioli/nvim/compare/86cf9d2f96b98bfaaea5df9064a0537ac4840da2..2.0.5) - 2024-05-30
+
+#### Bug Fixes
+
+- **(utils)** update providers paths - ([86cf9d2](https://github.com/sravioli/nvim/commit/86cf9d2f96b98bfaaea5df9064a0537ac4840da2)) - sravioli
+
+#### Features
+
+- **(plugins)** update trouble config to v3 - ([cc106c9](https://github.com/sravioli/nvim/commit/cc106c9af759fcde0ae55adfb4ea070e03e8b58d)) - sravioli
+
+#### Miscellaneous Chores
+
 - update lazy-lock - ([d57ba4f](https://github.com/sravioli/nvim/commit/d57ba4f89c407c0ca75acc2e591c18d1c2708bbf)) - sravioli
 
 - - -
 
 ## [2.0.4](https://github.com/sravioli/nvim/compare/88457c8443cbdf3befda69ef162d7508bf3e52d3..2.0.4) - 2024-05-29
+
 #### Features
+
 - **(bob)** add bob version file - ([3817c41](https://github.com/sravioli/nvim/commit/3817c41ff7ebdbb73b80fe90bc139c44e66c0ff2)) - sravioli
 - **(plugins)** add nushell support - ([88457c8](https://github.com/sravioli/nvim/commit/88457c8443cbdf3befda69ef162d7508bf3e52d3)) - sravioli
+
 #### Miscellaneous Chores
+
 - update lazy-lock - ([e028678](https://github.com/sravioli/nvim/commit/e028678e25b0be5cf241b265d43eeeb695c8b0da)) - sravioli
 
 - - -
 
 ## [2.0.3](https://github.com/sravioli/nvim/compare/15c8b025b43f0607ce8b9d1d8fb0304368453d8d..2.0.3) - 2024-05-25
+
 #### Bug Fixes
+
 - **(colorscheme)** remove temp kanagawa fix - ([6627e50](https://github.com/sravioli/nvim/commit/6627e50ca6a00b4ac234fc626ad813a4c968a958)) - sravioli
 - **(config)** formatting, remove unused variable - ([6d1e29c](https://github.com/sravioli/nvim/commit/6d1e29cda8e7dbbd73ae6aec94f786212e820bc2)) - sravioli
 - **(heirline)** update statusline to new treesitter syntax - ([cab4813](https://github.com/sravioli/nvim/commit/cab48132c74ffd0526813fc49dc10aaf46073d39)) - sravioli
@@ -39,10 +67,14 @@ guidelines.
 - **(utils:fun)** formatting - ([f70fbee](https://github.com/sravioli/nvim/commit/f70fbee6bbf2adfc937bcbfaea69f3bb18347261)) - sravioli
 - **(utils:fun)** update to nvim 0.10.0 api - ([84ba907](https://github.com/sravioli/nvim/commit/84ba90782aea9f55de9540684bc6ed99c161d555)) - sravioli
 - **(utils:heirline)** update to 0.10.0 api - ([751fe96](https://github.com/sravioli/nvim/commit/751fe964d88a7c5e67522cba8b575c4a0fd8aad1)) - sravioli
+
 #### Features
+
 - **(plugins:lsp)** add bashls lsp - ([15c8b02](https://github.com/sravioli/nvim/commit/15c8b025b43f0607ce8b9d1d8fb0304368453d8d)) - sravioli
 - **(snippets)** add markdown algorithm snippet - ([5f58766](https://github.com/sravioli/nvim/commit/5f58766bb3befa474c7f034a6ac4af70afd6a0ed)) - sravioli
+
 #### Miscellaneous Chores
+
 - **(lazy)** update lazy lockfile - ([9351139](https://github.com/sravioli/nvim/commit/93511394833a5af4e8efbc06aadb3e8cfb395fd3)) - sravioli
 - **(lazy)** update lazy-lock - ([d76ef2a](https://github.com/sravioli/nvim/commit/d76ef2adb2e90b192e82d420cb0023ec77a8207b)) - sravioli
 - **(lazy)** update lockfile - ([6a466f8](https://github.com/sravioli/nvim/commit/6a466f8c9922caba2113d2d727aca2ff2c8146f8)) - sravioli
@@ -54,12 +86,18 @@ guidelines.
 - - -
 
 ## [2.0.3](https://github.com/sRavioli/nvim/compare/2.0.2..2.0.3) - 2024-01-26
+
 #### Bug Fixes
+
 - **(plugins:ft)** remove glow style path - ([a53cb1e](https://github.com/sRavioli/nvim/commit/a53cb1e75e5671a5c8f77db1f0d56320e37a747f)) - sravioli
+
 #### Features
+
 - **(plugins:lsp)** add bashls lsp - ([15c8b02](https://github.com/sRavioli/nvim/commit/15c8b025b43f0607ce8b9d1d8fb0304368453d8d)) - sravioli
 - **(snippets)** add markdown algorithm snippet - ([5f58766](https://github.com/sRavioli/nvim/commit/5f58766bb3befa474c7f034a6ac4af70afd6a0ed)) - sravioli
+
 #### Miscellaneous Chores
+
 - **(lazy)** update lockfile - ([6a466f8](https://github.com/sRavioli/nvim/commit/6a466f8c9922caba2113d2d727aca2ff2c8146f8)) - sravioli
 - format with stylua - ([fa3c0c3](https://github.com/sRavioli/nvim/commit/fa3c0c3778e9300af6c0efda93ad0d1a807ac507)) - sravioli
 - format with stylua - ([321995c](https://github.com/sRavioli/nvim/commit/321995c36c52d3fedf2927b5feadd732f1c5e879)) - sravioli
@@ -67,22 +105,29 @@ guidelines.
 - - -
 
 ## [2.0.2](https://github.com/sRavioli/nvim/compare/2.0.1..2.0.2) - 2024-01-24
+
 #### Bug Fixes
+
 - **(plugins:treesitter)** remove clang as compiler - ([5c5bdb9](https://github.com/sRavioli/nvim/commit/5c5bdb99d1bb1fca71c27fe05c68e62cfd520bbd)) - sravioli
+
 #### Features
+
 - **(config:settings)** add linux support - ([7e9bcca](https://github.com/sRavioli/nvim/commit/7e9bcca0bb01ff8d2c79d2fef7249d25ff39f798)) - sravioli
+
 #### Miscellaneous Chores
+
 - **(lazy)** update lockfile - ([7f801c8](https://github.com/sRavioli/nvim/commit/7f801c800a1a1cb3ae050a8140b5d389b5aeed3f)) - sravioli
 - **(lazy)** update `lazy-lock` - ([30a5553](https://github.com/sRavioli/nvim/commit/30a555336242d0f17d00ae95ac4e15416e23c79b)) - sravioli
 - **(lazy)** update `lazy-lock` - ([a1ac7c3](https://github.com/sRavioli/nvim/commit/a1ac7c3f0562b287f5e61ad07534047abb25afa0)) - sravioli
 - **(lazy)** update lazyfile - ([b59d74c](https://github.com/sRavioli/nvim/commit/b59d74cee25e710defb6dedef3ad23bdce607110)) - sravioli
 - **(lazy)** update `lazy-lock.json` - ([89a2738](https://github.com/sRavioli/nvim/commit/89a2738ece504cface7d8d0a3c1c40edd87182ed)) - [@sRavioli](https://github.com/sRavioli)
 - format with stylua - ([462fc07](https://github.com/sRavioli/nvim/commit/462fc0739444338e7e80443f50e73043eff456c5)) - sravioli
+
 #### Style
+
 - format with stylua - ([dced5ff](https://github.com/sRavioli/nvim/commit/dced5ff2b5120400187a9c35206c644aa5887a34)) - sravioli
 
 - - -
-
 
 ## [2.0.1](https://github.com/sRavioli/nvim/compare/2.0.0..2.0.1) - 2023-12-15
 
