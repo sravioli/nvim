@@ -2,12 +2,24 @@
 local fun = require "srv.utils.fun"
 
 return {
-  -- {{{1 neodev.nvim: Neovim setup for init.lua and plugin development
+  -- {{{1 lazydev.nvim: Faster LuaLS setup for Neovim
   {
-    "folke/neodev.nvim",
-    ft = "lua",
-    config = true,
-  }, -- }}}
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    dependencies = {
+      { "justinsgithub/wezterm-types" },
+    },
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        { path = "wezterm-types", mods = { "wezterm" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  -- }}}
 
   -- {{{1 fidget.nvim: extensible UI for Neovim notifications and LSP progress messages.
   {
