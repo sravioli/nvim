@@ -27,6 +27,7 @@ return {
       json = { "fixjson" },
       c = { "clang_format" },
       cpp = { "clang_format" },
+      sh = { "shfmt" },
     },
 
     formatters = {
