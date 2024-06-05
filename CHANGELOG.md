@@ -5,6 +5,19 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [2.0.7](https://github.com/sravioli/nvim/compare/84c689b5df58af292132094950b49f17270c6a48..2.0.7) - 2024-06-05
+
+#### Features
+
+- **(conform)** add bash formatter - ([84c689b](https://github.com/sravioli/nvim/commit/84c689b5df58af292132094950b49f17270c6a48)) - sravioli
+- **(lsp)** upgrade from neodev.nvim to lazydev.nvim - ([408c6ec](https://github.com/sravioli/nvim/commit/408c6ec667eac9c768f75d6dd1553bb06a318242)) - sravioli
+
+#### Miscellaneous Chores
+
+- update lazy-lock - ([d23e6e7](https://github.com/sravioli/nvim/commit/d23e6e7581cb3023d166705c6a78d6d9f396bf62)) - sravioli
+
+- - -
+
 ## [2.0.6](https://github.com/sravioli/nvim/compare/a6e19826143988b38c59c9f9b8ebdace57677bb4..2.0.6) - 2024-05-31
 
 #### Bug Fixes
