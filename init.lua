@@ -13,4 +13,3 @@ require "srv.config.autocommands"
 
 ---Load non-plugin keymaps
 require("srv.utils.fun").keymaps.load()
-
