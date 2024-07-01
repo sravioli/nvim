@@ -34,6 +34,19 @@ return {
   s({ trig = "mbs", dscr = "Math block short" }, { t "$$ ", i(1), t { " $$", "" } }),
 
   s(
+    { trig = "callout", dscr = "Callout block" },
+    fmt(
+      [[
+      > [!{type}] {title}
+      >
+      > {body}
+
+
+      ]],
+      { type = i(1, "info"), title = i(2, "title"), body = i(3, "body") }
+    )
+  ),
+  s(
     { trig = "note", dscr = "Python Markdown note block" },
     fmt(
       [[
