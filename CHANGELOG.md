@@ -5,6 +5,22 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [2.0.8](https://github.com/sravioli/nvim/compare/ea9010f81b7d35f80ff4db0fcc18f5baf2efd5b7..2.0.8) - 2024-07-01
+
+#### Features
+
+- **(syntax)** rewrite pseudocode syntax file - ([73d7d14](https://github.com/sravioli/nvim/commit/73d7d1432b24d8f3cab9446ef0a56b5627ec145a)) - sravioli
+- add ftdetect folder - ([dc2b15c](https://github.com/sravioli/nvim/commit/dc2b15c3a23207cd4107afe2a8d77521b1a94829)) - sravioli
+- add callout snippet - ([01c4678](https://github.com/sravioli/nvim/commit/01c467811efa34c3074a281e6dd01bcd0d6c4c31)) - sravioli
+
+#### Miscellaneous Chores
+
+- update lazy-lock - ([7d139df](https://github.com/sravioli/nvim/commit/7d139df37cba1a35d4a8586537e4c6b8eebed935)) - sravioli
+- format with stylua - ([d577821](https://github.com/sravioli/nvim/commit/d5778214ee2cdef483c989f5c0bc1201358c3d77)) - sravioli
+- update lazy-lock - ([ea9010f](https://github.com/sravioli/nvim/commit/ea9010f81b7d35f80ff4db0fcc18f5baf2efd5b7)) - sravioli
+
+- - -
+
 ## [2.0.7](https://github.com/sravioli/nvim/compare/84c689b5df58af292132094950b49f17270c6a48..2.0.7) - 2024-06-05
 
 #### Features
