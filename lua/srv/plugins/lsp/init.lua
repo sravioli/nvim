@@ -242,7 +242,7 @@ return {
 
     --~ {{{2 lspsaga.nvim: improve neovim lsp experience
     {
-      "glepnir/lspsaga.nvim",
+      "nvimdev/lspsaga.nvim",
       dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "nvim-treesitter/nvim-treesitter" },
