@@ -32,12 +32,8 @@ return {
       {
         "NeogitOrg/neogit",
         dependencies = {
-          "nvim-lua/plenary.nvim", -- required
-          "sindrets/diffview.nvim", -- optional - Diff integration
-
-          -- Only one of these is needed, not both.
-          "nvim-telescope/telescope.nvim", -- optional
-          "ibhagwan/fzf-lua", -- optional
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim",
         },
         config = true,
       }, -- }}}
@@ -56,19 +52,19 @@ return {
           {
             "n",
             "cc",
-            "<Cmd>Neogit commit commit <bar> wincmd J<CR>",
+            "<Cmd>Neogit commit",
             { desc = "Commit staged changes" },
           },
           {
             "n",
             "ca",
-            "<Cmd>Neogit commit --amend <bar> wincmd J<CR>",
+            "<Cmd>Neogit commit --amend",
             { desc = "Amend the last commit" },
           },
           {
             "n",
             "c<space>",
-            ":Neogit commit ",
+            ":Neogit commit",
             { desc = 'Populate command line with ":Git commit "' },
           },
         },
