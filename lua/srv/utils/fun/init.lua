@@ -10,6 +10,8 @@
 ---@field has       function
 local M = {}
 
+local insert = table.insert
+
 -- {{{1 some misc functions
 
 ---Wrapper for `:h has()`
@@ -80,7 +82,7 @@ end
 M.lazy_notify = function()
   local notifs = {}
   local function temp(...)
-    table.insert(notifs, vim.F.pack_len(...))
+    insert(notifs, vim.F.pack_len(...))
   end
 
   local orig = vim.notify
@@ -136,13 +138,13 @@ M.search_file = function(...)
 
   local ls_present, ls_utils = pcall(require, "lspconfig.utils")
   if ls_present then
-    table.insert(directories, (ls_utils.find_git_ancestor()))
-    table.insert(directories, (ls_utils.find_node_modules_ancestor()))
-    table.insert(directories, (ls_utils.find_package_json_ancestor()))
+    insert(directories, (ls_utils.find_git_ancestor()))
+    insert(directories, (ls_utils.find_node_modules_ancestor()))
+    insert(directories, (ls_utils.find_package_json_ancestor()))
   end
 
-  table.insert(directories, (uv.cwd()))
-  table.insert(directories, vim.fn.resolve(vim.fn.stdpath "config" .. "/skel"))
+  insert(directories, (uv.cwd()))
+  insert(directories, vim.fn.resolve(vim.fn.stdpath "config" .. "/skel"))
 
   directories = vim.iter(directories):flatten():totable()
   local log_msg, log_lvl = "[search] %s path: %s", vim.log.levels.TRACE
