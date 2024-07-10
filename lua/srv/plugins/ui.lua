@@ -419,27 +419,6 @@ return {
     end,
   }, -- }}}
 
-  -- {{{1 gitsigns.nvim: git integration for buffers
-  {
-    "lewis6991/gitsigns.nvim",
-    event = require("srv.utils.events").LazyFile,
-    opts = {
-      signs = {
-        add = { text = "│" },
-        change = { text = "│" },
-        delete = { text = "󰍵" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked = { text = "│" },
-      },
-      preview_config = { border = preferences.border },
-
-      on_attach = function(bufnr)
-        fun.keymaps.load("gitsigns", { buffer = bufnr })
-      end,
-    },
-  }, -- }}}
-
   -- {{{1 indent-blankline: indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
