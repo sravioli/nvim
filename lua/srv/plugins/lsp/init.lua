@@ -53,7 +53,7 @@ return {
       format = fun.lsp.format_message,
 
       -- don't update diagnostics when in insert mode.
-      toggle_event = { "InsertEnter" },
+      toggle_event = { "InsertEnter", "InsertLeave" },
       render_event = { "CursorMoved" },
       update_event = { "DiagnosticChanged", "BufReadPost" },
     },
