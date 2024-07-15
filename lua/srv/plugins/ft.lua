@@ -41,7 +41,7 @@ return {
           function()
             require("femaco.edit").edit_code_block()
           end,
-          desc = "󱚌  Edit code block with FeMaco",
+          desc = "Edit code block with FeMaco",
         },
       },
       opts = {
@@ -61,7 +61,7 @@ return {
           function()
             require("nabla").popup { border = require("srv.preferences").border }
           end,
-          desc = "∇  Open Nabla popup",
+          desc = "Open Nabla popup",
         },
       },
     }, --~ }}}
@@ -71,7 +71,7 @@ return {
       "dbmrq/vim-ditto",
       ft = { "markdown", "text" },
       keys = {
-        { "<leader>tD", "<Plug>ToggleDitto", desc = "  Toggle ditto" },
+        { "<leader>tD", "<Plug>ToggleDitto", desc = "Toggle ditto" },
       },
       cmd = {
         "ToggleDitto",
