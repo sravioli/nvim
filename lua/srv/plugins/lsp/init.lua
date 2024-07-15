@@ -9,9 +9,6 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
-    dependencies = {
-      { "justinsgithub/wezterm-types" },
-    },
     opts = {
       library = {
         -- See the configuration section for more details
@@ -21,6 +18,7 @@ return {
       },
     },
   },
+  { "justinsgithub/wezterm-types", lazy = true },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   -- }}}
 
