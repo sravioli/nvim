@@ -44,7 +44,7 @@ M.enable = function()
     local sysname, machine = require("srv.utils.fun").os_info()
 
     local path = paths[sysname][machine]
-    vim.g[provider .. "_host_prog"] = path ~= 0 and vim.fs.normalize(path) or path
+    vim.g[provider .. "_host_prog"] = path ~= 0 and vim.fs.normalize(path) or nil
   end
 end
 
