@@ -12,7 +12,10 @@ M.cmp = require("cmp").config.sources({
   ---Snippets
   { name = "luasnip" },
   ---LSP
-  { name = "nvim_lsp" },
+  {
+    name = "nvim_lsp",
+    option = { markdown_oxide = { keyword_pattern = [[\(\k\| \|\/\|#\)\+]] } },
+  },
   { name = "nvim_lua" },
   { name = "nvim_lsp_document_symbol" },
   { name = "nvim_lsp_signature_help" },

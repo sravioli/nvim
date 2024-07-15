@@ -49,18 +49,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = require("srv.utils.events").LazyFile,
-    dependencies = {
-      { "j-hui/fidget.nvim" },
-      { "dgagn/diagflow.nvim" },
-      { "folke/neodev.nvim" },
-    },
     config = function()
       local present, lspconfig = pcall(require, "lspconfig")
       if not present then
         return
       end
 
-      local _border = require("srv.preferences").border
+      local _border = prefs.border
 
       local on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
@@ -131,6 +126,13 @@ return {
           },
         }
 
+        -- Ensure that dynamicRegistration is enabled! This allows the LS to take into
+        -- account actions like the Create Unresolved File code action, resolving
+        -- completions for unindexed code blocks, ...
+        capabilities.workspace = {
+          didChangeWatchedFiles = { dynamicRegistration = true },
+        }
+
         return capabilities
       end
 
@@ -148,13 +150,14 @@ return {
 
       local servers = {
         "lua_ls",
-        "marksman",
+        -- "marksman",
         "jsonls",
         "taplo",
         "yamlls",
         "clangd",
         "texlab",
         "bashls",
+        "markdown_oxide",
         -- "powershell_es",
       }
 
