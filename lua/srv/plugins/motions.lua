@@ -372,18 +372,6 @@ return {
     },
     config = true,
   }, -- }}}
-
-  -- {{{1 mini.nvim: Neovim Lua plugin to extend and create `a`/`i` textobjects.
-  {
-    "echasnovski/mini.ai",
-    version = false,
-  }, -- }}}
-
-  -- {{{1 mini.operators: Text edit operators.
-  {
-    "echasnovski/mini.operators",
-    version = false,
-  }, -- }}}
 }
 
 -- vim: fdm=marker fdl=0
