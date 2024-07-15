@@ -1,5 +1,7 @@
+---@class Keymap
+local Keymaps = require "srv.keymaps"
 local fun = require "srv.utils.fun" ---@class Fun
-local preferences = require "srv.preferences" ---@class Preferences
+local prefs = require "srv.preferences" ---@class Preferences
 
 return {
   -- {{{1 dressing.nvim: improve the default vim.ui interfaces
@@ -113,7 +115,7 @@ return {
       general = { update_interval = 200 },
 
       icons = {
-        symbols = preferences.icons.kinds,
+        symbols = prefs.icons.kinds,
         ui = { menu = { indicator = " 󰅂 " } },
       },
 
@@ -141,7 +143,7 @@ return {
           end,
         },
 
-        win_configs = { border = preferences.border },
+        win_configs = { border = prefs.border },
       },
 
       sources = {
