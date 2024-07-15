@@ -1,5 +1,8 @@
 ---@class Fun
 local fun = require "srv.utils.fun"
+local prefs = require "srv.preferences" --[[@class Preferences]]
+
+local Keymap = require "srv.utils.keymap" --[[@class Keymap]]
 
 return {
   -- {{{1 lazydev.nvim: Faster LuaLS setup for Neovim
@@ -25,7 +28,20 @@ return {
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    config = true,
+    cmd = { "Fidget" },
+    opts = {
+      progress = {
+        ignore_empty_message = true,
+        display = {
+          render_limit = 10,
+          done_ttl = 2,
+          progress_icon = {
+            pattern = prefs.spinners.FiraCode,
+            period = 1,
+          },
+        },
+      },
+    },
   }, -- }}}
 
   -- {{{1 diagflow.nim: LSP diagnostics in virtual text at the top right of your screen
