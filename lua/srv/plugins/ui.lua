@@ -173,54 +173,43 @@ return {
   -- {{{1 which-key.nvim: display a popup with keybindings for the command you started typing
   {
     "folke/which-key.nvim",
-    keys = {
-      { "g", mode = { "n", "v" } },
-      { "]", mode = { "n", "v" } },
-      { "[", mode = { "n", "v" } },
-      { "<leader>", mode = { "n", "v" } },
-      { "z" },
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
     init = function()
       vim.opt.timeout = true
       vim.opt.timeoutlen = 300
     end,
     opts = {
-      window = { border = preferences.border },
-      layout = {
-        height = { min = 4, max = 25 },
-        width = { min = 20, max = 50 },
-        spacing = 3,
-        align = "center",
+      preset = "modern",
+
+      spec = {
+        { "<leader>b", group = "+buffer", mode = "n" },
       },
-      key_labels = {
-        ["<space>"] = "SPC",
-        ["<cr>"] = "RET",
-        ["<tab>"] = "TAB",
-      },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>cg"] = { name = "+generate" },
-        ["<leader>f"] = { name = "+file/find" },
-        ["<leader>h"] = { name = "+hunk" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
-        ["<leader>r"] = { name = "+refactor" },
-        ["<leader>t"] = { name = "+toggle" },
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>da"] = { name = "+adapters" },
-        ["<leader>w"] = { name = "+workspace" },
-      },
+
+      -- key_labels = {
+      --   ["<space>"] = "SPC",
+      --   ["<cr>"] = "RET",
+      --   ["<tab>"] = "TAB",
+      -- },
+      -- defaults = {
+      --   mode = { "n", "v" },
+      --   ["g"] = { name = "+goto" },
+      --   ["]"] = { name = "+next" },
+      --   ["["] = { name = "+prev" },
+      --   ["<leader>b"] = { name = "+buffer" },
+      --   ["<leader>c"] = { name = "+code" },
+      --   ["<leader>cg"] = { name = "+generate" },
+      --   ["<leader>f"] = { name = "+file/find" },
+      --   ["<leader>h"] = { name = "+hunk" },
+      --   ["<leader>s"] = { name = "+search" },
+      --   ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      --   ["<leader>r"] = { name = "+refactor" },
+      --   ["<leader>t"] = { name = "+toggle" },
+      --   ["<leader>d"] = { name = "+debug" },
+      --   ["<leader>da"] = { name = "+adapters" },
+      --   ["<leader>w"] = { name = "+workspace" },
+      -- },
     },
-    config = function(_, opts)
-      local wk = require "which-key"
-      wk.setup(opts)
-      wk.register(opts.defaults)
-    end,
   }, -- }}}
 
   -- {{{1 zen-mode.nvim: distraction-free coding for Neovim
