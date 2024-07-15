@@ -1,5 +1,5 @@
-local fun = require "srv.utils.fun" ---@class Fun
 local events = require "srv.utils.events" ---@class Events
+local fun = require "srv.utils.fun" ---@class Fun
 
 return {
   ---asynchronous linter plugin for Neovim complementary to the built-in LSP support.
