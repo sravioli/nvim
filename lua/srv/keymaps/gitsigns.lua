@@ -159,7 +159,6 @@ GitsignsKeymaps:add {
   },
 }
 
-GitsignsKeymaps:wait_plugin_load "gitsigns.nvim"
 GitsignsKeymaps:inject { noremap = true, silent = true }
 GitsignsKeymaps:set_icon_color "green"
 
