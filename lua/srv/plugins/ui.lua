@@ -79,10 +79,6 @@ return {
   -- {{{1 heirline.nvim: no-nonsense Neovim Statusline plugin
   {
     "rebelot/heirline.nvim",
-    dependencies = {
-      { "rebelot/kanagawa.nvim" },
-      { "nvim-tree/nvim-web-devicons" },
-    },
     event = "VeryLazy",
     init = function()
       vim.g.heirline_lastatus = vim.o.laststatus
@@ -254,7 +250,7 @@ return {
           ruler = false, -- disables the ruler text in the cmd line area
           showcmd = false, -- disables the command in the last line of the screen
         },
-        twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+        twilight = { disabled = true }, -- enable to start Twilight when zen mode opens
         gitsigns = { enabled = true }, -- disables git signs
       },
     },
@@ -458,7 +454,6 @@ return {
   -- {{{1 nvim-biscuits: neovim port of Assorted Biscuits.
   {
     "code-biscuits/nvim-biscuits",
-    dependencies = { { "nvim-treesitter/nvim-treesitter" } },
     event = require("srv.utils.events").LazyFile,
     config = function()
       require("nvim-biscuits").setup {
