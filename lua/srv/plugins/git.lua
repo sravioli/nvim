@@ -1,5 +1,6 @@
-local fun = require "srv.utils.fun"
-local preferences = require "srv.preferences"
+---@class Keymap
+local Keymaps = require "srv.keymaps"
+local prefs = require "srv.preferences" --[[@class Preferences]]
 
 return {
   -- {{{1 gitsigns.nvim: git integration for buffers
@@ -15,7 +16,7 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "│" },
       },
-      preview_config = { border = preferences.border },
+      preview_config = { border = prefs.border },
 
       on_attach = function(bufnr)
         local keys = Keymaps.load "gitsigns"--[[@class Keymap]]
@@ -54,14 +55,8 @@ return {
           {
             "n",
             "cc",
-            "<Cmd>Neogit commit",
+            "<Cmd>Neogit commit<CR>",
             { desc = "Commit staged changes" },
-          },
-          {
-            "n",
-            "ca",
-            "<Cmd>Neogit commit --amend",
-            { desc = "Amend the last commit" },
           },
           {
             "n",
