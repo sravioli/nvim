@@ -67,7 +67,9 @@ return {
         client.server_capabilities.documentRangeFormattingProvider = false
 
         ---load lsp mappings
-        fun.keymaps.load("lsp", { buffer = bufnr })
+        local keys = Keymap.load "lsp" --[[@class Keymap]]
+        keys:inject { buffer = bufnr }
+        keys:register()
 
         ---change diagnostic settings
         vim.diagnostic.config {
@@ -243,10 +245,6 @@ return {
     --~ {{{2 lspsaga.nvim: improve neovim lsp experience
     {
       "nvimdev/lspsaga.nvim",
-      dependencies = {
-        { "nvim-tree/nvim-web-devicons" },
-        { "nvim-treesitter/nvim-treesitter" },
-      },
       branch = "main",
       event = "LspAttach",
       opts = {
@@ -258,7 +256,7 @@ return {
         finder = {
           min_width = 40,
           keys = {
-            expand_or_jump = { "o", "<CR>" },
+            expand_or_jump = { "o" },
             vsplit = "S",
             split = "s",
             quit = { "q", "<ESC>" },
@@ -277,7 +275,7 @@ return {
         rename = { quit = "<Esc>" },
 
         ui = {
-          border = require("srv.preferences").border,
+          border = prefs.border,
           code_action = "󰌵 ",
           incoming = "󰁍 ",
           outgoing = " ",
@@ -287,7 +285,8 @@ return {
 
       config = function(_, opts)
         require("lspsaga").setup(opts)
-        fun.keymaps.load("lspsaga", { silent = true, remap = true })
+        local keys = Keymap.load "lspsaga"
+        keys:register()
       end,
     },
     --~ }}}

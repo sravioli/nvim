@@ -18,7 +18,9 @@ return {
       preview_config = { border = preferences.border },
 
       on_attach = function(bufnr)
-        fun.keymaps.load("gitsigns", { buffer = bufnr })
+        local keys = Keymaps.load "gitsigns"--[[@class Keymap]]
+        keys:inject { buffer = bufnr }
+        keys:register()
       end,
     },
   }, -- }}}

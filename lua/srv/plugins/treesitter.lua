@@ -369,7 +369,7 @@ return {
 
     config = function(_, opts)
       require("ufo").setup(opts)
-      require("srv.utils.fun").keymaps.load "ufo"
+      require("srv.keymaps.ufo"):register()
     end,
   },
   -- }}}

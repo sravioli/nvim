@@ -23,17 +23,12 @@ return {
   -- {{{1 barbar.nvim: the neovim tabline plugin.
   {
     "romgrk/barbar.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "lewis6991/gitsigns.nvim" },
-      { "rebelot/kanagawa.nvim" },
-    },
     event = "BufAdd",
     init = function()
       vim.g.barbar_auto_setup = false
     end,
     opts = function()
-      local signs = preferences.icons.diagnostics
+      local signs = prefs.icons.diagnostics
       return {
         animation = true,
         auto_hide = true,
@@ -74,7 +69,8 @@ return {
 
     config = function(_, opts)
       require("barbar").setup(opts)
-      fun.keymaps.load("barbar", { noremap = true, silent = true })
+      local keys = Keymaps.load "barbar" or {}
+      keys:register()
     end,
   }, -- }}}
 
@@ -415,7 +411,8 @@ return {
     opts = { calm_down = true },
     config = function(_, opts)
       require("hlslens").setup(opts)
-      fun.keymaps.load("hls-lens", { noremap = true, silent = true })
+      local keys = Keymaps.load "hlslens" or {}
+      keys:register()
     end,
   }, -- }}}
 
