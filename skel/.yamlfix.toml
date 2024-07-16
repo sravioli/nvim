@@ -162,8 +162,8 @@ sequence_style = "flow_style"
 # <https://ruyaml.readthedocs.io/en/latest/detail.html#indentation-of-block-sequences>
 #
 # (default: `indent_mapping: int = 2` `indent_offset: int = 2` `indent_sequence: int = 4`)
-indent_mapping  = 2
-indent_offset   = 2
+indent_mapping = 2
+indent_offset = 2
 indent_sequence = 4
 
 # Line Length (Width)

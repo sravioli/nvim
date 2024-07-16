@@ -1,5 +1,5 @@
 std = "lua51+vim"
 
 [lints]
-  mixed_table        = "allow"
-  undefined_variable = "warn"
+mixed_table = "allow"
+undefined_variable = "warn"
