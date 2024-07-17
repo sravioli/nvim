@@ -5,6 +5,66 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [3.0.0](https://github.com/sravioli/nvim/compare/defaac3bfded49d4fa7cbdcb367ee7ff2f9a52ff..3.0.0) - 2024-07-17
+
+#### Bug Fixes
+
+- **(plugins:ft)** rm keymap icons - ([f32c11d](https://github.com/sravioli/nvim/commit/f32c11d31e4c5cf528f1fd4ae6abecd151daf145)) - sravioli
+- **(plugins:ft)** uninstall obisidian.nvim - ([8e62337](https://github.com/sravioli/nvim/commit/8e62337a37f9d54038ae746b1d9f287222681f64)) - sravioli
+- **(plugins:git)** remove wrong keymap - ([156876c](https://github.com/sravioli/nvim/commit/156876ccd27ab3a5a7a2bf394514f64b143f4761)) - sravioli
+- **(plugins:lsp)** update diagflow config - ([3f8762d](https://github.com/sravioli/nvim/commit/3f8762de37bf2878a89c47126df03afb46450591)) - sravioli
+- **(plugins:lsp)** update lazydev config - ([4afb71c](https://github.com/sravioli/nvim/commit/4afb71cbaf77ee05897973e70bd9f029875486c3)) - sravioli
+- **(plugins:lsp)** switch to markdown_oxide lsp - ([d020e58](https://github.com/sravioli/nvim/commit/d020e5876fdfda8574001e258a427ebaa025e9a2)) - sravioli
+- **(plugins:lsp)** update lspsaga creator - ([06142f2](https://github.com/sravioli/nvim/commit/06142f2545b57d78860f8b71ddcb1e88a7e50a50)) - sravioli
+- **(plugins:motions)** move to mini.lua - ([14f08d0](https://github.com/sravioli/nvim/commit/14f08d0655c2508b7afd75ee278999544aeda206)) - sravioli
+- **(plugins:ui)** remove useless dependencies - ([fa4750f](https://github.com/sravioli/nvim/commit/fa4750fc0a87c04e642213a280a15d2d35335751)) - sravioli
+- **(plugins:ui)** rename preferences to prefs - ([d63b87e](https://github.com/sravioli/nvim/commit/d63b87e00622c452a6bcc58f42adcc990017065f)) - sravioli
+- **(plugins:ui)** uninstall twilight.nvim and alpha.nvim - ([606895a](https://github.com/sravioli/nvim/commit/606895a9ffc37fe5eb64281ba80bcd435d5650cf)) - sravioli
+- **(plugins:ui)** move `gitsigns.nvim` to other file - ([be8c42d](https://github.com/sravioli/nvim/commit/be8c42d1d2a4656af725d5f44b875e289f602091)) - sravioli
+- **(utils:duck)** remove duck.lua - ([5ff7d06](https://github.com/sravioli/nvim/commit/5ff7d064399bb2f9fbf9f9fe7a051741afefa60a)) - sravioli
+- **(utils:fun)** turn `table.insert` into local var - ([7a9a88e](https://github.com/sravioli/nvim/commit/7a9a88e91473501714c5e23d6725774c4e21df11)) - sravioli
+- remove telescope register mappings - ([22c2a3d](https://github.com/sravioli/nvim/commit/22c2a3dee751acbf93cac59c1fa7d8f8b053d1ad)) - sravioli
+- remove useless deps, correct Neogit commands - ([c74b97f](https://github.com/sravioli/nvim/commit/c74b97fae34a7aa6f31b49da75b0191a70f07bd7)) - sravioli
+
+#### Features
+
+- **(config:autocommands)** update single cursor au, add backups - ([355191e](https://github.com/sravioli/nvim/commit/355191ecd105d41eff6d7c9299291e5ce1f85ada)) - sravioli
+- **(fun:providers)** disable provider if value is 0 - ([642e832](https://github.com/sravioli/nvim/commit/642e8327f47972b723778fb33ef5752ecbf8c2e9)) - sravioli
+- **(init.lua)** load new editor keymaps - ([87286cd](https://github.com/sravioli/nvim/commit/87286cddd9c9dcb90226b55f817104c0f99bd533)) - sravioli
+- **(keymaps)** don't wait gitsigns load - ([00d66e9](https://github.com/sravioli/nvim/commit/00d66e98c0f8f14c9fd228e0d82bc881e38466f7)) - sravioli
+- **(keymaps)** change keymap declarations and usage - ([c984819](https://github.com/sravioli/nvim/commit/c984819c754fefc0fad01790cc30fe6707f03f23)) - sravioli
+- **(lazy)** update config - ([89380a8](https://github.com/sravioli/nvim/commit/89380a8ab1c941359dd7c53267214c5740e102dd)) - sravioli
+- **(plugins)** install `thanks.nvim` plugin - ([defaac3](https://github.com/sravioli/nvim/commit/defaac3bfded49d4fa7cbdcb367ee7ff2f9a52ff)) - sravioli
+- **(plugins:git)** create git plugins file - ([888c770](https://github.com/sravioli/nvim/commit/888c770d8ec288860b68e93bfe4eb8c9f65eff9e)) - sravioli
+- **(plugins:lsp)** update fidget config - ([f6910ae](https://github.com/sravioli/nvim/commit/f6910ae7625efa12edd8fd0d5bf659165615af87)) - sravioli
+- **(plugins:mason)** add more ensure_installed lsps - ([00223c5](https://github.com/sravioli/nvim/commit/00223c58c46a4dcae66bf9fccf9f83966fda1aa9)) - sravioli
+- **(plugins:mini)** install mini.ai & mini.operators - ([9425720](https://github.com/sravioli/nvim/commit/9425720ae35531c27fd427674839283818ed3cfb)) - sravioli
+- **(plugins:motions)** install `mini.ai` and `mini.operators` plugins - ([c834a81](https://github.com/sravioli/nvim/commit/c834a8109c039a16070c12ff046fb9bc010e4db3)) - sravioli
+- **(plugins:thanks)** add thanks command - ([c652a01](https://github.com/sravioli/nvim/commit/c652a01ad27cbc45c5b0e31e9fc5bddabe899897)) - sravioli
+- **(plugins:treesitter)** update treesitter-textobj keymaps - ([4cd275a](https://github.com/sravioli/nvim/commit/4cd275aaf6909770933936db1c004d020b3f7f70)) - sravioli
+- **(plugins:ui)** update to which-key v3 - ([d2530d9](https://github.com/sravioli/nvim/commit/d2530d97354205975f61b3bad640e3eef59c24d4)) - sravioli
+- **(plugins:ui)** add desc to dropbar keymap - ([17b8f0d](https://github.com/sravioli/nvim/commit/17b8f0d56af3c3ca5dabeb68af98b8b275628e35)) - sravioli
+- **(utils:keymap)** add keymap utility class - ([725b8ae](https://github.com/sravioli/nvim/commit/725b8ae4344e6db7d4d103985e4760ec6152ff1d)) - sravioli
+
+#### Miscellaneous Chores
+
+- **(lsp:servers)** formatting - ([9e9b2ba](https://github.com/sravioli/nvim/commit/9e9b2ba0102b68c5c7b9a4d61e7cbe7c3efb8af6)) - sravioli
+- **(plugins:kanagawa)** remove comments - ([0b614a5](https://github.com/sravioli/nvim/commit/0b614a5f8c353b775f9964bced54884e0db57cf7)) - sravioli
+- **(plugins:lint)** sort requires - ([a0660a9](https://github.com/sravioli/nvim/commit/a0660a9c864f73061511d89cad34a4acdccb83d2)) - sravioli
+- **(plugins:toggleterm)** formatting - ([213886b](https://github.com/sravioli/nvim/commit/213886bc79a7bcaca95335c2e160bce8c14e78ec)) - sravioli
+- **(plugins:ui)** formatting - ([a5d5947](https://github.com/sravioli/nvim/commit/a5d59472800b898ad161b32784112eaa64b12876)) - sravioli
+- update lazy-lock - ([aa48fd8](https://github.com/sravioli/nvim/commit/aa48fd8107ea10f51d89381d7e0b276b12816fee)) - sravioli
+- format with taplo - ([9c8c031](https://github.com/sravioli/nvim/commit/9c8c0316ef20b61596d7ef49763261a7b1d4fe2a)) - sravioli
+- update lazy-lock - ([d894e18](https://github.com/sravioli/nvim/commit/d894e18d382f77f79e6069201bf9f0aff4ea11ab)) - sravioli
+- update lazy-lock - ([2633dbb](https://github.com/sravioli/nvim/commit/2633dbb336b559aeb29ab914d5182395e7e149b8)) - sravioli
+- update lazy-lock - ([d802e9a](https://github.com/sravioli/nvim/commit/d802e9a85406c5631108a89973751fdd82993911)) - sravioli
+
+#### Refactoring
+
+- **(plugins:treesitter)** move keymaps to own file, rm Nerdy icon - ([a5d18bf](https://github.com/sravioli/nvim/commit/a5d18bf4e500752b9f26f47064a02898a86ad11c)) - sravioli
+
+- - -
+
 ## [2.0.8](https://github.com/sravioli/nvim/compare/ea9010f81b7d35f80ff4db0fcc18f5baf2efd5b7..2.0.8) - 2024-07-01
 
 #### Features
