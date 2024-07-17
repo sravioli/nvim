@@ -39,14 +39,6 @@ TelescopeKeymaps:add {
     desc = "Search word in buffer",
   },
 
-  ---register
-  {
-    "<C-R>",
-    "<cmd>Telescope registers<CR>",
-    desc = "Yank registers",
-    mode = "i",
-  },
-
   ---git
   { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "Git commits" },
   { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Git status" },
