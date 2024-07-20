@@ -56,7 +56,7 @@
 ---```
 vim.opt.guifont = ""
   .. "FiraCode_Nerd_Font,"
-  .. "NotoColorEmoji"
+  .. "Noto Color Emoji"
   .. ":h10.3"
   .. ":#h-normal"
   .. ":#e-antialias"
