@@ -6,7 +6,7 @@ return {
       "ellisonleao/glow.nvim",
       ft = "markdown",
       keys = {
-        { "<leader>fg", "<cmd>Glow<CR>", desc = "  Preview file with Glow" },
+        { "<leader>fg", "<cmd>Glow<CR>", desc = "Preview file with Glow" },
       },
       cmd = "Glow",
       opts = {
@@ -123,6 +123,43 @@ return {
       end,
       ft = { "markdown" },
     }, --~ }}}
+
+    --~ {{{2 markdown.nvim: Plugin to improve viewing Markdown files in Neovim
+    {
+      "MeanderingProgrammer/markdown.nvim",
+      ft = "markdown",
+      opts = {
+        heading = { icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
+        checkbox = {
+          custom = {
+            cancelled = {
+              raw = "[_]",
+              rendered = "",
+              highlight = "DiagnosticDeprecated",
+            },
+            on_hold = { raw = "[=]", rendered = "", highlight = "DiagnosticInfo" },
+            urgent = { raw = "[!]", rendered = "", highlight = "@keyword.exception" },
+            recurring = { raw = "[+]", rendered = "↺", highlight = "Repeat" },
+            uncertain = { raw = "[?]", rendered = "", highlight = "MoreMsg" },
+          },
+        },
+        pipe_table = {
+          border = {
+            "╭",
+            "┬",
+            "╮",
+            "├",
+            "┼",
+            "┤",
+            "╰",
+            "┴",
+            "╯",
+            "│",
+            "─",
+          },
+        },
+      },
+    }, --~}}}
   }, -- }}}
 
   -- {{{1 NU
@@ -131,6 +168,19 @@ return {
     "LhKipp/nvim-nu",
     ft = "nu",
   }, --~}}}
+  -- }}}
+
+  -- {{{1 GO
+
+  -- --~ {{{2 go.nvim:
+  -- {
+  --   "ray-x/go.nvim",
+  --   dependencies = { "ray-x/guihua.lua" },
+  --   event = { "CmdlineEnter" },
+  --   ft = { "go", "gomod" },
+  --   build = ':lua require("go.install").update_all_sync()',
+  --   opts = {},
+  -- }, --~}}}
   -- }}}
 }
 

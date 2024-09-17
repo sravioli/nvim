@@ -165,6 +165,7 @@ return {
       local servers = {
         "lua_ls",
         -- "marksman",
+        "csharp_ls",
         "jsonls",
         "taplo",
         "yamlls",
@@ -193,6 +194,7 @@ return {
           taplo = servers_config.taplo,
           yamlls = servers_config.yamlls,
           clangd = servers_config.clangd,
+          csharp_ls = servers_config.csharp_ls,
           -- powershell_es = servers_config.powershell_es,
         }
       end

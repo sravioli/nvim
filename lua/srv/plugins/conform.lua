@@ -28,6 +28,7 @@ return {
       c = { "clang_format" },
       cpp = { "clang_format" },
       sh = { "shfmt" },
+      cs = { "csharpier" },
     },
 
     formatters = {
