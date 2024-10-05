@@ -62,6 +62,42 @@ return {
     },
   }, -- }}}
 
+  -- {{{1 csharp.nvim:
+  {
+    "iabdelkareem/csharp.nvim",
+    dependencies = { { "Tastyep/structlog.nvim" } },
+    event = "LspAttach",
+    ft = "cs",
+    opts = {
+      lsp = {
+        omnisharp = {
+          enable = true,
+          cmd_path = nil,
+          default_timeout = 1000,
+          enable_editor_config_support = true,
+          organize_imports = true,
+          load_projects_on_demand = false,
+          enable_analyzers_support = true,
+          enable_import_completion = true,
+          include_prerelease_sdks = true,
+          analyze_open_documents_only = false,
+          enable_package_auto_restore = true,
+          debug = false,
+        },
+        roslyn = {
+          enable = false,
+          cmd_path = nil,
+        },
+        capabilities = nil,
+        on_attach = nil,
+      },
+      logging = { level = "INFO" },
+      dap = {
+        adapter_name = nil,
+      },
+    },
+  }, -- }}}
+
   -- {{{1 nvim-lspconfig: Quickstart configs for Nvim LSP
   {
     "neovim/nvim-lspconfig",
@@ -101,7 +137,7 @@ return {
               return (" %s "):format(sign or i .. "."), hl or ""
             end,
             suffix = function()
-              return " "
+              return " ", ""
             end,
           },
 
@@ -169,7 +205,7 @@ return {
       local servers = {
         "lua_ls",
         -- "marksman",
-        "csharp_ls",
+        -- "csharp_ls",
         "jsonls",
         "taplo",
         "yamlls",
@@ -177,7 +213,6 @@ return {
         "texlab",
         "bashls",
         "markdown_oxide",
-        -- "powershell_es",
       }
 
       local servers_config = require "srv.plugins.lsp.servers"
@@ -193,13 +228,12 @@ return {
             bashls = servers_config.bashls,
           },
 
+          -- csharp_ls = servers_config.csharp_ls,
           marksman = servers_config.marksman,
           jsonls = servers_config.jsonls,
           taplo = servers_config.taplo,
           yamlls = servers_config.yamlls,
           clangd = servers_config.clangd,
-          csharp_ls = servers_config.csharp_ls,
-          -- powershell_es = servers_config.powershell_es,
         }
       end
     end,
