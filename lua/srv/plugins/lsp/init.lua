@@ -62,46 +62,6 @@ return {
     },
   }, -- }}}
 
-  -- {{{1 csharp.nvim: Neovim plugin written in Lua, powered by omnisharp-roslyn, that aims to enhance the development experience for .NET developers.
-  {
-    "iabdelkareem/csharp.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "mfussenegger/nvim-dap",
-      "Tastyep/structlog.nvim",
-    },
-    event = "LspAttach",
-    ft = "cs",
-    opts = {
-      lsp = {
-        omnisharp = {
-          enable = true,
-          cmd_path = nil,
-          default_timeout = 1000,
-          enable_editor_config_support = true,
-          organize_imports = true,
-          load_projects_on_demand = false,
-          enable_analyzers_support = true,
-          enable_import_completion = true,
-          include_prerelease_sdks = true,
-          analyze_open_documents_only = false,
-          enable_package_auto_restore = true,
-          debug = false,
-        },
-        roslyn = {
-          enable = false,
-          cmd_path = nil,
-        },
-        capabilities = nil,
-        on_attach = nil,
-      },
-      logging = { level = "INFO" },
-      dap = {
-        adapter_name = nil,
-      },
-    },
-  }, -- }}}
-
   -- {{{1 nvim-lspconfig: Quickstart configs for Nvim LSP
   {
     "neovim/nvim-lspconfig",
@@ -208,15 +168,15 @@ return {
 
       local servers = {
         "lua_ls",
-        -- "marksman",
-        -- "csharp_ls",
+        "marksman",
+        "csharp_ls",
         "jsonls",
         "taplo",
         "yamlls",
         "clangd",
         "texlab",
         "bashls",
-        "markdown_oxide",
+        -- "markdown_oxide",
       }
 
       local servers_config = require "srv.plugins.lsp.servers"
@@ -232,7 +192,7 @@ return {
             bashls = servers_config.bashls,
           },
 
-          -- csharp_ls = servers_config.csharp_ls,
+          csharp_ls = servers_config.csharp_ls,
           marksman = servers_config.marksman,
           jsonls = servers_config.jsonls,
           taplo = servers_config.taplo,
