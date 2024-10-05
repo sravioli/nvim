@@ -7,6 +7,8 @@ return {
   -- {{{1 dressing.nvim: improve the default vim.ui interfaces
   {
     "stevearc/dressing.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     opts = {},
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -25,6 +27,8 @@ return {
   -- {{{1 barbar.nvim: the neovim tabline plugin.
   {
     "romgrk/barbar.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     event = "BufAdd",
     init = function()
       vim.g.barbar_auto_setup = false
@@ -79,6 +83,8 @@ return {
   -- {{{1 heirline.nvim: no-nonsense Neovim Statusline plugin
   {
     "rebelot/heirline.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     event = "VeryLazy",
     init = function()
       vim.g.heirline_lastatus = vim.o.laststatus
@@ -104,6 +110,8 @@ return {
   -- {{{1 dropbar.nvim: IDE-like breadcrumbs, out of the box
   {
     "Bekaboo/dropbar.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     enabled = vim.fn.has "nvim-0.10.0" == 1,
     dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
     event = require("srv.utils.events").LazyFile,
@@ -173,6 +181,8 @@ return {
   -- {{{1 which-key.nvim: display a popup with keybindings for the command you started typing
   {
     "folke/which-key.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     init = function()
@@ -215,6 +225,7 @@ return {
   -- {{{1 zen-mode.nvim: distraction-free coding for Neovim
   {
     "folke/zen-mode.nvim",
+    cond = not vim.g.vscode,
     cmd = "ZenMode",
     keys = {
       {
@@ -253,6 +264,8 @@ return {
   -- {{{1 trouble.nvim: pretty diagnostics, references, telescope results, quickfix and loclist
   {
     "folke/trouble.nvim",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     cmd = { "Trouble" },
     keys = {
       {
@@ -314,6 +327,7 @@ return {
   -- {{{1 todo-comments: highlight, list and search todo comments in your projects
   {
     "folke/todo-comments.nvim",
+    cond = not vim.g.vscode,
     dependencies = { "nvim-lua/plenary.nvim" },
     event = require("srv.utils.events").LazyFile,
     keys = {
@@ -350,6 +364,8 @@ return {
   -- {{{1 nvim-notify: fancy, configurable, notification manager for NeoVim.
   {
     "rcarriga/nvim-notify",
+    cond = not vim.g.vscode,
+    enabled = not vim.g.vscode,
     keys = {
       {
         "<leader>un",
@@ -393,6 +409,7 @@ return {
   -- {{{1 nvim-hlslens: hlsearch Lens for Neovim
   {
     "kevinhwang91/nvim-hlslens",
+    cond = not vim.g.vscode,
     event = "CmdlineEnter",
     opts = { calm_down = true },
     config = function(_, opts)
@@ -405,6 +422,7 @@ return {
   -- {{{1 indent-blankline: indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
+    cond = not vim.g.vscode,
     main = "ibl",
     event = require("srv.utils.events").LazyFile,
     opts = {
@@ -420,6 +438,7 @@ return {
   -- {{{1 nvim-colorizer.lua: maintained fork of the fastest Neovim colorizer
   {
     "NvChad/nvim-colorizer.lua",
+    cond = not vim.g.vscode,
     event = require("srv.utils.events").LazyFile,
     opts = {
       filetypes = { "*" },
@@ -448,6 +467,7 @@ return {
   -- {{{1 nvim-biscuits: neovim port of Assorted Biscuits.
   {
     "code-biscuits/nvim-biscuits",
+    cond = not vim.g.vscode,
     event = require("srv.utils.events").LazyFile,
     config = function()
       require("nvim-biscuits").setup {

@@ -3,6 +3,7 @@ return {
   -- {{{1 telescope-fzf-native.nvim:
   {
     "nvim-telescope/telescope-fzf-native.nvim",
+    cond = not vim.g.vscode,
     build = "make",
     enabled = vim.fn.executable "make" == 1,
     config = function()
@@ -28,6 +29,7 @@ return {
   -- {{{1 telescope.nvim: find, Filter, Preview, Pick. All lua, all the time.
   {
     "nvim-telescope/telescope.nvim",
+    cond = not vim.g.vscode,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" },
@@ -130,6 +132,7 @@ return {
   -- {{{1 nerdy.nvim: Find Nerd Glyphs Easily 🤓🔭
   {
     "2kabhishek/nerdy.nvim",
+    cond = not vim.g.vscode,
     cmd = "Nerdy",
     keys = {
       { "<leader>si", "<cmd>Nerdy<CR>", desc = "Search nerd icons" },

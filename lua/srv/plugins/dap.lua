@@ -2,6 +2,7 @@ return {
 	-- {{{1 mason-nvim-dap: bridge mason.nvim w/ nvim-dap
 	{
 		"jay-babu/mason-nvim-dap.nvim",
+    cond = not vim.g.vscode,
 		dependencies = {
 			{ "williamboman/mason.nvim" },
 		},
@@ -16,6 +17,7 @@ return {
 	-- {{{1 nvim-dap-ui: UI for nvim-dap
 	{
 		"rcarriga/nvim-dap-ui",
+    cond = not vim.g.vscode,
 		dependencies = { "mfussenegger/nvim-dap" },
 		keys = {
 			{
@@ -54,6 +56,7 @@ return {
 	-- {{{1 nvim-dap-virtual-text: adds virtual text support to nvim-dap
 	{
 		"theHamsta/nvim-dap-virtual-text",
+    cond = not vim.g.vscode,
 		opts = { commented = true },
 	},
 	-- }}}
@@ -61,6 +64,7 @@ return {
 	-- {{{1 nvim-dap: Debug Adapter Protocol client implementation for Neovim
 	{
 		"mfussenegger/nvim-dap",
+    cond = not vim.g.vscode,
 		dependencies = { "jay-babu/mason-nvim-dap.nvim" },
 		keys = {
 			{

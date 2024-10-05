@@ -1,6 +1,7 @@
 return {
   ---file explorer tree for neovim written in lua
   "nvim-tree/nvim-tree.lua",
+  cond = not vim.g.vscode,
   version = "*",
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },

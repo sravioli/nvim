@@ -4,6 +4,7 @@ local fun = require "srv.utils.fun" ---@class Fun
 return {
   ---asynchronous linter plugin for Neovim complementary to the built-in LSP support.
   "mfussenegger/nvim-lint",
+  cond = not vim.g.vscode,
   event = events.LazyFile,
   config = function()
     local lint = require "lint"

@@ -1,6 +1,7 @@
 return {
   ---neovim lua plugin to help easily manage multiple terminal windows
   "akinsho/toggleterm.nvim",
+  cond = not vim.g.vscode,
   keys = {
     {
       "<M-i>",

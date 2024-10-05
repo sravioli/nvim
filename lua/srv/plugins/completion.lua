@@ -3,6 +3,7 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
+    cond = not vim.g.vscode,
     opts = {
       disable_filetype = { "TelescopePrompt", "spectre_panel" },
       disable_in_macro = false, ---disable when recording or executing a macro
@@ -37,6 +38,7 @@ return {
   -- {{{1 LuaSnip: snippet Engine for Neovim written in Lua.
   {
     "L3MON4D3/LuaSnip",
+    cond = not vim.g.vscode,
     dependencies = { { "rafamadriz/friendly-snippets" } },
     event = "InsertEnter",
     version = "v2.*",
@@ -130,6 +132,7 @@ return {
   -- {{{1 nvim-cmp: completion plugin for neovim coded in Lua.
   {
     "hrsh7th/nvim-cmp",
+    cond = not vim.g.vscode,
     dependencies = {
       { "L3MON4D3/LuaSnip" }, ---Snippet Engine for Neovim written in Lua.
       { "onsails/lspkind.nvim" }, ---vscode-like pictograms for neovim lsp completion items

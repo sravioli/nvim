@@ -3,6 +3,7 @@ return {
   {
     ---Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     "williamboman/mason-lspconfig.nvim",
+    cond = not vim.g.vscode,
     dependencies = { "williamboman/mason.nvim" },
     cmd = { "LspInstall", "LspUninstall" },
     opts = {
@@ -42,6 +43,7 @@ return {
   -- {{{1 mason.nvim: portable package manager for Neovim that runs everywhere Neovim runs.
   {
     "williamboman/mason.nvim",
+    cond = not vim.g.vscode,
     build = ":MasonUpdate",
     cmd = {
       "Mason",

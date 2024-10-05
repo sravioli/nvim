@@ -89,6 +89,7 @@ return {
   -- {{{1 numb.nvim: peek lines just when you intend
   {
     "nacro90/numb.nvim",
+    cond = not vim.g.vscode,
     event = "CmdlineEnter",
     opts = { number_only = true }, ---Peek when only if command is a number
   }, -- }}}
@@ -96,6 +97,7 @@ return {
   -- {{{1 refactoring.nvim: refactoring library based off the book by Martin Fowler
   {
     "ThePrimeagen/refactoring.nvim",
+    cond = not vim.g.vscode,
     keys = {
       {
         "<leader>rr",
@@ -339,6 +341,7 @@ return {
   -- {{{1 nvim-spectre: find the enemy and replace them with dark power.
   {
     "nvim-pack/nvim-spectre",
+    cond = not vim.g.vscode,
     keys = {
       {
         "<leader>sr",
