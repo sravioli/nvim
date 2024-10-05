@@ -3,6 +3,7 @@ local fun = require "srv.utils.fun" ---@class Fun
 return {
   ---lightweight yet powerful formatter plugin for Neovim
   "stevearc/conform.nvim",
+  event = "InsertEnter",
   event = "BufWritePre",
   cmd = "ConformInfo",
   keys = {

@@ -2,6 +2,7 @@ return {
   -- {{{1 nvim-treesitter: Nvim Treesitter configurations and abstraction layer.
   {
     "nvim-treesitter/nvim-treesitter",
+    cond = not vim.g.vscode,
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     event = "BufReadPre",
     build = function()
@@ -173,6 +174,7 @@ return {
   -- {{{1 nvim-treesitter-textobjects: syntax aware text-objects.
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    cond = not vim.g.vscode,
     init = function()
       require("srv.utils.fun").on_load("nvim-treesitter", function()
         local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
@@ -218,6 +220,7 @@ return {
   -- {{{1 neogen: better annotation generator. Supports multiple languages and conventions.
   {
     "danymat/neogen",
+    cond = not vim.g.vscode,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     version = "*",
     keys = {
@@ -268,6 +271,7 @@ return {
   -- {{{1 nvim-ufo: not UFO in the sky, but an ultra fold in Neovim.
   {
     "kevinhwang91/nvim-ufo",
+    cond = not vim.g.vscode,
     enabled = false,
     dependencies = {
       { "kevinhwang91/promise-async" },

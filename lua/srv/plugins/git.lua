@@ -6,6 +6,7 @@ return {
   -- {{{1 gitsigns.nvim: git integration for buffers
   {
     "lewis6991/gitsigns.nvim",
+    cond = not vim.g.vscode,
     event = require("srv.utils.events").LazyFile,
     opts = {
       signs = {
@@ -30,6 +31,7 @@ return {
   -- all modified files for any git rev.
   {
     "sindrets/diffview.nvim",
+    cond = not vim.g.vscode,
     dependencies = {
       -- {{{2 neogit: An interactive and powerful Git interface for Neovim, inspired by Magit
       {

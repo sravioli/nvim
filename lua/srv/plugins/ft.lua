@@ -4,6 +4,7 @@ return {
     --~ {{{2 glow.nvim: markdown preview directly in neovim.
     {
       "ellisonleao/glow.nvim",
+      cond = not vim.g.vscode,
       ft = "markdown",
       keys = {
         { "<leader>fg", "<cmd>Glow<CR>", desc = "Preview file with Glow" },
@@ -21,6 +22,7 @@ return {
     --~ {{{2 vimtex: minimal, opinionated neovim filetype plugin for (La)TeX and Markdown
     {
       "lervag/vimtex",
+      cond = not vim.g.vscode,
       ft = "markdown",
       init = function()
         vim.cmd.filetype "plugin indent on"
@@ -31,9 +33,10 @@ return {
       end,
     }, --~ }}}
 
-    --~ {{{2 nvim-FeMaco.lua: catalyze your Fenced Markdown Code-block editing!
+    --~ {{{2 nvim-FeMaco.lua: catalyze your Fenced Markdown Code-block editingnot 
     {
       "AckslD/nvim-FeMaco.lua",
+      cond = not vim.g.vscode,
       ft = "markdown",
       keys = {
         {
@@ -54,6 +57,7 @@ return {
     --~ {{{2 nabla.nvim: take your scientific notes ✏️ in Neovim
     {
       "jbyuki/nabla.nvim",
+      cond = not vim.g.vscode,
       ft = "markdown",
       keys = {
         {
@@ -69,6 +73,7 @@ return {
     --~ {{{2 vim-ditto: 🙊 Stop repeating yourself
     {
       "dbmrq/vim-ditto",
+      cond = not vim.g.vscode,
       ft = { "markdown", "text" },
       keys = {
         { "<leader>tD", "<Plug>ToggleDitto", desc = "Toggle ditto" },
@@ -102,6 +107,7 @@ return {
     --~ {{{2 vim-pencil: rethinking Vim as a tool for writing
     {
       "preservim/vim-pencil",
+      cond = not vim.g.vscode,
       cmd = { "Pencil", "PencilOff", "PencilToggle", "PencilSoft", "PencilHard" },
       config = function()
         vim.cmd "let g:pencil#wrapModeDefault = 'hard'"
@@ -116,6 +122,7 @@ return {
     --~ {{{2 markdown-preview.nvim: markdown preview plugin for (neo)vim
     {
       "iamcco/markdown-preview.nvim",
+      cond = not vim.g.vscode,
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       build = "cd app && yarn install",
       init = function()
@@ -127,6 +134,7 @@ return {
     --~ {{{2 markdown.nvim: Plugin to improve viewing Markdown files in Neovim
     {
       "MeanderingProgrammer/markdown.nvim",
+      cond = not vim.g.vscode,
       ft = "markdown",
       opts = {
         heading = { icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
@@ -138,7 +146,7 @@ return {
               highlight = "DiagnosticDeprecated",
             },
             on_hold = { raw = "[=]", rendered = "", highlight = "DiagnosticInfo" },
-            urgent = { raw = "[!]", rendered = "", highlight = "@keyword.exception" },
+            urgent = { raw = "[not ]", rendered = "", highlight = "@keyword.exception" },
             recurring = { raw = "[+]", rendered = "↺", highlight = "Repeat" },
             uncertain = { raw = "[?]", rendered = "", highlight = "MoreMsg" },
           },
@@ -166,22 +174,11 @@ return {
   --~ {{{2 nvim-nu: Basic editor support for the nushell language
   {
     "LhKipp/nvim-nu",
+    cond = not vim.g.vscode,
     ft = "nu",
   }, --~}}}
   -- }}}
 
-  -- {{{1 GO
-
-  -- --~ {{{2 go.nvim:
-  -- {
-  --   "ray-x/go.nvim",
-  --   dependencies = { "ray-x/guihua.lua" },
-  --   event = { "CmdlineEnter" },
-  --   ft = { "go", "gomod" },
-  --   build = ':lua require("go.install").update_all_sync()',
-  --   opts = {},
-  -- }, --~}}}
-  -- }}}
 }
 
 -- vim: fdm=marker fdl=1

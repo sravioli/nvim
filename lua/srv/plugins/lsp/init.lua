@@ -8,6 +8,7 @@ return {
   -- {{{1 lazydev.nvim: Faster LuaLS setup for Neovim
   {
     "folke/lazydev.nvim",
+    cond = not vim.g.vscode,
     ft = "lua", -- only load on lua files
     opts = {
       library = {
@@ -25,6 +26,7 @@ return {
   -- {{{1 fidget.nvim: extensible UI for Neovim notifications and LSP progress messages.
   {
     "j-hui/fidget.nvim",
+    cond = not vim.g.vscode,
     event = "LspAttach",
     cmd = { "Fidget" },
     opts = {
@@ -45,6 +47,7 @@ return {
   -- {{{1 diagflow.nim: LSP diagnostics in virtual text at the top right of your screen
   {
     "dgagn/diagflow.nvim",
+    cond = not vim.g.vscode,
     event = "LspAttach",
     opts = {
       scope = "line",
@@ -102,6 +105,7 @@ return {
   -- {{{1 nvim-lspconfig: Quickstart configs for Nvim LSP
   {
     "neovim/nvim-lspconfig",
+    cond = not vim.g.vscode,
     event = require("srv.utils.events").LazyFile,
     config = function()
       local present, lspconfig = pcall(require, "lspconfig")
@@ -244,6 +248,7 @@ return {
     --~ {{{2 actions-preview.nvim: Fully customizable previewer for LSP code actions.
     {
       "aznhe21/actions-preview.nvim",
+      cond = not vim.g.vscode,
       dependencies = { "nvim-telescope/telescope.nvim" },
       keys = {
         {
@@ -275,6 +280,7 @@ return {
     --~ {{{2 lsp-lens.nvim: display references & definition infos for functions
     {
       "VidocqH/lsp-lens.nvim",
+      cond = not vim.g.vscode,
       event = "LspAttach",
       cmd = { "LspLensOn", "LspLensOff", "LspLensToggle" },
       opts = {
@@ -302,6 +308,7 @@ return {
     --~ {{{2 lspsaga.nvim: improve neovim lsp experience
     {
       "nvimdev/lspsaga.nvim",
+      cond = not vim.g.vscode,
       branch = "main",
       event = "LspAttach",
       opts = {
