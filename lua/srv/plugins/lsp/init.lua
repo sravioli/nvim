@@ -59,10 +59,14 @@ return {
     },
   }, -- }}}
 
-  -- {{{1 csharp.nvim:
+  -- {{{1 csharp.nvim: Neovim plugin written in Lua, powered by omnisharp-roslyn, that aims to enhance the development experience for .NET developers.
   {
     "iabdelkareem/csharp.nvim",
-    dependencies = { { "Tastyep/structlog.nvim" } },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+      "Tastyep/structlog.nvim",
+    },
     event = "LspAttach",
     ft = "cs",
     opts = {
