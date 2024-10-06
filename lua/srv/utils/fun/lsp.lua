@@ -3,6 +3,8 @@
 ---@class Fun.lsp
 local M = {}
 
+local _border = require("srv.preferences").border
+
 ---Retrieves the diagnostic icon based on the given severity
 ---@param severity vim.diagnostic.Severity the `:h vim.diagnostic.severity` level
 ---@return string|nil sign icon corresponding to the severity level. `nil` if not found.
@@ -39,6 +41,146 @@ M.format_message = function(diagnostic)
   fmt = fmt .. (" %s"):format(msg)
 
   return fmt
+end
+
+function M.handlers(lsp_name)
+  -- Jump directly to the first available definition every time
+  -- unless the definitions different line number for some reason.
+  -- sumneko_lua sometimes returns same line number but different
+  -- column for defintion, so don't care which one we jump to
+  -- Thanks to https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/lsp/handlers.lua
+  return {
+    ["textDocument/definition"] = function(_, result, ctx)
+      if lsp_name == "csharp_ls" then
+        return require("csharpls_extended").handler
+      end
+
+      if not result or vim.tbl_isempty(result) then
+        return vim.notify "Lsp: Could not find definition"
+      end
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      if not client then
+        return vim.notify "Lsp: Could not find client"
+      end
+
+      if vim.islist(result) then
+        local results = vim.lsp.util.locations_to_items(result, client.offset_encoding)
+        local lnum, filename = results[1].lnum, results[1].filename
+        for _, val in pairs(results) do
+          if val.lnum ~= lnum or val.filename ~= filename then
+            return require("telescope.builtin").lsp_definitions()
+          end
+        end
+        vim.lsp.util.jump_to_location(result[1], client.offset_encoding, false)
+      else
+        vim.lsp.util.jump_to_location(result, client.offset_encoding, false)
+      end
+    end,
+
+    ["textDocument/typeDefinition"] = function()
+      if lsp_name == "csharp_ls" then
+        return require("csharpls_extended").handler
+      end
+      return vim.lsp.handlers["textDocument/typeDefinition"]
+    end,
+
+    ["textDocument/references"] = function(_, _, _)
+      require("telescope.builtin").lsp_references()
+    end,
+
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = _border,
+    }),
+
+    ["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { border = _border, focusable = false, relative = "cursor" }
+    ),
+  }
+end
+
+M.capabilities = function()
+  local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  local capabilities = vim.tbl_deep_extend(
+    "force",
+    vim.lsp.protocol.make_client_capabilities(),
+    ok and cmp_nvim_lsp.default_capabilities() or {}
+  )
+
+  capabilities.offsetEncoding = { "utf-16" }
+
+  capabilities.textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
+
+    completion = {
+      completionItem = {
+        documentationFormat = { "markdown", "plaintext" },
+        snippetSupport = true,
+        preselectSupport = true,
+        insertReplaceSupport = true,
+        labelDetailsSupport = true,
+        deprecatedSupport = true,
+        commitCharactersSupport = true,
+        tagSupport = { valueSet = { 1 } },
+        resolveSupport = {
+          properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+          },
+        },
+      },
+    },
+  }
+
+  -- Ensure that dynamicRegistration is enabled! This allows the LS to take into
+  -- account actions like the Create Unresolved File code action, resolving
+  -- completions for unindexed code blocks, ...
+  capabilities.workspace = {
+    didChangeWatchedFiles = { dynamicRegistration = true },
+  }
+
+  return capabilities
+end
+
+M.on_attach = function(client, bufnr)
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+
+  ---load lsp mappings
+  local keys = require("srv.utils.keymap").load "lsp" --[[@class Keymap]]
+  keys:inject { buffer = bufnr }
+  keys:register()
+
+  ---change diagnostic settings
+  vim.diagnostic.config {
+    underline = { severity = { min = vim.diagnostic.severity.WARN } },
+
+    virtual_text = false,
+    signs = true,
+
+    float = {
+      severity_sort = true,
+      header = " Diagnostics:",
+      source = false,
+      format = M.format_message,
+      prefix = function(diagnostic, i, _)
+        local sign, hl = fun.lsp.get_icon(diagnostic.severity)
+        return (" %s "):format(sign or i .. "."), hl or ""
+      end,
+      suffix = function()
+        return " ", ""
+      end,
+    },
+
+    update_in_insert = false,
+    severity_sort = true,
+  }
+
+  require("lspconfig.ui.windows").default_options = { border = _border }
 end
 
 return M
