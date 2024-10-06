@@ -1,3 +1,4 @@
+local fun = require "srv.utils.fun"
 return {
   -- {{{1 MARKDOWN
   {
@@ -33,7 +34,7 @@ return {
       end,
     }, --~ }}}
 
-    --~ {{{2 nvim-FeMaco.lua: catalyze your Fenced Markdown Code-block editingnot 
+    --~ {{{2 nvim-FeMaco.lua: catalyze your Fenced Markdown Code-block editingnot
     {
       "AckslD/nvim-FeMaco.lua",
       cond = not vim.g.vscode,
@@ -146,7 +147,11 @@ return {
               highlight = "DiagnosticDeprecated",
             },
             on_hold = { raw = "[=]", rendered = "", highlight = "DiagnosticInfo" },
-            urgent = { raw = "[not ]", rendered = "", highlight = "@keyword.exception" },
+            urgent = {
+              raw = "[not ]",
+              rendered = "",
+              highlight = "@keyword.exception",
+            },
             recurring = { raw = "[+]", rendered = "↺", highlight = "Repeat" },
             uncertain = { raw = "[?]", rendered = "", highlight = "MoreMsg" },
           },
@@ -179,6 +184,51 @@ return {
   }, --~}}}
   -- }}}
 
+  -- {{{1 CS
+  --~ {{{2 roslyn.nvim: Roslyn LSP plugin for neovim
+  {
+    "seblj/roslyn.nvim",
+    enabled = true,
+    ft = "cs",
+    opts = {
+      on_attach = fun.lsp.on_attach,
+      capabilities = fun.lsp.capabilities(),
+      exe = {
+        "/usr/bin/dotnet",
+        vim.fs.joinpath(
+          vim.fn.stdpath "data",
+          "roslyn",
+          "Microsoft.CodeAnalysis.LanguageServer.dll"
+        ),
+      },
+      config = {
+        settings = {
+          ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+            csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+            csharp_enable_inlay_hints_for_types = true,
+            dotnet_enable_inlay_hints_for_indexer_parameters = true,
+            dotnet_enable_inlay_hints_for_literal_parameters = true,
+            dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+            dotnet_enable_inlay_hints_for_other_parameters = true,
+            dotnet_enable_inlay_hints_for_parameters = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
+          },
+          ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+            dotnet_enable_tests_code_lens = true,
+          },
+          ["csharp|symbol_search"] = {
+            dotnet_search_reference_assemblies = true,
+          },
+        },
+      },
+    },
+  }, --~ }}}
+  -- }}}
 }
 
 -- vim: fdm=marker fdl=1

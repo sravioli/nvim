@@ -1,13 +1,3 @@
----@class (exact) LspServers
----@field lua_ls         table
----@field clangd         table
----@field jsonls         table
----@field marksman       table
----@field markdown_oxide table
----@field taplo          table
----@field texlab         table
----@field yamlls         table
----@field bashls         table
 local M = {}
 
 setmetatable(M, {

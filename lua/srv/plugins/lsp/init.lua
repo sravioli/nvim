@@ -1,8 +1,6 @@
----@class Fun
+local Keymap = require "srv.utils.keymap"
 local fun = require "srv.utils.fun"
-local prefs = require "srv.preferences" --[[@class Preferences]]
-
-local Keymap = require "srv.utils.keymap" --[[@class Keymap]]
+local prefs = require "srv.preferences"
 
 return {
   -- {{{1 lazydev.nvim: Faster LuaLS setup for Neovim
@@ -67,139 +65,32 @@ return {
     "neovim/nvim-lspconfig",
     cond = not vim.g.vscode,
     event = require("srv.utils.events").LazyFile,
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "seblj/nvim-lsp-extras" },
+      {
+        "Decodetalkers/csharpls-extended-lsp.nvim",
+        ft = "cs",
+        init = function()
+          fun.on_load("telescope.nvim", function()
+            require("telescope").load_extension "csharpls_definition"
+          end)
+        end,
+      },
+    },
     config = function()
-      local present, lspconfig = pcall(require, "lspconfig")
-      if not present then
-        return
-      end
+      require("mason-lspconfig").setup_handlers {
+        function(server)
+          local config = vim.tbl_deep_extend("error", {
+            capabilities = fun.lsp.capabilities(),
+            on_attach = fun.lsp.on_attach,
+            handlers = fun.lsp.handlers(),
+          }, require("srv.plugins.lsp.servers")[server])
 
-      local _border = prefs.border
-
-      local on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-
-        ---load lsp mappings
-        local keys = Keymap.load "lsp" --[[@class Keymap]]
-        keys:inject { buffer = bufnr }
-        keys:register()
-
-        ---change diagnostic settings
-        vim.diagnostic.config {
-          underline = { severity = { min = vim.diagnostic.severity.WARN } },
-
-          virtual_text = false,
-          signs = true,
-
-          float = {
-            severity_sort = true,
-            header = " Diagnostics:",
-            source = false,
-            format = fun.lsp.format_message,
-            prefix = function(diagnostic, i, _)
-              local sign, hl = fun.lsp.get_icon(diagnostic.severity)
-              return (" %s "):format(sign or i .. "."), hl or ""
-            end,
-            suffix = function()
-              return " ", ""
-            end,
-          },
-
-          update_in_insert = false,
-          severity_sort = true,
-        }
-
-        require("lspconfig.ui.windows").default_options = { border = _border }
-      end
-
-      local get_capabilities = function()
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        capabilities.offsetEncoding = { "utf-16" }
-
-        capabilities.textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-
-          completion = {
-            completionItem = {
-              documentationFormat = { "markdown", "plaintext" },
-              snippetSupport = true,
-              preselectSupport = true,
-              insertReplaceSupport = true,
-              labelDetailsSupport = true,
-              deprecatedSupport = true,
-              commitCharactersSupport = true,
-              tagSupport = { valueSet = { 1 } },
-              resolveSupport = {
-                properties = {
-                  "documentation",
-                  "detail",
-                  "additionalTextEdits",
-                },
-              },
-            },
-          },
-        }
-
-        -- Ensure that dynamicRegistration is enabled! This allows the LS to take into
-        -- account actions like the Create Unresolved File code action, resolving
-        -- completions for unindexed code blocks, ...
-        capabilities.workspace = {
-          didChangeWatchedFiles = { dynamicRegistration = true },
-        }
-
-        return capabilities
-      end
-
-      local handlers = {
-        ["textDocument/hover"] = vim.lsp.with(
-          vim.lsp.handlers.hover,
-          { border = _border }
-        ),
-
-        ["textDocument/signatureHelp"] = vim.lsp.with(
-          vim.lsp.handlers.signature_help,
-          { border = _border, focusable = false, relative = "cursor" }
-        ),
+          require("lspconfig")[server].setup(config)
+        end,
       }
-
-      local servers = {
-        "lua_ls",
-        "marksman",
-        "csharp_ls",
-        "jsonls",
-        "taplo",
-        "yamlls",
-        "clangd",
-        "texlab",
-        "bashls",
-        -- "markdown_oxide",
-      }
-
-      local servers_config = require "srv.plugins.lsp.servers"
-      for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = get_capabilities(),
-          handlers = handlers,
-
-          settings = {
-            Lua = servers_config.lua_ls,
-            texlab = servers_config.texlab,
-            bashls = servers_config.bashls,
-          },
-
-          csharp_ls = servers_config.csharp_ls,
-          marksman = servers_config.marksman,
-          jsonls = servers_config.jsonls,
-          taplo = servers_config.taplo,
-          yamlls = servers_config.yamlls,
-          clangd = servers_config.clangd,
-        }
-      end
     end,
   }, -- }}}
 

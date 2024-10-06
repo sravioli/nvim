@@ -12,13 +12,14 @@ return {
       ---This setting has no relation with the `automatic_installation` setting.
       ---@type string[]
       ensure_installed = {
-        "bash-language-server",
-        "json-lsp",
-        "lua-language-server",
-        "markdown-oxide",
+        "bashls",
+        "jsonls",
+        "lua_ls",
+        "markdown_oxide",
         "marksman",
         "taplo",
-        "yaml-language-server",
+        "yamlls",
+        "csharp_ls",
       },
 
       ---Whether servers that are set up (via lspconfig) should be automatically
