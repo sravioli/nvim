@@ -188,7 +188,7 @@ return {
   --~ {{{2 roslyn.nvim: Roslyn LSP plugin for neovim
   {
     "seblj/roslyn.nvim",
-    enabled = true,
+    cond = not vim.g.vscode,
     ft = "cs",
     opts = {
       on_attach = fun.lsp.on_attach,
