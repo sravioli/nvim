@@ -1,6 +1,7 @@
 return {
   ---An extensible framework for interacting with tests within NeoVim.
   "nvim-neotest/neotest",
+  cond = not vim.g.vscode,
   dependencies = {
     { ---required
       { "nvim-neotest/nvim-nio" },
