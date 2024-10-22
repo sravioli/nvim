@@ -1,2 +1,12 @@
+srv
+GPLv
+D.C.
 LuaLS
+iPads
 lazydev
+keymaps
+sravioli
+LastName
+datatypes
+denormalization
+programmatically
