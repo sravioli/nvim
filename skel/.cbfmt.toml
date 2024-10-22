@@ -1,0 +1,2 @@
+[languages]
+  lua = ["stylua --config-path ~/.config/nvim/skel/.stylua.toml -s -"]
