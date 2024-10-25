@@ -53,6 +53,12 @@ return {
           return file and { "--config", file } or {}
         end,
       },
+      cbfmt = {
+        prepend_args = function()
+          local file = fun.search_file { ".cbfmt.toml" }
+          return file and { "--config", file } or {}
+        end,
+      },
       taplo = {
         command = "taplo format",
         prepend_args = function()
