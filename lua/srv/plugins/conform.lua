@@ -30,6 +30,7 @@ return {
       cpp = { "clang_format" },
       sh = { "shfmt" },
       cs = { "csharpier" },
+      sql = { "sql_formatter" },
     },
 
     formatters = {
