@@ -48,7 +48,7 @@ M.cmp = require("cmp").config.sources({
   { name = "rg" },
 }, { ---Filesystem paths
   { name = "async_path", option = { trailing_slash = true } },
-})
+}, { name = "neorg" })
 
 ---Sources for when in `/` or `?` mode
 M.search = {
