@@ -20,6 +20,8 @@ return {
       ["core.esupports.indent"] = {},
       ["core.esupports.metagen"] = {
         config = {
+          author = "sravioli",
+          timezone = "local",
           type = "auto",
         },
       },
