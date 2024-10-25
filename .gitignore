@@ -45,3 +45,6 @@ luac.out
 
 # neodev
 .luarc.json
+
+# python venv
+.py-nvim/
