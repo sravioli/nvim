@@ -2,6 +2,10 @@ return {
   "nvim-neorg/neorg",
   version = "*",
   ft = "norg",
+  dependencies = {
+    "benlubas/neorg-conceal-wrap",
+    "opipoy/neorg-colors",
+  },
   opts = {
     load = {
       ["core.clipboard"] = {},
@@ -40,6 +44,9 @@ return {
       ["core.summary"] = {},
       ["core.text-objects"] = {},
       ["core.todo-introspector"] = {},
+
+      ["external.conceal-wrap"] = {},
+      ["external.neorg-colors"] = {},
     },
   },
 }
