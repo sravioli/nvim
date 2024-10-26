@@ -6,6 +6,7 @@ return {
     "benlubas/neorg-conceal-wrap",
     "opipoy/neorg-colors",
   },
+  build = ":Neorg sync-parsers",
   opts = {
     load = {
       ["core.clipboard"] = {},
@@ -41,7 +42,7 @@ return {
       ["core.promo"] = {},
       ["core.qol.toc"] = {},
       ["core.qol.todo_items"] = {},
-      ["core.summary"] = {},
+      ["core.summary"] = { config = { strategy = "by_path" } },
       ["core.text-objects"] = {},
       ["core.todo-introspector"] = {},
 
