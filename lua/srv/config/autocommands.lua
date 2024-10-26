@@ -194,78 +194,9 @@ au({ "BufNewFile", "BufRead" }, {
 au("Filetype", {
   pattern = "norg",
   callback = function()
-    local map = vim.keymap.set
-    map("i", "<C-CR>", "<Plug>(core.itero.next-iteration)", { buffer = true })
-    map("n", "<up>", "<Plug>(neorg.text-objects.item-up)", { buffer = true })
-    map("n", "<down>", "<Plug>(neorg.text-objects.item-down)", { buffer = true })
-    map(
-      { "o", "x" },
-      "iH",
-      "<Plug>(neorg.text-objects.textobject.heading.inner)",
-      { buffer = true }
-    )
-    map(
-      { "o", "x" },
-      "aH",
-      "<Plug>(neorg.text-objects.textobject.heading.outer)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>cm",
-      "<Plug>(neorg.looking-glass.magnify-code-block)",
-      { buffer = true }
-    )
-    map("n", "<localleader>id", "<Plug>(neorg.tempus.insert-date)", { buffer = true })
-    map("n", "<localleader>li", "<Plug>(neorg.pivot.list.invert)", { buffer = true })
-    map("n", "<localleader>lt", "<Plug>(neorg.pivot.list.toggle)", { buffer = true })
-    map(
-      "n",
-      "<localleader>ta",
-      "<Plug>(neorg.qol.todo-items.todo.task-ambiguous)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>tc",
-      "<Plug>(neorg.qol.todo-items.todo.task-cancelled)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>td",
-      "<Plug>(neorg.qol.todo-items.todo.task-done)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>th",
-      "<Plug>(neorg.qol.todo-items.todo.task-on-hold)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>ti",
-      "<Plug>(neorg.qol.todo-items.todo.task-important)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>tp",
-      "<Plug>(neorg.qol.todo-items.todo.task-pending)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>tr",
-      "<Plug>(neorg.qol.todo-items.todo.task-recurring)",
-      { buffer = true }
-    )
-    map(
-      "n",
-      "<localleader>tu",
-      "<Plug>(neorg.qol.todo-items.todo.task-undone)",
-      { buffer = true }
-    )
+    vim.opt_local.conceallevel = 3
+    vim.opt_local.concealcursor = "vc"
+
+    vim.cmd [[hi @neorg.markup.verbatim guibg=#2a2a37 guifg=#98bb6c]]
   end,
 })
