@@ -111,13 +111,10 @@ return {
   {
     "Bekaboo/dropbar.nvim",
     cond = not vim.g.vscode,
-    enabled = not vim.g.vscode,
-    enabled = vim.fn.has "nvim-0.10.0" == 1,
+    enabled = not vim.g.vscode or vim.fn.has "nvim-0.10.0" == 1,
     dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
     event = require("srv.utils.events").LazyFile,
     opts = {
-      general = { update_interval = 200 },
-
       icons = {
         symbols = prefs.icons.kinds,
         ui = { menu = { indicator = " 󰅂 " } },
