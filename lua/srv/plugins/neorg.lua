@@ -16,8 +16,9 @@ return {
         config = {
           code_block = {
             conceal = true,
-            content_only = false,
+            content_only = true,
           },
+          init_open_folds = "always",
         },
       },
       ["core.defaults"] = {},
