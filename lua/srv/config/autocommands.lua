@@ -167,3 +167,9 @@ au({ "BufNewFile", "BufRead" }, {
     vim.opt_local.filetype = "xml"
   end,
 })
+
+au(events.LazyFile, {
+  group = aug.OnLazyFile,
+  pattern = "*.norg",
+  command = "set syntax=norg",
+})

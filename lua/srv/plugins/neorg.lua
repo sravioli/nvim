@@ -2,6 +2,7 @@ return {
   "nvim-neorg/neorg",
   version = "*",
   ft = "norg",
+  cmd = "Neorg",
   dependencies = {
     "benlubas/neorg-conceal-wrap",
     "opipoy/neorg-colors",
@@ -25,7 +26,7 @@ return {
       ["core.dirman"] = {
         config = {
           workspaces = {
-            kb = "~/Documents/knowledge-base/",
+            ["knowledge-base"] = "~/Documents/knowledge-base/",
           },
         },
       },
