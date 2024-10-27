@@ -118,6 +118,9 @@ return {
             .. tonumber(vim.opt_local.colorcolumn["_value"] or 0)
         )
       end,
+      keys = {
+        { "<leader>tp", "<cmd>PencilToggle<CR>", desc = "Toggle vim-pencil" },
+      },
     }, --~ }}}
 
     --~ {{{2 markdown-preview.nvim: markdown preview plugin for (neo)vim
