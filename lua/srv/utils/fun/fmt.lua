@@ -5,7 +5,8 @@ local M = {}
 
 ---Updates the "last updated/changed/modified" timestamp of a file
 M.update_timestamp = function()
-  if not vim.api.nvim_get_option_value("modifiable", {}) then
+  local get_val = vim.api.nvim_get_option_value
+  if not get_val("modifiable", {}) or not get_val("modified", {}) then
     return
   end
 
