@@ -168,7 +168,7 @@ M.on_attach = function(client, bufnr)
       source = false,
       format = M.format_message,
       prefix = function(diagnostic, i, _)
-        local sign, hl = fun.lsp.get_icon(diagnostic.severity)
+        local sign, hl = M.get_icon(diagnostic.severity)
         return (" %s "):format(sign or i .. "."), hl or ""
       end,
       suffix = function()
