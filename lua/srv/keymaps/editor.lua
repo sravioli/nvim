@@ -71,6 +71,12 @@ EditorKeymaps:add {
   },
 
   { "<C-s>", "<cmd>write<CR>", desc = "Save File", icon = "󰆓" },
+  {
+    "<M-s>",
+    "<cmd>noautocmd write<CR>",
+    desc = "Save File (no autocmds)",
+    icon = "󰆓",
+  },
   { "<C-z>", "<cmd>undo<CR>", desc = "Undo action", icon = "" },
 
   ---do thing, then center screen to allow for better readability
