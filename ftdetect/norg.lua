@@ -1,6 +1,6 @@
 vim.opt_local.conceallevel = 3
 vim.opt_local.concealcursor = "vc"
-vim.opt_local.fileformat = "dos"
+vim.opt_local.fileformat = "unix"
 
 vim.api.nvim_set_hl(0, "@neorg.markup.verbatim", { fg = "#98bb6c", bg = "#2a2a37" })
 
