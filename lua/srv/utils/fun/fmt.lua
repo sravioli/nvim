@@ -34,4 +34,37 @@ end
 
 M.markdown_table = function() end
 
+M.neorg_create_backlink = function()
+  local function create_link(dir, word)
+    word = word:gsub("-", " ")
+    vim.cmd(
+      ([=[%%s#\<[%s%s]%s\(s\?\)\>#{:$/%s/%s:}[%s\1]#gIe]=]):format(
+        word:sub(1, 1):upper(),
+        word:sub(1, 1),
+        word:sub(2),
+        dir,
+        word:upper(),
+        word
+      )
+    )
+  end
+
+  local words = vim.fn.split(vim.fn.input "Element(s) to create backlinks for: ", " ")
+  if #words == 0 then
+    return
+  end
+  local dir = vim.fn.input "Dir to operate: "
+  if dir == "" then
+    return
+  end
+  if #words == 1 then
+    return create_link(dir, words[1])
+  end
+
+  for i = 1, #words do
+    local word = words[i]
+    create_link(dir, word)
+  end
+end
+
 return M

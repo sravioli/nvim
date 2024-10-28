@@ -171,5 +171,27 @@ au({ "BufNewFile", "BufRead" }, {
 au(events.LazyFile, {
   group = aug.OnLazyFile,
   pattern = "*.norg",
-  command = "set syntax=norg",
+  callback = function()
+    vim.opt_local.syntax = "norg"
+    vim.opt_local.filetype = "norg"
+    vim.opt_local.conceallevel = 3
+    vim.opt_local.concealcursor = "vc"
+
+    vim.api.nvim_set_hl(0, "@neorg.markup.verbatim", { fg = "#98bb6c", bg = "#2a2a37" })
+    vim.keymap.set({ "n", "i" }, "<M-s>", "<cmd>noautocmd write<CR>")
+  end,
+})
+
+au("BufWritePre", {
+  group = vim.api.nvim_create_augroup("Neorg", {}),
+  pattern = "*.norg",
+  callback = vim.schedule_wrap(function()
+    vim.cmd [[%s#\r#\r#ge]] -- convert line endings
+    vim.cmd [[%s#Get your own SQL Server$##gIe]] -- rm useless junk
+    vim.cmd [[%s#\v(^*{1,6}.*$)#\r\1\r#gIe]] -- add whitespace around headings
+    vim.cmd [[%s#\v(^\s+\@code.*$(\_.){-}\@end$)#\r\1\r#gIe]] -- whitespace around code blocks
+    vim.cmd [[g#^\_$\n\_^$#d]] -- multiple blank lines to single one
+    vim.cmd.Neorg "update-metadata"
+    vim.cmd [[execute('normal gg=G``zzzv')]] -- format whole document, return to last pos
+  end),
 })
