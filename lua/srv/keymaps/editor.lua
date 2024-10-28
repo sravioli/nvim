@@ -9,6 +9,8 @@ EditorKeymaps:add {
   -- {{{1 NORMAL MODE
   { "<Esc>", "<cmd>nohlsearch<CR><Esc>", desc = "Clear search highlights", icon = "" },
 
+  { "<leader>nfm", "<cmd>lua require('srv.utils.fun').fmt.neorg_create_backlink()<CR>" },
+
   ---switch between windows
   { "<C-h>", "<C-w>h", desc = "Window left", icon = "" },
   { "<C-l>", "<C-w>l", desc = "Window right", icon = "" },
