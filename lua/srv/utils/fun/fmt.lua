@@ -36,7 +36,6 @@ M.markdown_table = function() end
 
 M.neorg_create_backlink = function()
   local function create_link(dir, word)
-    word = word:gsub("-", " ")
     vim.cmd(
       ([=[%%s#\<[%s%s]%s\(s\?\)\>#{:$/%s/%s:}[%s\1]#gIe]=]):format(
         word:sub(1, 1):upper(),
@@ -44,7 +43,7 @@ M.neorg_create_backlink = function()
         word:sub(2),
         dir,
         word:upper(),
-        word
+        word:gsub("-", " ")
       )
     )
   end
@@ -62,8 +61,7 @@ M.neorg_create_backlink = function()
   end
 
   for i = 1, #words do
-    local word = words[i]
-    create_link(dir, word)
+    create_link(dir, words[i])
   end
 end
 
