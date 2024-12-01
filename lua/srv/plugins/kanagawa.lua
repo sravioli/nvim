@@ -112,6 +112,18 @@ return {
         CmpItemKindColor = { fg = theme.ui.bg, bg = theme.syn.type },
         CmpItemKindTypeParameter = { fg = theme.ui.bg, bg = theme.syn.parameter },
 
+        BlinkCmpMenu = { fg = theme.ui.special, bg = "NONE" },
+        BlinkCmpMenuBorder = { link = "FloatBorder" },
+
+        BlinkCmpDoc = { link = "NormalFloat" },
+        BlinkCmpDocBorder = { link = "FloatBorder" },
+        BlinkCmpDocCursorLine = { link = "CursorLine" },
+
+        BlinkCmpSignatureHelp = { link = "NormalDark" },
+        BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
+
+        BlinkCmpGhostText = { link = "Comment" },
+
         ---nvim-tree
         NvimTreeNormalFloat = { link = "NormalDark" },
         NvimTreeNormal = { link = "NormalDark" },
