@@ -5,6 +5,65 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [3.0.1](https://github.com/sravioli/nvim/compare/b70ad56c2f9c348d89a98dd7c6c51b6688d4efa2..3.0.1) - 2024-12-01
+
+#### Bug Fixes
+
+- **(config:neovide)** correct Noto Color Emoji font name - ([b70ad56](https://github.com/sravioli/nvim/commit/b70ad56c2f9c348d89a98dd7c6c51b6688d4efa2)) - sravioli
+- **(fun:lsp)** call correct get_icon() fn - ([ef7687e](https://github.com/sravioli/nvim/commit/ef7687e7754951cf99f3e34c71160d382957b1a0)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** handle dash for filenames when creating link - ([4c92950](https://github.com/sravioli/nvim/commit/4c92950c3242147c39f8e6451a0accf7278d83ad)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** don't change fileformat - ([856add5](https://github.com/sravioli/nvim/commit/856add548882aeaadedfe9a448955afe6399cb04)) - [@sravioli](https://github.com/sravioli)
+- update neorg keybinds - ([a67b0f6](https://github.com/sravioli/nvim/commit/a67b0f6ff4fd3a84503f9ec6543dc46614fd0841)) - [@sravioli](https://github.com/sravioli)
+- update neorg configuration - ([d00cf90](https://github.com/sravioli/nvim/commit/d00cf9073bd46827a270f67167cc674d6531aba2)) - [@sravioli](https://github.com/sravioli)
+- disable neotest in vscode - ([2c9cd22](https://github.com/sravioli/nvim/commit/2c9cd2201b0f38fbe94247364431069d29b51e65)) - [@sravioli](https://github.com/sravioli)
+- disable plugins if in vscode - ([3426ab3](https://github.com/sravioli/nvim/commit/3426ab327acdaea4f46671a93107cfd58a60bc5a)) - [@sravioli](https://github.com/sravioli)
+- uninstall csharp plugins - ([24eed27](https://github.com/sravioli/nvim/commit/24eed27b0dfb368ba877a2a77de3d8747b6875bd)) - [@sravioli](https://github.com/sravioli)
+
+#### Features
+
+- **(completion)** install blink.cmp, disable nvim-cmp - ([fd1cb66](https://github.com/sravioli/nvim/commit/fd1cb662c2a03c89b0eac844b0b9d332505f9e5c)) - sravioli
+- **(kanagawa)** add highlights for blink.cmp - ([9b7a29a](https://github.com/sravioli/nvim/commit/9b7a29a40b088bf407c3b5774d1538b41f743e32)) - sravioli
+- **(keymaps)** add mapping to save without autocmds - ([2e9517c](https://github.com/sravioli/nvim/commit/2e9517c95b28105c6e81edcd46507fad81bab027)) - [@sravioli](https://github.com/sravioli)
+- **(lsp)** move lazydev deps in own section - ([5965ea8](https://github.com/sravioli/nvim/commit/5965ea8a1b444d69a21d5e10140687b0d148ba99)) - sravioli
+- **(luasnip)** correctly check for os - ([7fc1a5b](https://github.com/sravioli/nvim/commit/7fc1a5bb2d88020b76efcbac6608064b13cb9b03)) - sravioli
+- **(neorg)** open folds on file open - ([89bb02c](https://github.com/sravioli/nvim/commit/89bb02cec18d0773cd4b4380cddf19434a7700b7)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** improve formatting, create fn to insert backlinks - ([1346f30](https://github.com/sravioli/nvim/commit/1346f30c0d5cc301c83e0efa6f00237d9377d876)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** update norg formatting on save - ([551fa48](https://github.com/sravioli/nvim/commit/551fa48f81ff66ba772688bac05db2d94aca7d3d)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** update norg formatting on save - ([19ebf0a](https://github.com/sravioli/nvim/commit/19ebf0ad4ddca62a7e2db977d8d9c50f6ad043eb)) - [@sravioli](https://github.com/sravioli)
+- **(norg)** refine note taking experience - ([9d510a9](https://github.com/sravioli/nvim/commit/9d510a90f9badae2df456f664f228e186f14614c)) - [@sravioli](https://github.com/sravioli)
+- **(ui)** install smear-cursor.nvim - ([ae8447b](https://github.com/sravioli/nvim/commit/ae8447bc85c94072a5a0f09b5eb47d13b14ef221)) - sravioli
+- **(ui)** rm deprecated dropbar config field - ([6af44cd](https://github.com/sravioli/nvim/commit/6af44cd12524de2e61523801198a2b5466a83b45)) - [@sravioli](https://github.com/sravioli)
+- use nvim 0.10.2 - ([0071118](https://github.com/sravioli/nvim/commit/0071118622d67b7f29538db091dd0a529f43d0d3)) - sravioli
+- general cleanup, improve norg experience - ([17a66fb](https://github.com/sravioli/nvim/commit/17a66fbe00239e5066aa89356621ee516a1cb87a)) - [@sravioli](https://github.com/sravioli)
+- add config for nerg summary module - ([0f6f388](https://github.com/sravioli/nvim/commit/0f6f38824da9fdee16b6728e4a91d93d596fdb79)) - [@sravioli](https://github.com/sravioli)
+- add neorg plugins - ([b6d7c66](https://github.com/sravioli/nvim/commit/b6d7c664bf373fedaa69d09b99b9ac8ce34ecf57)) - [@sravioli](https://github.com/sravioli)
+- install neorg - ([1d4ad3d](https://github.com/sravioli/nvim/commit/1d4ad3d58dcec2d5f42c03cecd190839fb34afb0)) - [@sravioli](https://github.com/sravioli)
+- install sql_formatter - ([64f2e51](https://github.com/sravioli/nvim/commit/64f2e5152ad8dc949476e15055cd766de88cc0b3)) - [@sravioli](https://github.com/sravioli)
+- add cbfmt config file - ([ad47f8b](https://github.com/sravioli/nvim/commit/ad47f8bed3cb4ebd2a29ec2926e3a2b7409a2c31)) - [@sravioli](https://github.com/sravioli)
+- install csharp plugins - ([3b76a76](https://github.com/sravioli/nvim/commit/3b76a76fc3a2d09ebfa8d0a922baca91e014774a)) - [@sravioli](https://github.com/sravioli)
+- add c# lsp and formatter - ([bb721a5](https://github.com/sravioli/nvim/commit/bb721a576974ed7a2a30b0e9be11641270380f0c)) - sravioli
+
+#### Miscellaneous Chores
+
+- **(lazy)** update lazy-lock.json - ([279380f](https://github.com/sravioli/nvim/commit/279380f9b9b7115663dcb8e51bb8b52d56dbf02b)) - [@sravioli](https://github.com/sravioli)
+- **(lazy)** update lazy-lock.json - ([1c02376](https://github.com/sravioli/nvim/commit/1c023766006698e716c17831d53128f32e2ef2fc)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock - ([d1fa6c2](https://github.com/sravioli/nvim/commit/d1fa6c27111590aec1f44e1181dad26cf8232ae1)) - sravioli
+- update repo - ([0a9712c](https://github.com/sravioli/nvim/commit/0a9712c1f6280367350c3cb40dcd5d9e37eccb35)) - [@sravioli](https://github.com/sravioli)
+- add harper files, update lazy-lock - ([79f06fe](https://github.com/sravioli/nvim/commit/79f06fef163076b4bd8fde8c5b37151696997f79)) - [@sravioli](https://github.com/sravioli)
+- add harper files, update lazy-lock - ([69da427](https://github.com/sravioli/nvim/commit/69da427bdd6a5addf217f82c35711ed6d86e90fe)) - [@sravioli](https://github.com/sravioli)
+- fix conflics - ([82ba74c](https://github.com/sravioli/nvim/commit/82ba74c16dde78655e2a0cff4f9baa3cf00f829e)) - [@sravioli](https://github.com/sravioli)
+- fix conflicts - ([d6dc1f1](https://github.com/sravioli/nvim/commit/d6dc1f10f4cd8737a9acc8c6b324e67bc57424eb)) - [@sravioli](https://github.com/sravioli)
+- add vscode conds - ([69aefc1](https://github.com/sravioli/nvim/commit/69aefc19691787a7c5cda96a2642b0bf7ccd52bf)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock.json - ([06451e3](https://github.com/sravioli/nvim/commit/06451e349bddd8abfa336a6bf67544e65eb33e85)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock.json - ([a35217e](https://github.com/sravioli/nvim/commit/a35217ed03913a328937c47b46c35f911ebcfc25)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock - ([22ca279](https://github.com/sravioli/nvim/commit/22ca279392a4c9192fca6dfbca635f3e722823cd)) - sravioli
+
+#### Refactoring
+
+- improve lsp handling and configs - ([4f02eb4](https://github.com/sravioli/nvim/commit/4f02eb4169dab6d199f5a5ecc54257fb43cc317c)) - [@sravioli](https://github.com/sravioli)
+
+- - -
+
 ## [3.0.0](https://github.com/sravioli/nvim/compare/defaac3bfded49d4fa7cbdcb367ee7ff2f9a52ff..3.0.0) - 2024-07-17
 
 #### Bug Fixes
