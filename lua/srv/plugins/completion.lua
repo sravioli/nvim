@@ -57,6 +57,20 @@ return {
     config = function()
       local ls = require "luasnip"
 
+      local function feedkey(key, mode)
+        vim.fn.feedkeys(vim.keycode(key), mode or vim.api.nvim_get_mode().mode)
+      end
+
+      vim.keymap.set({ "i", "s" }, "<Tab>", function()
+        return ls.expand_or_locally_jumpable() and ls.expand_or_jump()
+          or feedkey("<Tab>", "n")
+      end, { desc = "Luasnip - Jump to next node" })
+
+      vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+        return ls.in_snippet() and ls.jumpable(-1) and ls.jump(-1)
+          or feedkey("<S-Tab>", "n")
+      end, { desc = "Luasnip - Jump to previous node" })
+
       local opts = {
         history = true,
         ft_func = require("luasnip.extras.filetype_functions").from_pos_or_filetype,
@@ -132,6 +146,7 @@ return {
   -- {{{1 nvim-cmp: completion plugin for neovim coded in Lua.
   {
     "hrsh7th/nvim-cmp",
+    enabled = false,
     cond = not vim.g.vscode,
     dependencies = {
       { "L3MON4D3/LuaSnip" }, ---Snippet Engine for Neovim written in Lua.
@@ -216,6 +231,293 @@ return {
         "confirm_done",
         require("nvim-autopairs.completion.cmp").on_confirm_done()
       )
+    end,
+  }, -- }}}
+
+  -- {{{1 blink.nvim: Performant, batteries-included completion plugin for Neovim
+  {
+    "Saghen/blink.cmp",
+    dependencies = {
+      { "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
+      { "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" }, -- luasnip source
+      { "mikavilpas/blink-ripgrep.nvim" },
+    },
+    version = "v0.*",
+    opts = function()
+      local ls = require "luasnip"
+      return {
+        keymap = {
+          ["<C-M-Space>"] = { "show", "show_documentation", "hide_documentation" },
+          ["<C-e>"] = { "hide", "fallback" },
+          ["<CR>"] = { "accept", "fallback" },
+
+          ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+          ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+
+          ["<C-n>"] = { "select_next", "fallback" },
+          ["<C-p>"] = { "select_prev", "fallback" },
+
+          ["<M-p>"] = {
+            function()
+              if ls.choice_active() then
+                ls.change_choice(-1)
+              end
+            end,
+            "fallback",
+          },
+
+          ["<M-n>"] = {
+            function()
+              if ls.choice_active() then
+                ls.change_choice(1)
+              end
+            end,
+            "fallback",
+          },
+
+          ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+          ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        },
+
+        accept = {
+          expand_snippet = function(snippet)
+            require("luasnip").lsp_expand(snippet)
+          end,
+          auto_brackets = { enabled = true },
+        },
+
+        trigger = {
+          completion = { keyword_range = "full" },
+          signature_help = { enabled = true },
+        },
+
+        fuzzy = { max_items = 50 },
+
+        sources = {
+          completion = {
+            enabled_providers = {
+              "lsp",
+              "path",
+              "snippets",
+              "buffer",
+              "luasnip",
+              "lazydev",
+              "ripgrep",
+            },
+          },
+
+          -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
+          providers = {
+            lsp = {
+              name = "LSP",
+              module = "blink.cmp.sources.lsp",
+              fallback_for = { "lazydev" },
+            },
+            path = {
+              name = "Path",
+              module = "blink.cmp.sources.path",
+              score_offset = 3,
+              opts = {
+                trailing_slash = true,
+                label_trailing_slash = true,
+                get_cwd = function(context)
+                  return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+                end,
+                show_hidden_files_by_default = false,
+              },
+            },
+            snippets = {
+              name = "Snippets",
+              module = "blink.cmp.sources.snippets",
+              score_offset = -3,
+              opts = {
+                friendly_snippets = true,
+                search_paths = { vim.fn.stdpath "config" .. "/snippets" },
+                global_snippets = { "all" },
+                extended_filetypes = {},
+                ignored_filetypes = {},
+                get_filetype = function(context)
+                  return vim.bo.filetype
+                end,
+              },
+            },
+            buffer = {
+              name = "Buffer",
+              module = "blink.cmp.sources.buffer",
+              fallback_for = { "lsp" },
+            },
+            luasnip = {
+              name = "luasnip",
+              module = "blink.compat.source",
+              score_offset = -3,
+              opts = {
+                use_show_condition = false,
+                show_autosnippets = true,
+              },
+            },
+            lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+            ripgrep = {
+              module = "blink-ripgrep",
+              name = "Ripgrep",
+              opts = {
+                prefix_min_len = 3,
+                context_size = 5,
+                max_filesize = "1M",
+              },
+            },
+          },
+        },
+
+        windows = {
+          autocomplete = {
+            min_width = 15,
+            max_height = 10,
+            border = "rounded",
+            winblend = 0,
+            winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,"
+              .. "CursorLine:BlinkCmpMenuSelection,Search:None",
+            scrollbar = true,
+            auto_show = true,
+            selection = "preselect",
+            draw = {
+              align_to_component = "label", -- or 'none' to disable
+              padding = 1,
+              gap = 1,
+
+              -- Components to render, grouped by column
+              columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
+
+              -- Definitions for possible components to render. Each component defines:
+              --   ellipsis: whether to add an ellipsis when truncating the text
+              --   width: control the min, max and fill behavior of the component
+              --   text function: will be called for each item
+              --   highlight function: will be called only when the line appears on screen
+              components = {
+                kind_icon = {
+                  ellipsis = false,
+                  text = function(ctx)
+                    return ctx.kind_icon .. ctx.icon_gap
+                  end,
+                  highlight = function(ctx)
+                    return (
+                      require("blink.cmp.utils").get_tailwind_hl(ctx)
+                      or "CmpItemKind"
+                    ) .. ctx.kind
+                  end,
+                },
+
+                kind = {
+                  ellipsis = true,
+                  width = { fill = true },
+                  text = function(ctx)
+                    return ctx.kind
+                  end,
+                  highlight = function(ctx)
+                    return (
+                      require("blink.cmp.utils").get_tailwind_hl(ctx)
+                      or "BlinkCmpKind"
+                    ) .. ctx.kind
+                  end,
+                },
+
+                label = {
+                  width = { fill = true, max = 60 },
+                  text = function(ctx)
+                    return ctx.label .. ctx.label_detail
+                  end,
+                  highlight = function(ctx)
+                    -- label and label details
+                    local highlights = {
+                      {
+                        0,
+                        #ctx.label,
+                        group = ctx.deprecated and "BlinkCmpLabelDeprecated"
+                          or "BlinkCmpLabel",
+                      },
+                    }
+                    if ctx.label_detail then
+                      table.insert(highlights, {
+                        #ctx.label,
+                        #ctx.label + #ctx.label_detail,
+                        group = "BlinkCmpLabelDetail",
+                      })
+                    end
+
+                    -- characters matched on the label by the fuzzy matcher
+                    for _, idx in ipairs(ctx.label_matched_indices) do
+                      table.insert(
+                        highlights,
+                        { idx, idx + 1, group = "BlinkCmpLabelMatch" }
+                      )
+                    end
+
+                    return highlights
+                  end,
+                },
+
+                label_description = {
+                  width = { max = 30 },
+                  text = function(ctx)
+                    return ctx.label_description
+                  end,
+                  highlight = "BlinkCmpLabelDescription",
+                },
+              },
+            },
+          },
+          documentation = {
+            auto_show = true,
+            border = "rounded",
+            winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,"
+              .. "CursorLine:BlinkCmpDocCursorLine,Search:None",
+            scrollbar = true,
+          },
+          signature_help = {
+            border = "rounded",
+            winhighlight = "Normal:BlinkCmpSignatureHelp,"
+              .. "FloatBorder:BlinkCmpSignatureHelpBorder",
+            scrollbar = true,
+          },
+          ghost_text = { enabled = true },
+        },
+
+        highlight = { use_nvim_cmp_as_default = true },
+
+        blocked_filetypes = {},
+
+        kind_icons = {
+          Text = " 󰉿 ",
+          Method = " 󰆧 ",
+          Function = " 󰊕 ",
+          Constructor = " 󰒓 ",
+
+          Field = " 󰜢 ",
+          Variable = " 󰀫 ",
+          Property = " 󰖷 ",
+
+          Class = "  ",
+          Interface = "  ",
+          Struct = " 󱡠 ",
+          Module = " 󰏗 ",
+
+          Unit = "  ",
+          Value = " 󰎠 ",
+          Enum = "  ",
+          EnumMember = "  ",
+
+          Keyword = " 󰌋 ",
+          Constant = " 󰏿 ",
+
+          Snippet = "  ",
+          Color = " 󰏘 ",
+          File = " 󰈔 ",
+          Reference = " 󰬲 ",
+          Folder = " 󰉋 ",
+          Event = " 󱐋 ",
+          Operator = " 󰆕 ",
+          TypeParameter = " 󰬛 ",
+        },
+      }
     end,
   }, -- }}}
 }

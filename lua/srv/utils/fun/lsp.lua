@@ -100,11 +100,11 @@ function M.handlers(lsp_name)
 end
 
 M.capabilities = function()
-  local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  local ok, blink = pcall(require, "blink.cmp")
   local capabilities = vim.tbl_deep_extend(
     "force",
     vim.lsp.protocol.make_client_capabilities(),
-    ok and cmp_nvim_lsp.default_capabilities() or {}
+    ok and blink.get_lsp_capabilities() or {}
   )
 
   capabilities.offsetEncoding = { "utf-16" }
