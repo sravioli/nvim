@@ -43,8 +43,8 @@ return {
     event = "InsertEnter",
     version = "v2.*",
     build = function()
-      local os = require("srv.utils.fn").get_os()
-      if os == "win" then
+      local os = require("srv.utils.fun").os_info()[1]
+      if os == "windows" then
         return [[gcc ]]
           .. [[-IC:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\lua51_include\ ]]
           .. [[-O2 -fPIC ]]
