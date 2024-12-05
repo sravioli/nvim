@@ -245,6 +245,7 @@ return {
     version = "v0.*",
     opts = function()
       local ls = require "luasnip"
+      local blink_tailwind = require "blink.cmp.completion.windows.render.tailwind"
       return {
         keymap = {
           ["<C-M-Space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -279,112 +280,34 @@ return {
           ["<C-f>"] = { "scroll_documentation_down", "fallback" },
         },
 
-        accept = {
-          expand_snippet = function(snippet)
+        snippets = {
+          expand = function(snippet)
             require("luasnip").lsp_expand(snippet)
           end,
-          auto_brackets = { enabled = true },
+          active = function(filter)
+            if filter and filter.direction then
+              return require("luasnip").jumpable(filter.direction)
+            end
+            return require("luasnip").in_snippet()
+          end,
+          jump = function(direction)
+            require("luasnip").jump(direction)
+          end,
         },
+        completion = {
+          keyword = { range = "full" },
+          trigger = { show_on_insert_on_trigger_character = false },
+          list = { max_items = 500 },
+          accept = { auto_brackets = { enabled = true } },
 
-        trigger = {
-          completion = { keyword_range = "full" },
-          signature_help = { enabled = true },
-        },
-
-        fuzzy = { max_items = 50 },
-
-        sources = {
-          completion = {
-            enabled_providers = {
-              "lsp",
-              "path",
-              "snippets",
-              "buffer",
-              "luasnip",
-              "lazydev",
-              "ripgrep",
-            },
-          },
-
-          -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
-          providers = {
-            lsp = {
-              name = "LSP",
-              module = "blink.cmp.sources.lsp",
-              fallback_for = { "lazydev" },
-            },
-            path = {
-              name = "Path",
-              module = "blink.cmp.sources.path",
-              score_offset = 3,
-              opts = {
-                trailing_slash = true,
-                label_trailing_slash = true,
-                get_cwd = function(context)
-                  return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
-                end,
-                show_hidden_files_by_default = false,
-              },
-            },
-            snippets = {
-              name = "Snippets",
-              module = "blink.cmp.sources.snippets",
-              score_offset = -3,
-              opts = {
-                friendly_snippets = true,
-                search_paths = { vim.fn.stdpath "config" .. "/snippets" },
-                global_snippets = { "all" },
-                extended_filetypes = {},
-                ignored_filetypes = {},
-                get_filetype = function(context)
-                  return vim.bo.filetype
-                end,
-              },
-            },
-            buffer = {
-              name = "Buffer",
-              module = "blink.cmp.sources.buffer",
-              fallback_for = { "lsp" },
-            },
-            luasnip = {
-              name = "luasnip",
-              module = "blink.compat.source",
-              score_offset = -3,
-              opts = {
-                use_show_condition = false,
-                show_autosnippets = true,
-              },
-            },
-            lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-            ripgrep = {
-              module = "blink-ripgrep",
-              name = "Ripgrep",
-              opts = {
-                prefix_min_len = 3,
-                context_size = 5,
-                max_filesize = "1M",
-              },
-            },
-          },
-        },
-
-        windows = {
-          autocomplete = {
-            min_width = 15,
-            max_height = 10,
+          menu = {
+            enabled = true,
             border = "rounded",
-            winblend = 0,
             winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,"
               .. "CursorLine:BlinkCmpMenuSelection,Search:None",
-            scrollbar = true,
-            auto_show = true,
-            selection = "preselect",
-            draw = {
-              align_to_component = "label", -- or 'none' to disable
-              padding = 1,
-              gap = 1,
 
-              -- Components to render, grouped by column
+            draw = {
+              treesitter = true,
               columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
 
               -- Definitions for possible components to render. Each component defines:
@@ -399,24 +322,18 @@ return {
                     return ctx.kind_icon .. ctx.icon_gap
                   end,
                   highlight = function(ctx)
-                    return (
-                      require("blink.cmp.utils").get_tailwind_hl(ctx)
-                      or "CmpItemKind"
-                    ) .. ctx.kind
+                    return (blink_tailwind.get_hl(ctx) or "BlinkCmpKind") .. ctx.kind
                   end,
                 },
 
                 kind = {
-                  ellipsis = true,
+                  ellipsis = false,
                   width = { fill = true },
                   text = function(ctx)
                     return ctx.kind
                   end,
                   highlight = function(ctx)
-                    return (
-                      require("blink.cmp.utils").get_tailwind_hl(ctx)
-                      or "BlinkCmpKind"
-                    ) .. ctx.kind
+                    return (blink_tailwind.get_hl(ctx) or "BlinkCmpKind") .. ctx.kind
                   end,
                 },
 
@@ -462,60 +379,167 @@ return {
                   end,
                   highlight = "BlinkCmpLabelDescription",
                 },
+
+                source_name = {
+                  width = { max = 30 },
+                  text = function(ctx)
+                    return ctx.source_name
+                  end,
+                  highlight = "BlinkCmpSource",
+                },
               },
             },
           },
+
           documentation = {
             auto_show = true,
-            border = "rounded",
-            winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,"
-              .. "CursorLine:BlinkCmpDocCursorLine,Search:None",
-            scrollbar = true,
-          },
-          signature_help = {
-            border = "rounded",
-            winhighlight = "Normal:BlinkCmpSignatureHelp,"
-              .. "FloatBorder:BlinkCmpSignatureHelpBorder",
-            scrollbar = true,
+            treesitter_highlighting = true,
+            window = { border = "rounded" },
           },
           ghost_text = { enabled = true },
         },
 
-        highlight = { use_nvim_cmp_as_default = true },
+        -- Experimental signature help support
+        signature = {
+          enabled = true,
+          window = { border = "rounded", scrollbar = true },
+        },
 
-        blocked_filetypes = {},
+        fuzzy = {
+          sorts = { "label", "kind", "score" },
+          prebuilt_binaries = { download = true },
+        },
 
-        kind_icons = {
-          Text = " 󰉿 ",
-          Method = " 󰆧 ",
-          Function = " 󰊕 ",
-          Constructor = " 󰒓 ",
+        sources = {
+          completion = {
+            enabled_providers = {
+              "lsp",
+              "path",
+              "luasnip",
+              "buffer",
+              "ripgrep",
+              "lazydev",
+            },
+          },
 
-          Field = " 󰜢 ",
-          Variable = " 󰀫 ",
-          Property = " 󰖷 ",
+          -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
+          providers = {
+            lsp = {
+              name = "LSP",
+              module = "blink.cmp.sources.lsp",
 
-          Class = "  ",
-          Interface = "  ",
-          Struct = " 󱡠 ",
-          Module = " 󰏗 ",
+              --- *All* of the providers have the following options available
+              --- NOTE: All of these options may be functions to get dynamic behavior
+              --- See the type definitions for more information.
+              --- Check the enabled_providers config for an example
+              enabled = true, -- Whether or not to enable the provider
+              transform_items = nil, -- Function to transform the items before they're returned
+              should_show_items = true, -- Whether or not to show the items
+              max_items = nil, -- Maximum number of items to display in the menu
+              min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
+              fallback_for = { -- If any of these providers return 0 items, it will fallback to this provider
+                "lazydev",
+              },
+              score_offset = 0, -- Boost/penalize the score of the items
+              override = nil, -- Override the source's functions
+            },
+            path = {
+              name = "Path",
+              module = "blink.cmp.sources.path",
+              score_offset = 3,
+              opts = {
+                trailing_slash = false,
+                label_trailing_slash = true,
+                get_cwd = function(context)
+                  return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+                end,
+                show_hidden_files_by_default = true,
+              },
+            },
+            snippets = {
+              name = "Snippets",
+              module = "blink.cmp.sources.snippets",
+              score_offset = -3,
+              opts = {
+                friendly_snippets = true,
+                search_paths = {
+                  vim.fs.normalize(vim.fn.stdpath "config" .. "/snippets"),
+                },
+                global_snippets = { "all" },
+                extended_filetypes = {
+                  markdown = { "latex", "tex" },
+                },
+                ignored_filetypes = {},
+                get_filetype = function(context)
+                  return vim.bo.filetype
+                end,
+              },
+            },
+            buffer = {
+              name = "Buffer",
+              module = "blink.cmp.sources.buffer",
+              fallback_for = { "lsp" },
+              opts = {
+                get_bufnrs = function()
+                  return vim
+                    .iter(vim.api.nvim_list_wins())
+                    :map(function(win)
+                      return vim.api.nvim_win_get_buf(win)
+                    end)
+                    :filter(function(buf)
+                      return vim.bo[buf].buftype ~= "nofile"
+                    end)
+                    :totable()
+                end,
+              },
+            },
+            lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+            ripgrep = {
+              name = "Ripgrep",
+              module = "blink-ripgrep",
+              opts = {
+                prefix_min_len = 4,
+                context_size = 6,
+              },
+            },
+          },
+        },
 
-          Unit = "  ",
-          Value = " 󰎠 ",
-          Enum = "  ",
-          EnumMember = "  ",
+        appearance = {
+          use_nvim_cmp_as_default = true,
+          nerd_font_variant = "mono",
+          kind_icons = {
+            Text = " 󰉿 ",
+            Method = " 󰆧 ",
+            Function = " 󰊕 ",
+            Constructor = " 󰒓 ",
 
-          Keyword = " 󰌋 ",
-          Constant = " 󰏿 ",
+            Field = " 󰜢 ",
+            Variable = " 󰀫 ",
+            Property = " 󰖷 ",
 
-          Snippet = "  ",
-          Color = " 󰏘 ",
-          File = " 󰈔 ",
-          Reference = " 󰬲 ",
-          Folder = " 󰉋 ",
-          Event = " 󱐋 ",
-          Operator = " 󰆕 ",
-          TypeParameter = " 󰬛 ",
+            Class = "  ",
+            Interface = "  ",
+            Struct = " 󱡠 ",
+            Module = " 󰏗 ",
+
+            Unit = "  ",
+            Value = " 󰎠 ",
+            Enum = "  ",
+            EnumMember = "  ",
+
+            Keyword = " 󰌋 ",
+            Constant = " 󰏿 ",
+
+            Snippet = "  ",
+            Color = " 󰏘 ",
+            File = " 󰈔 ",
+            Reference = " 󰬲 ",
+            Folder = " 󰉋 ",
+            Event = " 󱐋 ",
+            Operator = " 󰆕 ",
+            TypeParameter = " 󰬛 ",
+          },
         },
       }
     end,
