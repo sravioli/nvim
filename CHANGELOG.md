@@ -5,6 +5,20 @@ See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
 
+## [3.0.2](https://github.com/sravioli/nvim/compare/2abbf2b70657afb685c0d2f65685e75abf6afc94..3.0.2) - 2024-12-05
+
+#### Features
+
+- update blink.cmp configuration - ([587babb](https://github.com/sravioli/nvim/commit/587babb247dc21007fc85332ce9e41b537334c20)) - sravioli
+- mv snippets dir to git root - ([2abbf2b](https://github.com/sravioli/nvim/commit/2abbf2b70657afb685c0d2f65685e75abf6afc94)) - sravioli
+
+#### Miscellaneous Chores
+
+- update lazy-lock.json - ([187fabf](https://github.com/sravioli/nvim/commit/187fabf5d614332b5fe8af5464b8515d785a55e6)) - sravioli
+- update luasnip snippets path - ([4533a64](https://github.com/sravioli/nvim/commit/4533a64a2eaf8e59312540da06acad17315e5939)) - sravioli
+
+- - -
+
 ## [3.0.1](https://github.com/sravioli/nvim/compare/b70ad56c2f9c348d89a98dd7c6c51b6688d4efa2..3.0.1) - 2024-12-01
 
 #### Bug Fixes
