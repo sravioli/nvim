@@ -91,7 +91,7 @@ vim.env.PATH = vim.fn.stdpath "data"
 
 ---@type string
 ---The path where luasnip will look for snippets
-let.lua_snippets_path = vim.fs.normalize(vim.fn.stdpath "config" .. "/lua/srv/snippets")
+let.lua_snippets_path = vim.fs.normalize(vim.fn.stdpath "config" .. "/snippets")
 
 fun.providers.enable()
 
