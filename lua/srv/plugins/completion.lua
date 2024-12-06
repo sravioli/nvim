@@ -238,8 +238,7 @@ return {
   {
     "Saghen/blink.cmp",
     dependencies = {
-      { "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
-      { "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" }, -- luasnip source
+      { "L3MON4D3/LuaSnip" },
       { "mikavilpas/blink-ripgrep.nvim" },
     },
     version = "v0.*",
@@ -258,7 +257,7 @@ return {
           ["<C-n>"] = { "select_next", "fallback" },
           ["<C-p>"] = { "select_prev", "fallback" },
 
-          ["<M-p>"] = {
+          ["<A-p>"] = {
             function()
               if ls.choice_active() then
                 ls.change_choice(-1)
@@ -267,7 +266,7 @@ return {
             "fallback",
           },
 
-          ["<M-n>"] = {
+          ["<A-n>"] = {
             function()
               if ls.choice_active() then
                 ls.change_choice(1)
@@ -278,6 +277,52 @@ return {
 
           ["<C-b>"] = { "scroll_documentation_up", "fallback" },
           ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+          ["<A-1>"] = {
+            function(cmp)
+              cmp.accept { index = 1 }
+            end,
+          },
+          ["<A-2>"] = {
+            function(cmp)
+              cmp.accept { index = 2 }
+            end,
+          },
+          ["<A-3>"] = {
+            function(cmp)
+              cmp.accept { index = 3 }
+            end,
+          },
+          ["<A-4>"] = {
+            function(cmp)
+              cmp.accept { index = 4 }
+            end,
+          },
+          ["<A-5>"] = {
+            function(cmp)
+              cmp.accept { index = 5 }
+            end,
+          },
+          ["<A-6>"] = {
+            function(cmp)
+              cmp.accept { index = 6 }
+            end,
+          },
+          ["<A-7>"] = {
+            function(cmp)
+              cmp.accept { index = 7 }
+            end,
+          },
+          ["<A-8>"] = {
+            function(cmp)
+              cmp.accept { index = 8 }
+            end,
+          },
+          ["<A-9>"] = {
+            function(cmp)
+              cmp.accept { index = 9 }
+            end,
+          },
         },
 
         snippets = {
@@ -308,7 +353,11 @@ return {
 
             draw = {
               treesitter = true,
-              columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
+              columns = {
+                { "kind_icon" },
+                { "label", "label_description", gap = 1 },
+                { "item_idx" },
+              },
 
               -- Definitions for possible components to render. Each component defines:
               --   ellipsis: whether to add an ellipsis when truncating the text
@@ -387,6 +436,12 @@ return {
                   end,
                   highlight = "BlinkCmpSource",
                 },
+                item_idx = {
+                  text = function(ctx)
+                    return tostring(ctx.idx)
+                  end,
+                  highlight = "Comment",
+                },
               },
             },
           },
@@ -440,13 +495,13 @@ return {
               fallback_for = { -- If any of these providers return 0 items, it will fallback to this provider
                 "lazydev",
               },
-              score_offset = 0, -- Boost/penalize the score of the items
+              score_offset = 3, -- Boost/penalize the score of the items
               override = nil, -- Override the source's functions
             },
             path = {
               name = "Path",
               module = "blink.cmp.sources.path",
-              score_offset = 3,
+              score_offset = 5,
               opts = {
                 trailing_slash = false,
                 label_trailing_slash = true,
@@ -459,7 +514,7 @@ return {
             snippets = {
               name = "Snippets",
               module = "blink.cmp.sources.snippets",
-              score_offset = -3,
+              score_offset = 100,
               opts = {
                 friendly_snippets = true,
                 search_paths = {
@@ -497,6 +552,7 @@ return {
             ripgrep = {
               name = "Ripgrep",
               module = "blink-ripgrep",
+              score_offset = -5,
               opts = {
                 prefix_min_len = 4,
                 context_size = 6,
