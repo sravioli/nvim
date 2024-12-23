@@ -77,6 +77,7 @@ au("FileType", {
     "dap-float",
     "sagarename",
     "nvimtree",
+    "neotest-summary",
   },
   command = [[nnoremap <buffer><silent> q :quit<CR>]],
   group = aug.OneKeyExit,
