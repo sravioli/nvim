@@ -31,6 +31,7 @@ return {
       sh = { "shfmt" },
       cs = { "csharpier" },
       sql = { "sql_formatter" },
+      js = { "prettierd" },
     },
 
     formatters = {
@@ -80,6 +81,11 @@ return {
           local file = fun.search_file { ".clang-format" }
           return file and { "--style=file:" .. file } or {}
         end,
+      },
+      prettierd = {
+        env = {
+          PRETTIERD_DEFAULT_CONFIG = fun.search_file ".prettierrc.json" or "",
+        },
       },
     },
 
