@@ -241,10 +241,10 @@ return {
       { "L3MON4D3/LuaSnip" },
       { "mikavilpas/blink-ripgrep.nvim" },
     },
+    build = "cargo build --release",
     version = "v0.*",
     opts = function()
       local ls = require "luasnip"
-      local blink_tailwind = require "blink.cmp.completion.windows.render.tailwind"
       return {
         keymap = {
           ["<C-M-Space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -339,112 +339,14 @@ return {
             require("luasnip").jump(direction)
           end,
         },
+
         completion = {
           keyword = { range = "full" },
           trigger = { show_on_insert_on_trigger_character = false },
-          list = { max_items = 500 },
+          list = { max_items = 150 },
           accept = { auto_brackets = { enabled = true } },
 
-          menu = {
-            enabled = true,
-            border = "rounded",
-            winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,"
-              .. "CursorLine:BlinkCmpMenuSelection,Search:None",
-
-            draw = {
-              treesitter = true,
-              columns = {
-                { "kind_icon" },
-                { "label", "label_description", gap = 1 },
-                { "item_idx" },
-              },
-
-              -- Definitions for possible components to render. Each component defines:
-              --   ellipsis: whether to add an ellipsis when truncating the text
-              --   width: control the min, max and fill behavior of the component
-              --   text function: will be called for each item
-              --   highlight function: will be called only when the line appears on screen
-              components = {
-                kind_icon = {
-                  ellipsis = false,
-                  text = function(ctx)
-                    return ctx.kind_icon .. ctx.icon_gap
-                  end,
-                  highlight = function(ctx)
-                    return (blink_tailwind.get_hl(ctx) or "BlinkCmpKind") .. ctx.kind
-                  end,
-                },
-
-                kind = {
-                  ellipsis = false,
-                  width = { fill = true },
-                  text = function(ctx)
-                    return ctx.kind
-                  end,
-                  highlight = function(ctx)
-                    return (blink_tailwind.get_hl(ctx) or "BlinkCmpKind") .. ctx.kind
-                  end,
-                },
-
-                label = {
-                  width = { fill = true, max = 60 },
-                  text = function(ctx)
-                    return ctx.label .. ctx.label_detail
-                  end,
-                  highlight = function(ctx)
-                    -- label and label details
-                    local highlights = {
-                      {
-                        0,
-                        #ctx.label,
-                        group = ctx.deprecated and "BlinkCmpLabelDeprecated"
-                          or "BlinkCmpLabel",
-                      },
-                    }
-                    if ctx.label_detail then
-                      table.insert(highlights, {
-                        #ctx.label,
-                        #ctx.label + #ctx.label_detail,
-                        group = "BlinkCmpLabelDetail",
-                      })
-                    end
-
-                    -- characters matched on the label by the fuzzy matcher
-                    for _, idx in ipairs(ctx.label_matched_indices) do
-                      table.insert(
-                        highlights,
-                        { idx, idx + 1, group = "BlinkCmpLabelMatch" }
-                      )
-                    end
-
-                    return highlights
-                  end,
-                },
-
-                label_description = {
-                  width = { max = 30 },
-                  text = function(ctx)
-                    return ctx.label_description
-                  end,
-                  highlight = "BlinkCmpLabelDescription",
-                },
-
-                source_name = {
-                  width = { max = 30 },
-                  text = function(ctx)
-                    return ctx.source_name
-                  end,
-                  highlight = "BlinkCmpSource",
-                },
-                item_idx = {
-                  text = function(ctx)
-                    return tostring(ctx.idx)
-                  end,
-                  highlight = "Comment",
-                },
-              },
-            },
-          },
+          menu = { border = "rounded" },
 
           documentation = {
             auto_show = true,
@@ -466,16 +368,20 @@ return {
         },
 
         sources = {
-          completion = {
-            enabled_providers = {
-              "lsp",
-              "path",
-              "luasnip",
-              "buffer",
-              "ripgrep",
-              "lazydev",
-            },
-          },
+          default = { "lsp", "path", "luasnip", "buffer", "ripgrep", "lazydev" },
+
+          cmdline = function()
+            local type = vim.fn.getcmdtype()
+            -- Search forward and backward
+            if type == "/" or type == "?" then
+              return { "buffer" }
+            end
+            -- Commands
+            if type == ":" then
+              return { "cmdline" }
+            end
+            return {}
+          end,
 
           -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
           providers = {
@@ -492,11 +398,9 @@ return {
               should_show_items = true, -- Whether or not to show the items
               max_items = nil, -- Maximum number of items to display in the menu
               min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
-              fallback_for = { -- If any of these providers return 0 items, it will fallback to this provider
-                "lazydev",
-              },
               score_offset = 3, -- Boost/penalize the score of the items
               override = nil, -- Override the source's functions
+              fallbacks = { "buffer" },
             },
             path = {
               name = "Path",
@@ -533,7 +437,6 @@ return {
             buffer = {
               name = "Buffer",
               module = "blink.cmp.sources.buffer",
-              fallback_for = { "lsp" },
               opts = {
                 get_bufnrs = function()
                   return vim
@@ -548,7 +451,11 @@ return {
                 end,
               },
             },
-            lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+            lazydev = {
+              name = "LazyDev",
+              module = "lazydev.integrations.blink",
+              fallbacks = { "lsp" },
+            },
             ripgrep = {
               name = "Ripgrep",
               module = "blink-ripgrep",
