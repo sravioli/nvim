@@ -6,13 +6,16 @@ return {
   dependencies = {
     "benlubas/neorg-conceal-wrap",
     "opipoy/neorg-colors",
+    "benlubas/neorg-interim-ls",
   },
   build = ":Neorg sync-parsers",
   opts = {
     load = {
       ["core.clipboard"] = {},
       ["core.clipboard.code-blocks"] = {},
-      ["core.completion"] = { config = { engine = "nvim-cmp" } },
+      ["core.completion"] = {
+        config = { engine = { module_name = "external.lsp-completion" } },
+      },
       ["core.concealer"] = {
         config = {
           code_block = {
@@ -83,6 +86,21 @@ return {
 
       ["external.conceal-wrap"] = {},
       ["external.neorg-colors"] = {},
+      ["external.interim-ls"] = {
+        config = {
+          -- default config shown
+          completion_provider = {
+            -- Enable or disable the completion provider
+            enable = true,
+
+            -- Show file contents as documentation when you complete a file name
+            documentation = true,
+
+            -- Try to complete categories provided by Neorg Query. Requires `benlubas/neorg-query`
+            categories = false,
+          },
+        },
+      },
     },
   },
 }
