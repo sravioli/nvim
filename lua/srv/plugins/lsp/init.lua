@@ -83,6 +83,7 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup_handlers {
+        ["rust_analyzer"] = function() end,
         function(server)
           local config = vim.tbl_deep_extend("error", {
             capabilities = fun.lsp.capabilities(),
