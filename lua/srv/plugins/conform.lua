@@ -31,7 +31,7 @@ return {
       sh = { "shfmt" },
       cs = { "csharpier" },
       sql = { "sql_formatter" },
-      js = { "prettierd" },
+      javascript = { "prettierd" },
     },
 
     formatters = {
