@@ -115,8 +115,8 @@ M.lazy_notify = function()
       replay()
     end
   end)
-  -- or if it took more than 500ms, then something went wrong
-  timer:start(500, 0, replay)
+  -- or if it took more than 800ms, then something went wrong
+  timer:start(800, 0, replay)
 end
 
 ---Searches for the given file
@@ -152,7 +152,7 @@ M.search_file = function(...)
     for _, directory in pairs(directories) do
       local filepath = vim.fn.resolve(("%s/%s"):format(directory, filename))
 
-      vim.notify(log_msg:format("󰍉", filepath), log_lvl)
+      -- vim.notify(log_msg:format("󰍉", filepath), log_lvl)
       local file = vim.fn.findfile(filepath)
       if file ~= "" then
         vim.notify(log_msg:format("󰄬", filepath), log_lvl)
