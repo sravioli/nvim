@@ -146,7 +146,7 @@ return {
   -- {{{1 nvim-cmp: completion plugin for neovim coded in Lua.
   {
     "hrsh7th/nvim-cmp",
-    enabled = false,
+    enabled = true,
     cond = not vim.g.vscode,
     dependencies = {
       { "L3MON4D3/LuaSnip" }, ---Snippet Engine for Neovim written in Lua.
@@ -237,11 +237,12 @@ return {
   -- {{{1 blink.nvim: Performant, batteries-included completion plugin for Neovim
   {
     "Saghen/blink.cmp",
+    enabled = false,
     dependencies = {
       { "L3MON4D3/LuaSnip" },
       { "mikavilpas/blink-ripgrep.nvim" },
     },
-    build = "cargo build --release",
+    build = "cargo build",
     version = "v0.*",
     opts = function()
       local ls = require "luasnip"
