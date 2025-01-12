@@ -146,7 +146,7 @@ return {
   -- {{{1 nvim-cmp: completion plugin for neovim coded in Lua.
   {
     "hrsh7th/nvim-cmp",
-    enabled = true,
+    enabled = false,
     cond = not vim.g.vscode,
     dependencies = {
       { "L3MON4D3/LuaSnip" }, ---Snippet Engine for Neovim written in Lua.
@@ -237,13 +237,12 @@ return {
   -- {{{1 blink.nvim: Performant, batteries-included completion plugin for Neovim
   {
     "Saghen/blink.cmp",
-    enabled = false,
+    enabled = true,
     dependencies = {
       { "L3MON4D3/LuaSnip" },
       { "mikavilpas/blink-ripgrep.nvim" },
     },
-    build = "cargo build",
-    version = "v0.*",
+    version = "*",
     opts = function()
       local ls = require "luasnip"
       return {
@@ -326,20 +325,7 @@ return {
           },
         },
 
-        snippets = {
-          expand = function(snippet)
-            require("luasnip").lsp_expand(snippet)
-          end,
-          active = function(filter)
-            if filter and filter.direction then
-              return require("luasnip").jumpable(filter.direction)
-            end
-            return require("luasnip").in_snippet()
-          end,
-          jump = function(direction)
-            require("luasnip").jump(direction)
-          end,
-        },
+        snippets = { preset = "luasnip" },
 
         completion = {
           keyword = { range = "full" },
@@ -369,7 +355,7 @@ return {
         },
 
         sources = {
-          default = { "lsp", "path", "luasnip", "buffer", "ripgrep", "lazydev" },
+          default = { "lsp", "path", "snippets", "buffer", "ripgrep", "lazydev" },
 
           cmdline = function()
             local type = vim.fn.getcmdtype()
@@ -386,71 +372,10 @@ return {
 
           -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
           providers = {
-            lsp = {
-              name = "LSP",
-              module = "blink.cmp.sources.lsp",
-
-              --- *All* of the providers have the following options available
-              --- NOTE: All of these options may be functions to get dynamic behavior
-              --- See the type definitions for more information.
-              --- Check the enabled_providers config for an example
-              enabled = true, -- Whether or not to enable the provider
-              transform_items = nil, -- Function to transform the items before they're returned
-              should_show_items = true, -- Whether or not to show the items
-              max_items = nil, -- Maximum number of items to display in the menu
-              min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
-              score_offset = 3, -- Boost/penalize the score of the items
-              override = nil, -- Override the source's functions
-              fallbacks = { "buffer" },
-            },
-            path = {
-              name = "Path",
-              module = "blink.cmp.sources.path",
-              score_offset = 5,
-              opts = {
-                trailing_slash = false,
-                label_trailing_slash = true,
-                get_cwd = function(context)
-                  return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
-                end,
-                show_hidden_files_by_default = true,
-              },
-            },
             snippets = {
               name = "Snippets",
               module = "blink.cmp.sources.snippets",
-              score_offset = 100,
-              opts = {
-                friendly_snippets = true,
-                search_paths = {
-                  vim.fs.normalize(vim.fn.stdpath "config" .. "/snippets"),
-                },
-                global_snippets = { "all" },
-                extended_filetypes = {
-                  markdown = { "latex", "tex" },
-                },
-                ignored_filetypes = {},
-                get_filetype = function(context)
-                  return vim.bo.filetype
-                end,
-              },
-            },
-            buffer = {
-              name = "Buffer",
-              module = "blink.cmp.sources.buffer",
-              opts = {
-                get_bufnrs = function()
-                  return vim
-                    .iter(vim.api.nvim_list_wins())
-                    :map(function(win)
-                      return vim.api.nvim_win_get_buf(win)
-                    end)
-                    :filter(function(buf)
-                      return vim.bo[buf].buftype ~= "nofile"
-                    end)
-                    :totable()
-                end,
-              },
+              score_offset = 99,
             },
             lazydev = {
               name = "LazyDev",
@@ -460,7 +385,7 @@ return {
             ripgrep = {
               name = "Ripgrep",
               module = "blink-ripgrep",
-              score_offset = -5,
+              score_offset = -90,
               opts = {
                 prefix_min_len = 4,
                 context_size = 6,
