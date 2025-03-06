@@ -342,6 +342,13 @@ return {
           },
           ghost_text = { enabled = true },
         },
+        cmdline = {
+          completion = {
+            list = { selection = { auto_insert = false } },
+            menu = { auto_show = true },
+            ghost_text = { enabled = false },
+          },
+        },
 
         -- Experimental signature help support
         signature = {
@@ -356,19 +363,6 @@ return {
 
         sources = {
           default = { "lsp", "path", "snippets", "buffer", "ripgrep", "lazydev" },
-
-          cmdline = function()
-            local type = vim.fn.getcmdtype()
-            -- Search forward and backward
-            if type == "/" or type == "?" then
-              return { "buffer" }
-            end
-            -- Commands
-            if type == ":" then
-              return { "cmdline" }
-            end
-            return {}
-          end,
 
           -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
           providers = {
