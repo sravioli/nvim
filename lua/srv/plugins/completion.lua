@@ -344,7 +344,7 @@ return {
         },
         cmdline = {
           completion = {
-            list = { selection = { auto_insert = false } },
+            list = { selection = { auto_insert = true } },
             menu = { auto_show = true },
             ghost_text = { enabled = false },
           },
