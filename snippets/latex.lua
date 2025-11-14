@@ -1,7 +1,17 @@
 ---@diagnostic disable: undefined-global
 -- luacheck: ignore 113
 
-local snip = require("srv.utils.fn").snippets.snip
+local snip = function(trig, name, desc, snippetType, wordTrig, trigEngine, priority)
+  return {
+    trig = trig,
+    name = name,
+    desc = desc,
+    snippetType = snippetType and snippetType or "snippet",
+    trigEngine = trigEngine and trigEngine or "plain",
+    wordTrig = wordTrig and true,
+    priority = priority or 1000,
+  }
+end
 
 ---@class Format Useful function to format strings in LaTeX
 ---@field greek table Contains a function to format greek letters
@@ -33,8 +43,7 @@ format.greek.expand = function(captures, ending, upper)
   return captures[idx]:match "%u" and upper ---return the uppercase letter if given
     or string.format( ---otherwise format the captures accordingly
       [[\%s%s]], ---the format template
-      ((captures[idx - 1] and captures[idx - 1]:match "v") and "var" or "")
-        .. captures[idx], ---use either the 1st capture (for non-variant) or 2nd
+      ((captures[idx - 1] and captures[idx - 1]:match "v") and "var" or "") .. captures[idx], ---use either the 1st capture (for non-variant) or 2nd
       ending or "" ---append the ending string if given
     )
 end
@@ -541,14 +550,8 @@ return {
     snip("\\cap[nN]", "big intersection", "", "autosnippet", false, "pattern"),
     fmta([[\bigcap_{<> = <>}^<>]], { i(1, "i"), i(2, "1"), i(3, "\\infty") })
   ),
-  s(
-    snip("\\cup[nN]", "union to intersection", "", "autosnippet", false, "pattern"),
-    t { [[\cap]] }
-  ),
-  s(
-    snip("\\cap[uU]", "intersection to union", "", "autosnippet", false, "pattern"),
-    t { [[\cup]] }
-  ),
+  s(snip("\\cup[nN]", "union to intersection", "", "autosnippet", false, "pattern"), t { [[\cap]] }),
+  s(snip("\\cap[uU]", "intersection to union", "", "autosnippet", false, "pattern"), t { [[\cup]] }),
 
   ---Accent and marks
   s(snip("what", "widehat", ""), fmta([[\widehat{<>}]], i(1))),
@@ -568,14 +571,7 @@ return {
   s(snip("FF", "F", "", "autosnippet", false), t { [[\mathfrak{F}]] }),
   s(snip("set", "set", "", "autosnippet"), fmta([[\{\,<>\,\}]], i(1))),
   s(
-    snip(
-      "(\\mathbb{[NZQRCI]})([%+-*])",
-      "set supscript",
-      "",
-      "autosnippet",
-      false,
-      "pattern"
-    ),
+    snip("(\\mathbb{[NZQRCI]})([%+-*])", "set supscript", "", "autosnippet", false, "pattern"),
     l(l.LS_CAPTURE_1 .. "^" .. l.LS_CAPTURE_2:gsub("%*", "\\ast"))
   ),
 
@@ -591,10 +587,7 @@ return {
   s(snip("arctan", "arctan", "", "autosnippet", false), t { [[\arctan]] }),
 
   ---Functions
-  s(
-    snip("n^2rt", "square root of n", "", "autosnippet", false),
-    fmta([[\sqrt[<>]{<>}]], { i(1), i(2) })
-  ),
+  s(snip("n^2rt", "square root of n", "", "autosnippet", false), fmta([[\sqrt[<>]{<>}]], { i(1), i(2) })),
   s(snip("^2rt", "square root", "", "autosnippet", false), fmta([[\sqrt{<>}]], i(1))),
   s(snip("ln", "natural log", "", "autosnippet", false), t { [[\ln]] }),
   s(snip("log", "logarithm", "", "autosnippet", false), t { [[\log]] }),
@@ -611,18 +604,9 @@ return {
     snip("prod", "product", "", "autosnippet"),
     fmta([[\prod_{<> = <>}^<>]], { i(1, "i"), i(2, "1"), i(3, "\\infty") })
   ),
-  s(
-    snip("lim", "limit", "", "autosnippet"),
-    fmta([[\lim_{<> \to <>}]], { i(1, "i"), i(2, "\\infty") })
-  ),
-  s(
-    snip("binom", "binomial coefficients", "", "autosnippet"),
-    fmta([[\binom{<>}{<>}]], { i(1, "n"), i(2, "k") })
-  ),
-  s(
-    snip("ibin", "inline binomial coefficients", "", "autosnippet"),
-    fmta([[C(<>; <>)]], { i(1, "n"), i(2, "k") })
-  ),
+  s(snip("lim", "limit", "", "autosnippet"), fmta([[\lim_{<> \to <>}]], { i(1, "i"), i(2, "\\infty") })),
+  s(snip("binom", "binomial coefficients", "", "autosnippet"), fmta([[\binom{<>}{<>}]], { i(1, "n"), i(2, "k") })),
+  s(snip("ibin", "inline binomial coefficients", "", "autosnippet"), fmta([[C(<>; <>)]], { i(1, "n"), i(2, "k") })),
   s(snip("o+", "oplus", "", "autosnippet", false), t { [[\oplus]] }),
   s(snip("oX", "otimes", "", "autosnippet", false), t { [[\otimes]] }),
   s(snip("pu", "physical units", "", "autosnippet", false), fmta([[\pu{<>}]], i(1))),
@@ -659,10 +643,7 @@ return {
     fmta([[<>\ast]], { l(l.LS_CAPTURE_1) })
   ),
 
-  s(
-    snip("\\?([%a])(%d)", "subscript", "", "autosnippet", true, "pattern"),
-    l(l.LS_CAPTURE_1 .. "_" .. l.LS_CAPTURE_2)
-  ),
+  s(snip("\\?([%a])(%d)", "subscript", "", "autosnippet", true, "pattern"), l(l.LS_CAPTURE_1 .. "_" .. l.LS_CAPTURE_2)),
 
   s(
     snip("\\?([%a])[nm]([nm])", "subscript n/m", "", "autosnippet", true, "pattern"),

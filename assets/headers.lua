@@ -513,9 +513,9 @@ return setmetatable(headers, {
       -- Obtain keys and return a random banner
       local keys = vim.tbl_keys(sub)
       return sub[keys[math.random(1, #keys)]]
-    else
-      -- Return the desired banner
-      return tb[key]
     end
+
+    -- Return the desired banner
+    return tb[key]
   end,
 })
