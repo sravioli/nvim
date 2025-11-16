@@ -62,13 +62,11 @@ return {
       end
 
       vim.keymap.set({ "i", "s" }, "<Tab>", function()
-        return ls.expand_or_locally_jumpable() and ls.expand_or_jump()
-          or feedkey("<Tab>", "n")
+        return ls.expand_or_locally_jumpable() and ls.expand_or_jump() or feedkey("<Tab>", "n")
       end, { desc = "Luasnip - Jump to next node" })
 
       vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-        return ls.in_snippet() and ls.jumpable(-1) and ls.jump(-1)
-          or feedkey("<S-Tab>", "n")
+        return ls.in_snippet() and ls.jumpable(-1) and ls.jump(-1) or feedkey("<S-Tab>", "n")
       end, { desc = "Luasnip - Jump to previous node" })
 
       local opts = {
@@ -131,10 +129,7 @@ return {
 
       vim.api.nvim_create_autocmd("InsertLeave", {
         callback = function()
-          if
-            ls.session.current_nodes[vim.api.nvim_get_current_buf()]
-            and not ls.session.jump_active
-          then
+          if ls.session.current_nodes[vim.api.nvim_get_current_buf()] and not ls.session.jump_active then
             ls.unlink_current()
           end
         end,
@@ -227,10 +222,7 @@ return {
       })
 
       ---If you want insert `(` after select function or method item
-      cmp.event:on(
-        "confirm_done",
-        require("nvim-autopairs.completion.cmp").on_confirm_done()
-      )
+      cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
     end,
   }, -- }}}
 
@@ -328,7 +320,7 @@ return {
         snippets = { preset = "luasnip" },
 
         completion = {
-          keyword = { range = "full" },
+          keyword = { range = "prefix" },
           trigger = { show_on_insert_on_trigger_character = false },
           list = { max_items = 150 },
           accept = { auto_brackets = { enabled = true } },

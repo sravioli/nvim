@@ -1,4 +1,4 @@
----Source neovim settings
+---Source Neovim settings
 require "srv.config.settings"
 
 if vim.g.neovide then

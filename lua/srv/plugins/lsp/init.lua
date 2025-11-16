@@ -81,20 +81,6 @@ return {
         end,
       },
     },
-    config = function()
-      require("mason-lspconfig").setup_handlers {
-        ["rust_analyzer"] = function() end,
-        function(server)
-          local config = vim.tbl_deep_extend("error", {
-            capabilities = fun.lsp.capabilities(),
-            on_attach = fun.lsp.on_attach,
-            handlers = fun.lsp.handlers(),
-          }, require("srv.plugins.lsp.servers")[server])
-
-          require("lspconfig")[server].setup(config)
-        end,
-      }
-    end,
   }, -- }}}
 
   -- {{{1 POST LSPATTACH
@@ -151,9 +137,7 @@ return {
             return " " .. count
           end,
           git_authors = function(latest_author, count)
-            return "  "
-              .. latest_author
-              .. (count - 1 == 0 and "" or " +" .. count - 1)
+            return "  " .. latest_author .. (count - 1 == 0 and "" or " +" .. count - 1)
           end,
         },
       },

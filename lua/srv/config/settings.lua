@@ -14,6 +14,8 @@ end
 
 set.clipboard = "unnamedplus"
 
+set.winborder = require("srv.preferences").border
+
 set.confirm = true
 
 set.cursorline = true
@@ -84,10 +86,7 @@ let.mapleader = " "
 let.maplocalleader = ","
 
 ---add binaries installed by mason.nvim to path
-vim.env.PATH = vim.fn.stdpath "data"
-  .. "/mason/bin"
-  .. (is_windows and ";" or ":")
-  .. vim.env.PATH
+vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 ---@type string
 ---The path where luasnip will look for snippets

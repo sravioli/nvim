@@ -2,6 +2,11 @@ return {
   ---file explorer tree for neovim written in lua
   "nvim-tree/nvim-tree.lua",
   cond = not vim.g.vscode,
+  init = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    vim.opt.termguicolors = true
+  end,
   version = "*",
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
@@ -34,7 +39,18 @@ return {
     "NvimTreeCollapseKeepBuffers",
   },
   keys = {
-    { "<C-n>", "<cmd>NvimTreeToggle<CR>", desc = "  Toggle file explorer" },
+    { "<C-M-n>", "<cmd>NvimTreeClose<CR>", desc = "  Close file explorer" },
+    {
+      "<C-n>",
+      function()
+        if vim.api.nvim_get_option_value("filetype", { buf = vim.api.nvim_get_current_buf() }) == "NvimTree" then
+          require("nvim-tree.api").tree.toggle()
+        else
+          require("nvim-tree.api").tree.focus()
+        end
+      end,
+      desc = "  Toggle (or focus) file explorer",
+    },
     {
       "<leader>e",
       "<cmd>NvimTreeFindFileToggle<CR>",
@@ -85,9 +101,7 @@ return {
         group_empty = true,
         full_name = true,
         root_folder_label = function(root_cwd)
-          return root_cwd
-            :gsub(os.getenv "USERPROFILE" or os.getenv "HOME", "~")
-            :gsub("\\", "/") .. "/"
+          return root_cwd:gsub(os.getenv "USERPROFILE" or os.getenv "HOME", "~"):gsub("\\", "/") .. "/"
         end,
 
         highlight_git = true,
@@ -120,7 +134,10 @@ return {
         },
       },
 
-      hijack_directories = { enable = true },
+      hijack_directories = {
+        enable = false,
+        auto_open = false,
+      },
 
       diagnostics = {
         enable = true,
