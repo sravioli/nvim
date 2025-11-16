@@ -4,7 +4,10 @@ return {
     ---Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     "williamboman/mason-lspconfig.nvim",
     cond = not vim.g.vscode,
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = {
+      { "mason-org/mason.nvim" },
+      { "neovim/nvim-lspconfig" },
+    },
     cmd = { "LspInstall", "LspUninstall" },
     opts = {
       ---A list of servers to automatically install if they're not already
@@ -21,6 +24,7 @@ return {
         "yamlls",
         "csharp_ls",
       },
+      automatic_enable = true,
 
       ---Whether servers that are set up (via lspconfig) should be automatically
       ---installed if they're not already installed.
@@ -75,6 +79,10 @@ return {
       },
 
       max_concurrent_installers = 10,
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
     },
   }, -- }}}
 }

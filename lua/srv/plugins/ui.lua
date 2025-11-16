@@ -42,6 +42,10 @@ return {
         hide = { extensions = true, inactive = false },
         highlight_visible = true,
 
+        sidebar_filetypes = {
+          NvimTree = { text = "File Explorer", align = "center" },
+        },
+
         icons = {
           buffer_index = false,
           buffer_number = false,
@@ -166,12 +170,7 @@ return {
 
     config = function(_, opts)
       require("dropbar").setup(opts)
-      vim.keymap.set(
-        "n",
-        "<leader>;",
-        require("dropbar.api").pick,
-        { desc = "Dropbar pick" }
-      )
+      vim.keymap.set("n", "<leader>;", require("dropbar.api").pick, { desc = "Dropbar pick" })
     end,
   }, -- }}}
 
