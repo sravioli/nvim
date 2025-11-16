@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 See [conventional commits](https://www.conventionalcommits.org/) for commit
 guidelines.
 - - -
+## [3.0.3](https://github.com/sravioli/nvim/compare/739de58df831e4e69901fb30ad96df6ca80f94c7..3.0.3) - 2025-11-16
+#### Features
+- (**blink**) auto insert on cmdline - ([d208113](https://github.com/sravioli/nvim/commit/d208113bdb181da380067917480524ec3c2d9d72)) - [@sravioli](https://github.com/sravioli)
+- (**js**) add prettierd and config - ([3d3095a](https://github.com/sravioli/nvim/commit/3d3095a1e28092d1209cb0b33b5c3aa662cd7624)) - sravioli
+- (**lsp**) install rustaceanvim - ([eaac070](https://github.com/sravioli/nvim/commit/eaac07088ee938aaf52279be4d5a57e712a9e674)) - sravioli
+- (**neorg**) install lsp, change completion engine - ([c2cfc81](https://github.com/sravioli/nvim/commit/c2cfc81d505635850a3096d8c4f6918c2f1d9304)) - sravioli
+- (**neotest**) add keymaps, add rust adapter - ([db14ff6](https://github.com/sravioli/nvim/commit/db14ff6d7173889f8fc3839520e3443921694f9a)) - sravioli
+- update config to nvim 0.11.0 - ([bc8fe9f](https://github.com/sravioli/nvim/commit/bc8fe9f5129abe7a82b44ea84fd71dbe7702c3d5)) - [@sravioli](https://github.com/sravioli)
+- update blink.cmp config - ([0be37ad](https://github.com/sravioli/nvim/commit/0be37ade5c4bea5ee32c42eafacf44ac4f8c463f)) - [@sravioli](https://github.com/sravioli)
+- update blink.cmp config - ([7515279](https://github.com/sravioli/nvim/commit/7515279679fa8008810668971ff025c2f21da7f2)) - sravioli
+- install blink.cmp - ([81d59a2](https://github.com/sravioli/nvim/commit/81d59a271347d2decd65ae03edfc1c0af406dff8)) - sravioli
+- add rust specific keymaps - ([9ff6260](https://github.com/sravioli/nvim/commit/9ff626083917bd4eb649dda15449d74090f7ba77)) - sravioli
+- exit with q from neotest-summary - ([96aed8d](https://github.com/sravioli/nvim/commit/96aed8da6265faf6cb3a6a25f6648048d3d270bb)) - sravioli
+- update blink.cmp config - ([739de58](https://github.com/sravioli/nvim/commit/739de58df831e4e69901fb30ad96df6ca80f94c7)) - sravioli
+#### Bug Fixes
+- (**conform**) js -> javascript - ([be5cbc8](https://github.com/sravioli/nvim/commit/be5cbc8460f10c970431fe56298e6aae85c3eca9)) - sravioli
+- temp switch to cmp - ([25661f7](https://github.com/sravioli/nvim/commit/25661f776a1730c44cffca6efdb631294b5b38ab)) - sravioli
+- increase time to defer notifications, rm logs - ([0cb122f](https://github.com/sravioli/nvim/commit/0cb122f37462e8ba5a70df689380f6d28d595f3f)) - sravioli
+#### Miscellaneous Chores
+- (**lazy**) update lazy-lock - ([2e960d8](https://github.com/sravioli/nvim/commit/2e960d82a838576e24bb5029ee42c58afd09a391)) - [@sravioli](https://github.com/sravioli)
+- (**lazy-lock**) update lazy-lock - ([7c81ebc](https://github.com/sravioli/nvim/commit/7c81ebc430ab65c559fda7975d467d0ffc389c83)) - [@sravioli](https://github.com/sravioli)
+- update lazy lock - ([5ae9e72](https://github.com/sravioli/nvim/commit/5ae9e72889b608a47e787f769c4d0b51c6be54a7)) - sravioli
+- update lazy-lock - ([62c48b8](https://github.com/sravioli/nvim/commit/62c48b89d8d067507ff2f47068ba3ec28bd73ca3)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock - ([5de50ec](https://github.com/sravioli/nvim/commit/5de50ec1d6afa620fd54b45a3334bed7c9fb3b78)) - sravioli
+- update lazy-lock - ([70243e7](https://github.com/sravioli/nvim/commit/70243e7a509895536d43afce6e17598660ff8daa)) - sravioli
+- update lazy-lock - ([188996f](https://github.com/sravioli/nvim/commit/188996f75b67a133b002511c22ab5af831e53a1d)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock - ([fec695b](https://github.com/sravioli/nvim/commit/fec695bdc187c22a148a411d7b7dce94b43940be)) - sravioli
+- update lazy-lock - ([f71afae](https://github.com/sravioli/nvim/commit/f71afaeeddef354bbe642a3ea5561ddf02812acc)) - sravioli
+- merge branch 'main' - ([22b9402](https://github.com/sravioli/nvim/commit/22b9402c7e7f96a0dd407c1ef7ad2a7a9904fff4)) - sravioli
+- update lazy-lock - ([7c21162](https://github.com/sravioli/nvim/commit/7c21162f3d2a870e06a70ca649db7f5c876ef443)) - sravioli
+- update lazy-lock - ([7b14be9](https://github.com/sravioli/nvim/commit/7b14be9c9a6478c2781ee6e3e4dd557339500ff9)) - [@sravioli](https://github.com/sravioli)
+- update lazy-lock.json - ([017ae8c](https://github.com/sravioli/nvim/commit/017ae8c72a947774b11a42b4a7adb58bb4095190)) - sravioli
+
+- - -
+
 
 ## [3.0.2](https://github.com/sravioli/nvim/compare/2abbf2b70657afb685c0d2f65685e75abf6afc94..3.0.2) - 2024-12-05
 
