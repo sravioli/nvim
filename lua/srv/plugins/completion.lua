@@ -42,18 +42,7 @@ return {
     dependencies = { { "rafamadriz/friendly-snippets" } },
     event = "InsertEnter",
     version = "v2.*",
-    build = function()
-      local os = require("srv.utils.fun").os_info()[1]
-      if os == "windows" then
-        return [[gcc ]]
-          .. [[-IC:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\lua51_include\ ]]
-          .. [[-O2 -fPIC ]]
-          .. [[-c C:\Users\fsimo\AppData\Local\nvim-data\lazy\LuaSnip\deps\jsregexp\jsregexp.c ]]
-          .. [[-o jsregexp.o]]
-      else
-        return "make install_jsregexp"
-      end
-    end,
+    build = "make install_jsregexp",
     config = function()
       local ls = require "luasnip"
 

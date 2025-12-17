@@ -2,6 +2,7 @@ return {
   "nvim-neorg/neorg",
   version = "*",
   ft = "norg",
+  enabled = false,
   cmd = "Neorg",
   dependencies = {
     "benlubas/neorg-conceal-wrap",

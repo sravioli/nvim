@@ -165,54 +165,48 @@ return {
         },
       },
     },
-
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
   }, -- }}}
 
   -- {{{1 nvim-treesitter-textobjects: syntax aware text-objects.
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     cond = not vim.g.vscode,
     init = function()
-      require("srv.utils.fun").on_load("nvim-treesitter", function()
-        local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      vim.g.no_plugin_maps = true
 
-        -- Repeat movement with ; and ,
-        -- ensure ; goes forward and , goes backward regardless of the last direction
-        vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-        vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+      -- Or, disable per filetype (add as you like)
+      -- vim.g.no_python_maps = true
+      -- vim.g.no_ruby_maps = true
+      -- vim.g.no_rust_maps = true
+      -- vim.g.no_go_maps = true
+    end,
+    opts = function()
+      local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
 
-        -- vim way: ; goes to the direction you were moving.
-        -- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-        -- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+      -- Repeat movement with ; and ,
+      -- ensure ; goes forward and , goes backward regardless of the last direction
+      vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+      vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 
-        -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-        vim.keymap.set(
-          { "n", "x", "o" },
-          "f",
-          ts_repeat_move.builtin_f_expr,
-          { expr = true }
-        )
-        vim.keymap.set(
-          { "n", "x", "o" },
-          "F",
-          ts_repeat_move.builtin_F_expr,
-          { expr = true }
-        )
-        vim.keymap.set(
-          { "n", "x", "o" },
-          "t",
-          ts_repeat_move.builtin_t_expr,
-          { expr = true }
-        )
-        vim.keymap.set(
-          { "n", "x", "o" },
-          "T",
-          ts_repeat_move.builtin_T_expr,
-          { expr = true }
-        )
+      -- vim way: ; goes to the direction you were moving.
+      -- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+      -- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+      -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+      vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+      vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+      vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+      vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
+
+      -- keymaps
+      vim.keymap.set("n", "<leader>a", function()
+        require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
+      end)
+      vim.keymap.set("n", "<leader>A", function()
+        require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer"
       end)
     end,
   }, -- }}}
@@ -378,8 +372,7 @@ return {
         ---place fold indicator at the colorcolumn/textwidth. if they go off-screen place
         ---the indicator to the closest possible
 
-        local rightmost_col =
-          math.max(vim.opt_local.colorcolumn["_value"], vim.opt_local.textwidth["_value"])
+        local rightmost_col = math.max(vim.opt_local.colorcolumn["_value"], vim.opt_local.textwidth["_value"])
         local closest_col = math.min(rightmost_col, width - 1)
         local left_padding = math.max(closest_col - current_width - msg_width, 0)
         local right_padding = 2

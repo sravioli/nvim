@@ -15,11 +15,7 @@ return {
       vim.api.nvim_create_autocmd("WinLeave", {
         callback = function()
           if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
-            vim.api.nvim_feedkeys(
-              vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-              "i",
-              false
-            )
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
           end
         end,
       })
@@ -36,7 +32,6 @@ return {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-telescope/telescope-fzf-native.nvim" },
     },
-    branch = "0.1.x",
     cmd = "Telescope",
     keys = require("srv.keymaps.telescope"):lazy_handler(),
 

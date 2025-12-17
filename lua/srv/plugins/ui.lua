@@ -464,6 +464,7 @@ return {
   {
     "code-biscuits/nvim-biscuits",
     cond = not vim.g.vscode,
+    enabled = false,
     event = require("srv.utils.events").LazyFile,
     config = function()
       require("nvim-biscuits").setup {
